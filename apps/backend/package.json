@@ -1,0 +1,32 @@
+{
+  "name": "@repo/backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsup src/server.ts --format esm --clean",
+    "start": "node dist/server.js",
+    "test": "jest --config jest.config.ts --passWithNoTests",
+    "test:watch": "jest --config jest.config.ts --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src test --ext .ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "fastify": "^5.8.5"
+  },
+  "devDependencies": {
+    "@repo/common": "workspace:*",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/jest-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "^20.19.41",
+    "tsup": "^8.5.1",
+    "tsx": "^4.22.1",
+    "typescript": "^6.0.0"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "@repo/jest-config",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./node": "./node.ts",
+    "./next": "./next.ts",
+    "./expo": "./expo.ts"
+  },
+  "peerDependencies": {
+    "jest": "^30.0.0",
+    "jest-environment-jsdom": "^30.0.0",
+    "jest-expo": "^52.0.0",
+    "ts-jest": "^29.4.0",
+    "typescript": "^6.0.0"
+  },
+  "peerDependenciesMeta": {
+    "jest-environment-jsdom": {
+      "optional": true
+    },
+    "jest-expo": {
+      "optional": true
+    },
+    "ts-jest": {
+      "optional": true
+    }
+  }
+}

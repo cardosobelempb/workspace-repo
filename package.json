@@ -1,0 +1,67 @@
+{
+  "name": "@repo/base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"cd apps/backend && pnpm dev\" \"cd apps/frontend && pnpm dev\"",
+    "dev:backend": "cd apps/backend && pnpm dev",
+    "dev:frontend": "cd apps/frontend && pnpm dev",
+    "dev:mobile": "cd apps/mobile && pnpm dev",
+    "build": "pnpm build:common && concurrently \"cd apps/backend && pnpm build\" \"cd apps/frontend && pnpm build\"",
+    "build:common": "cd packages/common && pnpm build",
+    "start": "concurrently \"cd apps/backend && pnpm start\" \"cd apps/frontend && pnpm start\"",
+    "start:backend": "cd apps/backend && pnpm start",
+    "start:frontend": "cd apps/frontend && pnpm start",
+    "test": "pnpm test:common && pnpm test:backend && pnpm test:frontend && pnpm test:mobile && pnpm test:database",
+    "test:common": "cd packages/common && pnpm test",
+    "test:backend": "cd apps/backend && pnpm test",
+    "test:frontend": "cd apps/frontend && pnpm test",
+    "test:mobile": "cd apps/mobile && pnpm test",
+    "test:database": "cd apps/database && pnpm test",
+    "typecheck": "pnpm typecheck:common && pnpm typecheck:backend && pnpm typecheck:frontend && pnpm typecheck:mobile && pnpm typecheck:database",
+    "typecheck:common": "cd packages/common && pnpm typecheck",
+    "typecheck:backend": "cd apps/backend && pnpm typecheck",
+    "typecheck:frontend": "cd apps/frontend && pnpm typecheck",
+    "typecheck:mobile": "cd apps/mobile && pnpm typecheck",
+    "typecheck:database": "cd apps/database && pnpm typecheck",
+    "lint": "pnpm lint:common && pnpm lint:backend && pnpm lint:frontend && pnpm lint:mobile && pnpm lint:database",
+    "lint:common": "cd packages/common && pnpm lint",
+    "lint:backend": "cd apps/backend && pnpm lint",
+    "lint:frontend": "cd apps/frontend && pnpm lint",
+    "lint:mobile": "cd apps/mobile && pnpm lint",
+    "lint:database": "cd apps/database && pnpm lint",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^11.1.2",
+      "onFail": "download"
+    }
+  },
+  "type": "module",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/jest": "^30.0.0",
+    "concurrently": "^9.2.1",
+    "eslint": "^9.39.4",
+    "eslint-config-prettier": "^10.1.8",
+    "jest": "^30.4.2",
+    "jest-environment-jsdom": "^30.4.1",
+    "prettier": "^3.8.3",
+    "rimraf": "^6.1.3",
+    "ts-jest": "^29.4.9",
+    "typescript": "^6.0.0",
+    "typescript-eslint": "^8.59.3"
+  },
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}

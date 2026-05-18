@@ -1,0 +1,16 @@
+{
+  "name": "@repo/typescript-config",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "files": [
+    "base.json",
+    "backend.json",
+    "frontend.json",
+    "library.json",
+    "mobile.json"
+  ],
+  "peerDependencies": {
+    "typescript": "^6.0.0"
+  }
+}

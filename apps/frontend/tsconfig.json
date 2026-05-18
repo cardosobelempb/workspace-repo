@@ -1,0 +1,30 @@
+{
+  "extends": "@repo/typescript-config/frontend.json",
+  "compilerOptions": {
+    "ignoreDeprecations": "6.0",
+    "paths": {
+      "@repo/common": [
+        "../../packages/common/src/index.ts"
+      ],
+      "@repo/common/*": [
+        "../../packages/common/src/*"
+      ]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "next-env.d.ts",
+    "app",
+    "src",
+    "components",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

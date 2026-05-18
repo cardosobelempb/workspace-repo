@@ -1,0 +1,10 @@
+{
+  "extends": "@repo/typescript-config/mobile.json",
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
