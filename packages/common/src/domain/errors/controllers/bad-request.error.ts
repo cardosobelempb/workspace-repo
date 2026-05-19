@@ -3,10 +3,7 @@ import { CodeError } from "../usecases/code.error";
 
 import { BaseControllerError } from "./base-controller.error";
 
-export class BadRequestError
-  extends StandardError
-  implements BaseControllerError
-{
+export class BadRequestError extends StandardError implements BaseControllerError {
   constructor(params: { fieldName: string; value?: string; message?: string }) {
     super({
       statusCode: 400,

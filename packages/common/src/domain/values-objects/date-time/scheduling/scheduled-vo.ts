@@ -1,20 +1,17 @@
 import { BadRequestError } from "@/common/domain/errors/controllers/bad-request.error";
 import { BaseScheduled } from "./base-scheduled";
 
-let Dayjs: any;
 let dayjs: any;
 try {
-  Dayjs = require("dayjs");
   dayjs = require("dayjs");
 } catch {
-  Dayjs = null;
   dayjs = null;
 }
 
 export class ScheduledVO extends BaseScheduled {
-  protected date: typeof Dayjs;
+  protected date: any;
 
-  constructor(input: string | Date | typeof Dayjs) {
+  constructor(input: string | Date | typeof dayjs) {
     super();
 
     // Valida a data de entrada
@@ -26,15 +23,14 @@ export class ScheduledVO extends BaseScheduled {
       throw new BadRequestError({
         fieldName: "scheduledDate",
         value: input instanceof Date ? input.toISOString() : input,
-        message:
-          "Data de agendamento deve ser futura e não mais de um ano no futuro.",
+        message: "Data de agendamento deve ser futura e não mais de um ano no futuro.",
       });
     }
 
     this.date = parsed;
   }
 
-  getValue(): typeof Dayjs {
+  getValue(): typeof dayjs {
     return this.date;
   }
 
@@ -45,8 +41,7 @@ export class ScheduledVO extends BaseScheduled {
   isValid(): boolean {
     const now = dayjs();
     return (
-      this.date.isValid() &&
-      this.isValidSchedule(this.date.valueOf(), now.valueOf())
+      this.date.isValid() && this.isValidSchedule(this.date.valueOf(), now.valueOf())
     );
   }
 }

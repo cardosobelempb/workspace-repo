@@ -8,8 +8,7 @@ export class NotAllwedError extends StandardError implements BaseUseCaseError {
       statusCode: 409,
       code: CodeError.METHOD_NOT_ALLOWED,
       error: "NotAllwedError",
-      message:
-        params.message ?? `${params.fieldName} "${params.value}" não permitido`,
+      message: params.message ?? `${params.fieldName} "${params.value}" não permitido`,
       fieldName: params.fieldName,
     });
   }

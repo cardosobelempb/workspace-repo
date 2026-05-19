@@ -4,9 +4,7 @@ import type { FastifyJWTOptions } from "@fastify/jwt";
 import type { FastifyInstance } from "fastify";
 import { AccessTokenPayload } from "./types/token.types";
 
-export class FastifyJwtService<
-  TPayload extends AccessTokenPayload = AccessTokenPayload,
-> {
+export class FastifyJwtService<TPayload extends AccessTokenPayload = AccessTokenPayload> {
   constructor(
     private readonly app: FastifyInstance,
     private readonly options?: Partial<FastifyJWTOptions["sign"]>,

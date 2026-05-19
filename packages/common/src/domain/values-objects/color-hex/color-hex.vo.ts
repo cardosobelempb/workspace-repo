@@ -93,9 +93,7 @@ export class ColorHexVO extends BaseVO<string> {
     // sRGB → linear RGB → luminance (WCAG formula)
     const rgb = [r, g, b].map((c) => {
       const srgb = c / 255;
-      return srgb <= 0.03928
-        ? srgb / 12.92
-        : Math.pow((srgb + 0.055) / 1.055, 2.4);
+      return srgb <= 0.03928 ? srgb / 12.92 : Math.pow((srgb + 0.055) / 1.055, 2.4);
     });
     if (!rgb[0] || !rgb[1] || !rgb[2]) return 0; // Evita NaN
     return 0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2];
@@ -140,9 +138,7 @@ export class ColorHexVO extends BaseVO<string> {
    */
   public getComplementary(): ColorHexVO {
     const { r, g, b } = this.toRgb();
-    const complement = ColorHexVO.create(
-      `rgb(${255 - r}, ${255 - g}, ${255 - b})`,
-    );
+    const complement = ColorHexVO.create(`rgb(${255 - r}, ${255 - g}, ${255 - b})`);
     return complement;
   }
 }

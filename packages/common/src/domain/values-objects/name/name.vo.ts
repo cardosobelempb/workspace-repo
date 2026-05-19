@@ -71,12 +71,7 @@ export class NameVO extends BaseVO<string> {
   }
 
   /** Valida o nome completo */
-  private static validate(
-    name: string,
-    min: number,
-    max: number,
-    i18n?: BaseI18n,
-  ): void {
+  private static validate(name: string, min: number, max: number, i18n?: BaseI18n): void {
     const t = (key: string, args?: Record<string, any>) =>
       i18n?.t(key, { args }) ?? NameVO.defaultMessages(key, args);
 
@@ -125,10 +120,7 @@ export class NameVO extends BaseVO<string> {
   }
 
   /** Mensagens padrão em português */
-  private static defaultMessages(
-    key: string,
-    args?: Record<string, any>,
-  ): string {
+  private static defaultMessages(key: string, args?: Record<string, any>): string {
     const messages: Record<string, string> = {
       "errors.name.empty": "O nome não pode estar vazio.",
       "errors.name.tooShort": `O nome deve ter pelo menos ${args?.min ?? 2} caracteres.`,

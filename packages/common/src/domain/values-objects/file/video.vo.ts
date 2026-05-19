@@ -12,8 +12,7 @@ export class VideoVO extends BaseFileVO {
 
   public isValid(): boolean {
     return (
-      this.mimeType === "video/mp4" &&
-      this.buffer.subarray(4, 8).toString() === "ftyp"
+      this.mimeType === "video/mp4" && this.buffer.subarray(4, 8).toString() === "ftyp"
     );
   }
   async validate() {

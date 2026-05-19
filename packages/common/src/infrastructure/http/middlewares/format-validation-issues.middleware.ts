@@ -18,9 +18,7 @@ export function getFieldName(issue: FastifyValidationIssue): string {
   return "unknown";
 }
 
-export function formatValidationIssues(
-  validation: FastifyValidationIssue[] = [],
-) {
+export function formatValidationIssues(validation: FastifyValidationIssue[] = []) {
   return validation.map((issue) => ({
     field: getFieldName(issue),
     message: issue.message ?? "Campo inválido",

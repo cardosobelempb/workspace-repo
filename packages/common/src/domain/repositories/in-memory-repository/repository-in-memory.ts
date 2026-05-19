@@ -200,13 +200,32 @@ export abstract class RepositoryInMemory<Entity extends ModelProps> {
     return items.slice(start, end);
   }
 
-  findManyByIds(ids: string[]): Promise<Entity[]> {
-    throw new Error("Method not implemented.");
+  async findManyByIds(ids: string[]): Promise<Entity[]> {
+    const foundEntities: Entity[] = [];
+    for (const id of ids) {
+      try {
+        const entity = await this._get(id);
+        foundEntities.push(entity);
+      } catch {
+        // Ignora IDs não encontrados
+      }
+    }
+    return foundEntities;
   }
-  create(entity: Entity): Promise<Entity> {
-    throw new Error("Method not implemented.");
+  async create(entity: Entity): Promise<Entity> {
+    const newEntity = {
+      ...entity,
+      id: entity.id ?? UUIDVO.create(),
+      createdAt: entity.createdAt ?? new Date(),
+      updatedAt: entity.updatedAt ?? new Date(),
+      deletedAt: null,
+    } as Entity;
+    return this.save(newEntity);
   }
-  exists(id: string): Promise<boolean> {
-    throw new Error("Method not implemented.");
+  async exists(id: string): Promise<boolean> {
+    const entity = this.items.find(
+      (item) => item.id?.getValue() === id && !item.deletedAt,
+    );
+    return !!entity;
   }
 }

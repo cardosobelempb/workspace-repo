@@ -1,3 +1,3 @@
 export interface IControllerError {
-  message: string
+  message: string;
 }

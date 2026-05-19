@@ -39,9 +39,7 @@ export class PasswordUtils {
     if (useSymbols) charset += this.SYMBOLS;
 
     if (charset.length === 0) {
-      throw new Error(
-        "Nenhum conjunto de caracteres selecionado para gerar senha.",
-      );
+      throw new Error("Nenhum conjunto de caracteres selecionado para gerar senha.");
     }
 
     const result: string[] = [];

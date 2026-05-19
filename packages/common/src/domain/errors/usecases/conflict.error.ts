@@ -8,8 +8,7 @@ export class ConflictError extends StandardError implements BaseUseCaseError {
       statusCode: 409,
       code: CodeError.CONFLICT,
       error: "ConflictError",
-      message:
-        params.message ?? `${params.fieldName} "${params.value}" já existe`,
+      message: params.message ?? `${params.fieldName} "${params.value}" já existe`,
       fieldName: params.fieldName,
     });
   }

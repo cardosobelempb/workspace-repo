@@ -1,12 +1,9 @@
 // shared/database/prisma-repository.ts
 
 import { PrismaClient } from "@prisma/client";
+import { PrismaTransaction } from "./prisma-transaction";
 
-export type PrismaTransaction = Parameters<
-  Parameters<PrismaClient["$transaction"]>[0]
->[0];
-
-export type PrismaDatabase = PrismaClient | PrismaTransaction;
+export type PrismaTransactionDatabase = PrismaClient | PrismaTransaction;
 
 /**
  * Raiz da hierarquia de repositórios.
@@ -14,9 +11,9 @@ export type PrismaDatabase = PrismaClient | PrismaTransaction;
  * Todas as subclasses herdam `this.prisma` sem precisar redeclarar.
  */
 export abstract class PrismaRepository {
-  protected readonly prisma: PrismaDatabase;
+  protected readonly prisma: PrismaTransactionDatabase;
 
-  constructor(prisma: PrismaDatabase) {
+  constructor(prisma: PrismaTransactionDatabase) {
     this.prisma = prisma;
   }
 
@@ -27,7 +24,7 @@ export abstract class PrismaRepository {
    * Mantido para casos onde a classe concreta está disponível.
    */
   static withTx<T extends PrismaRepository>(
-    this: new (tx: PrismaDatabase) => T,
+    this: new (tx: PrismaTransactionDatabase) => T,
     tx: PrismaTransaction,
   ): T {
     return new this(tx);
@@ -46,7 +43,7 @@ export abstract class PrismaRepository {
     // `this.constructor` aponta para a classe concreta em tempo de execução
     // ex: mesmo que `this` seja tipado como TenantRepository (abstrato),
     // `this.constructor` será PrismaTenantRepository (concreto)
-    const ConcreteClass = this.constructor as new (tx: PrismaDatabase) => this;
+    const ConcreteClass = this.constructor as new (tx: PrismaTransactionDatabase) => this;
     return new ConcreteClass(tx);
   }
 }

@@ -24,11 +24,7 @@ export class PasswordVO extends BaseVO<string> {
   private readonly hasher: BaseHash | undefined;
 
   // ✅ Privado - só via factory
-  private constructor(
-    value: string,
-    hasher?: BaseHash,
-    options?: PasswordOptions,
-  ) {
+  private constructor(value: string, hasher?: BaseHash, options?: PasswordOptions) {
     super(value);
     this.hasher = hasher;
 
@@ -131,10 +127,7 @@ export class PasswordVO extends BaseVO<string> {
       });
     }
 
-    if (
-      requireSpecialChar &&
-      !/[!@#$%^&*(),.?":{}|<>_\-\\[\];'/+=~`]/.test(password)
-    ) {
+    if (requireSpecialChar && !/[!@#$%^&*(),.?":{}|<>_\-\\[\];'/+=~`]/.test(password)) {
       throw new BadRequestError({
         fieldName: "password",
         message: "Password must include special character.",

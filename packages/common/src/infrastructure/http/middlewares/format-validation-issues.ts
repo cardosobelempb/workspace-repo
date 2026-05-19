@@ -7,9 +7,7 @@ export type FastifyValidationIssue = {
   };
 };
 
-export function formatValidationIssues(
-  validation: FastifyValidationIssue[] = [],
-) {
+export function formatValidationIssues(validation: FastifyValidationIssue[] = []) {
   return validation.map((issue) => {
     const field =
       typeof issue.params?.missingProperty === "string"

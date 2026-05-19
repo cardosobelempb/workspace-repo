@@ -4,9 +4,7 @@ import { SearchInput, SearchOutput } from "./search.repository";
 /**
  * Extensão opcional para repositórios que suportam busca paginada.
  */
-export abstract class RepositorySearchable<
-  TEntity,
-> extends RepositoryDomain<TEntity> {
+export abstract class RepositorySearchable<TEntity> extends RepositoryDomain<TEntity> {
   /**
    * Busca entidades de forma paginada.
    *

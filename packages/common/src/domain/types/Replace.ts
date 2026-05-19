@@ -15,4 +15,4 @@ import { Merge } from "./Merge";
  * type Updated = Replace<User, Patch>
  * // { id: string; age: string }
  */
-export type Replace<T, U> = Merge<T, U>
+export type Replace<T, U> = Merge<T, U>;

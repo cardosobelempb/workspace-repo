@@ -54,6 +54,4 @@ export const PageResponseSchema = <T extends z.ZodTypeAny>(contentSchema: T) =>
 // ─── Tipos inferidos ──────────────────────────────────────────────────────────
 export type SortSchema = z.infer<typeof SortSchema>;
 export type PageableSchema = z.infer<typeof PageableSchema>;
-export type PageResponse<T> = ReturnType<
-  typeof PageResponseSchema<z.ZodType<T>>
->["type"];
+export type PageResponse<T> = ReturnType<typeof PageResponseSchema<z.ZodType<T>>>["type"];

@@ -14,9 +14,7 @@ export function Auth() {
   return function (target: object, propertyKey: string | symbol): void {
     const routes = getRoutes(target.constructor);
 
-    const route = routes.find(
-      (item) => item.handlerName === String(propertyKey),
-    );
+    const route = routes.find((item) => item.handlerName === String(propertyKey));
 
     if (!route) {
       throw new Error(

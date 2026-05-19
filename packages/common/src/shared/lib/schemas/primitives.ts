@@ -8,12 +8,8 @@ import { z } from "zod";
 
 export const s = {
   // — IDs -------------------------------------------------------
-  uuid: z
-    .string(ValidatorMessage.REQUIRED_FIELD)
-    .uuid(ValidatorMessage.INVALID_FORMAT),
-  cuid: z
-    .string(ValidatorMessage.REQUIRED_FIELD)
-    .cuid(ValidatorMessage.INVALID_FORMAT),
+  uuid: z.string(ValidatorMessage.REQUIRED_FIELD).uuid(ValidatorMessage.INVALID_FORMAT),
+  cuid: z.string(ValidatorMessage.REQUIRED_FIELD).cuid(ValidatorMessage.INVALID_FORMAT),
   // — Text ------------------------------------------------------
   string: z.string(ValidatorMessage.REQUIRED_FIELD).min(2).max(100).trim(),
   description: z.string(ValidatorMessage.REQUIRED_FIELD).max(500).trim(),
@@ -27,9 +23,7 @@ export const s = {
   token: z.string(ValidatorMessage.REQUIRED_FIELD).min(32).max(255).trim(),
   email: z.string(ValidatorMessage.REQUIRED_FIELD).email().toLowerCase().trim(),
 
-  slug: z
-    .string(ValidatorMessage.REQUIRED_FIELD)
-    .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
+  slug: z.string(ValidatorMessage.REQUIRED_FIELD).regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
   phone: z
     .string(ValidatorMessage.REQUIRED_FIELD)
     .regex(/^\+?[1-9]\d{7,14}$/)
@@ -48,11 +42,7 @@ export const s = {
   percentage: z.number(ValidatorMessage.REQUIRED_FIELD).min(0).max(100),
   quantity: z.number(ValidatorMessage.REQUIRED_FIELD).int().nonnegative(),
   rating: z.number(ValidatorMessage.REQUIRED_FIELD).int().min(1).max(5),
-  page: z.coerce
-    .number(ValidatorMessage.REQUIRED_FIELD)
-    .int()
-    .positive()
-    .default(1),
+  page: z.coerce.number(ValidatorMessage.REQUIRED_FIELD).int().positive().default(1),
   limit: z.coerce
     .number(ValidatorMessage.REQUIRED_FIELD)
     .int()

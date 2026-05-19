@@ -3,6 +3,7 @@
   "compilerOptions": {
     "module": "ESNext",
     "moduleResolution": "Bundler",
+    "ignoreDeprecations": "6.0",
     "outDir": "dist",
     "rootDir": "src",
     "declaration": true,
@@ -29,11 +30,11 @@
     "src/domain/repositories/search.repository.ts",
     "src/domain/repositories/types/**/*.ts",
     "src/domain/values-objects/**/*.ts",
+    "src/infrastructure/env/**/*.ts",
     "tests/**/*.ts"
   ],
   "exclude": [
     "node_modules",
-    "dist",
-    "src/infrastructure/**"
+    "dist"
   ]
 }

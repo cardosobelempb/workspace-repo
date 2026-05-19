@@ -5,8 +5,8 @@ export class PriceUtils {
    * Ex: 0.1 + 0.2 => 0.30
    */
   private static round(value: number, decimals: number = 2): number {
-    const factor = 10 ** decimals
-    return Math.round(value * factor) / factor
+    const factor = 10 ** decimals;
+    return Math.round(value * factor) / factor;
   }
 
   /**
@@ -15,11 +15,15 @@ export class PriceUtils {
    * @param currency - código da moeda, ex: 'BRL'
    * @param locale - código de localidade, ex: 'pt-BR'
    */
-  static format(value: number, currency: string = 'BRL', locale: string = 'pt-BR'): string {
+  static format(
+    value: number,
+    currency: string = "BRL",
+    locale: string = "pt-BR",
+  ): string {
     return new Intl.NumberFormat(locale, {
-      style: 'currency',
+      style: "currency",
       currency,
-    }).format(value)
+    }).format(value);
   }
 
   /**
@@ -29,9 +33,9 @@ export class PriceUtils {
    */
   static applyDiscount(price: number, discountPercent: number): number {
     if (discountPercent < 0 || discountPercent > 100) {
-      throw new RangeError('Percentual de desconto deve estar entre 0 e 100')
+      throw new RangeError("Percentual de desconto deve estar entre 0 e 100");
     }
-    return this.round(price * (1 - discountPercent / 100))
+    return this.round(price * (1 - discountPercent / 100));
   }
 
   /**
@@ -39,8 +43,8 @@ export class PriceUtils {
    * @param prices - array de números
    */
   static sum(...prices: number[]): number {
-    const total = prices.reduce((acc, curr) => acc + curr, 0)
-    return this.round(total)
+    const total = prices.reduce((acc, curr) => acc + curr, 0);
+    return this.round(total);
   }
 
   /**
@@ -50,9 +54,9 @@ export class PriceUtils {
    */
   static convert(price: number, exchangeRate: number): number {
     if (exchangeRate <= 0) {
-      throw new RangeError('Taxa de câmbio deve ser maior que 0')
+      throw new RangeError("Taxa de câmbio deve ser maior que 0");
     }
-    return this.round(price * exchangeRate)
+    return this.round(price * exchangeRate);
   }
 
   /**
@@ -62,9 +66,9 @@ export class PriceUtils {
    */
   static applyTax(price: number, taxPercent: number): number {
     if (taxPercent < 0) {
-      throw new RangeError('Percentual de imposto não pode ser negativo')
+      throw new RangeError("Percentual de imposto não pode ser negativo");
     }
-    return this.round(price * (1 + taxPercent / 100))
+    return this.round(price * (1 + taxPercent / 100));
   }
 
   /**
@@ -74,8 +78,8 @@ export class PriceUtils {
    */
   static removeTax(priceWithTax: number, taxPercent: number): number {
     if (taxPercent < 0) {
-      throw new RangeError('Percentual de imposto não pode ser negativo')
+      throw new RangeError("Percentual de imposto não pode ser negativo");
     }
-    return this.round(priceWithTax / (1 + taxPercent / 100))
+    return this.round(priceWithTax / (1 + taxPercent / 100));
   }
 }

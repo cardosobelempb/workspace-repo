@@ -41,6 +41,4 @@ export type SortMeta = z.infer<typeof PagePageableSchema>;
 export type PageableMeta = z.infer<typeof PagePageableSchema>;
 
 // ✅ Corrigido: "_type" em vez de "type"
-export type PageResponse<T> = z.infer<
-  ReturnType<typeof PageSchema<z.ZodType<T>>>
->;
+export type PageResponse<T> = z.infer<ReturnType<typeof PageSchema<z.ZodType<T>>>>;

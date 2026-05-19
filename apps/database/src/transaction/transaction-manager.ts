@@ -1,6 +1,6 @@
 // src/common/domain/transaction/transaction-manager.ts
 
-import { PrismaDatabase } from "../prisma-repository";
+import { PrismaTransaction } from "../prisma-client/prisma-transaction";
 
 /**
  * Abstração de unidade de trabalho transacional.
@@ -25,5 +25,5 @@ export abstract class TransactionManager {
    *   await stockRepo.withTx(tx).decrement(order.itemId);
    * });
    */
-  abstract run<T>(work: (tx: PrismaDatabase) => Promise<T>): Promise<T>;
+  abstract run<T>(work: (tx: PrismaTransaction) => Promise<T>): Promise<T>;
 }

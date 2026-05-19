@@ -1,15 +1,10 @@
 // shared/module/module.types.ts
 
-export type ClassConstructor<T extends object = object> = new (
-  ...args: any[]
-) => T;
+export type ClassConstructor<T extends object = object> = new (...args: any[]) => T;
 
 export type ControllerInstance = object;
 
-export type InjectionToken<T = unknown> =
-  | ClassConstructor<T & object>
-  | string
-  | symbol;
+export type InjectionToken<T = unknown> = ClassConstructor<T & object> | string | symbol;
 
 export type ProviderDefinition<T = unknown> =
   | {

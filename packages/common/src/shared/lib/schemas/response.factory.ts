@@ -31,9 +31,7 @@ const defaultErrors = {
  * @example
  * response: createResponseSchema(z.object({ organization: OrganizationSchema }))
  */
-export const createResponseSchema = <T extends z.ZodTypeAny>(
-  successSchema: T,
-) => ({
+export const createResponseSchema = <T extends z.ZodTypeAny>(successSchema: T) => ({
   201: successSchema,
   ...defaultErrors,
 });
@@ -55,9 +53,7 @@ export const responseSchema = <T extends z.ZodTypeAny>(successSchema: T) => ({
  * @example
  * response: findResponseSchema(z.object({ organization: OrganizationSchema }))
  */
-export const findResponseSchema = <T extends z.ZodTypeAny>(
-  successSchema: T,
-) => ({
+export const findResponseSchema = <T extends z.ZodTypeAny>(successSchema: T) => ({
   200: successSchema,
   ...defaultErrors,
 });
@@ -68,9 +64,7 @@ export const findResponseSchema = <T extends z.ZodTypeAny>(
  * @example
  * response: updateResponseSchema(z.object({ organization: OrganizationSchema }))
  */
-export const updateResponseSchema = <T extends z.ZodTypeAny>(
-  successSchema: T,
-) => ({
+export const updateResponseSchema = <T extends z.ZodTypeAny>(successSchema: T) => ({
   200: successSchema,
   ...defaultErrors,
 });
@@ -100,9 +94,7 @@ export const actionResponseSchema = () => ({
  * @example
  * response: pageResponseSchema(OrganizationSchema)
  */
-export const pageResponseSchema = <T extends z.ZodTypeAny>(
-  contentSchema: T,
-) => ({
+export const pageResponseSchema = <T extends z.ZodTypeAny>(contentSchema: T) => ({
   200: PageSchema(contentSchema),
   ...defaultErrors,
 });

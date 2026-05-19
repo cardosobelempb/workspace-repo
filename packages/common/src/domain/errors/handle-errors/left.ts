@@ -38,7 +38,7 @@ export class Left<L, R> {
    *
    * Essa implementação mantém o tipo do erro e ignora transformações no success.
    */
-  map<T>(_: (r: R) => T): Left<L, T> {
+  map<T>(T: (r: R) => T): Left<L, T> {
     return new Left(this.value);
   }
 
@@ -48,7 +48,7 @@ export class Left<L, R> {
    *
    * Útil para garantir handling funcional explícito.
    */
-  fold<T>(onLeft: (l: L) => T, _?: (r: R) => T): T {
+  fold<T>(onLeft: (l: L) => T): T {
     return onLeft(this.value);
   }
 

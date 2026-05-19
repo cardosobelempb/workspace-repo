@@ -109,10 +109,8 @@ export class PhoneVO extends BaseVO<string> {
     }
 
     const cleaned = PhoneVO.clean(phone);
-    const {
-      minLength = this.DEFAULT_MIN_LENGTH,
-      maxLength = this.DEFAULT_MAX_LENGTH,
-    } = options;
+    const { minLength = this.DEFAULT_MIN_LENGTH, maxLength = this.DEFAULT_MAX_LENGTH } =
+      options;
 
     PhoneVO.validate(cleaned, minLength, maxLength);
     return new PhoneVO(cleaned);
@@ -137,9 +135,7 @@ export class PhoneVO extends BaseVO<string> {
   public format(): string {
     const ddd = this.value.slice(0, 2);
     const isMobile = this.value.length === 11;
-    const firstPart = isMobile
-      ? this.value.slice(2, 7)
-      : this.value.slice(2, 6);
+    const firstPart = isMobile ? this.value.slice(2, 7) : this.value.slice(2, 6);
     const secondPart = isMobile ? this.value.slice(7) : this.value.slice(6);
     return `(${ddd}) ${firstPart}-${secondPart}`;
   }
@@ -188,9 +184,7 @@ export class PhoneVO extends BaseVO<string> {
       throw new BadRequestError({
         fieldName: "phone",
         value: cleaned,
-        message: `Invalid DDD: ${ddd}. Must be one of ${PhoneVO.VALID_DDDS.join(
-          ", ",
-        )}.`,
+        message: `Invalid DDD: ${ddd}. Must be one of ${PhoneVO.VALID_DDDS.join(", ")}.`,
       });
     }
 
@@ -216,11 +210,7 @@ export class PhoneVO extends BaseVO<string> {
     if (!phone || phone.trim() === "") return false;
     try {
       const cleaned = PhoneVO.clean(phone);
-      PhoneVO.validate(
-        cleaned,
-        this.DEFAULT_MIN_LENGTH,
-        this.DEFAULT_MAX_LENGTH,
-      );
+      PhoneVO.validate(cleaned, this.DEFAULT_MIN_LENGTH, this.DEFAULT_MAX_LENGTH);
       return true;
     } catch {
       return false;

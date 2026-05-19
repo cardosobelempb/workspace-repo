@@ -55,7 +55,7 @@ export class DateOfBirthVO extends BaseVO<Date> {
   /**
    * Formato padrão para exibição e persistência.
    */
-  public toString(): string  {
+  public toString(): string {
     const datePart = this.value.toISOString().split("T")[0];
     return datePart || "";
   }
@@ -65,9 +65,7 @@ export class DateOfBirthVO extends BaseVO<Date> {
    */
   public isValid(): boolean {
     const age = this.getAge();
-    return (
-      DateOfBirthVO.isValidDate(this.value) && DateOfBirthVO.isValidAge(age)
-    );
+    return DateOfBirthVO.isValidDate(this.value) && DateOfBirthVO.isValidAge(age);
   }
 
   /**
@@ -109,10 +107,7 @@ export class DateOfBirthVO extends BaseVO<Date> {
     let age = today.getFullYear() - parsed.getFullYear();
     const monthDiff = today.getMonth() - parsed.getMonth();
 
-    if (
-      monthDiff < 0 ||
-      (monthDiff === 0 && today.getDate() < parsed.getDate())
-    ) {
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < parsed.getDate())) {
       age--;
     }
 

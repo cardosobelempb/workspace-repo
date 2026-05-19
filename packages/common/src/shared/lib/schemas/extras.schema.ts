@@ -55,10 +55,7 @@ export const MetadataSchema = z.record(
 );
 
 // Typed translations with fixed language keys
-export const TranslationSchema = z.record(
-  z.enum(["en", "pt", "es", "fr"]),
-  z.string(),
-);
+export const TranslationSchema = z.record(z.enum(["en", "pt", "es", "fr"]), z.string());
 
 // ─────────────────────────────────────────────────────────────
 // 🧮 z.preprocess — transform BEFORE validation
@@ -124,10 +121,7 @@ NotificationSchema.parse({
 
 // Bulk delete
 BulkIdsSchema.parse({
-  ids: [
-    "123e4567-e89b-12d3-a456-426614174000",
-    "987fbc97-4bed-5078-af07-9141ba07c9f3",
-  ],
+  ids: ["123e4567-e89b-12d3-a456-426614174000", "987fbc97-4bed-5078-af07-9141ba07c9f3"],
 }); // ✅
 
 // Translation record

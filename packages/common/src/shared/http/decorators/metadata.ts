@@ -35,9 +35,7 @@ export function updateRoute(
   const route = routes.find((item) => item.handlerName === handlerName);
 
   if (!route) {
-    throw new Error(
-      `Decorator usado antes de registrar a rota: ${handlerName}`,
-    );
+    throw new Error(`Decorator usado antes de registrar a rota: ${handlerName}`);
   }
 
   Object.assign(route, update);

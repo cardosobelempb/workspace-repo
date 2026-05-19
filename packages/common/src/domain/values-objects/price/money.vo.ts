@@ -21,10 +21,7 @@ export class MoneyVO extends BaseVO<MoneyValue> {
     super(value);
   }
 
-  public static create(
-    amount: number,
-    currency: MoneyCurrency = "BRL",
-  ): MoneyVO {
+  public static create(amount: number, currency: MoneyCurrency = "BRL"): MoneyVO {
     const normalized: MoneyValue = {
       amount: Number(amount),
       currency,
@@ -54,10 +51,7 @@ export class MoneyVO extends BaseVO<MoneyValue> {
     return MoneyVO.isValidStatic(this.value);
   }
 
-  public static validate(
-    amount: number,
-    currency: MoneyCurrency = "BRL",
-  ): boolean {
+  public static validate(amount: number, currency: MoneyCurrency = "BRL"): boolean {
     return MoneyVO.isValidStatic({
       amount: Number(amount),
       currency,

@@ -13,8 +13,8 @@ export async function registerModule(
 
   container.register(module.providers);
 
-  const controllers: ControllerInstance[] = module.controllers.map(
-    (Controller) => container.resolve(Controller),
+  const controllers: ControllerInstance[] = module.controllers.map((Controller) =>
+    container.resolve(Controller),
   );
 
   await registerControllers(app, controllers);

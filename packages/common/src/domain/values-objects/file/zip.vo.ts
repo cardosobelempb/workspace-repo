@@ -27,8 +27,7 @@ export class ZipVO extends BaseFileVO {
   }
 
   async validate() {
-    if (this.mimeType !== "application/zip")
-      throw new Error("Invalid ZIP MIME type");
+    if (this.mimeType !== "application/zip") throw new Error("Invalid ZIP MIME type");
     if (typeof JSZip !== "undefined") {
       await JSZip.loadAsync(this.buffer).catch(() => {
         throw new Error("Invalid ZIP file");

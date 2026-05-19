@@ -6,9 +6,7 @@ import { BaseEvent } from "./base.event";
 /**
  * Callback tipado para eventos de domínio
  */
-export type DomainEventCallback<E extends BaseEvent = BaseEvent> = (
-  event: E,
-) => void;
+export type DomainEventCallback<E extends BaseEvent = BaseEvent> = (event: E) => void;
 
 /**
  * Mapa de handlers por nome do evento
@@ -54,10 +52,7 @@ export class BaseBuildEvent {
   ): void {
     const handlers = this.handlers[eventName] ?? [];
 
-    this.handlers[eventName] = [
-      ...handlers,
-      callback as DomainEventCallback<BaseEvent>,
-    ];
+    this.handlers[eventName] = [...handlers, callback as DomainEventCallback<BaseEvent>];
   }
 
   // ---------------------------------------------------------------------------
@@ -68,12 +63,8 @@ export class BaseBuildEvent {
    * Marca um aggregate para despacho posterior
    * Evita duplicação de aggregates
    */
-  public static markAggregateForDispatch(
-    aggregate: BaseAggregate<unknown>,
-  ): void {
-    const alreadyMarked = this.markedAggregates.some((a) =>
-      a.id.equals(aggregate.id),
-    );
+  public static markAggregateForDispatch(aggregate: BaseAggregate<unknown>): void {
+    const alreadyMarked = this.markedAggregates.some((a) => a.id.equals(aggregate.id));
 
     if (!alreadyMarked) {
       this.markedAggregates.push(aggregate);
@@ -110,9 +101,7 @@ export class BaseBuildEvent {
   /**
    * Dispatch de todos os eventos de um aggregate
    */
-  private static dispatchAggregateEvents(
-    aggregate: BaseAggregate<unknown>,
-  ): void {
+  private static dispatchAggregateEvents(aggregate: BaseAggregate<unknown>): void {
     for (const event of aggregate.domainEvents) {
       this.dispatch(event);
     }
@@ -136,16 +125,12 @@ export class BaseBuildEvent {
   // INTERNAL HELPERS
   // ---------------------------------------------------------------------------
 
-  private static findAggregateById(
-    id: UUIDVO,
-  ): BaseAggregate<unknown> | undefined {
+  private static findAggregateById(id: UUIDVO): BaseAggregate<unknown> | undefined {
     return this.markedAggregates.find((a) => a.id.equals(id));
   }
 
   private static removeAggregate(aggregate: BaseAggregate<unknown>): void {
-    this.markedAggregates = this.markedAggregates.filter(
-      (a) => !a.equals(aggregate),
-    );
+    this.markedAggregates = this.markedAggregates.filter((a) => !a.equals(aggregate));
   }
 
   // ---------------------------------------------------------------------------

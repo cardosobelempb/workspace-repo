@@ -19,10 +19,7 @@ export class DateRangeVO extends BaseVO<DateRangeValue> {
     super(value);
   }
 
-  public static create(
-    startDate: Date | string,
-    endDate: Date | string,
-  ): DateRangeVO {
+  public static create(startDate: Date | string, endDate: Date | string): DateRangeVO {
     const normalized: DateRangeValue = {
       startDate: new Date(startDate),
       endDate: new Date(endDate),
@@ -31,8 +28,7 @@ export class DateRangeVO extends BaseVO<DateRangeValue> {
     if (!DateRangeVO.isValidStatic(normalized)) {
       throw new BadRequestError({
         fieldName: "dateRange",
-        message:
-          "Invalid date range. Start date must be before or equal to end date.",
+        message: "Invalid date range. Start date must be before or equal to end date.",
       });
     }
 
@@ -51,10 +47,7 @@ export class DateRangeVO extends BaseVO<DateRangeValue> {
     return DateRangeVO.isValidStatic(this.value);
   }
 
-  public static validate(
-    startDate: Date | string,
-    endDate: Date | string,
-  ): boolean {
+  public static validate(startDate: Date | string, endDate: Date | string): boolean {
     return DateRangeVO.isValidStatic({
       startDate: new Date(startDate),
       endDate: new Date(endDate),

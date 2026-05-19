@@ -18,7 +18,8 @@
     "test:watch": "jest --config jest.config.ts --watch",
     "test:coverage": "jest --config jest.config.ts --coverage",
     "typecheck": "tsc --project tsconfig.json --noEmit",
-    "lint": "eslint src/index.ts \"src/domain/**/*.ts\" \"src/application/**/*.ts\""
+    "lint": "eslint src/index.ts \"src/domain/**/*.ts\" \"src/application/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss}\""
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",

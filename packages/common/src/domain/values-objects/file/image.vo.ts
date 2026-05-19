@@ -1,17 +1,8 @@
 import { BaseFileVO } from "./base-file.vo";
 
 export class ImageVO extends BaseFileVO {
-  private static readonly ALLOWED_EXTENSIONS = [
-    ".png",
-    ".jpeg",
-    ".jpg",
-    ".webp",
-  ];
-  private static readonly ALLOWED_MIME_TYPES = [
-    "image/png",
-    "image/jpeg",
-    "image/webp",
-  ];
+  private static readonly ALLOWED_EXTENSIONS = [".png", ".jpeg", ".jpg", ".webp"];
+  private static readonly ALLOWED_MIME_TYPES = ["image/png", "image/jpeg", "image/webp"];
 
   public isValid(): boolean {
     throw new Error("Method not implemented.");
@@ -41,10 +32,8 @@ export class ImageVO extends BaseFileVO {
     const header = this.buffer.slice(0, 4);
     const valid =
       (ext === ".png" && header.toString("hex") === "89504e47") ||
-      ([".jpg", ".jpeg"].includes(ext) &&
-        header.toString("hex").startsWith("ffd8")) ||
+      ([".jpg", ".jpeg"].includes(ext) && header.toString("hex").startsWith("ffd8")) ||
       (ext === ".webp" && header.toString() === "RIFF");
-    if (!valid)
-      throw new Error("Invalid image signature (magic number mismatch)");
+    if (!valid) throw new Error("Invalid image signature (magic number mismatch)");
   }
 }

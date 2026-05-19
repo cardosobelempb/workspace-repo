@@ -42,10 +42,7 @@ export class PriceVO extends BaseVO<number> {
    * Aceita valor numérico ou string formatada (ex: "R$ 10,00").
    * @throws BadRequestError se o valor for inválido.
    */
-  public static create(
-    input: string | number,
-    options: PriceOptions = {},
-  ): PriceVO {
+  public static create(input: string | number, options: PriceOptions = {}): PriceVO {
     const {
       lang = this.DEFAULT_LANG,
       currency = this.DEFAULT_CURRENCY,
@@ -176,10 +173,7 @@ export class PriceVO extends BaseVO<number> {
   }
 
   /** Faz parsing e validação de string/number para número. */
-  private static parseValue(
-    input: string | number,
-    msg: Record<string, string>,
-  ): number {
+  private static parseValue(input: string | number, msg: Record<string, string>): number {
     if (input === null || input === undefined || input === "") {
       throw new BadRequestError({
         fieldName: "price",

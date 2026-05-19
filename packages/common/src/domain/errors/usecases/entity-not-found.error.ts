@@ -2,10 +2,7 @@ import { StandardError } from "../standard.error";
 import { BaseUseCaseError } from "./base-usecase.error";
 import { CodeError } from "./code.error";
 
-export class EntityNotFoundError
-  extends StandardError
-  implements BaseUseCaseError
-{
+export class EntityNotFoundError extends StandardError implements BaseUseCaseError {
   constructor(path: string) {
     super({
       error: "EntityNotFoundError",

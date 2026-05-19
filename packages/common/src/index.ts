@@ -25,4 +25,5 @@ export { SlugVO } from "./domain/values-objects/slug/slug.vo";
 export { UUIDVO } from "./domain/values-objects/uuidvo/uuid.vo";
 
 export type { BaseUseCaseError as AppBaseUseCaseError } from "./application/errors/base-usecase.error";
-export { BaseUseCase as AppBaseUseCase } from "./application/usecase/base-usecase";
+export { BaseUseCase } from "./application/usecase/base-usecase";
+export * from "./infrastructure/observability";

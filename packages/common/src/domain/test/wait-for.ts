@@ -13,27 +13,27 @@ export async function waitFor(
   timeout = 1000,
   interval = 10,
 ): Promise<void> {
-  const startTime = Date.now()
-  let lastError: unknown
+  const startTime = Date.now();
+  let lastError: unknown;
 
   return new Promise((resolve, reject) => {
     const attempt = () => {
       try {
-        assertions()
-        return resolve()
+        assertions();
+        return resolve();
       } catch (error) {
-        lastError = error
+        lastError = error;
 
-        const elapsedTime = Date.now() - startTime
+        const elapsedTime = Date.now() - startTime;
 
         if (elapsedTime >= timeout) {
-          return reject(lastError)
+          return reject(lastError);
         }
 
-        setTimeout(attempt, interval)
+        setTimeout(attempt, interval);
       }
-    }
+    };
 
-    attempt()
-  })
+    attempt();
+  });
 }

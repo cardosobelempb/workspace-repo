@@ -72,9 +72,7 @@ function buildPrismaClient(options: PrismaFactoryOptions = {}): PrismaClient {
  * - Apenas PrismaClient raiz deve ficar no global.
  * - TransactionClient nunca deve ficar no global.
  */
-export function getPrismaClient(
-  options: PrismaFactoryOptions = {},
-): PrismaClient {
+export function getPrismaClient(options: PrismaFactoryOptions = {}): PrismaClient {
   if (process.env.NODE_ENV !== "production") {
     if (!globalThis.__prisma) {
       globalThis.__prisma = buildPrismaClient(options);

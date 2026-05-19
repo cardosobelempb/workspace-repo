@@ -12,4 +12,4 @@
  * type C = Merge<A, B>
  * // { id: string; name: number }
  */
-export type Merge<T, U> = Omit<T, keyof U> & U
+export type Merge<T, U> = Omit<T, keyof U> & U;

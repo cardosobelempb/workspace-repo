@@ -17,9 +17,7 @@ export class UrlVO extends BaseVO<string> {
 
   private static isValidStatic(value: string): boolean {
     try {
-      const url = new URL(
-        value.startsWith("http") ? value : `https://${value}`,
-      );
+      const url = new URL(value.startsWith("http") ? value : `https://${value}`);
       return ["http:", "https:"].includes(url.protocol);
     } catch {
       return false;

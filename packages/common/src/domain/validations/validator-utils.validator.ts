@@ -20,10 +20,7 @@ export class ValidatorUtils {
     errors: ValidationErrors,
   ): boolean {
     if (!value?.trim()) {
-      errors.addErrors(
-        fieldName,
-        `${fieldName} ${ValidatorMessage.REQUIRED_FIELD}`,
-      );
+      errors.addErrors(fieldName, `${fieldName} ${ValidatorMessage.REQUIRED_FIELD}`);
 
       return false;
     }

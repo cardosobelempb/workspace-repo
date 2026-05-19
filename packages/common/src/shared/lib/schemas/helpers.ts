@@ -8,9 +8,7 @@ export const EmailString = z.string().email("Invalid email address");
 export type EmailStringType = z.infer<typeof EmailString>;
 
 // ✅ Senha com validação de comprimento mínimo
-export const PasswordString = z
-  .string()
-  .min(6, "Password must be at least 6 characters");
+export const PasswordString = z.string().min(6, "Password must be at least 6 characters");
 export type PasswordStringType = z.infer<typeof PasswordString>;
 
 // ✅ UUID como string pura, sem transformação, para o Fastify serializar

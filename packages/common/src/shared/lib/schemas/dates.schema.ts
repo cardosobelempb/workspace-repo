@@ -26,11 +26,9 @@ export const DateRangeSchema = z
       .min(new Date(), { message: "Date cannot be in the past" }),
 
     // Maximum date: at most 1 year in the future
-    expiresAt: z.coerce
-      .date()
-      .max(new Date(Date.now() + 365 * 24 * 60 * 60 * 1000), {
-        message: "Date cannot exceed 1 year from now",
-      }),
+    expiresAt: z.coerce.date().max(new Date(Date.now() + 365 * 24 * 60 * 60 * 1000), {
+      message: "Date cannot exceed 1 year from now",
+    }),
 
     // Cross-field date range validation
     startDate: z.coerce.date(),

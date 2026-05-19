@@ -6,5 +6,5 @@ export interface SoftDeletable {
    * Data da exclusão lógica.
    * null = entidade ativa
    */
-  deletedAt: Date | null
+  deletedAt: Date | null;
 }

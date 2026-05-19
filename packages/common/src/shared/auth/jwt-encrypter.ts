@@ -2,12 +2,7 @@
 
 import { BadRequestError } from "@/common/domain/errors/controllers/bad-request.error";
 import { env } from "@/common/infrastructure/env";
-import {
-  JsonWebTokenError,
-  sign,
-  TokenExpiredError,
-  verify,
-} from "jsonwebtoken";
+import { JsonWebTokenError, sign, TokenExpiredError, verify } from "jsonwebtoken";
 import { BaseEncrypter } from "./base-encrypter";
 import { JwtPayload } from "./types/jwt.types";
 import {

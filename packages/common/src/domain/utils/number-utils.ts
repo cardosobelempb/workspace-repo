@@ -13,12 +13,12 @@ export class NumberUtils {
 
   /** Verifica se um valor é um número finito (proteção contra NaN e Infinity). */
   private static isValidNumber(value: any): value is number {
-    return typeof value === 'number' && Number.isFinite(value)
+    return typeof value === "number" && Number.isFinite(value);
   }
 
   /** Garante que um número inválido se torne zero (fallback seguro). */
   private static ensureNumber(value: any): number {
-    return this.isValidNumber(value) ? value : 0
+    return this.isValidNumber(value) ? value : 0;
   }
 
   // ---------------------------------------------------------------------------
@@ -30,8 +30,8 @@ export class NumberUtils {
    * - Usa `toFixed(2)` para evitar inconsistências.
    */
   static formatNumberWithDecimal(num: number): string {
-    num = this.ensureNumber(num)
-    return num.toFixed(2)
+    num = this.ensureNumber(num);
+    return num.toFixed(2);
   }
 
   /**
@@ -41,17 +41,17 @@ export class NumberUtils {
    */
   static formatCurrency(
     num: number,
-    locale: string = 'pt-BR',
-    currency: string = 'BRL',
+    locale: string = "pt-BR",
+    currency: string = "BRL",
   ): string {
-    num = this.ensureNumber(num)
+    num = this.ensureNumber(num);
 
     return new Intl.NumberFormat(locale, {
-      style: 'currency',
+      style: "currency",
       currency,
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
-    }).format(num)
+    }).format(num);
   }
 
   /**
@@ -59,23 +59,23 @@ export class NumberUtils {
    * Ex: "R$ 1.234,56" → 1234.56
    */
   static parseCurrency(str: string): number {
-    if (!str) return 0
+    if (!str) return 0;
 
     const cleaned = str
-      .replace(/[^\d,-]/g, '') // remove letras/símbolos
-      .replace(/\.(?=\d{3,})/g, '') // remove separadores de milhar
-      .replace(',', '.') // transforma decimal BR em decimal US
+      .replace(/[^\d,-]/g, "") // remove letras/símbolos
+      .replace(/\.(?=\d{3,})/g, "") // remove separadores de milhar
+      .replace(",", "."); // transforma decimal BR em decimal US
 
-    const num = parseFloat(cleaned)
-    return this.ensureNumber(num)
+    const num = parseFloat(cleaned);
+    return this.ensureNumber(num);
   }
 
   /**
    * Formata para percentual com 2 casas: 0.123 → "12.30%"
    */
   static formatPercentage(num: number): string {
-    num = this.ensureNumber(num)
-    return `${(num * 100).toFixed(2)}%`
+    num = this.ensureNumber(num);
+    return `${(num * 100).toFixed(2)}%`;
   }
 
   // ---------------------------------------------------------------------------
@@ -86,21 +86,21 @@ export class NumberUtils {
    * Arredonda para N casas decimais.
    */
   static roundToDecimalPlaces(num: number, decimalPlaces: number): number {
-    num = this.ensureNumber(num)
-    decimalPlaces = Math.max(0, decimalPlaces)
+    num = this.ensureNumber(num);
+    decimalPlaces = Math.max(0, decimalPlaces);
 
-    const factor = Math.pow(10, decimalPlaces)
-    return Math.round(num * factor) / factor
+    const factor = Math.pow(10, decimalPlaces);
+    return Math.round(num * factor) / factor;
   }
 
   /**
    * Calcula imposto: Ex: (100, 15) → 15
    */
   static calculateTax(amount: number, taxRate: number): number {
-    amount = this.ensureNumber(amount)
-    taxRate = this.ensureNumber(taxRate)
+    amount = this.ensureNumber(amount);
+    taxRate = this.ensureNumber(taxRate);
 
-    return (amount * taxRate) / 100
+    return (amount * taxRate) / 100;
   }
 
   // ---------------------------------------------------------------------------
@@ -108,15 +108,15 @@ export class NumberUtils {
   // ---------------------------------------------------------------------------
 
   static isPositive(num: number): boolean {
-    return this.ensureNumber(num) > 0
+    return this.ensureNumber(num) > 0;
   }
 
   static isNegative(num: number): boolean {
-    return this.ensureNumber(num) < 0
+    return this.ensureNumber(num) < 0;
   }
 
   static isInteger(num: number): boolean {
-    return Number.isInteger(num)
+    return Number.isInteger(num);
   }
 
   // ---------------------------------------------------------------------------
@@ -128,11 +128,11 @@ export class NumberUtils {
    * "11987654321" → "(11) 98765-4321"
    */
   static formatPhoneNumber(phone: string): string {
-    if (!phone) return ''
+    if (!phone) return "";
 
-    const digits = phone.replace(/\D/g, '')
-    const match = digits.match(/^(\d{2})(\d{5})(\d{4})$/)
+    const digits = phone.replace(/\D/g, "");
+    const match = digits.match(/^(\d{2})(\d{5})(\d{4})$/);
 
-    return match ? `(${match[1]}) ${match[2]}-${match[3]}` : phone
+    return match ? `(${match[1]}) ${match[2]}-${match[3]}` : phone;
   }
 }

@@ -14,19 +14,13 @@ export class LocationVO extends BaseVO<{
   }
 
   /** Factory para criar uma nova instância */
-  public static create(
-    latitude: LatitudeVO,
-    longitude: LongitudeVO,
-  ): LocationVO {
+  public static create(latitude: LatitudeVO, longitude: LongitudeVO): LocationVO {
     return new LocationVO(latitude, longitude);
   }
 
   /** Compara se duas localizações são iguais */
   public equals(other: LocationVO): boolean {
-    return (
-      this.latitude.equals(other.latitude) &&
-      this.longitude.equals(other.longitude)
-    );
+    return this.latitude.equals(other.latitude) && this.longitude.equals(other.longitude);
   }
 
   public isValid(): boolean {
@@ -38,19 +32,14 @@ export class LocationVO extends BaseVO<{
     const R = unit === "m" ? 6371000 : 6371; // Raio da Terra
     const toRadians = (deg: number) => (deg * Math.PI) / 180;
 
-    const dLat = toRadians(
-      other.latitude.getValue() - this.latitude.getValue(),
-    );
-    const dLon = toRadians(
-      other.longitude.getValue() - this.longitude.getValue(),
-    );
+    const dLat = toRadians(other.latitude.getValue() - this.latitude.getValue());
+    const dLon = toRadians(other.longitude.getValue() - this.longitude.getValue());
 
     const lat1 = toRadians(this.latitude.getValue());
     const lat2 = toRadians(other.latitude.getValue());
 
     const a =
-      Math.sin(dLat / 2) ** 2 +
-      Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLon / 2) ** 2;
+      Math.sin(dLat / 2) ** 2 + Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLon / 2) ** 2;
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
     return R * c;

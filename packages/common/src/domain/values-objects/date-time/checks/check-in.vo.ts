@@ -35,9 +35,7 @@ export class CheckInVO extends BaseChecks {
     if (!dayjs) today.setHours(0, 0, 0, 0);
 
     const value = this.toDate();
-    return dayjs
-      ? dayjs(value).isAfter(today, "day")
-      : value.getTime() > today.getTime();
+    return dayjs ? dayjs(value).isAfter(today, "day") : value.getTime() > today.getTime();
   }
 
   /** Retorna true se a data for hoje */
@@ -61,10 +59,7 @@ export class CheckInVO extends BaseChecks {
    * @param start Data de início (inclusive)
    * @param end Data de fim (inclusive)
    */
-  public static isTodayWithinRange(
-    start: Date | string,
-    end: Date | string,
-  ): boolean {
+  public static isTodayWithinRange(start: Date | string, end: Date | string): boolean {
     const today = dayjs ? dayjs().startOf("day") : new Date();
     if (!dayjs) today.setHours(0, 0, 0, 0);
 
@@ -78,7 +73,6 @@ export class CheckInVO extends BaseChecks {
     return dayjs
       ? today.isAfter(startDate.subtract(1, "day")) &&
           today.isBefore(endDate.add(1, "day"))
-      : today.getTime() >= startDate.getTime() &&
-          today.getTime() <= endDate.getTime();
+      : today.getTime() >= startDate.getTime() && today.getTime() <= endDate.getTime();
   }
 }

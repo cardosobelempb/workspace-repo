@@ -1,7 +1,7 @@
 // src/utils/ValidatorUtils.ts
 
 export interface ValidateErrors {
-  [field: string]: string[]
+  [field: string]: string[];
 }
 
 export class ValidatorUtils {
@@ -15,13 +15,13 @@ export class ValidatorUtils {
     const isEmpty =
       field === null ||
       field === undefined ||
-      (typeof field === 'string' && field.trim().length === 0)
+      (typeof field === "string" && field.trim().length === 0);
 
     if (isEmpty) {
-      this.addError(validationErrors, fieldName, `${fieldName} is required`)
-      return false
+      this.addError(validationErrors, fieldName, `${fieldName} is required`);
+      return false;
     }
-    return true
+    return true;
   }
 
   static validateMaxLength(
@@ -31,14 +31,10 @@ export class ValidatorUtils {
     validationErrors: ValidateErrors,
   ): boolean {
     if (field && field.trim().length > maxLength) {
-      this.addError(
-        validationErrors,
-        fieldName,
-        `${fieldName} exceeds max length`,
-      )
-      return false
+      this.addError(validationErrors, fieldName, `${fieldName} exceeds max length`);
+      return false;
     }
-    return true
+    return true;
   }
 
   static validateMaxValue(
@@ -48,14 +44,10 @@ export class ValidatorUtils {
     validationErrors: ValidateErrors,
   ): boolean {
     if (field !== null && field !== undefined && field > maxValue) {
-      this.addError(
-        validationErrors,
-        fieldName,
-        `${fieldName} exceeds max value`,
-      )
-      return false
+      this.addError(validationErrors, fieldName, `${fieldName} exceeds max value`);
+      return false;
     }
-    return true
+    return true;
   }
 
   static validateMinValue(
@@ -65,14 +57,10 @@ export class ValidatorUtils {
     validationErrors: ValidateErrors,
   ): boolean {
     if (field !== null && field !== undefined && field < minValue) {
-      this.addError(
-        validationErrors,
-        fieldName,
-        `${fieldName} is below min value`,
-      )
-      return false
+      this.addError(validationErrors, fieldName, `${fieldName} is below min value`);
+      return false;
     }
-    return true
+    return true;
   }
 
   private static addError(
@@ -81,9 +69,9 @@ export class ValidatorUtils {
     message: string,
   ) {
     if (!validationErrors[fieldName]) {
-      validationErrors[fieldName] = []
+      validationErrors[fieldName] = [];
     }
-    validationErrors[fieldName].push(message)
+    validationErrors[fieldName].push(message);
   }
 }
 

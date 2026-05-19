@@ -1,9 +1,6 @@
 import fastifyCors from "@fastify/cors";
 import Fastify, { type FastifyInstance } from "fastify";
-import {
-  serializerCompiler,
-  validatorCompiler,
-} from "fastify-type-provider-zod";
+import { serializerCompiler, validatorCompiler } from "fastify-type-provider-zod";
 
 import fastifyCookie from "@fastify/cookie";
 
@@ -29,9 +26,7 @@ export type BuildAppOptions = {
   };
 };
 
-export async function buildApp(
-  options: BuildAppOptions = {},
-): Promise<FastifyInstance> {
+export async function buildApp(options: BuildAppOptions = {}): Promise<FastifyInstance> {
   const isProd = process.env.NODE_ENV === "production";
   const logger = buildLogger();
 
@@ -40,9 +35,7 @@ export async function buildApp(
     disableRequestLogging: true,
     //
     schemaErrorFormatter(errors, dataVar) {
-      const validationError = new Error(
-        "Existem campos inválidos na requisição.",
-      );
+      const validationError = new Error("Existem campos inválidos na requisição.");
 
       Object.assign(validationError, {
         statusCode: 400,

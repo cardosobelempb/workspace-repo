@@ -16,5 +16,5 @@
  * // { readonly name: string; readonly address: { readonly city: string } }
  */
 export type ReadonlyDeep<T> = {
-  readonly [P in keyof T]: ReadonlyDeep<T[P]>
-}
+  readonly [P in keyof T]: ReadonlyDeep<T[P]>;
+};

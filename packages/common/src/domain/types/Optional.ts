@@ -1,6 +1,6 @@
- /* =====================================================================================
-  *  OPTIONAL<T, K>
-  * ===================================================================================== */
+/* =====================================================================================
+ *  OPTIONAL<T, K>
+ * ===================================================================================== */
 
 /**
  * Torna um ou mais campos de um tipo opcionais.
@@ -13,6 +13,4 @@
  * type PartialUser = Optional<User, 'email'>
  * // Resultado: { id: string; name: string; email?: string }
  */
-export type Optional<T, K extends keyof T> =
-  Partial<Pick<T, K>> &
-  Omit<T, K>
+export type Optional<T, K extends keyof T> = Partial<Pick<T, K>> & Omit<T, K>;

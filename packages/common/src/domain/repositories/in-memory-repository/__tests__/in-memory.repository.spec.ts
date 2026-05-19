@@ -1,8 +1,6 @@
-import { randomUUID } from "node:crypto";
-
 import { BaseEntityBuild } from "@/common/domain/entities/entity-build.entity";
 import { NotFoundError } from "@/common/domain/errors/usecases/not-found.error";
-import { UUIDVO } from "@/common/domain/values-objects/uuidvo/uuid.vo";
+import { UUIDVO } from "../../../values-objects/uuidvo/uuid.vo";
 import { BaseInMemoryRepository } from "../base-repository-in-memory";
 
 type StubEntityProsp = {
@@ -81,7 +79,7 @@ describe("InmemoryRepository unit tests", () => {
     };
 
     entity = stubFactory?.create({
-      id: randomUUID(),
+      id: UUIDVO.generate(),
       createdAt,
       updatedAt,
       deletedAt,
@@ -117,7 +115,7 @@ describe("InmemoryRepository unit tests", () => {
 
   describe("findById", () => {
     it("should throw error when id not found", async () => {
-      const id = randomUUID();
+      const id = UUIDVO.generate();
       await sut["_get"](id).catch((err) => {
         expect(err).toBeInstanceOf(NotFoundError);
         expect(err.message).toBe(`Entity not found using id ${id}`);

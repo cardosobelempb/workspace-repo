@@ -24,22 +24,14 @@ export class EmailVO extends BaseVO<{ value: string; label?: string }> {
     }
 
     // ✅ super() recebe o valor já normalizado — sem mutação depois
-    super(
-      label !== undefined
-        ? { value: normalized, label }
-        : { value: normalized },
-    );
+    super(label !== undefined ? { value: normalized, label } : { value: normalized });
   }
 
   public isValid(): boolean {
     return EmailVO.isValid(this.value.value);
   }
 
-  public static create(
-    value: string,
-    label?: string,
-    options?: EmailOptions,
-  ): EmailVO {
+  public static create(value: string, label?: string, options?: EmailOptions): EmailVO {
     return new EmailVO(value, label, options);
   }
 

@@ -8,9 +8,7 @@ export class NotFoundError extends StandardError implements BaseUseCaseError {
       statusCode: 409,
       code: CodeError.NOT_FOUND,
       error: "NotFoundError",
-      message:
-        params.message ??
-        `${params.fieldName} "${params.value}" não encontrado`,
+      message: params.message ?? `${params.fieldName} "${params.value}" não encontrado`,
       fieldName: params.fieldName,
     });
   }

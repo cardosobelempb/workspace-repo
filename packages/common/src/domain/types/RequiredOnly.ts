@@ -13,6 +13,4 @@
  * type MustHaveName = RequiredOnly<User, 'name'>
  * // { id?: string; age?: number; name: string }
  */
-export type RequiredOnly<T, K extends keyof T> =
-  Required<Pick<T, K>> &
-  Omit<T, K>
+export type RequiredOnly<T, K extends keyof T> = Required<Pick<T, K>> & Omit<T, K>;

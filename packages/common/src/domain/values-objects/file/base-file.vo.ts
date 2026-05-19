@@ -14,9 +14,7 @@ export abstract class BaseFileVO extends BaseVO<{
     super({ originalName, mimeType, buffer });
 
     if (buffer.length > maxSizeInBytes) {
-      throw new Error(
-        `File size exceeds the maximum allowed of ${maxSizeInBytes} bytes`,
-      );
+      throw new Error(`File size exceeds the maximum allowed of ${maxSizeInBytes} bytes`);
     }
   }
 

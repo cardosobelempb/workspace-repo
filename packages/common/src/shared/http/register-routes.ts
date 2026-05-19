@@ -1,10 +1,7 @@
 // src/shared/http/register-routes.ts
 
 import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
-import type {
-  OpenApiResponse,
-  RouteDefinition,
-} from "../http/decorators/types";
+import type { OpenApiResponse, RouteDefinition } from "../http/decorators/types";
 import { getControllerPrefix, getRoutes } from "./decorators/metadata";
 
 // ─── Cache e Rate Limit em memória ───────────────────────────────────────────
@@ -150,18 +147,13 @@ async function registerInRouter(
           }
 
           // ── Handler ─────────────────────────────────────────────────────
-          const handler =
-            controller[route.handlerName as keyof typeof controller];
+          const handler = controller[route.handlerName as keyof typeof controller];
 
           if (typeof handler !== "function") {
             throw new Error(`Handler "${route.handlerName}" não encontrado`);
           }
 
-          const result = await (handler as Function).call(
-            controller,
-            request,
-            reply,
-          );
+          const result = await (handler as Function).call(controller, request, reply);
 
           if (route.cache && route.method === "GET") {
             memoryCache.set(cacheKey, {

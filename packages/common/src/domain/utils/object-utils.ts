@@ -14,7 +14,7 @@ export class ObjectUtils {
       typeof value === "object" &&
       !Array.isArray(value) &&
       !(value instanceof Date)
-    )
+    );
   }
 
   // ---------------------------------------------------------------------------
@@ -26,7 +26,7 @@ export class ObjectUtils {
    * OBS: valores não-serializáveis serão perdidos.
    */
   static convertToPlainObject<T>(value: T): T {
-    return JSON.parse(JSON.stringify(value))
+    return JSON.parse(JSON.stringify(value));
   }
 
   /**
@@ -37,12 +37,12 @@ export class ObjectUtils {
     // Caso ambiente suporte structuredClone:
     if (typeof structuredClone === "function") {
       try {
-        return structuredClone(value)
+        return structuredClone(value);
       } catch {
         // fallback abaixo
       }
     }
-    return this.convertToPlainObject(value)
+    return this.convertToPlainObject(value);
   }
 
   // ---------------------------------------------------------------------------
@@ -57,10 +57,10 @@ export class ObjectUtils {
    *  - outros tipos → false
    */
   static isEmpty(value: unknown): boolean {
-    if (value == null) return true
-    if (Array.isArray(value)) return value.length === 0
-    if (this.isObject(value)) return Object.keys(value).length === 0
-    return false
+    if (value == null) return true;
+    if (Array.isArray(value)) return value.length === 0;
+    if (this.isObject(value)) return Object.keys(value).length === 0;
+    return false;
   }
 
   // ---------------------------------------------------------------------------
@@ -74,25 +74,25 @@ export class ObjectUtils {
    */
   static mergeDeep<T extends object>(target: T, source: Partial<T>): T {
     if (!this.isObject(target) || !this.isObject(source)) {
-      return source as T
+      return source as T;
     }
 
-    const result = { ...target } as Record<string, any>
+    const result = { ...target } as Record<string, any>;
 
     for (const key in source) {
-      const sourceValue = source[key]
-      const targetValue = result[key]
+      const sourceValue = source[key];
+      const targetValue = result[key];
 
       if (this.isObject(sourceValue)) {
         result[key] = this.mergeDeep(
           this.isObject(targetValue) ? targetValue : {},
-          sourceValue
-        )
+          sourceValue,
+        );
       } else {
-        result[key] = sourceValue
+        result[key] = sourceValue;
       }
     }
 
-    return result as T
+    return result as T;
   }
 }

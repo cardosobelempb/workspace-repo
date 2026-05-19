@@ -1,6 +1,4 @@
-import { Either, left, right } from "./either";
-import { Left } from "./left";
-import { Right } from "./right";
+import { Either, Left, Right, left, right } from "../index";
 
 describe("Either", () => {
   // ------------------------

@@ -61,9 +61,6 @@ export abstract class BaseChecks {
     if (format === "YYYY-MM-DD") return `${yyyy}-${mm}-${dd}`;
 
     // suporte básico a alguns formatos comuns
-    return format
-      .replace("YYYY", String(yyyy))
-      .replace("MM", mm)
-      .replace("DD", dd);
+    return format.replace("YYYY", String(yyyy)).replace("MM", mm).replace("DD", dd);
   }
 }
