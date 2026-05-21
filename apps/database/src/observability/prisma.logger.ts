@@ -18,76 +18,28 @@ export class PrismaLoggerAdapter {
   ) {}
 
   register(): void {
-    // ========================================================
-    // QUERY
-    // ========================================================
-
     this.prisma.$on("query", (event) => {
-      this.logger.debug(
-        {
-          event: "PRISMA_QUERY",
-          context: "database",
-
-          query: event.query,
-
-          params: process.env.NODE_ENV === "development" ? event.params : "[FILTERED]",
-
-          duration: `${event.duration}ms`,
-          target: event.target,
-        },
-        "Prisma query executed",
-      );
+      this.logger.debug("Prisma Query", {
+        query: event.query,
+        params: event.params,
+        duration: event.duration,
+      });
     });
-
-    // ========================================================
-    // INFO
-    // ========================================================
-
-    this.prisma.$on("info", (event) => {
-      this.logger.info(
-        {
-          event: "PRISMA_INFO",
-          context: "database",
-
-          message: event.message,
-          target: event.target,
-        },
-        "Prisma info",
-      );
-    });
-
-    // ========================================================
-    // WARN
-    // ========================================================
-
-    this.prisma.$on("warn", (event) => {
-      this.logger.warn(
-        {
-          event: "PRISMA_WARN",
-          context: "database",
-
-          message: event.message,
-          target: event.target,
-        },
-        "Prisma warning",
-      );
-    });
-
-    // ========================================================
-    // ERROR
-    // ========================================================
 
     this.prisma.$on("error", (event) => {
-      this.logger.error(
-        {
-          event: "PRISMA_ERROR",
-          context: "database",
+      this.logger.error("Prisma Error", event);
+    });
 
-          message: event.message,
-          target: event.target,
-        },
-        "Prisma error",
-      );
+    this.prisma.$on("warn", (event) => {
+      this.logger.warn("Prisma Warning", {
+        message: event.message,
+      });
+    });
+
+    this.prisma.$on("info", (event) => {
+      this.logger.info("Prisma Info", {
+        message: event.message,
+      });
     });
   }
 }

@@ -1,1 +1,1 @@
-export { PrismaLogger, PrismaLoggerAdapter } from "./prisma.logger";
+export * from "./prisma.logger";

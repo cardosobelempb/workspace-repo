@@ -1,7 +1,7 @@
 // src/shared/http/decorators/rate-limit.decorator.ts
 
 import { updateRoute } from "./metadata";
-import type { RateLimitWindow } from "./types";
+import type { RateLimitWindow } from "./types/types";
 
 type RateLimitOptions = {
   max: number;

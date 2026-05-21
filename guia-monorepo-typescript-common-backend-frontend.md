@@ -52,6 +52,14 @@ project-model/
 13. Validar build, lint, typecheck e testes
 ```
 
+### Regra de ambiente por app
+
+- Cada app e dono do proprio schema de ambiente e dos arquivos `.env*`.
+- O pacote `packages/common` nao deve exportar schema/env concreto de aplicacao.
+- Centralize apenas o core reutilizavel em `packages/common/src/shared/env-config` (helpers + schemas base + parser).
+- O carregamento de dotenv deve ocorrer apenas no entrypoint do app executavel (backend, database, frontend/mobile quando aplicavel).
+- Evite acoplamento cruzado: backend nao deve exigir variaveis exclusivas do database e vice-versa.
+
 ---
 
 ## 3. Criar estrutura inicial

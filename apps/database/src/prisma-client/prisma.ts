@@ -3,12 +3,11 @@
 // Prisma singleton.
 // ============================================================
 
-import "dotenv/config";
-
 import { PrismaPg } from "@prisma/adapter-pg";
 import { Prisma, PrismaClient } from "@prisma/client";
 
 import { BaseLogger } from "@repo/common";
+import { env } from "../config/env.js";
 import { PrismaLoggerAdapter } from "../observability/prisma.logger";
 
 // ============================================================
@@ -41,11 +40,7 @@ type PrismaFactoryOptions = {
 // ============================================================
 
 function buildPrismaClient(options: PrismaFactoryOptions = {}): PrismaDatabase {
-  const connectionString = process.env.DATABASE_URL;
-
-  if (!connectionString) {
-    throw new Error("DATABASE_URL nao esta definida");
-  }
+  const connectionString = env.DATABASE_URL;
 
   const adapter = new PrismaPg({
     connectionString,
@@ -96,7 +91,7 @@ function buildPrismaClient(options: PrismaFactoryOptions = {}): PrismaDatabase {
 // ============================================================
 
 export function getPrismaClient(options: PrismaFactoryOptions = {}): PrismaDatabase {
-  if (process.env.NODE_ENV !== "production") {
+  if (env.NODE_ENV !== "production") {
     if (!globalThis.__prisma) {
       globalThis.__prisma = buildPrismaClient(options);
     }

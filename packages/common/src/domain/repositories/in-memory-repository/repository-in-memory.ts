@@ -1,24 +1,7 @@
 import { NotFoundError } from "../../errors/usecases/not-found.error";
 import { UUIDVO } from "../../values-objects/uuidvo/uuid.vo";
 import { Page, PageInput } from "../types/pagination.types";
-
-/**
- * Tipos de propriedades genéricas de uma entidade
- */
-export type ModelProps = {
-  id?: UUIDVO;
-  createdAt?: Date;
-  updatedAt?: Date;
-  deletedAt?: Date | null;
-  [key: string]: any;
-};
-
-/**
- * Tipos para criação de entidade
- */
-export type CreateProps<Entity> = Partial<
-  Omit<Entity, "id" | "createdAt" | "updatedAt" | "deletedAt">
->;
+import { ModelProps } from "./base-repository-in-memory";
 
 /**
  * Repositório genérico em memória

@@ -7,7 +7,7 @@ import { setControllerPrefix } from "./metadata";
  * @Controller("/users")
  */
 export function Controller(prefix: string = "") {
-  return function (target: Function): void {
+  return function (target: object): void {
     setControllerPrefix(target, prefix);
   };
 }

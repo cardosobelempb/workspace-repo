@@ -1,5 +1,15 @@
 {
   "extends": "@repo/typescript-config/mobile.json",
+  "compilerOptions": {
+    "paths": {
+      "@repo/common": [
+        "../../packages/common/src/index.ts"
+      ],
+      "@repo/common/*": [
+        "../../packages/common/src/*"
+      ]
+    }
+  },
   "include": [
     "src/**/*.ts"
   ],

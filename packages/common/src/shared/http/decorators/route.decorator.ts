@@ -2,7 +2,12 @@
 
 import { ZodType } from "zod";
 import { addRoute } from "./metadata";
-import type { HttpMethod, OpenApiParameter, OpenApiResponse, RouteDocs } from "./types";
+import type {
+  HttpMethod,
+  OpenApiParameter,
+  OpenApiResponse,
+  RouteDocs,
+} from "./types/types";
 
 // ─── Tipo de entrada do decorator (API pública simplificada) ──────────────────
 //

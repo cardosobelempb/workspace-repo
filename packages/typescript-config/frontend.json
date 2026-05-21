@@ -1,12 +1,12 @@
 {
   "extends": "./base.json",
   "compilerOptions": {
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
     "jsx": "preserve",
     "allowJs": true,
     "incremental": true,
-    "types": ["node"],
+    "types": [
+      "node"
+    ],
     "noEmit": true
   }
 }

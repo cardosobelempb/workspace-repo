@@ -1,7 +1,7 @@
 // src/shared/http/decorators/roles.decorator.ts
 
 import { updateRoute } from "./metadata";
-import type { UserRole } from "./types";
+import type { UserRole } from "./types/types";
 
 /**
  * Define quais perfis podem acessar uma rota.

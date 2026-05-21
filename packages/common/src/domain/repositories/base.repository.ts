@@ -1,7 +1,3 @@
-// domain/repositories/base.repository.ts
-
-import { PrismaRepository } from "@/common/infrastructure/db/prisma-repository";
-
 /**
  * Contrato base de persistência para todas as entidades do domínio.
  *
@@ -10,7 +6,7 @@ import { PrismaRepository } from "@/common/infrastructure/db/prisma-repository";
  *
  * @template TEntity - Entidade de domínio gerenciada
  */
-export abstract class BaseRepository<TEntity> extends PrismaRepository {
+export abstract class BaseRepository<TEntity> {
   // ✅ Sem redeclaração de `prisma` — vive apenas em PrismaRepository
   // ✅ Sem construtor duplicado — herdado automaticamente
 

@@ -1,19 +1,19 @@
 // src/shared/http/decorators/metadata.ts
 
-import type { RouteDefinition } from "./types";
+import { RouteDefinition } from "./types/types.js";
 
-const controllerPrefixMetadata = new WeakMap<Function, string>();
-const routesMetadata = new WeakMap<Function, RouteDefinition[]>();
+const controllerPrefixMetadata = new WeakMap<object, string>();
+const routesMetadata = new WeakMap<object, RouteDefinition[]>();
 
-export function setControllerPrefix(target: Function, prefix: string): void {
+export function setControllerPrefix(target: object, prefix: string): void {
   controllerPrefixMetadata.set(target, prefix);
 }
 
-export function getControllerPrefix(target: Function): string {
+export function getControllerPrefix(target: object): string {
   return controllerPrefixMetadata.get(target) ?? "";
 }
 
-export function addRoute(target: Function, route: RouteDefinition): void {
+export function addRoute(target: object, route: RouteDefinition): void {
   const routes = routesMetadata.get(target) ?? [];
 
   routes.push(route);
@@ -21,12 +21,12 @@ export function addRoute(target: Function, route: RouteDefinition): void {
   routesMetadata.set(target, routes);
 }
 
-export function getRoutes(target: Function): RouteDefinition[] {
+export function getRoutes(target: object): RouteDefinition[] {
   return routesMetadata.get(target) ?? [];
 }
 
 export function updateRoute(
-  target: Function,
+  target: object,
   handlerName: string,
   update: Partial<RouteDefinition>,
 ): void {

@@ -1,3 +1,3 @@
-export { Either, left, right } from "./either";
-export { Left } from "./left";
-export { Right } from "./right";
+export * from "./either";
+export * from "./left";
+export * from "./right";
