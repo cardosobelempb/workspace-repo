@@ -1,4 +1,4 @@
-export enum OrganizationStatus {
+export enum OrganizationScopeStatus {
   ACTIVE = "ACTIVE",
   INACTIVE = "INACTIVE",
   BLOCKED = "BLOCKED",

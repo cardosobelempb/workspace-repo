@@ -1,5 +1,5 @@
 import z from "zod";
-import { SortSchema } from "./sort.schema.schema";
+import { SortSchema } from "./sort.schema";
 
 /**
  * Schema de metadados de paginação

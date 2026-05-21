@@ -69,7 +69,7 @@ export type ProductInput = z.infer<typeof ProductSchema>;
 // ─────────────────────────────────────────────────────────────
 
 // Valid product
-const product = ProductSchema.parse({
+ProductSchema.parse({
   name: "Wireless Headphones",
   price: 199.99,
   salePrice: 149.99,

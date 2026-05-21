@@ -4,27 +4,8 @@
 // ============================================================
 
 import { z } from "zod";
-
-/**
- * Schema de metadados de ordenação
- */
-export const SortSchema = z.object({
-  sorted: z.boolean(),
-  unsorted: z.boolean(),
-  empty: z.boolean(),
-});
-
-/**
- * Schema de metadados de paginação
- */
-export const PageableSchema = z.object({
-  sort: SortSchema,
-  offset: z.number().int().nonnegative(),
-  pageSize: z.number().int().positive(),
-  pageNumber: z.number().int().nonnegative(),
-  paged: z.boolean(),
-  unpaged: z.boolean(),
-});
+import { PageableSchema } from "./pageable.schema";
+import { SortSchema } from "./sort.schema";
 
 /**
  * Factory de schema paginado — recebe o schema do conteúdo e retorna
@@ -52,6 +33,6 @@ export const PageResponseSchema = <T extends z.ZodTypeAny>(contentSchema: T) =>
   });
 
 // ─── Tipos inferidos ──────────────────────────────────────────────────────────
-export type SortSchema = z.infer<typeof SortSchema>;
-export type PageableSchema = z.infer<typeof PageableSchema>;
-export type PageResponse<T> = ReturnType<typeof PageResponseSchema<z.ZodType<T>>>["type"];
+// export type SortSchema = z.infer<typeof SortSchema>;
+// export type PageableSchema = z.infer<typeof PageableSchema>;
+// export type PageResponse<T> = ReturnType<typeof PageResponseSchema<z.ZodType<T>>>["type"];

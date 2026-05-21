@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "concurrently \"cd apps/auth && pnpm dev\" \"cd apps/backend && pnpm dev\" \"cd apps/frontend && pnpm dev\"",
-    "dev:aurh": "cd apps/auth && pnpm dev",
+    "dev:auth": "cd apps/auth && pnpm dev",
     "dev:backend": "cd apps/backend && pnpm dev",
     "dev:frontend": "cd apps/frontend && pnpm dev",
     "dev:mobile": "cd apps/mobile && pnpm dev",
@@ -45,7 +45,7 @@
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "^11.1.2",
+      "version": "11.1.2",
       "onFail": "download"
     }
   },

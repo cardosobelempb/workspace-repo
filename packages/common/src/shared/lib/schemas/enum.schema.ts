@@ -2,35 +2,33 @@
 // 🏷️ Two enum approaches — each with its own purpose
 // ─────────────────────────────────────────────────────────────
 
-import z from "zod";
-
 // Approach 1: z.enum() — simple and direct
 // Use when values are fixed and need no runtime logic
-export const OrderStatusSchema = z.enum([
-  "PENDING",
-  "CONFIRMED",
-  "SHIPPED",
-  "DELIVERED",
-  "CANCELLED",
-]);
+// export const OrderStatusSchema = z.enum([
+//   "PENDING",
+//   "CONFIRMED",
+//   "SHIPPED",
+//   "DELIVERED",
+//   "CANCELLED",
+// ]);
 
-export type OrderStatus = z.infer<typeof OrderStatusSchema>;
+// export type OrderStatus = z.infer<typeof OrderStatusSchema>;
 // → "PENDING" | "CONFIRMED" | "SHIPPED" | "DELIVERED" | "CANCELLED"
 
 // ─────────────────────────────────────────────────────────────
 // ✅ BEST PRACTICE: const object as the single source of truth
 // Lets you use values at runtime (switch, guards, UI lists)
 // ─────────────────────────────────────────────────────────────
-export const UserRole = {
-  ADMIN: "ADMIN",
-  MODERATOR: "MODERATOR",
-  EDITOR: "EDITOR",
-  VIEWER: "VIEWER",
-} as const;
+// export const UserRole = {
+//   ADMIN: "ADMIN",
+//   MODERATOR: "MODERATOR",
+//   EDITOR: "EDITOR",
+//   VIEWER: "VIEWER",
+// } as const;
 
 // Zod reads values from the object — fully DRY!
-export const UserRoleSchema = z.enum(UserRole);
-export type UserRole = z.infer<typeof UserRoleSchema>;
+// export const UserRoleSchema = z.enum(UserRole);
+// export type UserRole = z.infer<typeof UserRoleSchema>;
 
 // Runtime usage — no magic strings repeated anywhere:
 // if (user.role === UserRole.ADMIN) {
@@ -65,12 +63,12 @@ export type UserRole = z.infer<typeof UserRoleSchema>;
 // ─────────────────────────────────────────────────────────────
 
 // Valid status
-OrderStatusSchema.parse("SHIPPED"); // ✅
-OrderStatusSchema.parse("LOST"); // ❌ → invalid enum value
+// OrderStatusSchema.parse("SHIPPED"); // ✅
+// OrderStatusSchema.parse("LOST"); // ❌ → invalid enum value
 
 // Valid role
-UserRoleSchema.parse("ADMIN"); // ✅
-UserRoleSchema.parse("SUPERUSER"); // ❌ → invalid enum value
+// UserRoleSchema.parse("ADMIN"); // ✅
+// UserRoleSchema.parse("SUPERUSER"); // ❌ → invalid enum value
 
 // Getting all valid values (useful for UI dropdowns)
 // const statuses = OrderStatusSchema.options;

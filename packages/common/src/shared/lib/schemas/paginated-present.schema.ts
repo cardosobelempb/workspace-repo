@@ -1,6 +1,6 @@
 import z from "zod";
 import { PageableSchema } from "./pageable.schema";
-import { SortSchema } from "./sort.schema.schema";
+import { SortSchema } from "./sort.schema";
 
 /**
  * Generic paginated response schema

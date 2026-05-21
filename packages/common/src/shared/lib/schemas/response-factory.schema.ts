@@ -8,7 +8,7 @@
 
 import { z } from "zod";
 
-import { ErrorSchema, ValidationErrorSchema } from "./error";
+import { ErrorSchema, ValidationErrorSchema } from "./error.schema";
 import { PageSchema } from "./page.schema";
 
 /**

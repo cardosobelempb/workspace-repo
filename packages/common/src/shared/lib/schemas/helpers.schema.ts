@@ -63,3 +63,13 @@ export const withPasswordConfirmation = <T extends z.ZodRawShape>(
     }
   });
 };
+
+// ── Environment variable schemas ─────────────────────────────────────────────
+// ✅ Schemas específicos para variáveis de ambiente, com validação e valores padrão
+export const nodeEnvSchema = z
+  .enum(["development", "production", "test"])
+  .default("development");
+
+// ✅ Log level with default value
+
+export const logLevelSchema = z.enum(["debug", "info", "warn", "error"]).default("info");

@@ -1,4 +1,18 @@
 services:
+  auth:
+    build:
+      context: .
+      dockerfile: apps/auth/Dockerfile.dev
+    container_name: auth-dev
+    ports:
+      - "4444:4444"
+    env_file:
+      - .env.development
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - postgres
   backend:
     build:
       context: .
