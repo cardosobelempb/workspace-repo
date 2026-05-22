@@ -1,6 +1,7 @@
 import { defineConfig } from "prisma/config";
 
-const fallbackDatabaseUrl = "postgresql://dev:dev@localhost:5432/app_dev?schema=public";
+const fallbackDatabaseUrl =
+  "postgresql://postgres:docker@localhost:5432/hotsport?schema=public";
 
 export default defineConfig({
   schema: "prisma/schema.prisma",

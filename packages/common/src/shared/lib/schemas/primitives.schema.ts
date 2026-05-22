@@ -3,7 +3,7 @@
 // 🧱 Drop this file into any project and import what you need
 // Single source of truth — extend per domain as needed
 // ─────────────────────────────────────────────────────────────
-import { ValidatorMessage } from "@/common/domain/validations/ValidatorMessage";
+import { ValidatorMessage } from "@/common/domain/validations/validator-message";
 import { z } from "zod";
 
 export const s = {

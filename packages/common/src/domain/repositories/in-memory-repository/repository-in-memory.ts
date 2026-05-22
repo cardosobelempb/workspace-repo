@@ -1,5 +1,5 @@
 import { NotFoundError } from "../../errors/usecases/not-found.error";
-import { UUIDVO } from "../../values-objects/uuidvo/uuid.vo";
+import { UUIDVO } from "../../values-objects/uuid/uuid.vo";
 import { Page, PageInput } from "../types/pagination.types";
 import { ModelProps } from "./base-repository-in-memory";
 

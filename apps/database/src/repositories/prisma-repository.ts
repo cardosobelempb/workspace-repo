@@ -1,6 +1,7 @@
 // shared/database/prisma-repository.ts
 
 import { PrismaClient } from "@prisma/client";
+import { BaseRepository } from "@repo/common";
 
 export type PrismaTransaction = Parameters<
   Parameters<PrismaClient["$transaction"]>[0]
@@ -11,10 +12,11 @@ export type PrismaTransaction = Parameters<
  * Define e protege a instância do Prisma — declarada UMA única vez aqui.
  * Todas as subclasses herdam `this.prisma` sem precisar redeclarar.
  */
-export abstract class PrismaRepository {
+export abstract class PrismaRepository<T> extends BaseRepository<T> {
   protected readonly prisma: PrismaTransaction;
 
   constructor(prisma: PrismaTransaction) {
+    super();
     this.prisma = prisma;
   }
 
@@ -24,7 +26,7 @@ export abstract class PrismaRepository {
    *
    * Mantido para casos onde a classe concreta está disponível.
    */
-  static withTx<T extends PrismaRepository>(
+  static withTx<T extends PrismaRepository<T>>(
     this: new (tx: PrismaTransaction) => T,
     tx: PrismaTransaction,
   ): T {

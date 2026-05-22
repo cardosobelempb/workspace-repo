@@ -1,6 +1,6 @@
 import { ValidationErrors } from "./validation-errors.validator";
 import { ValidationException } from "./validation.exception.exception";
-import { ValidatorMessage } from "./ValidatorMessage";
+import { ValidatorMessage } from "./validator-message";
 
 export class ValidatorUtils {
   private constructor() {}

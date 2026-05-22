@@ -1,6 +1,6 @@
 import { BaseEntityBuild } from "@/common/domain/entities/entity-build.entity";
 import { NotFoundError } from "@/common/domain/errors/usecases/not-found.error";
-import { UUIDVO } from "../../../values-objects/uuidvo/uuid.vo";
+import { UUIDVO } from "../../../values-objects/uuid/uuid.vo";
 import { BaseInMemoryRepository } from "../base-repository-in-memory";
 
 type StubEntityProsp = {

@@ -1,6 +1,6 @@
 // shared/module/module.types.ts
 
-export type ClassConstructor<T extends object = object> = new (...args: any[]) => T;
+export type ClassConstructor<T extends object = object> = new (...args: unknown[]) => T;
 
 export type ControllerInstance = object;
 

@@ -1,10 +1,6 @@
+import { logLevelSchema, nodeEnvSchema, parseEnvArray } from "@/common/shared";
 import { z } from "zod";
-import {
-  createEnv,
-  logLevelSchema,
-  nodeEnvSchema,
-  parseEnvArray,
-} from "../../shared/env-config";
+import { createEnv } from "../../shared/env-config";
 import { EnvValidationError } from "./env-validation.error";
 
 export const envSchema = z.object({

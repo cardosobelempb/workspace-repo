@@ -1,6 +1,5 @@
 // domain/repositories/page-repository.ts
 
-import { BaseRepository } from "./base.repository";
 import { Page, PageInput } from "./types/pagination.types";
 
 /**
@@ -19,7 +18,7 @@ import { Page, PageInput } from "./types/pagination.types";
  * result.totalPages     // 5
  * result.first          // true
  */
-export abstract class PageRepository<TEntity> extends BaseRepository<TEntity> {
+export abstract class PageRepository<TEntity> {
   // ✅ Sem redeclaração de `prisma`
   // ✅ Sem construtor duplicado
 
