@@ -1,4 +1,3 @@
-import { PageRepository } from "@repo/common";
-import { UserEntity } from "../entities/user.entity";
+import { PrismaPageRepository } from "@repo/database";
 
-export abstract class UserPageRepository extends PageRepository<UserEntity> {}
+export abstract class UserPageRepository extends PrismaPageRepository {}

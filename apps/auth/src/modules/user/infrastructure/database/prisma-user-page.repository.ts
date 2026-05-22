@@ -1,11 +1,11 @@
 import { Page, SearchInput, TOKENS } from "@repo/common";
-import { Prisma, PrismaDatabase, PrismaRepository } from "@repo/database";
+import { Prisma, PrismaDatabase, PrismaPageRepository } from "@repo/database";
 import { UserEntity } from "../../domain/entities/user.entity";
 import { UserPageRepository } from "../../domain/repositoties/user-page.repository";
 import { PrismaUserMapper } from "../mappers/prisma-user.mapper";
 
 export class PrismaUserPageRepository
-  extends PrismaRepository
+  extends PrismaPageRepository
   implements UserPageRepository
 {
   static inject = [TOKENS.PRISMA_CLIENT];
