@@ -1,4 +1,4 @@
-import { LoggerFactory } from "@repo/common";
+import { LoggerFactory } from "@repo/logger";
 import { buildApp } from "./app.js";
 import { env } from "./config/env.js";
 

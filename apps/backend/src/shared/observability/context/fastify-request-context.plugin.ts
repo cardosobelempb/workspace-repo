@@ -1,4 +1,4 @@
-import { RequestContextData } from "@repo/common";
+import { RequestContextData } from "@repo/logger";
 import { FastifyPluginAsync } from "fastify";
 import fp from "fastify-plugin";
 import { randomUUID } from "node:crypto";

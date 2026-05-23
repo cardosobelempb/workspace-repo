@@ -22,6 +22,7 @@
   "license": "ISC",
   "dependencies": {
     "@repo/common": "workspace:*",
+    "@repo/env-config": "workspace:*",
     "@prisma/adapter-pg": "^7.8.0",
     "@prisma/client": "^7.8.0",
     "pg": "^8.16.3",

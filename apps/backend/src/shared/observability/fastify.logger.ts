@@ -1,4 +1,4 @@
-import { BaseLogger, LoggerMetadata } from "@repo/common";
+import { BaseLogger, LoggerMetadata } from "@repo/logger";
 import { FastifyBaseLogger, FastifyRequest } from "fastify";
 
 // ============================================================

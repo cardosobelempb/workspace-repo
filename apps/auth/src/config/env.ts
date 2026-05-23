@@ -1,4 +1,9 @@
-import { createEnv, logLevelSchema, nodeEnvSchema, parseEnvArray } from "@repo/common";
+import {
+  createEnv,
+  logLevelSchema,
+  nodeEnvSchema,
+  parseEnvArray,
+} from "@repo/env-config";
 import { z } from "zod";
 
 export const envSchema = z.object({
@@ -24,5 +29,5 @@ export const envSchema = z.object({
   COOKIE_SECRET: z.string().min(1, "COOKIE_SECRET e obrigatoria"),
 });
 
-export const env = createEnv(envSchema, { context: "backend" });
+export const env = createEnv(envSchema, { context: "auth" });
 export type Env = z.infer<typeof envSchema>;
