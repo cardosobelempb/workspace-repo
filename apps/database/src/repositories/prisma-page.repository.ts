@@ -1,50 +1,77 @@
-// shared/database/prisma-repository.ts
+import { Page, PageInput, PageMapper, SortParser } from "@repo/common";
+import { PrismaDatabase } from "../prisma-client";
 
-import { PrismaClient } from "@prisma/client";
+interface Delegate<TModel, TWhere, TOrderBy> {
+  count(args: { where?: TWhere }): Promise<number>;
 
-export type PrismaPageTransaction = Parameters<
-  Parameters<PrismaClient["$transaction"]>[0]
->[0];
+  findMany(args: {
+    where?: TWhere;
+    orderBy?: TOrderBy;
+    skip?: number;
+    take?: number;
+  }): Promise<TModel[]>;
+}
 
-/**
- * Raiz da hierarquia de repositórios.
- * Define e protege a instância do Prisma — declarada UMA única vez aqui.
- * Todas as subclasses herdam `this.prisma` sem precisar redeclarar.
- */
+interface PaginateInput<TModel, TResult, TWhere, TOrderBy> {
+  params: PageInput;
+  delegate: Delegate<TModel, TWhere, TOrderBy>;
+  mapper: (model: TModel) => TResult;
+  allowedSortFields: string[];
+  defaultSortField: string;
+  buildWhere?: (params: PageInput) => TWhere;
+}
+
 export abstract class PrismaPageRepository {
-  protected readonly prisma: PrismaPageTransaction;
+  constructor(protected readonly prisma: PrismaDatabase) {}
 
-  constructor(prisma: PrismaPageTransaction) {
-    this.prisma = prisma;
-  }
+  protected async paginate<TModel, TResult, TWhere, TOrderBy>({
+    params,
+    delegate,
+    mapper,
+    allowedSortFields,
+    defaultSortField,
+    buildWhere,
+  }: PaginateInput<TModel, TResult, TWhere, TOrderBy>): Promise<Page<TResult>> {
+    const page = Math.max(params.page ?? 0, 0);
+    const size = Math.max(params.size ?? 20, 1);
 
-  /**
-   * ✅ Método ESTÁTICO — cria instância a partir da classe diretamente.
-   * Uso: PrismaUserRepository.withTx(tx)
-   *
-   * Mantido para casos onde a classe concreta está disponível.
-   */
-  static withTx<T extends PrismaPageRepository>(
-    this: new (tx: PrismaPageTransaction) => T,
-    tx: PrismaPageTransaction,
-  ): T {
-    return new this(tx);
-  }
+    const parsedSort = SortParser.parse(params.sort);
 
-  /**
-   * ✅ Método de INSTÂNCIA — cria nova instância do mesmo tipo com o contexto tx.
-   * Uso: this.tenantRepo.withTx(tx)
-   *
-   * Usa `this.constructor` para recriar a instância do tipo concreto correto
-   * (ex: PrismaTenantRepository), sem que o Use Case precise conhecê-lo.
-   *
-   * Padrão: Self-referential Factory via prototype chain.
-   */
-  withTx(tx: PrismaPageTransaction): this {
-    // `this.constructor` aponta para a classe concreta em tempo de execução
-    // ex: mesmo que `this` seja tipado como TenantRepository (abstrato),
-    // `this.constructor` será PrismaTenantRepository (concreto)
-    const ConcreteClass = this.constructor as new (tx: PrismaPageTransaction) => this;
-    return new ConcreteClass(tx);
+    const sortField =
+      parsedSort?.field && allowedSortFields.includes(parsedSort.field)
+        ? parsedSort.field
+        : defaultSortField;
+
+    const direction = parsedSort?.direction ?? "desc";
+
+    const where = buildWhere?.(params);
+
+    const orderBy = {
+      [sortField]: direction,
+    } as TOrderBy;
+
+    const skip = page * size;
+
+    const [total, data] = await this.prisma.$transaction(async () => {
+      const total = await delegate.count({ where });
+
+      const data = await delegate.findMany({
+        where,
+        orderBy,
+        skip,
+        take: size,
+      });
+
+      return [total, data] as const;
+    });
+
+    return PageMapper.toPage({
+      data,
+      total,
+      page,
+      size,
+      mapper,
+      sorted: Boolean(orderBy),
+    });
   }
 }

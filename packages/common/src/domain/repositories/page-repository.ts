@@ -1,6 +1,7 @@
 // domain/repositories/page-repository.ts
 
-import { Page, PageInput } from "./types/pagination.types";
+import { PageInput } from "./pagination";
+import { Page } from "./pagination/types/pagination.types";
 
 /**
  * Estende BaseRepository com suporte à busca paginada,

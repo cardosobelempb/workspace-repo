@@ -75,15 +75,15 @@ export interface Page<T> {
   empty: boolean;
 }
 
-/**
- * Parâmetros de entrada para requisições paginadas.
- * Alinhados ao PageableHandlerMethodArgumentResolver do Spring Boot.
- *
- * @example GET /organizations?page=0&size=10&sort=name,asc&filter=acme
- */
-export interface PageInput {
-  page?: number | undefined; // Zero-based — padrão Spring: 0
-  size?: number | undefined; // Itens por página — padrão Spring: 20
-  sort?: string | undefined; // Formato: 'campo,direção' → ex: 'name,asc' | 'createdAt,desc'
-  filter?: string | undefined; // Filtro textual livre (extensão customizada)
-}
+// /**
+//  * Parâmetros de entrada para requisições paginadas.
+//  * Alinhados ao PageableHandlerMethodArgumentResolver do Spring Boot.
+//  *
+//  * @example GET /organizations?page=0&size=10&sort=name,asc&filter=acme
+//  */
+// export interface PageInput {
+//   page?: number | undefined; // Zero-based — padrão Spring: 0
+//   size?: number | undefined; // Itens por página — padrão Spring: 20
+//   sort?: string | undefined; // Formato: 'campo,direção' → ex: 'name,asc' | 'createdAt,desc'
+//   filter?: string | undefined; // Filtro textual livre (extensão customizada)
+// }

@@ -3,8 +3,8 @@
 // Mapper genérico: Page<TDomain> → PageResponseDto<TDto>
 // ============================================================
 
+import { Page } from "../../domain/repositories/pagination/types/pagination.types";
 import { PageDto } from "../dto/page.dto";
-import { Page } from "./../../domain/repositories/types/pagination.types";
 
 /**
  * Mapper genérico para transformar qualquer `Page<TDomain>`
