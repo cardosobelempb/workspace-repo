@@ -3,7 +3,7 @@
 // Compatível com sua BaseVO atual
 // ============================================================
 
-import { BadRequestError } from "@/common/domain/errors/controllers/bad-request.error";
+import { BadRequestError } from "../../../errors/controllers/bad-request.error";
 import { BaseVO } from "../../base.vo";
 
 /**

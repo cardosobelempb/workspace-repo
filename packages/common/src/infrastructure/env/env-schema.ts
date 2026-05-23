@@ -1,5 +1,5 @@
-import { logLevelSchema, nodeEnvSchema, parseEnvArray } from "@/common/shared";
 import { z } from "zod";
+import { logLevelSchema, nodeEnvSchema, parseEnvArray } from "../../shared";
 import { createEnv } from "../../shared/env-config";
 import { EnvValidationError } from "./env-validation.error";
 

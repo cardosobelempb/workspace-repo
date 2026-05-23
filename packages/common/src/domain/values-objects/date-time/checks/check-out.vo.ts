@@ -1,4 +1,4 @@
-import { BadRequestError } from "@/common/domain/errors/controllers/bad-request.error";
+import { BadRequestError } from "../../../errors/controllers/bad-request.error";
 import { BaseChecks } from "./base-checks.vo";
 import { CheckInVO } from "./check-in.vo";
 

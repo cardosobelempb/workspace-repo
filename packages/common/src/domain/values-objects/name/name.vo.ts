@@ -1,4 +1,4 @@
-import { BaseI18n } from "@/common/shared/utils/base-I18n";
+import { BaseI18n } from "../../../shared/utils/base-I18n";
 import { BadRequestError } from "../../errors/controllers/bad-request.error";
 import { BaseVO } from "../base.vo";
 

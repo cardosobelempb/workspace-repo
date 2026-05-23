@@ -3,7 +3,7 @@
 // Ajustado para BaseVO + Factory pattern
 // ============================================================
 
-import { BaseHash } from "@/common/shared/utils/base-Hash";
+import { BaseHash } from "../../../shared/utils/base-Hash";
 import { BadRequestError } from "../../errors/controllers/bad-request.error";
 import { BaseVO } from "../base.vo";
 

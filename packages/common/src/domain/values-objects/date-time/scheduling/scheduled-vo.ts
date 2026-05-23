@@ -1,4 +1,4 @@
-import { BadRequestError } from "@/common/domain/errors/controllers/bad-request.error";
+import { BadRequestError } from "../../../errors/controllers/bad-request.error";
 import { BaseScheduled } from "./base-scheduled";
 
 let dayjs: any;
