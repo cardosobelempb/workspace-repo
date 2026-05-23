@@ -5,15 +5,8 @@ import { z } from "zod";
 // APIs and databases return strings, not Date objects
 // ─────────────────────────────────────────────────────────────
 
-// ❌ Wrong — breaks with strings from API/database
-const wrong = z.date();
-wrong.parse("2024-01-15"); // ZodError!
-
 // ✅ Correct — coerce automatically converts to Date
-const DateSchema = z.coerce.date();
-DateSchema.parse("2024-01-15"); // ✅ → Date object
-DateSchema.parse(1705276800000); // ✅ accepts Unix timestamp
-DateSchema.parse(new Date()); // ✅ accepts native Date
+export const DateSchema = z.coerce.date();
 
 // ─────────────────────────────────────────────────────────────
 // 📅 Practical range validations
