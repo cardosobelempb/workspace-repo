@@ -1,0 +1,28 @@
+{
+  "extends": "../../packages/typescript-config/backend.json",
+  "compilerOptions": {
+    "ignoreDeprecations": "6.0",
+    "rootDir": ".",
+    "types": [
+      "node",
+      "jest"
+    ],
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@repo/common": [
+        "../../packages/common/src/index.ts"
+      ],
+      "@repo/common/*": [
+        "../../packages/common/src/*"
+      ]
+    }
+  },
+  "include": [
+    "src",
+    "test",
+    "**/*.spec.ts",
+    "**/*.test.ts"
+  ]
+}

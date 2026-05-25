@@ -12,7 +12,7 @@ RUN pnpm install --filter @repo/database... --filter @repo/common...
 
 COPY . .
 
-RUN cd apps/database && pnpm build
+RUN pnpm --filter @repo/database build
 
 WORKDIR /app/apps/database
 

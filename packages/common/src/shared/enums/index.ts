@@ -25,6 +25,7 @@ export * from "./payment-status.enum";
 export * from "./permission.enum";
 export * from "./plan-status.enum";
 export * from "./provider-type.enum";
+export * from "./role.enum";
 export * from "./schedule-action.enum";
 export * from "./subscription-mode.enum";
 export * from "./tenant-atatus.enum";
