@@ -1,0 +1,44 @@
+# ─────────────────────────────────────────────────────────────
+# docker-compose.test.yml — TEST
+#
+# Rodar:
+#   docker compose -f docker-compose.yml -f docker-compose.test.yml up --build --abort-on-container-exit
+#
+# O container app sai com código 0 (passou) ou 1 (falhou).
+# Ideal para pipelines CI/CD (GitHub Actions, GitLab CI etc.)
+# ─────────────────────────────────────────────────────────────
+version: '3.8'
+
+services:
+
+  postgres:
+    # Banco isolado para testes — dados em memória, descartados ao sair
+    image: postgres:16
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}_test    # banco separado do dev
+    tmpfs:
+      - /var/lib/postgresql/data          # sem persistência — reinicia limpo
+    ports: []                             # não expõe externamente
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+
+  app:
+    build:
+      target: test                        # stage "test" do Dockerfile
+    command: npm run test
+    environment:
+      NODE_ENV: test
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}_test
+    # Roda migrate antes dos testes via entrypoint, se necessário:
+    # command: sh -c "npx prisma migrate deploy && npm run test"
+    restart: "no"                         # não reinicia após o teste terminar
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 1024M

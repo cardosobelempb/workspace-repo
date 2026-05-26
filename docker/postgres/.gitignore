@@ -1,0 +1,8 @@
+# Envs com credenciais reais — nunca versionar
+.env
+.env.prod
+.env.test
+
+node_modules/
+dist/
+build/

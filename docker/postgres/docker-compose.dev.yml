@@ -1,0 +1,42 @@
+# ─────────────────────────────────────────────────────────────
+# docker-compose.dev.yml — DEVELOPMENT
+#
+# Subir:      docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build
+# Migrate:    docker compose -f docker-compose.yml -f docker-compose.dev.yml exec app npx prisma migrate dev
+# Seed:       docker compose -f docker-compose.yml -f docker-compose.dev.yml exec app npm run seed
+# Shell app:  docker compose -f docker-compose.yml -f docker-compose.dev.yml exec app sh
+# Shell DB:   docker compose -f docker-compose.yml -f docker-compose.dev.yml exec postgres psql -U $POSTGRES_USER -d $POSTGRES_DB
+# ─────────────────────────────────────────────────────────────
+version: "3.8"
+
+services:
+  postgres:
+    ports:
+      - "5432:5432" # expõe localmente para clientes como DBeaver / TablePlus
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: app_db
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+
+  # app:
+  #   build:
+  #     target: development       # stage "development" do Dockerfile
+  #   ports:
+  #     - "3000:3000"
+  #     - "9229:9229"             # porta de debug Node.js (--inspect)
+  #   volumes:
+  #     - .:/app                  # bind-mount para hot-reload
+  #     - /app/node_modules       # preserva node_modules do container
+  #   command: npm run dev
+  #   environment:
+  #     NODE_ENV: development
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         cpus: "1.0"
+  #         memory: 1024M

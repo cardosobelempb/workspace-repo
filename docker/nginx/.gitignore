@@ -1,0 +1,10 @@
+# Credenciais e certificados — nunca versionar
+.env
+.env.prod
+.env.test
+nginx/ssl/
+nginx/logs/
+
+node_modules/
+dist/
+build/

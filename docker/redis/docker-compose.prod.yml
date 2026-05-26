@@ -1,0 +1,41 @@
+# ─────────────────────────────────────────────────────────────
+# docker-compose.prod.yml — PRODUCTION
+#
+# Subir:  docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
+# Seed:   docker compose -f docker-compose.yml -f docker-compose.prod.yml exec app npm run seed
+# Logs:   docker compose -f docker-compose.yml -f docker-compose.prod.yml logs -f app
+# ─────────────────────────────────────────────────────────────
+version: '3.8'
+
+services:
+
+  redis:
+    restart: always
+    ports: []                 # não expõe externamente em produção
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 1024M
+
+  app:
+    build:
+      target: production      # aponta para o stage "production" do Dockerfile
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes: []               # sem bind-mount em produção
+    command: node src/index.js
+    environment:
+      NODE_ENV: production
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 2048M
+    # Logs estruturados em produção
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"

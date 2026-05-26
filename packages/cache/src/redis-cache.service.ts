@@ -1,13 +1,13 @@
-import { BaseCache } from "./base-cache";
-import { configRedis } from "./config/config-redis";
+import { CacheService } from "./cache.service";
+import { RedisClient } from "./config/redis.client";
 
 // ============================================================
 // RedisCacheService
 // ============================================================
 
-export class BaseRedisCache implements BaseCache {
+export class RedisCacheService implements CacheService {
   async get<T>(key: string): Promise<T | null> {
-    const value = await configRedis.get(key);
+    const value = await RedisClient.get(key);
 
     if (!value) {
       return null;
@@ -17,20 +17,20 @@ export class BaseRedisCache implements BaseCache {
   }
 
   async set<T>(key: string, value: T, ttlSeconds = 300): Promise<void> {
-    await configRedis.set(key, JSON.stringify(value), "EX", ttlSeconds);
+    await RedisClient.set(key, JSON.stringify(value), "EX", ttlSeconds);
   }
 
   async delete(key: string): Promise<void> {
-    await configRedis.del(key);
+    await RedisClient.del(key);
   }
 
   async deleteByPrefix(prefix: string): Promise<void> {
-    const keys = await configRedis.keys(`${prefix}*`);
+    const keys = await RedisClient.keys(`${prefix}*`);
 
     if (!keys.length) {
       return;
     }
 
-    await configRedis.del(...keys);
+    await RedisClient.del(...keys);
   }
 }

@@ -1,4 +1,6 @@
 export const TOKENS = {
   PRISMA_CLIENT: Symbol("PRISMA_CLIENT"),
   BCRYPT_HASHER: Symbol("BCRYPT_HASHER"),
+  JWT_SERVICE: Symbol("JWT_SERVICE"),
+  REDIS_CLIENT: Symbol("REDIS_CLIENT"),
 } as const;

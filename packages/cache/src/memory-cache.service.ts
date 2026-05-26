@@ -1,11 +1,11 @@
-import { BaseCache } from "./base-cache";
+import { CacheService } from "./cache.service";
 
 type CacheItem = {
   value: unknown;
   expiresAt: number;
 };
 
-export class BaseMemoryCache implements BaseCache {
+export class MemoryCacheService implements CacheService {
   private readonly store = new Map<string, CacheItem>();
 
   async get<T>(key: string): Promise<T | null> {

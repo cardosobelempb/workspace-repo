@@ -32,6 +32,7 @@ export type AuthUpdateResponseDto = z.infer<typeof AuthUpdateResponseSchema>;
 export type AuthActivateResponseDto = z.infer<typeof AuthActivateResponseSchema>;
 export type AuthDeactivateResponseDto = z.infer<typeof AuthDeactivateResponseSchema>;
 export type RegisterDto = z.infer<typeof RegisterSchema>;
+
 export type LoginDto = z.infer<typeof LoginSchema>;
 export type RefreshTokenDto = z.infer<typeof RefreshTokenSchema>;
 export type LogoutDto = z.infer<typeof LogoutSchema>;

@@ -4,8 +4,8 @@ export interface SessionProps {
   userId: UUIDVO;
   sessionToken: string;
   expires: Date;
-  ipAddress: string | null;
-  userAgent: string | null;
+  ipAddress: string;
+  userAgent: string;
   createdAt: Date;
   updatedAt: Date | null;
   deletedAt: Date | null;
@@ -54,17 +54,12 @@ export class SessionEntity extends BaseEntity<SessionProps> {
   }
 
   static create(
-    props: Optional<
-      SessionProps,
-      "ipAddress" | "userAgent" | "createdAt" | "updatedAt" | "deletedAt"
-    >,
+    props: Optional<SessionProps, "createdAt" | "updatedAt" | "deletedAt">,
     id?: UUIDVO,
   ) {
     return new SessionEntity(
       {
         ...props,
-        ipAddress: props.ipAddress ?? null,
-        userAgent: props.userAgent ?? null,
         createdAt: props.createdAt ?? new Date(),
         updatedAt: props.updatedAt ?? null,
         deletedAt: props.deletedAt ?? null,

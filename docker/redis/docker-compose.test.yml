@@ -1,0 +1,39 @@
+# ─────────────────────────────────────────────────────────────
+# docker-compose.test.yml — TEST
+#
+# Rodar testes:
+#   docker compose -f docker-compose.yml -f docker-compose.test.yml up --build --abort-on-container-exit
+#
+# O serviço app sai com código 0 (passou) ou 1 (falhou).
+# ─────────────────────────────────────────────────────────────
+version: '3.8'
+
+services:
+
+  redis:
+    # Redis isolado para testes — banco separado, sem persistência
+    command:
+      - redis-server
+      - --port
+      - "6379"
+      - --requirepass
+      - "${REDIS_PASSWORD}"
+      - --save
+      - ""                    # desativa persistência em teste
+      - --appendonly
+      - "no"
+    ports: []                 # não expõe porta externamente
+
+  app:
+    build:
+      target: test            # aponta para o stage "test" do Dockerfile
+    command: npm run test
+    environment:
+      NODE_ENV: test
+    # Encerra o compose quando os testes terminam
+    restart: "no"
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 1024M

@@ -274,6 +274,9 @@ importers:
       '@fastify/swagger':
         specifier: ^9.7.0
         version: 9.7.0
+      '@repo/cache':
+        specifier: workspace:*
+        version: link:../../packages/cache
       '@repo/common':
         specifier: workspace:*
         version: link:../../packages/common
@@ -522,6 +525,9 @@ importers:
       ioredis:
         specifier: ^5.10.1
         version: 5.10.1
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
     devDependencies:
       '@repo/eslint-config':
         specifier: workspace:*

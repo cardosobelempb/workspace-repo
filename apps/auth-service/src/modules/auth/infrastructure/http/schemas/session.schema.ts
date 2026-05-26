@@ -36,9 +36,9 @@ export const SessionSchema = z
     id: UuidSchema,
     userId: UuidSchema,
     sessionToken: s.string,
-    expiredAt: s.date,
-    ipAddress: s.ipv4,
-    userAgent: s.string,
+    expires: s.date,
+    ipAddress: s.ipv4.nullable(),
+    userAgent: s.string.nullable(),
     createdAt: s.date,
     updatedAt: s.nullableDate,
     deletedAt: s.nullableDate,
@@ -48,7 +48,12 @@ export const SessionSchema = z
 // ─── Body schemas (entrada) ───────────────────────────────────────────────────
 
 // Payload de criação: sem campos gerados pelo servidor
-export const CreateSessionSchema = SessionSchema.omit({});
+export const CreateSessionSchema = SessionSchema.omit({
+  id: true,
+  createdAt: true,
+  updatedAt: true,
+  deletedAt: true,
+});
 
 // Payload de atualização: todos os campos opcionais
 // Não precisa de .strict() extra — já herdado do SessionSchema base
@@ -68,7 +73,7 @@ export const SessionProjectionSchema = SessionSchema.pick({
   id: true,
   userId: true,
   sessionToken: true,
-  expiredAt: true,
+  expires: true,
 });
 
 // ─── Response wrappers via factory ───────────────────────────────────────────

@@ -1,0 +1,42 @@
+# ─────────────────────────────────────────────────────────────
+# docker-compose.test.yml — TEST
+#
+# Rodar:
+#   docker compose -f docker-compose.yml -f docker-compose.test.yml up --build --abort-on-container-exit
+#
+# O nginx sobe para validar o proxy enquanto os testes rodam.
+# Ao fim, --abort-on-container-exit derruba tudo.
+# ─────────────────────────────────────────────────────────────
+version: '3.8'
+
+services:
+
+  nginx:
+    build:
+      target: test
+    ports:
+      - "8080:80"             # porta alternativa para não conflitar com dev
+    volumes:
+      - ./nginx/conf.d/test.conf:/etc/nginx/conf.d/default.conf:ro
+    environment:
+      NGINX_HOST: localhost
+    restart: "no"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: 128M
+
+  app:
+    build:
+      target: test
+    ports: []                 # não expõe em teste
+    command: npm run test
+    environment:
+      NODE_ENV: test
+    restart: "no"
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 1024M
