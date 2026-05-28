@@ -1,7 +1,8 @@
 import { EmailVO, PasswordVO, UUIDVO } from "@repo/common";
 import { User as PrismaUser } from "@repo/database";
-import { UserDto } from "@/modules/user/application/dto/user.dto";
+
 import { UserEntity } from "@/modules/user/domain/entities/user.entity";
+import { UserDto } from "../../application/dto/user.dto";
 
 export class PrismaUserMapper {
   static toDomain(raw: PrismaUser): UserEntity {

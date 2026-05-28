@@ -10,8 +10,13 @@ import { z } from "zod";
  * - Evita dados inválidos chegando no use case.
  */
 export const RegisterSchema = z.object({
-  email: s.email,
-  password: s.password,
   firstName: s.name,
   lastName: s.name,
+  email: s.email,
+  password: s.password,
+});
+
+// Payload de criação: sem campos gerados pelo servidor
+export const RegisterProjectionSchema = RegisterSchema.omit({
+  password: true,
 });

@@ -1,7 +1,9 @@
+import { BcryptHasherService } from "@/modules/auth/domain/services/bcrypt-hasher.service";
 import { PrismaUserRepository } from "@/modules/user/infrastructure/database/prisma-user.repository";
-import { SessionTokenService } from "@/shared/providers/session-token.service";
-import { BaseBcryptHasher, Either, left, right, UnauthorizedError } from "@repo/common";
-import { SessionRepository } from "../../domain/repositoties/session.repository";
+import { Either, left, right, UnauthorizedError } from "@repo/common";
+import { BcryptComparerService } from "../../domain/services/bcrypt-comparer.service";
+import { BcryptGeneratorService } from "../../domain/services/bcrypt-generator.service";
+import { PrismaSessionRepository } from "../../infrastructure/database/prisma-session.repository";
 import { RedisSessionCacheRepository } from "../../infrastructure/database/redis-session-cache.repository";
 import { AuthProjectionDto, LoginDto } from "../dto/auth.dto";
 import { SessionFactory } from "../factories/session.factory";
@@ -10,19 +12,21 @@ export type CreateSessionUseCaseResponse = Either<UnauthorizedError, AuthProject
 
 export class CreateSessionUseCase {
   static inject = [
+    BcryptHasherService,
+    BcryptComparerService,
+    BcryptGeneratorService,
     PrismaUserRepository,
-    BaseBcryptHasher,
-    SessionRepository,
-    SessionTokenService,
+    PrismaSessionRepository,
     RedisSessionCacheRepository,
   ];
 
   constructor(
-    private readonly userRepository: PrismaUserRepository,
-    private readonly hasher: BaseBcryptHasher,
-    private readonly sessionRepository: SessionRepository,
-    private readonly sessionTokenService: SessionTokenService,
-    private readonly sessionCache: RedisSessionCacheRepository,
+    private readonly bcryptHasherService: BcryptHasherService,
+    private readonly bcryptComparerService: BcryptComparerService,
+    private readonly bcryptGeneratorService: BcryptGeneratorService,
+    private readonly prismaUserRepository: PrismaUserRepository,
+    private readonly prismaSessionRepository: PrismaSessionRepository,
+    private readonly redisSessionCacheRepository: RedisSessionCacheRepository,
   ) {}
 
   /**
@@ -43,7 +47,7 @@ export class CreateSessionUseCase {
       userAgent: string | null;
     },
   ): Promise<CreateSessionUseCaseResponse> {
-    const user = await this.userRepository.findActiveByEmail(input.email);
+    const user = await this.prismaUserRepository.findActiveByEmail(input.email);
 
     if (!user) {
       return left(
@@ -54,7 +58,7 @@ export class CreateSessionUseCase {
       );
     }
 
-    const passwordMatches = await this.hasher.compare(
+    const passwordMatches = await this.bcryptComparerService.compare(
       input.password,
       user.passwordHash.getValue(),
     );
@@ -68,8 +72,8 @@ export class CreateSessionUseCase {
       );
     }
 
-    const sessionToken = this.sessionTokenService.generate();
-    const sessionTokenHash = this.sessionTokenService.hash(sessionToken);
+    const sessionToken = await this.bcryptHasherService.generate();
+    const sessionTokenHash = await this.bcryptGeneratorService.hash(sessionToken);
 
     const ttlSeconds = Number(process.env.SESSION_TTL_SECONDS ?? 60 * 60 * 24 * 7);
     const expiresAt = new Date(Date.now() + ttlSeconds * 1000);
@@ -82,9 +86,9 @@ export class CreateSessionUseCase {
       userAgent: metadata?.userAgent,
     });
 
-    const session = await this.sessionRepository.create(sessionEntity);
+    const session = await this.prismaSessionRepository.create(sessionEntity);
 
-    await this.sessionCache.create(session);
+    await this.redisSessionCacheRepository.set(session);
 
     return right({
       user: {
@@ -94,6 +98,7 @@ export class CreateSessionUseCase {
       },
       accessToken: sessionToken,
       refreshToken: sessionToken,
+      expiresAt: session.expires,
     });
   }
 }

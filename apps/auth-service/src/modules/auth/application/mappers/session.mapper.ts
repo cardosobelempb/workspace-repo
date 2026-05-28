@@ -28,15 +28,11 @@ export class SessionMapper {
 
   private static toCoreFields(entity: SessionEntity): CreateSessionDto {
     return {
-      id: entity.id.getValue(),
       userId: entity.userId.getValue(),
       sessionToken: entity.sessionToken,
-      expiredAt: entity.expires,
+      expires: entity.expires,
       ipAddress: entity.ipAddress,
       userAgent: entity.userAgent,
-      createdAt: entity.createdAt,
-      updatedAt: entity.updatedAt,
-      deletedAt: entity.deletedAt,
     };
   }
 
@@ -78,7 +74,7 @@ export class SessionMapper {
       id: entity.id.getValue(),
       userId: entity.userId.getValue(),
       sessionToken: entity.sessionToken,
-      expiredAt: entity.expires,
+      expires: entity.expires,
     };
   }
 
@@ -92,7 +88,7 @@ export class SessionMapper {
       id: entity.id.getValue(),
       userId: entity.userId.getValue(),
       sessionToken: entity.sessionToken,
-      expiredAt: entity.expires,
+      expires: entity.expires,
     };
   }
 }

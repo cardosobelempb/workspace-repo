@@ -1,10 +1,10 @@
-import { BaseHashComparer } from "../../shared/cryptography/base-hash-comparer";
-import { BaseHashGenerator } from "../../shared/cryptography/base-hash-generator";
+import { BcryptHashComparer } from "../../shared/cryptography/bcrypt-hash-comparer";
+import { BcryptHashGenerator } from "../../shared/cryptography/bcrypt-hash-generator";
 
 export class PasswordUtils {
   constructor(
-    private readonly hashComparer: BaseHashComparer,
-    private readonly hashGenerator: BaseHashGenerator,
+    private readonly hashComparer: BcryptHashComparer,
+    private readonly hashGenerator: BcryptHashGenerator,
   ) {}
 
   // ---------------------------------------------------------------------------

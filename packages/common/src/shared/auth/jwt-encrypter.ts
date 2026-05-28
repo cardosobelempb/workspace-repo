@@ -1,123 +1,82 @@
-// shared/auth/jwt-encrypter.ts
-
-import { BadRequestError } from "@/common/domain/errors/controllers/bad-request.error";
-import { env } from "@/common/infrastructure/env";
-import { JsonWebTokenError, sign, TokenExpiredError, verify } from "jsonwebtoken";
-import { BaseEncrypter } from "./base-encrypter";
-import { JwtPayload } from "./types/jwt.types";
-import {
-  AccessTokenPayload,
-  RefreshTokenPayload,
-  SessionTokenPayload,
-} from "./types/token.types";
+/**
+ * Estrutura padrão dos tokens JWT gerados pela aplicação.
+ */
+export interface Tokens {
+  accessToken: string;
+  refreshToken: string;
+}
 
 /**
- * Implementação JWT completa:
- * - encrypt (sign)
- * - decrypt (verify)
+ * Contrato abstrato para provedores de autenticação via JWT.
+ *
+ * Define métodos essenciais para criação, verificação e decodificação
+ * de tokens de acesso (accessToken) e atualização (refreshToken).
+ *
+ * @template T - Tipo do payload contido no token (ex: { userId: string }).
  */
-export class JwtEncrypter implements BaseEncrypter<JwtPayload> {
+export abstract class JwtEncrypter<T extends object> {
   /**
-   * Gera um token JWT
+   * Gera um accessToken a partir do payload.
+   * @param payload - Informações a serem assinadas no token.
+   * @returns accessToken como string.
    */
-  async encryptAccessToken(payload: AccessTokenPayload): Promise<string> {
-    this.validateConfig();
-
-    return sign(payload, env.JWT_ACCESS_TOKEN_SECRET, {
-      expiresIn: `${env.JWT_ACCESS_TOKEN_EXPIRES_IN}m`, // Expires in 15 minutes
-    });
-  }
-
-  async encryptSessionToken(payload: SessionTokenPayload): Promise<string> {
-    this.validateConfig();
-
-    return sign(payload, env.JWT_ACCESS_TOKEN_SECRET, {
-      expiresIn: `${env.JWT_ACCESS_TOKEN_EXPIRES_IN}m`, // Expires in 15 minutes
-    });
-  }
-
-  async encryptRefreshToken(payload: RefreshTokenPayload): Promise<string> {
-    this.validateConfig();
-
-    return sign(payload, env.JWT_REFRESH_SECRET, {
-      expiresIn: `${env.JWT_REFRESH_TOKEN_EXPIRES_IN}d`, // Expires in 15 minutes
-    });
-  }
+  abstract createAccessToken(payload: T): string;
+  abstract createAsyncAccessToken(payload: T): Promise<string>;
 
   /**
-   * Valida e decodifica o token
+   * Gera um refreshToken a partir do payload.
+   * @param payload - Informações a serem assinadas no token.
+   * @returns refreshToken como string.
    */
-  async decrypt(token: string): Promise<JwtPayload> {
-    this.validateConfig();
-
-    try {
-      const decoded = verify(token, env.JWT_ACCESS_TOKEN_SECRET);
-
-      if (typeof decoded === "string") {
-        throw new BadRequestError({
-          message: "Token inválido",
-          fieldName: "token",
-        });
-      }
-
-      return decoded as JwtPayload;
-    } catch (error) {
-      if (error instanceof TokenExpiredError) {
-        throw new BadRequestError({
-          message: "Token expirado",
-          fieldName: "token",
-        });
-      }
-
-      if (error instanceof JsonWebTokenError) {
-        throw new BadRequestError({
-          message: "Token inválido",
-          fieldName: "token",
-        });
-      }
-
-      throw error;
-    }
-  }
+  abstract createRefreshToken(payload: T): string;
+  abstract createAsyncRefreshToken(payload: T): Promise<string>;
 
   /**
-   * Valida configuração
+   * Gera accessToken e refreshToken simultaneamente.
+   * @param payload - Informações a serem assinadas nos tokens.
+   * @returns Objeto com accessToken e refreshToken.
    */
-  verifyAccessToken(token: string) {
-    const accessTolen = verify(token, env.JWT_ACCESS_TOKEN_SECRET);
-    if (!accessTolen) {
-      throw new BadRequestError({
-        message: "Token inválido",
-        fieldName: "token",
-      });
-    }
-    return accessTolen;
-  }
+  abstract createTokens(payload: T): Tokens;
 
-  verifyRefreshToken(token: string) {
-    const refreshToken = verify(token, env.JWT_REFRESH_SECRET);
-    if (!refreshToken) {
-      throw new BadRequestError({
-        message: "Token inválido",
-        fieldName: "token",
-      });
-    }
-    return refreshToken;
-  }
+  /**
+   * Valida um accessToken e retorna o payload se for válido.
+   * @param token - Token JWT recebido do cliente.
+   * @returns Payload extraído ou null se inválido.
+   */
+  abstract verifyAccessToken(token: string): T | null;
 
-  private validateConfig(): void {
-    if (!env.ACCESS_TOKEN_SECRET) {
-      throw new BadRequestError({
-        message: "JWT secretKey não pode ser vazio",
-        fieldName: "secretKey",
-      });
-    }
+  /**
+   * Valida um refreshToken e retorna o payload se for válido.
+   * @param token - Token JWT de atualização.
+   * @returns Payload extraído ou null se inválido.
+   */
+  abstract verifyRefreshToken(token: string): T | null;
 
-    if (!env.ACCESS_TOKEN_EXPIRES_IN) {
-      throw new BadRequestError({
-        message: "JWT expiresIn não pode ser vazio",
-        fieldName: "expiresIn",
-      });
-    }
-  }
+  /**
+   * Verifica se o accessToken é válido (sem retornar o payload).
+   * @param token - Token JWT de acesso.
+   * @returns True se válido, false se inválido.
+   */
+  abstract isAccessToken(token: string): boolean;
+
+  /**
+   * Verifica se o refreshToken é válido (sem retornar o payload).
+   * @param token - Token JWT de atualização.
+   * @returns True se válido, false se inválido.
+   */
+  abstract isRefreshToken(token: string): boolean;
+
+  /**
+   * Decodifica o accessToken e extrai o payload, mesmo que o token esteja expirado.
+   * @param token - Token JWT de acesso.
+   * @returns Payload extraído ou null se inválido.
+   */
+  abstract decodeAccessToken(token: string): T | null;
+
+  /**
+   * Decodifica o refreshToken e extrai o payload, mesmo que o token esteja expirado.
+   * @param token - Token JWT de atualização.
+   * @returns Payload extraído ou null se inválido.
+   */
+  abstract decodeRefreshToken(token: string): T | null;
 }

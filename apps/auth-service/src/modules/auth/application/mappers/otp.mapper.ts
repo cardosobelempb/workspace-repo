@@ -24,6 +24,7 @@ export class OtpMapper {
 
   private static toCoreFields(entity: OtpEntity): CreateOtpDto {
     return {
+      userId: entity.userId.getValue(),
       phone: entity.phone.getValue(),
       codeHash: entity.codeHash,
       attempts: entity.attempts,
@@ -68,9 +69,12 @@ export class OtpMapper {
   static toProjection(entity: OtpEntity): OtpProjectionDto {
     return {
       id: entity.id.getValue(),
+      userId: entity.userId.getValue(),
       phone: entity.phone.getValue(),
       expiredAt: entity.expiredAt,
+      attempts: entity.attempts,
       usedAt: entity.usedAt,
+      createdAt: entity.createdAt,
     };
   }
 
@@ -82,9 +86,12 @@ export class OtpMapper {
   static toHttp(entity: OtpEntity): OtpProjectionDto {
     return {
       id: entity.id.getValue(),
+      userId: entity.userId.getValue(),
       phone: entity.phone.getValue(),
       expiredAt: entity.expiredAt,
       usedAt: entity.usedAt,
+      attempts: entity.attempts,
+      createdAt: entity.createdAt,
     };
   }
 }

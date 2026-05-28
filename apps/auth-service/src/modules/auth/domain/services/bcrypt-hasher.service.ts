@@ -1,41 +1,37 @@
-import crypto from "node:crypto";
+import { BcryptHasher } from "@repo/common";
+import bcrypt from "bcryptjs";
 
-export class SessionTokenService {
-  // fix 1: HMAC precisa de uma chave secreta do ambiente
-  constructor(private readonly secret: string) {
-    if (!secret || secret.length < 32) {
-      throw new Error("SessionTokenService: secret must be at least 32 characters");
-    }
-  }
-
+export class BcryptHasherService implements BcryptHasher {
+  private HASH_SALT_LENGTH = 8;
   /**
    * Gera token opaco de sessão.
    * 64 bytes = 512 bits de entropia — imune a força bruta.
    */
-  generate(): string {
-    return crypto.randomBytes(64).toString("base64url");
+  async generate(): Promise<string> {
+    return bcrypt.genSaltSync(64);
   }
 
   /**
    * Gera HMAC-SHA256 do token para persistência/cache.
    * HMAC + secret invalida rainbow tables mesmo se o DB vazar.
    */
-  hash(token: string): string {
-    return crypto.createHmac("sha256", this.secret).update(token).digest("hex");
+  async hash(plain: string): Promise<string> {
+    return bcrypt.hashSync(plain, this.HASH_SALT_LENGTH);
   }
 
   /**
    * Compara hash recebido com hash armazenado em tempo constante.
    * fix 2: `===` vaza timing — timingSafeEqual não.
    */
-  verify(token: string, storedHash: string): boolean {
-    const incoming = Buffer.from(this.hash(token), "hex");
+  async verify(plain: string, storedHash: string): Promise<boolean> {
+    const hashedToken = await this.hash(plain);
+    const incoming = Buffer.from(hashedToken, "hex");
     const stored = Buffer.from(storedHash, "hex");
 
     // buffers precisam ter o mesmo tamanho para timingSafeEqual não lançar
     if (incoming.length !== stored.length) return false;
 
-    return crypto.timingSafeEqual(incoming, stored);
+    return bcrypt.compareSync(plain, storedHash);
   }
 }
 

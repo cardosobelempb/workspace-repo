@@ -18,8 +18,11 @@ import {
 } from "../../infrastructure/http/schemas/auth.schema";
 import { LoginSchema } from "../../infrastructure/http/schemas/login.schema";
 import { LogoutSchema } from "../../infrastructure/http/schemas/logout.schema";
-import { RefreshTokenSchema } from "../../infrastructure/http/schemas/refresh-token.schema ";
-import { RegisterSchema } from "../../infrastructure/http/schemas/register.schema";
+import {
+  RegisterProjectionSchema,
+  RegisterSchema,
+} from "../../infrastructure/http/schemas/register.schema";
+import { TokenSchema } from "../../infrastructure/http/schemas/token.schema";
 
 export type AuthDto = z.infer<typeof AuthSchema>;
 export type CreateAuthDto = z.infer<typeof CreateAuthSchema>;
@@ -32,7 +35,8 @@ export type AuthUpdateResponseDto = z.infer<typeof AuthUpdateResponseSchema>;
 export type AuthActivateResponseDto = z.infer<typeof AuthActivateResponseSchema>;
 export type AuthDeactivateResponseDto = z.infer<typeof AuthDeactivateResponseSchema>;
 export type RegisterDto = z.infer<typeof RegisterSchema>;
+export type RegisterProjectionDto = z.infer<typeof RegisterProjectionSchema>;
 
 export type LoginDto = z.infer<typeof LoginSchema>;
-export type RefreshTokenDto = z.infer<typeof RefreshTokenSchema>;
+export type RefreshTokenDto = z.infer<typeof TokenSchema>;
 export type LogoutDto = z.infer<typeof LogoutSchema>;

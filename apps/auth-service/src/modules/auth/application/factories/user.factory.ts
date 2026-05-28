@@ -1,6 +1,6 @@
 // ─── Factory ─────────────────────────────────────────────────────────────────
 
-import { CreateUserDto } from "@/modules/user/application/dto/use.dto";
+import { CreateUserDto, UserRegisterDto } from "@/modules/user/application/dto/user.dto";
 import { UserEntity } from "@/modules/user/domain/entities/user.entity";
 import { EmailVO, PasswordVO } from "@repo/common";
 
@@ -16,11 +16,26 @@ export class UserFactory {
   /**
    * Cria a entidade de usuário com e-mail e senha já hasheada.
    */
-  static build({ email, passwordHash, emailVerified }: CreateUserDto): UserEntity {
+  static build({ email, passwordHash }: CreateUserDto): UserEntity {
     return UserEntity.create({
       email: EmailVO.create(email),
       passwordHash: PasswordVO.create(passwordHash),
-      emailVerified: emailVerified,
+    });
+  }
+
+  static buildUserLogin({ email, passwordHash }: CreateUserDto): UserEntity {
+    return UserEntity.create({
+      email: EmailVO.create(email),
+      passwordHash: PasswordVO.create(passwordHash),
+    });
+  }
+
+  static buildUserRegister(input: UserRegisterDto): UserEntity {
+    return UserEntity.create({
+      firstName: input.firstName,
+      lastName: input.lastName,
+      email: EmailVO.create(input.email),
+      passwordHash: PasswordVO.create(input.passwordHash),
     });
   }
 

@@ -53,6 +53,8 @@ export enum CodeError {
   USER_INVALID_DATA = "user.invalid-data.error",
   INVALID_CREDENTIALS = "auth.invalid-credentials.error",
   INVALID_TOKEN = "auth.invalid-token.error",
+  JWT_ERROR = "auth.jwt-error.error",
+  TOKEN_EXPIRED = "auth.token-expired.error",
   INVALID_AUTHENTICATION = "auth.invalid-authentication.error",
   EMAIL_NOT_FOUND = "auth.email-not-found.error",
 

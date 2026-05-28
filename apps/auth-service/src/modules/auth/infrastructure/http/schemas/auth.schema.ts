@@ -37,6 +37,7 @@ export const AuthSchema = z
     user: UserProjectionSchema,
     accessToken: s.string,
     refreshToken: s.string,
+    expiresAt: s.date,
   })
   .strict();
 
@@ -56,6 +57,7 @@ export const AuthResponseSchema = AuthSchema.omit({
   user: true,
   accessToken: true,
   refreshToken: true,
+  expiresAt: true,
 });
 
 // Resumo para listagem: versão compacta — evita over-fetching
@@ -63,6 +65,7 @@ export const AuthProjectionSchema = AuthSchema.pick({
   user: true,
   accessToken: true,
   refreshToken: true,
+  expiresAt: true,
 });
 
 // ─── Response wrappers via factory ───────────────────────────────────────────

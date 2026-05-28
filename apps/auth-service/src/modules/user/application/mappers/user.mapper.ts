@@ -10,7 +10,7 @@
 // ============================================================
 
 import { UserEntity } from "@/modules/user/domain/entities/user.entity";
-import { CreateUserDto, UpdateUserDto, UserProjectionDto } from "../dto/use.dto";
+import { CreateUserDto, UpdateUserDto, UserProjectionDto } from "../dto/user.dto";
 
 export class UserMapper {
   // ─── Helper privado ───────────────────────────────────────────────────
@@ -24,8 +24,9 @@ export class UserMapper {
 
   private static toCoreFields(entity: UserEntity): CreateUserDto {
     return {
-      email: entity.email.getValue().value,
-      passwordHash: entity.passwordHash?.getValue(),
+      email: entity.email.toString(),
+      passwordHash: entity.passwordHash.toString(),
+      emailVerified: entity.emailVerified,
     };
   }
 
@@ -64,9 +65,10 @@ export class UserMapper {
 
   static toProjection(entity: UserEntity): UserProjectionDto {
     return {
-      id: entity.id.getValue(),
-      email: entity.email.getValue().value,
+      id: entity.id.toString(),
+      email: entity.email.toString(),
       emailVerified: entity.emailVerified,
+      createdAt: entity.createdAt,
     };
   }
 
@@ -77,9 +79,10 @@ export class UserMapper {
 
   static toHttp(entity: UserEntity): UserProjectionDto {
     return {
-      id: entity.id.getValue(),
-      email: entity.email.getValue().value,
+      id: entity.id.toString(),
+      email: entity.email.toString(),
       emailVerified: entity.emailVerified,
+      createdAt: entity.createdAt,
     };
   }
 }

@@ -21,5 +21,5 @@ export const RedisClient =
   });
 
 if (process.env.NODE_ENV !== "production") {
-  global.redis = redis;
+  global.redis = RedisClient;
 }

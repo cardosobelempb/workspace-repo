@@ -71,6 +71,7 @@ export const UserProjectionSchema = UserSchema.pick({
   id: true,
   email: true,
   emailVerified: true,
+  createdAt: true,
 });
 
 // ─── Response wrappers via factory ───────────────────────────────────────────
@@ -78,6 +79,22 @@ export const UserProjectionSchema = UserSchema.pick({
 // Cada wrapper envelopa UserResponseSchema (entidade completa),
 // não o schema de input — a resposta de create/update devolve a entidade
 // persistida, não o payload que o cliente enviou.
+
+export const UserRegisterSchema = UserSchema.omit({
+  id: true,
+  emailVerified: true,
+  createdAt: true,
+  updatedAt: true,
+  deletedAt: true,
+});
+
+// Payload de criação: sem campos gerados pelo servidor
+export const UserRegisterProjectionSchema = UserSchema.pick({
+  id: true,
+  email: true,
+  createdAt: true,
+  emailVerified: true,
+});
 
 export const UserCreateResponseSchema = createResponseSchema(UserResponseSchema);
 export const UserFindByIdResponseSchema = findResponseSchema(UserResponseSchema);

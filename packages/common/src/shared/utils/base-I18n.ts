@@ -4,7 +4,7 @@ export abstract class BaseI18n {
    * @param key - A chave da tradução (ex: "errors.name.empty")
    * @param args - Argumentos para interpolação (opcional)
    */
-  abstract t(key: string, args?: Record<string, any>): string;
+  abstract t(key: string, args?: Record<string, unknown>): string;
 
   /**
    * Altera o idioma atual.

@@ -1,6 +1,7 @@
 import type { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
+import { authRoutes } from "./modules/auth/infrastructure/http/routers/auth.routes";
 
 export async function registerRoutes(app: FastifyInstance): Promise<void> {
   // Home / Hello World
@@ -16,6 +17,7 @@ export async function registerRoutes(app: FastifyInstance): Promise<void> {
     handler: () => ({ message: "Hello World" }),
   });
 
+  await authRoutes(app);
   // await userRoutes(app);
 
   // API routes

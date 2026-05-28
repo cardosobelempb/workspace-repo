@@ -34,6 +34,7 @@ export type OtpParams = z.infer<typeof OtpParamsSchema>;
 export const OtpSchema = z
   .object({
     id: UuidSchema,
+    userId: UuidSchema,
     phone: s.phone,
     codeHash: s.string,
     expiredAt: s.date,
@@ -63,20 +64,18 @@ export const UpdateOtpSchema = OtpSchema.partial();
 
 // Resposta completa: expõe tudo exceto campos de soft-delete
 export const OtpResponseSchema = OtpSchema.omit({
-  id: true,
-  codeHash: true,
-  attempts: true,
-  expiredAt: true,
-  usedAt: true,
-  createdAt: true,
+  deletedAt: true,
 });
 
 // Resumo para listagem: versão compacta — evita over-fetching
 export const OtpProjectionSchema = OtpSchema.pick({
   id: true,
+  userId: true,
   phone: true,
   expiredAt: true,
+  attempts: true,
   usedAt: true,
+  createdAt: true,
 });
 
 // ─── Response wrappers via factory ───────────────────────────────────────────

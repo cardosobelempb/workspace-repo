@@ -1,11 +1,15 @@
 import { TokenEntity } from "@/modules/auth/domain/entities/token.entity";
-import { BaseRepository, TokenType } from "@repo/common";
+import { TokenType } from "@repo/common";
+import { PrismaDatabase, PrismaRepository } from "@repo/database";
 
 /**
  * Repositório abstrato de Token.
  * Gerencia tokens internos (refresh, reset password, API keys, etc).
  */
-export abstract class TokenRepository extends BaseRepository<TokenEntity> {
+export abstract class TokenRepository extends PrismaRepository<TokenEntity> {
+  constructor(prisma: PrismaDatabase) {
+    super(prisma);
+  }
   // ====================== BUSCAS ======================
   abstract findValidByUserAndType(
     userId: string,
@@ -24,4 +28,7 @@ export abstract class TokenRepository extends BaseRepository<TokenEntity> {
   abstract revokeById(tokenId: string): Promise<void>;
   abstract revokeAllByUserId(userId: string, type?: TokenType): Promise<void>;
   abstract deleteExpired(): Promise<number>;
+  abstract createRefreshToken(entity: TokenEntity): Promise<void>;
+  abstract findValidRefreshToken(valueHash: string): Promise<TokenEntity | null>;
+  abstract revokeRefreshToken(id: string): Promise<void>;
 }

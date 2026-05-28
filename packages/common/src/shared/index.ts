@@ -1,3 +1,4 @@
+export * from "./auth";
 export * from "./container";
 export * from "./cryptography";
 export * from "./enums";
@@ -6,4 +7,3 @@ export * from "./http";
 export * from "./lib";
 export * from "./mappers";
 export * from "./module";
-export * from "./utils";
