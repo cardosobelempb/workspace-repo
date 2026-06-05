@@ -6,7 +6,7 @@ import { serializerCompiler, validatorCompiler } from "fastify-type-provider-zod
 import { BadRequestError, LoggerFactory } from "@repo/common";
 import { getPrismaClient, PrismaLoggerAdapter } from "@repo/database";
 
-import { env } from "./config/env.js";
+import { envBackend } from "./config/env-backend.js";
 import { errorHandler } from "./middlewares/error-handler";
 import { registerRoutes } from "./routes";
 import { authPlugin } from "./shared/plugins/auth.plugin";
@@ -90,11 +90,11 @@ export async function buildApp(options: BuildAppOptions = {}): Promise<FastifyIn
   // ========================================================
 
   await app.register(fastifyCors, {
-    origin: options.cors?.origin ?? env.CORS_ORIGINS,
+    origin: options.cors?.origin ?? envBackend.CORS_ORIGINS,
     credentials: options.cors?.credentials ?? true,
   });
 
-  const cookieSecret = env.COOKIE_SECRET;
+  const cookieSecret = envBackend.COOKIE_SECRET;
 
   if (!cookieSecret) {
     logger.error("Missing required environment variable: COOKIE_SECRET", undefined, {
@@ -158,8 +158,8 @@ export async function buildApp(options: BuildAppOptions = {}): Promise<FastifyIn
   app.addHook("onReady", async () => {
     logger.info("Application initialized", {
       event: "APP_READY",
-      port: env.PORT,
-      env: env.NODE_ENV,
+      port: envBackend.PORT,
+      env: envBackend.NODE_ENV,
       routes: "initialized",
     });
   });

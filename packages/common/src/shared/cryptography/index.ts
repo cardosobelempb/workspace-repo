@@ -3,3 +3,4 @@ export * from "./bcrypt-hash-comparer";
 export * from "./bcrypt-hash-generator";
 export * from "./bcrypt-hash-sync";
 export * from "./bcrypt-hasher";
+export * from "./constant";

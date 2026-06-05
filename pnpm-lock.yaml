@@ -266,7 +266,7 @@ importers:
         specifier: ^8.59.3
         version: 8.59.3(eslint@9.39.4(jiti@2.7.0))(typescript@6.0.3)
 
-  apps/auth-service:
+  apps/auth:
     dependencies:
       '@fastify/cookie':
         specifier: ^11.0.2
@@ -350,6 +350,9 @@ importers:
       '@fastify/swagger':
         specifier: ^9.7.0
         version: 9.7.0
+      '@repo/cache':
+        specifier: workspace:*
+        version: link:../../packages/cache
       '@repo/common':
         specifier: workspace:*
         version: link:../../packages/common

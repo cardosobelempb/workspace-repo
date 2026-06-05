@@ -1,14 +1,14 @@
 import { LoggerFactory } from "@repo/logger";
 import { buildApp } from "./app.js";
-import { env } from "./config/env.js";
+import { envBackend } from "./config/env-backend.js";
 
-const PORT = env.PORT;
-const HOST = env.HOST;
-const NODE_ENV = env.NODE_ENV;
+const PORT = envBackend.PORT;
+const HOST = envBackend.HOST;
+const NODE_ENV = envBackend.NODE_ENV;
 
 const isProduction = NODE_ENV === "production";
 
-const PUBLIC_HOST = isProduction ? HOST : (env.PUBLIC_HOST ?? "localhost");
+const PUBLIC_HOST = isProduction ? HOST : (envBackend.PUBLIC_HOST ?? "localhost");
 
 const baseUrl = `http://${PUBLIC_HOST}:${PORT}`;
 
@@ -45,7 +45,7 @@ function logServerError(error: unknown): void {
 export async function startServer(): Promise<void> {
   const app = await buildApp({
     cors: {
-      origin: isProduction ? env.CORS_ORIGINS : ["http://localhost:3000"],
+      origin: isProduction ? envBackend.CORS_ORIGINS : ["http://localhost:3000"],
       credentials: true,
     },
 

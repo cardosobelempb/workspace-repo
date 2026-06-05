@@ -6,7 +6,7 @@ import type { FastifyInstance } from "fastify";
 import fp from "fastify-plugin";
 import { jsonSchemaTransform } from "fastify-type-provider-zod";
 
-import { env } from "@/config/env.js";
+import { envBackend } from "@/config/env-backend.js";
 
 export type BuildAppOptions = {
   swagger?: {
@@ -24,9 +24,9 @@ export async function swaggerPlugin(
   await app.register(swagger, {
     openapi: {
       info: {
-        title: options.swagger?.title ?? env.TITLE,
-        version: options.swagger?.version ?? env.VERSION,
-        description: options.swagger?.description ?? env.DESCRIPTION,
+        title: options.swagger?.title ?? envBackend.TITLE,
+        version: options.swagger?.version ?? envBackend.VERSION,
+        description: options.swagger?.description ?? envBackend.DESCRIPTION,
       },
     },
     transform: jsonSchemaTransform,

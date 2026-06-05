@@ -1,13 +1,13 @@
 // src/shared/auth/auth.plugin.ts
 
+import { envBackend } from "@/config/env-backend.js";
 import fastifyJwt from "@fastify/jwt";
 import type { FastifyInstance } from "fastify";
 import fp from "fastify-plugin";
-import { env } from "@/config/env.js";
 
 export async function authPlugin(app: FastifyInstance) {
   await app.register(fastifyJwt, {
-    secret: env.JWT_ACCESS_TOKEN_SECRET,
+    secret: envBackend.JWT_ACCESS_TOKEN_SECRET,
   });
 }
 

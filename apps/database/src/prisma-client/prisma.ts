@@ -7,7 +7,7 @@ import { PrismaPg } from "@prisma/adapter-pg";
 import { Prisma, PrismaClient } from "@prisma/client";
 
 import { BaseLogger } from "@repo/common";
-import { env } from "../config/env.js";
+import { envPrisma } from "../config/env-prima.js";
 import { PrismaLoggerAdapter } from "../observability/prisma.logger";
 
 // ============================================================
@@ -40,7 +40,7 @@ type PrismaFactoryOptions = {
 // ============================================================
 
 function buildPrismaClient(options: PrismaFactoryOptions = {}): PrismaDatabase {
-  const connectionString = env.DATABASE_URL;
+  const connectionString = envPrisma.DATABASE_URL;
 
   const adapter = new PrismaPg({
     connectionString,
@@ -91,7 +91,7 @@ function buildPrismaClient(options: PrismaFactoryOptions = {}): PrismaDatabase {
 // ============================================================
 
 export function getPrismaClient(options: PrismaFactoryOptions = {}): PrismaDatabase {
-  if (env.NODE_ENV !== "production") {
+  if (envPrisma.NODE_ENV !== "production") {
     if (!globalThis.__prisma) {
       globalThis.__prisma = buildPrismaClient(options);
     }

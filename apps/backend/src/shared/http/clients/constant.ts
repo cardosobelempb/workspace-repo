@@ -1,0 +1,3 @@
+export const HTTP_CLIENT_TOKENS = {
+  HTTP_CLIENT: "HTTP_CLIENT",
+};

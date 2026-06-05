@@ -1,6 +1,7 @@
 import type { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
+import { identityRoutes } from "./modules/identity/infrastructure/routers/indentity.routes";
 
 export async function registerRoutes(app: FastifyInstance): Promise<void> {
   // Home / Hello World
@@ -17,6 +18,7 @@ export async function registerRoutes(app: FastifyInstance): Promise<void> {
   });
 
   // await userRoutes(app);
+  await identityRoutes(app);
 
   // API routes
   // await app.register(categoryRoutes, { prefix: "/api/v1/categories" });

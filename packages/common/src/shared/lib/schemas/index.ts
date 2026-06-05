@@ -6,6 +6,7 @@ export * from "./generic.schema";
 export * from "./helpers.schema";
 export * from "./ip-address.schema";
 export * from "./mac-address.schema";
+export * from "./metadata.schema";
 export * from "./number.schema";
 export * from "./page-pageable.schema";
 export * from "./page-query.schema";

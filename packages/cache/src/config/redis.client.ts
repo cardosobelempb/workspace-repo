@@ -20,6 +20,10 @@ export const RedisClient =
     enableReadyCheck: true,
   });
 
+RedisClient.on("error", (error) => {
+  console.error("[RedisClient] Connection error:", error.message);
+});
+
 if (process.env.NODE_ENV !== "production") {
   global.redis = RedisClient;
 }
