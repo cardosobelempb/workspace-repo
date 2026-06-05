@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+import { loadProjectEnv } from "./load-project-env";
+
 export type EnvIssue = {
   field: string;
   message: string;
@@ -16,6 +18,8 @@ export function createEnv<TSchema extends z.ZodTypeAny>(
   schema: TSchema,
   options: CreateEnvOptions = {},
 ): z.infer<TSchema> {
+  loadProjectEnv();
+
   const {
     source = process.env,
     context = "process.env",

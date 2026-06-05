@@ -1,0 +1,260 @@
+# Docker Compose local para Windows 10 + Docker Desktop.
+# Use via docker/dev-windows.ps1 a partir da raiz do projeto.
+
+services:
+  project:
+    image: node:22-alpine
+    container_name: surb_project_dev
+    restart: unless-stopped
+    working_dir: /repo
+    env_file:
+      - ../.env.development
+    environment:
+      NODE_ENV: development
+      PNPM_HOME: /pnpm
+      PATH: /pnpm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      DATABASE_URL: postgresql://${POSTGRES_USER:-app_user}:${POSTGRES_PASSWORD:-dev_password_123}@postgres:5432/${POSTGRES_DB:-app_db}
+      REDIS_URL: redis://:${REDIS_PASSWORD:-dev_redis_password}@redis:6379
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-dev_redis_password}
+    command:
+      - sh
+      - -lc
+      - corepack enable && corepack prepare pnpm@11.1.2 --activate && rm -f /tmp/surb-deps-ready && pnpm install --frozen-lockfile --prefer-offline && pnpm --filter @repo/common build && pnpm --filter @repo/env-config build && pnpm --filter @repo/logger build && pnpm --filter @repo/database prisma:generate && pnpm --filter @repo/database build && pnpm --filter @repo/cache build && touch /tmp/surb-deps-ready && tail -f /dev/null
+    healthcheck:
+      test: ["CMD-SHELL", "test -f /tmp/surb-deps-ready"]
+      interval: 5s
+      timeout: 3s
+      retries: 60
+      start_period: 20s
+    volumes:
+      - ..:/repo
+      - surb_project_pnpm_store:/pnpm
+      - surb_project_root_node_modules:/repo/node_modules
+      - surb_project_frontend_node_modules:/repo/apps/frontend/node_modules
+      - surb_project_backend_node_modules:/repo/apps/backend/node_modules
+      - surb_project_auth_node_modules:/repo/apps/auth-service/node_modules
+    networks:
+      - surb_dev
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: surb_postgres_dev
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-app_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-dev_password_123}
+      POSTGRES_DB: ${POSTGRES_DB:-app_db}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - surb_postgres_dev_data:/var/lib/postgresql/data
+    networks:
+      - surb_dev
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  redis:
+    image: redis:7-alpine
+    container_name: surb_redis_dev
+    restart: unless-stopped
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-dev_redis_password}
+    command:
+      - redis-server
+      - --appendonly
+      - "yes"
+      - --requirepass
+      - "${REDIS_PASSWORD:-dev_redis_password}"
+    ports:
+      - "${REDIS_PORT_PUBLIC:-6379}:6379"
+    volumes:
+      - surb_redis_dev_data:/data
+    networks:
+      - surb_dev
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli -a \"$${REDIS_PASSWORD}\" ping | grep -q PONG"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  frontend:
+    image: node:22-alpine
+    container_name: surb_frontend_dev
+    restart: unless-stopped
+    working_dir: /repo
+    env_file:
+      - ../.env.development
+    environment:
+      NODE_ENV: development
+      PNPM_HOME: /pnpm
+      PATH: /pnpm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      PORT: 3000
+      HOSTNAME: 0.0.0.0
+      NEXT_TELEMETRY_DISABLED: "1"
+      NEXT_PUBLIC_APP_URL: http://localhost:3000
+      NEXT_PUBLIC_API_URL: http://localhost:4000
+      NEXT_PUBLIC_AUTH_URL: http://localhost:4001
+      CORS_ORIGINS: http://localhost:3000,http://127.0.0.1:3000
+      DATABASE_URL: postgresql://${POSTGRES_USER:-app_user}:${POSTGRES_PASSWORD:-dev_password_123}@postgres:5432/${POSTGRES_DB:-app_db}
+      JWT_ACCESS_TOKEN_SECRET: ${JWT_ACCESS_TOKEN_SECRET:-dev_access_jwt_secret}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-dev_refresh_jwt_secret}
+      ACCESS_TOKEN_SECRET: ${ACCESS_TOKEN_SECRET:-dev_access_token_secret}
+      REFRESH_TOKEN_SECRET: ${REFRESH_TOKEN_SECRET:-dev_refresh_token_secret}
+      COOKIE_SECRET: ${COOKIE_SECRET:-dev_cookie_secret}
+    command:
+      - sh
+      - -lc
+      - corepack enable && corepack prepare pnpm@11.1.2 --activate && while [ ! -d /repo/node_modules/.pnpm ]; do echo "waiting project dependencies"; sleep 2; done && pnpm --filter @repo/frontend dev
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+    volumes:
+      - ..:/repo
+      - surb_project_pnpm_store:/pnpm
+      - surb_project_root_node_modules:/repo/node_modules
+      - surb_project_frontend_node_modules:/repo/apps/frontend/node_modules
+      - surb_frontend_next_cache:/repo/apps/frontend/.next
+    networks:
+      - surb_dev
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      project:
+        condition: service_healthy
+
+  backend:
+    image: node:22-alpine
+    container_name: surb_backend_dev
+    restart: unless-stopped
+    working_dir: /repo
+    env_file:
+      - ../.env.development
+    environment:
+      NODE_ENV: development
+      PNPM_HOME: /pnpm
+      PATH: /pnpm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      PORT: 3000
+      HOST: 0.0.0.0
+      PUBLIC_HOST: localhost
+      LOG_LEVEL: debug
+      CORS_ORIGINS: http://localhost:3000,http://127.0.0.1:3000
+      DATABASE_URL: postgresql://${POSTGRES_USER:-app_user}:${POSTGRES_PASSWORD:-dev_password_123}@postgres:5432/${POSTGRES_DB:-app_db}
+      REDIS_URL: redis://:${REDIS_PASSWORD:-dev_redis_password}@redis:6379
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-dev_redis_password}
+      AUTH_SERVICE_URL: http://auth-service:3000
+      JWT_ACCESS_TOKEN_SECRET: ${JWT_ACCESS_TOKEN_SECRET:-dev_access_jwt_secret}
+      JWT_ACCESS_TOKEN_EXPIRES_IN: ${JWT_ACCESS_TOKEN_EXPIRES_IN:-900}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-dev_refresh_jwt_secret}
+      JWT_REFRESH_TOKEN_SECRET: ${JWT_REFRESH_TOKEN_SECRET:-dev_refresh_jwt_secret}
+      JWT_REFRESH_TOKEN_EXPIRES_IN: ${JWT_REFRESH_TOKEN_EXPIRES_IN:-604800}
+      ACCESS_TOKEN_SECRET: ${ACCESS_TOKEN_SECRET:-dev_access_token_secret}
+      ACCESS_TOKEN_EXPIRES_IN: ${ACCESS_TOKEN_EXPIRES_IN:-900}
+      REFRESH_TOKEN_SECRET: ${REFRESH_TOKEN_SECRET:-dev_refresh_token_secret}
+      REFRESH_TOKEN_EXPIRES_IN: ${REFRESH_TOKEN_EXPIRES_IN:-604800}
+      COOKIE_SECRET: ${COOKIE_SECRET:-dev_cookie_secret}
+    command:
+      - sh
+      - -lc
+      - corepack enable && corepack prepare pnpm@11.1.2 --activate && while [ ! -d /repo/node_modules/.pnpm ]; do echo "waiting project dependencies"; sleep 2; done && pnpm --filter @repo/backend dev
+    ports:
+      - "${BACKEND_PORT:-4000}:3000"
+      - "${BACKEND_DEBUG_PORT:-9229}:9229"
+    volumes:
+      - ..:/repo
+      - surb_project_pnpm_store:/pnpm
+      - surb_project_root_node_modules:/repo/node_modules
+      - surb_project_backend_node_modules:/repo/apps/backend/node_modules
+    networks:
+      - surb_dev
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      project:
+        condition: service_healthy
+
+  auth-service:
+    image: node:22-alpine
+    container_name: surb_auth_dev
+    restart: unless-stopped
+    working_dir: /repo
+    env_file:
+      - ../.env.development
+    environment:
+      NODE_ENV: development
+      PNPM_HOME: /pnpm
+      PATH: /pnpm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      PORT: 3000
+      HOST: 0.0.0.0
+      PUBLIC_HOST: localhost
+      LOG_LEVEL: debug
+      CORS_ORIGINS: http://localhost:3000,http://127.0.0.1:3000
+      DATABASE_URL: postgresql://${POSTGRES_USER:-app_user}:${POSTGRES_PASSWORD:-dev_password_123}@postgres:5432/${POSTGRES_DB:-app_db}
+      REDIS_URL: redis://:${REDIS_PASSWORD:-dev_redis_password}@redis:6379
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-dev_redis_password}
+      JWT_ACCESS_TOKEN_SECRET: ${JWT_ACCESS_TOKEN_SECRET:-dev_access_jwt_secret}
+      JWT_ACCESS_TOKEN_EXPIRES_IN: ${JWT_ACCESS_TOKEN_EXPIRES_IN:-900}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-dev_refresh_jwt_secret}
+      JWT_REFRESH_TOKEN_SECRET: ${JWT_REFRESH_TOKEN_SECRET:-dev_refresh_jwt_secret}
+      JWT_REFRESH_TOKEN_EXPIRES_IN: ${JWT_REFRESH_TOKEN_EXPIRES_IN:-604800}
+      ACCESS_TOKEN_SECRET: ${ACCESS_TOKEN_SECRET:-dev_access_token_secret}
+      ACCESS_TOKEN_EXPIRES_IN: ${ACCESS_TOKEN_EXPIRES_IN:-900}
+      REFRESH_TOKEN_SECRET: ${REFRESH_TOKEN_SECRET:-dev_refresh_token_secret}
+      REFRESH_TOKEN_EXPIRES_IN: ${REFRESH_TOKEN_EXPIRES_IN:-604800}
+      COOKIE_SECRET: ${COOKIE_SECRET:-dev_cookie_secret}
+      SESSION_COOKIE_NAME: ${SESSION_COOKIE_NAME:-sid}
+      SESSION_COOKIE_SECURE: "false"
+      SESSION_TTL_SECONDS: ${SESSION_TTL_SECONDS:-604800}
+    command:
+      - sh
+      - -lc
+      - corepack enable && corepack prepare pnpm@11.1.2 --activate && while [ ! -d /repo/node_modules/.pnpm ]; do echo "waiting project dependencies"; sleep 2; done && pnpm --filter @repo/auth-service dev
+    ports:
+      - "${AUTH_PORT:-4001}:3000"
+      - "${AUTH_DEBUG_PORT:-9230}:9229"
+    volumes:
+      - ..:/repo
+      - surb_project_pnpm_store:/pnpm
+      - surb_project_root_node_modules:/repo/node_modules
+      - surb_project_auth_node_modules:/repo/apps/auth-service/node_modules
+    networks:
+      - surb_dev
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      project:
+        condition: service_healthy
+
+networks:
+  surb_dev:
+    name: surb_dev
+    driver: bridge
+
+volumes:
+  surb_project_pnpm_store:
+  surb_project_root_node_modules:
+  surb_project_frontend_node_modules:
+  surb_project_backend_node_modules:
+  surb_project_auth_node_modules:
+  surb_postgres_dev_data:
+  surb_redis_dev_data:
+  surb_frontend_next_cache:

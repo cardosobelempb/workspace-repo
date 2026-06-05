@@ -3,6 +3,9 @@ import { z } from "zod";
 import { createEnv } from "./create-env";
 import { logLevelSchema, nodeEnvSchema, parseEnvArray } from "./env-helpers.schema";
 import { EnvValidationError } from "./env-validation.error";
+import { loadProjectEnv } from "./load-project-env";
+
+loadProjectEnv();
 
 export const envSchema = z.object({
   // App configuration
@@ -35,10 +38,19 @@ export const envSchema = z.object({
   // JWT
   JWT_ACCESS_TOKEN_SECRET: z.string().min(1, "JWT_REFRESH_SECRET é obrigatória"),
   JWT_ACCESS_TOKEN_EXPIRES_IN: z.coerce.number().default(1),
-  JWT_REFRESH_SECRET: z.string().min(1, "JWT_REFRESH_SECRET é obrigatória"),
+  JWT_REFRESH_SECRET: z
+    .string()
+    .min(1, "JWT_REFRESH_SECRET é obrigatória")
+    .default(process.env.JWT_REFRESH_TOKEN_SECRET ?? ""),
   JWT_REFRESH_TOKEN_EXPIRES_IN: z.coerce.number().default(1),
-  ACCESS_TOKEN_SECRET: z.string().min(1, "ACCESS_TOKEN_SECRET_KEY é obrigatória"),
-  REFRESH_TOKEN_SECRET: z.string().min(1, "REFRESH_TOKEN_SECRET_KEY é obrigatória"),
+  ACCESS_TOKEN_SECRET: z
+    .string()
+    .min(1, "ACCESS_TOKEN_SECRET_KEY é obrigatória")
+    .default(process.env.JWT_ACCESS_TOKEN_SECRET ?? ""),
+  REFRESH_TOKEN_SECRET: z
+    .string()
+    .min(1, "REFRESH_TOKEN_SECRET_KEY é obrigatória")
+    .default(process.env.JWT_REFRESH_TOKEN_SECRET ?? process.env.JWT_REFRESH_SECRET ?? ""),
   ACCESS_TOKEN_EXPIRES_IN: z.coerce.number().default(15 * 60), // 15 minutos
   REFRESH_TOKEN_EXPIRES_IN: z.coerce.number().default(7 * 24 * 60 * 60), // 7 dias
 

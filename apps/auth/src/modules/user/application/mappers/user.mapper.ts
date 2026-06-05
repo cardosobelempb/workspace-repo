@@ -25,8 +25,7 @@ export class UserMapper {
   private static toCoreFields(entity: UserEntity): CreateUserDto {
     return {
       email: entity.email.toString(),
-      passwordHash: entity.passwordHash.toString(),
-      emailVerified: entity.emailVerified,
+      password: entity.password.toString(),
     };
   }
 
@@ -67,7 +66,6 @@ export class UserMapper {
     return {
       id: entity.id.toString(),
       email: entity.email.toString(),
-      emailVerified: entity.emailVerified,
       createdAt: entity.createdAt,
     };
   }
@@ -81,7 +79,6 @@ export class UserMapper {
     return {
       id: entity.id.toString(),
       email: entity.email.toString(),
-      emailVerified: entity.emailVerified,
       createdAt: entity.createdAt,
     };
   }

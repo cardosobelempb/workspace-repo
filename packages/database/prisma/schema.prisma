@@ -1,0 +1,1168 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ============================================================
+// MODULE: IDENTITY_ACCESS
+// ============================================================
+// -----------------------------------------------------------------------------
+// Autenticação no padrão NextAuth
+// -----------------------------------------------------------------------------
+
+model User {
+  id       String @id @default(uuid()) @db.Uuid
+  email    String @unique @db.VarChar(255)
+  password String @map("password") @db.VarChar(255)
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  accounts                Account[]
+  sessions                Session[]
+  tokens                  Token[]
+  profile                 UserProfile?
+  otps                    Otp[]
+  memberships             Membership[]
+  addresses               Address[]
+  lgpdConsents            LgpdConsent[]
+  leads                   Lead[]
+  emailVerificationTokens EmailVerificationToken[]
+  verificationTokens      VerificationToken[]
+
+  @@index([email])
+  @@index([deletedAt])
+  @@map("users")
+}
+
+model Account {
+  id                String       @id @default(uuid()) @db.Uuid
+  userId            String       @map("user_id") @db.Uuid
+  tokenType         TokenType    @default(ACCESS) @map("token_type")
+  provider          ProviderType @default(CREDENTIALS) @map("provider")
+  providerAccountId String       @map("provider_account_id") @db.VarChar(255)
+
+  refreshToken String? @map("refresh_token") @db.Text
+  accessToken  String? @map("access_token") @db.Text
+  expiresAt    Int?    @map("expires_at")
+  scope        String? @db.Text
+  idToken      String? @map("id_token") @db.Text
+  sessionState String? @map("session_state") @db.Text
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+  @@index([expiresAt])
+  @@index([deletedAt])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(uuid()) @db.Uuid
+  userId       String   @map("user_id") @db.Uuid
+  sessionToken String   @unique @map("session_token") @db.VarChar(255)
+  expires      DateTime @map("expired_at")
+
+  ipAddress String? @map("ip_address") @db.VarChar(45)
+  userAgent String? @map("user_agent") @db.VarChar(500)
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expires])
+  @@index([deletedAt])
+  @@map("sessions")
+}
+
+model EmailVerificationToken {
+  id String @id @default(uuid()) @db.Uuid
+
+  userId String @map("user_id") @db.Uuid
+
+  tokenHash String @unique @map("token_hash")
+
+  expiresAt DateTime @map("expires_at")
+
+  usedAt DateTime? @map("used_at")
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expiresAt])
+  @@map("email_verification_tokens")
+}
+
+model VerificationToken {
+  id        String    @id @default(uuid()) @db.Uuid
+  userId    String    @map("user_id") @db.Uuid
+  token     String    @unique @map("token") @db.VarChar(255)
+  expiredAt DateTime  @map("expired_at")
+  usedAt    DateTime? @map("used_at")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, token])
+  @@index([userId])
+  @@index([expiredAt])
+  @@map("verification_tokens")
+}
+
+model UserProfile {
+  id             String            @id @default(uuid()) @db.Uuid
+  userId         String            @unique @map("user_id") @db.Uuid
+  firstName      String?           @map("first_name") @db.VarChar(100)
+  lastName       String?           @map("last_name") @db.VarChar(100)
+  displayName    String?           @map("display_name") @db.VarChar(150)
+  fullName       String?           @map("full_name") @db.VarChar(200)
+  documentType   DocumentType?     @map("document_type")
+  documentNumber String?           @unique @map("document_number") @db.VarChar(30)
+  phone          String?           @db.VarChar(20)
+  birthDate      DateTime?         @map("birth_date") @db.Date
+  avatarUrl      String?           @map("avatar_url") @db.VarChar(500)
+  status         UserProfileStatus @default(ACTIVE)
+  createdAt      DateTime          @default(now()) @map("created_at")
+  updatedAt      DateTime?         @updatedAt @map("updated_at")
+  deletedAt      DateTime?         @map("deleted_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([documentNumber])
+  @@index([phone])
+  @@index([deletedAt])
+  @@map("user_profiles")
+}
+
+// Tokens internos da aplicação: refresh, reset password, API token etc.
+model Token {
+  id        String    @id @default(uuid()) @db.Uuid
+  userId    String    @map("user_id") @db.Uuid
+  type      TokenType @default(REFRESH)
+  valueHash String    @map("value_hash") @db.VarChar(255)
+  expiredAt DateTime  @map("expired_at")
+  revokedAt DateTime? @map("revoked_at")
+
+  ipAddress String? @map("ip_address") @db.VarChar(45)
+  userAgent String? @map("user_agent") @db.VarChar(500)
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([userId, type])
+  @@index([expiredAt])
+  @@index([revokedAt])
+  @@index([deletedAt])
+  @@map("tokens")
+}
+
+model Otp {
+  id        String    @id @default(uuid()) @db.Uuid
+  userId    String?   @map("user_id") @db.Uuid
+  phone     String    @db.VarChar(30)
+  codeHash  String    @map("code_hash") @db.VarChar(255)
+  expiredAt DateTime  @map("expired_at")
+  attempts  Int       @default(0)
+  usedAt    DateTime? @map("used_at")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([phone])
+  @@index([userId])
+  @@index([expiredAt])
+  @@index([deletedAt])
+  @@map("otps")
+}
+
+// -----------------------------------------------------------------------------
+// SaaS / Multi-tenant
+// -----------------------------------------------------------------------------
+model Tenant {
+  id             String       @id @default(uuid()) @db.Uuid
+  name           String       @db.VarChar(150)
+  slug           String       @unique @db.VarChar(150)
+  documentNumber String?      @unique @map("document_number") @db.VarChar(30)
+  contactEmail   String?      @map("contact_email") @db.VarChar(255)
+  phone          String?      @db.VarChar(20)
+  status         TenantStatus @default(TRIALING)
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  memberships   Membership[]
+  organizations Organization[]
+  leads         Lead[]
+  addresses     Address[]
+
+  @@index([status])
+  @@index([deletedAt])
+  @@map("tenants")
+}
+
+model Organization {
+  id       String @id @default(uuid()) @db.Uuid
+  tenantId String @map("tenant_id") @db.Uuid
+
+  name    String  @db.VarChar(150)
+  slug    String  @db.VarChar(150)
+  logoUrl String? @map("logo_url") @db.VarChar(500)
+
+  status OrganizationStatus @default(ACTIVE)
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  tenant              Tenant                @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  memberships         Membership[]
+  addresses           Address[]
+  organizationConfigs OrganizationConfig[]
+  vpnPeers            OrganizationVpnPeer[]
+  mercadoPagoConfig   MercadoPagoConfig?
+  efiConfig           EfiConfig?
+  mikrotiks           Mikrotik[]
+  hotspotPlans        HotspotPlan[]
+  hotspotUsers        HotspotUser[]
+  vouchers            Voucher[]
+  subscriptionPlans   SubscriptionPlan[]
+  subscriptions       Subscription[]
+  payments            Payment[]
+  portals             Portal[]
+  campaigns           Campaign[]
+  campaignItems       CampaignItem[]
+  connectionLogs      ConnectionLog[]
+  whatsappLogs        WhatsappLog[]
+  leads               Lead[]
+
+  @@unique([slug])
+  @@unique([tenantId])
+  @@index([status])
+  @@index([deletedAt])
+  @@map("organizations")
+}
+
+model Membership {
+  id             String  @id @default(uuid()) @db.Uuid
+  userId         String  @map("user_id") @db.Uuid
+  tenantId       String  @map("tenant_id") @db.Uuid
+  organizationId String? @map("organization_id") @db.Uuid
+
+  role   MembershipRole   @default(MEMBER)
+  status MembershipStatus @default(ACTIVE)
+
+  joinedAt     DateTime? @map("joined_at")
+  invitedEmail String?   @map("invited_email") @db.VarChar(255)
+  invitedById  String?   @map("invited_by_id") @db.Uuid
+  expiresAt    DateTime? @map("expired_at")
+  removedAt    DateTime? @map("removed_at")
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  tenant       Tenant        @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  organization Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  addresses    Address[]
+
+  @@unique([userId, tenantId, organizationId])
+  @@index([userId])
+  @@index([tenantId])
+  @@index([organizationId])
+  @@index([tenantId, role])
+  @@index([tenantId, status])
+  @@index([deletedAt])
+  @@map("memberships")
+}
+
+model Permission {
+  id          String  @id @default(uuid()) @db.Uuid
+  key         String  @unique @db.VarChar(150)
+  name        String  @db.VarChar(150)
+  description String? @db.VarChar(500)
+  module      String  @db.VarChar(100)
+  action      String  @db.VarChar(50)
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  rolePermissions RolePermission[]
+
+  @@index([module])
+  @@index([action])
+  @@index([deletedAt])
+  @@map("permissions")
+}
+
+model RolePermission {
+  id           String         @id @default(uuid()) @db.Uuid
+  role         MembershipRole
+  permissionId String         @map("permission_id") @db.Uuid
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  permission Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  @@unique([role, permissionId])
+  @@index([role])
+  @@index([permissionId])
+  @@map("role_permissions")
+}
+
+model Address {
+  id             String  @id @default(uuid()) @db.Uuid
+  userId         String? @map("user_id") @db.Uuid
+  tenantId       String? @map("tenant_id") @db.Uuid
+  organizationId String? @map("organization_id") @db.Uuid
+  memberId       String? @map("member_id") @db.Uuid
+
+  AddressType AddressType? @default(HOME) @map("address_type")
+
+  street        String? @map("street") @db.VarChar(255)
+  addressNumber String? @map("address_number") @db.VarChar(255)
+  complement    String? @map("complement") @db.VarChar(255)
+  neighborhood  String? @map("neighborhood") @db.VarChar(255)
+  reference     String? @map("reference") @db.VarChar(255)
+
+  cityId  String? @map("city_id") @db.Uuid
+  stateId String? @map("state_id") @db.Uuid
+
+  zipCode String? @map("zip_code") @db.VarChar(255)
+  country String? @map("country") @db.VarChar(255)
+
+  isPrimary Boolean? @default(false) @map("is_primary")
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  user         User?         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tenant       Tenant?       @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  organization Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  member       Membership?   @relation(fields: [memberId], references: [id], onDelete: Cascade)
+
+  city  City?  @relation(fields: [cityId], references: [id], onDelete: SetNull)
+  state State? @relation(fields: [stateId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([tenantId])
+  @@index([organizationId])
+  @@index([stateId])
+  @@index([cityId])
+  @@map("addresses")
+}
+
+model State {
+  id        String    @id @default(uuid()) @db.Uuid
+  name      String?   @map("name") @db.VarChar(75)
+  uf        String?   @db.VarChar(5)
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  cities    City[]
+  addresses Address[]
+
+  @@unique([uf])
+  @@index([deletedAt])
+  @@map("states")
+}
+
+model City {
+  id        String  @id @default(uuid()) @db.Uuid
+  name      String? @map("name") @db.VarChar(120)
+  stateId   String? @map("state_id") @db.Uuid
+  subdomain String? @map("subdomain") @db.VarChar(255)
+
+  state     State?    @relation(fields: [stateId], references: [id], onDelete: SetNull)
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  addresses Address[]
+
+  @@index([stateId])
+  @@index([subdomain])
+  @@index([deletedAt])
+  @@map("cities")
+}
+
+// -----------------------------------------------------------------------------
+// Configurações da organização
+// -----------------------------------------------------------------------------
+
+model OrganizationConfig {
+  id             String                 @id @default(uuid()) @db.Uuid
+  organizationId String                 @map("organization_id") @db.Uuid
+  configType     OrganizationConfigType @map("config_type")
+  configJson     Json                   @map("config_json")
+  isActive       Boolean                @default(true) @map("is_active")
+  createdAt      DateTime               @default(now()) @map("created_at")
+  updatedAt      DateTime?              @updatedAt @map("updated_at")
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, configType])
+  @@index([organizationId])
+  @@map("organization_configs")
+}
+
+model OrganizationVpnPeer {
+  id             String   @id @default(uuid()) @db.Uuid
+  organizationId String   @map("organization_id") @db.Uuid
+  wgClientId     String   @map("wg_client_id") @db.VarChar(100)
+  name           String?  @db.VarChar(100)
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@index([wgClientId])
+  @@map("organization_vpn_peers")
+}
+
+// -----------------------------------------------------------------------------
+// Integrações de pagamento
+// -----------------------------------------------------------------------------
+
+model MercadoPagoConfig {
+  id                   String    @id @default(uuid()) @db.Uuid
+  organizationId       String    @unique @map("organization_id") @db.Uuid
+  publicKey            String?   @map("public_key") @db.Text
+  accessTokenEncrypted String?   @map("access_token_encrypted") @db.Text
+  clientId             String?   @map("client_id") @db.Text
+  clientSecret         String?   @map("client_secret") @db.Text
+  webhookSecret        String?   @map("webhook_secret") @db.Text
+  createdAt            DateTime  @default(now()) @map("created_at")
+  updatedAt            DateTime? @updatedAt @map("updated_at")
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@map("config_mercadopago")
+}
+
+model EfiConfig {
+  id             String      @id @default(uuid()) @db.Uuid
+  organizationId String      @unique @map("organization_id") @db.Uuid
+  clientId       String      @map("client_id") @db.Text
+  clientSecret   String      @map("client_secret") @db.Text
+  pixKey         String      @map("pix_key") @db.VarChar(255)
+  environment    Environment @default(SANDBOX)
+  createdAt      DateTime    @default(now()) @map("created_at")
+  updatedAt      DateTime?   @updatedAt @map("updated_at")
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@map("efi_configs")
+}
+
+// -----------------------------------------------------------------------------
+// Mikrotik, hotspot e vouchers
+// -----------------------------------------------------------------------------
+
+model Mikrotik {
+  id             String         @id @default(uuid()) @db.Uuid
+  organizationId String         @map("organization_id") @db.Uuid
+  name           String         @db.VarChar(150)
+  host           String         @db.VarChar(255)
+  port           Int            @default(8728)
+  macAddress     String         @map("mac_address") @db.VarChar(20)
+  ipAddress      String         @map("ip_address") @db.VarChar(45)
+  username       String         @db.VarChar(100)
+  passwordHash   String         @map("password_hash") @db.VarChar(255)
+  activeUser     Boolean        @default(false) @map("active_user")
+  status         MikrotikStatus @default(OFFLINE)
+  createdAt      DateTime       @default(now()) @map("created_at")
+  updatedAt      DateTime?      @updatedAt @map("updated_at")
+  deletedAt      DateTime?      @map("deleted_at")
+
+  organization Organization  @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  hotspotUsers HotspotUser[]
+  vouchers     Voucher[]
+
+  @@index([organizationId])
+  @@index([host])
+  @@index([deletedAt])
+  @@map("mikrotiks")
+}
+
+model HotspotPlan {
+  id             String          @id @default(uuid()) @db.Uuid
+  organizationId String          @map("organization_id") @db.Uuid
+  name           String          @db.VarChar(150)
+  type           HotspotPlanType @default(TIME)
+  durationSecs   Int?            @map("duration_secs")
+  dataLimitMb    Int?            @map("data_limit_mb")
+  price          Decimal?        @db.Decimal(12, 2)
+  isActive       Boolean         @default(true) @map("is_active")
+  createdAt      DateTime        @default(now()) @map("created_at")
+  updatedAt      DateTime?       @updatedAt @map("updated_at")
+  deletedAt      DateTime?       @map("deleted_at")
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  vouchers Voucher[]
+
+  @@index([organizationId])
+  @@index([organizationId, isActive])
+  @@index([deletedAt])
+  @@map("hotspot_plans")
+}
+
+model HotspotUser {
+  id             String            @id @default(uuid()) @db.Uuid
+  organizationId String            @map("organization_id") @db.Uuid
+  mikrotikId     String            @map("mikrotik_id") @db.Uuid
+  username       String            @db.VarChar(100)
+  macAddress     String?           @map("mac_address") @db.VarChar(20)
+  ipAddress      String?           @map("ip_address") @db.VarChar(45)
+  passwordHash   String?           @map("password_hash") @db.VarChar(255)
+  status         HotspotUserStatus @default(PENDING)
+  deletedAt      DateTime?         @map("deleted_at")
+  createdAt      DateTime          @default(now()) @map("created_at")
+  updatedAt      DateTime?         @updatedAt @map("updated_at")
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  mikrotik     Mikrotik     @relation(fields: [mikrotikId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, username])
+  @@index([organizationId, status])
+  @@index([macAddress])
+  @@index([deletedAt])
+  @@map("hotspot_users")
+}
+
+model Voucher {
+  id             String        @id @default(uuid()) @db.Uuid
+  organizationId String?       @map("organization_id") @db.Uuid
+  mikrotikId     String?       @map("mikrotik_id") @db.Uuid
+  hotspotPlanId  String?       @map("plan_id") @db.Uuid
+  code           String        @unique @db.VarChar(50)
+  status         VoucherStatus @default(UNUSED)
+  usedAt         DateTime?     @map("used_at")
+  expiredAt      DateTime?     @map("expired_at")
+  createdAt      DateTime      @default(now()) @map("created_at")
+  updatedAt      DateTime?     @updatedAt @map("updated_at")
+  deletedAt      DateTime?     @map("deleted_at")
+
+  organization Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  mikrotik     Mikrotik?     @relation(fields: [mikrotikId], references: [id], onDelete: SetNull)
+  hotspotPlan  HotspotPlan?  @relation(fields: [hotspotPlanId], references: [id])
+
+  @@index([organizationId, status])
+  @@index([hotspotPlanId])
+  @@index([expiredAt])
+  @@index([deletedAt])
+  @@map("vouchers")
+}
+
+// -----------------------------------------------------------------------------
+// Assinaturas e pagamentos SaaS
+// -----------------------------------------------------------------------------
+
+model SubscriptionPlan {
+  id             String       @id @default(uuid()) @db.Uuid
+  organizationId String?      @map("organization_id") @db.Uuid
+  code           String       @db.VarChar(50)
+  name           String       @db.VarChar(120)
+  description    String?      @db.VarChar(500)
+  status         PlanStatus   @default(ACTIVE)
+  billingCycle   BillingCycle @map("billing_cycle")
+  amount         Decimal      @db.Decimal(12, 2)
+  currency       String       @default("BRL") @db.VarChar(3)
+  trialDays      Int?         @map("trial_days")
+  sortOrder      Int          @default(0) @map("sort_order")
+  isPublic       Boolean      @default(true) @map("is_public")
+  isDefault      Boolean      @default(false) @map("is_default")
+  deletedAt      DateTime?    @map("deleted_at")
+  createdAt      DateTime     @default(now()) @map("created_at")
+  updatedAt      DateTime?    @updatedAt @map("updated_at")
+
+  organization  Organization?  @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  subscriptions Subscription[]
+
+  @@unique([organizationId, code])
+  @@index([organizationId])
+  @@index([status])
+  @@index([isPublic])
+  @@index([isDefault])
+  @@index([deletedAt])
+  @@map("subscription_plans")
+}
+
+model Subscription {
+  id                 String             @id @default(uuid()) @db.Uuid
+  organizationId     String             @map("organization_id") @db.Uuid
+  subscriptionPlanId String             @map("subscription_plan_id") @db.Uuid
+  status             SubscriptionStatus @default(TRIALING)
+  billingCycle       BillingCycle       @map("billing_cycle")
+  amount             Decimal            @db.Decimal(12, 2)
+  currency           String             @default("BRL") @db.VarChar(3)
+  trialStartsAt      DateTime?          @map("trial_starts_at")
+  trialEndsAt        DateTime?          @map("trial_ends_at")
+  startsAt           DateTime           @map("starts_at")
+  currentPeriodStart DateTime           @map("current_period_start")
+  currentPeriodEnd   DateTime           @map("current_period_end")
+  canceledAt         DateTime?          @map("canceled_at")
+  expiredAt          DateTime?          @map("expired_at")
+  deletedAt          DateTime?          @map("deleted_at")
+  createdAt          DateTime           @default(now()) @map("created_at")
+  updatedAt          DateTime?          @updatedAt @map("updated_at")
+
+  organization     Organization     @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  subscriptionPlan SubscriptionPlan @relation(fields: [subscriptionPlanId], references: [id])
+  payments         Payment[]
+
+  @@index([organizationId])
+  @@index([subscriptionPlanId])
+  @@index([status])
+  @@index([currentPeriodEnd])
+  @@index([deletedAt])
+  @@index([expiredAt])
+  @@map("subscriptions")
+}
+
+model Payment {
+  id                    String        @id @default(uuid()) @db.Uuid
+  organizationId        String        @map("organization_id") @db.Uuid
+  subscriptionId        String?       @map("subscription_id") @db.Uuid
+  amount                Decimal       @db.Decimal(12, 2)
+  currency              String        @default("BRL") @db.VarChar(3)
+  status                PaymentStatus @default(PENDING)
+  provider              String?       @db.VarChar(50)
+  providerTransactionId String?       @map("provider_transaction_id") @db.VarChar(255)
+  description           String?       @db.VarChar(255)
+  dueAt                 DateTime?     @map("due_at")
+  paidAt                DateTime?     @map("paid_at")
+  failedAt              DateTime?     @map("failed_at")
+  refundedAt            DateTime?     @map("refunded_at")
+  createdAt             DateTime      @default(now()) @map("created_at")
+  updatedAt             DateTime?     @updatedAt @map("updated_at")
+  deletedAt             DateTime?     @map("deleted_at")
+
+  organization Organization  @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  subscription Subscription? @relation(fields: [subscriptionId], references: [id], onDelete: SetNull)
+
+  @@index([organizationId])
+  @@index([subscriptionId])
+  @@index([status])
+  @@index([providerTransactionId])
+  @@index([dueAt])
+  @@index([deletedAt])
+  @@map("payments")
+}
+
+// -----------------------------------------------------------------------------
+// Portal, campanhas e leads
+// -----------------------------------------------------------------------------
+
+model PortalTemplate {
+  id           String   @id @default(uuid()) @db.Uuid
+  name         String   @db.VarChar(255)
+  description  String?
+  thumbnailUrl String?  @map("thumbnail_url") @db.VarChar(500)
+  htmlTemplate String   @map("html_template")
+  cssTemplate  String?  @map("css_template")
+  type         String?  @default("basico") @db.VarChar(50)
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  portals Portal[]
+
+  @@map("portal_templates")
+}
+
+model Portal {
+  id                 String    @id @default(uuid()) @db.Uuid
+  organizationId     String    @map("organization_id") @db.Uuid
+  activeCampaignId   String?   @map("active_campaign_id") @db.Uuid
+  templateId         String?   @map("template_id") @db.Uuid
+  name               String    @db.VarChar(100)
+  slug               String    @db.VarChar(50)
+  type               String?   @default("basico") @db.VarChar(50)
+  redirectUrl        String?   @map("redirect_url") @db.VarChar(500)
+  htmlContent        String?   @map("html_content")
+  description        String?
+  isActive           Boolean   @default(true) @map("is_active")
+  customCss          String?   @map("custom_css")
+  logoUrl            String?   @map("logo_url") @db.VarChar(500)
+  primaryColor       String?   @default("#3B82F6") @map("primary_color") @db.VarChar(7)
+  backgroundColor    String?   @default("#0f111a") @map("background_color") @db.VarChar(7)
+  registrationFields Json?     @map("registration_fields")
+  showPlans          Boolean   @default(false) @map("show_plans")
+  showLgpd           Boolean   @default(true) @map("show_lgpd")
+  settings           Json?
+  whatsappEnabled    Boolean   @default(false) @map("whatsapp_enabled")
+  whatsappTemplate   String?   @map("whatsapp_template")
+  createdAt          DateTime  @default(now()) @map("created_at")
+  updatedAt          DateTime? @updatedAt @map("updated_at")
+
+  organization   Organization    @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  activeCampaign Campaign?       @relation(fields: [activeCampaignId], references: [id], onDelete: SetNull)
+  template       PortalTemplate? @relation(fields: [templateId], references: [id], onDelete: SetNull)
+  whatsappLogs   WhatsappLog[]
+
+  @@unique([organizationId, slug])
+  @@index([organizationId])
+  @@index([activeCampaignId])
+  @@map("portals")
+}
+
+model Campaign {
+  id             String    @id @default(uuid()) @db.Uuid
+  organizationId String    @map("organization_id") @db.Uuid
+  name           String    @db.VarChar(150)
+  description    String?
+  isActive       Boolean   @default(true) @map("is_active")
+  views          Int       @default(0)
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime? @updatedAt @map("updated_at")
+
+  organization Organization   @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  items        CampaignItem[]
+  portals      Portal[]
+
+  @@index([organizationId])
+  @@map("campaigns")
+}
+
+model CampaignItem {
+  id              String           @id @default(uuid()) @db.Uuid
+  campaignId      String           @map("campaign_id") @db.Uuid
+  organizationId  String           @map("organization_id") @db.Uuid
+  type            CampaignItemType
+  order           Int              @default(0)
+  fileUrl         String           @map("file_url") @db.VarChar(500)
+  durationSeconds Int              @default(5) @map("duration_seconds")
+  title           String?          @db.VarChar(200)
+  destinationLink String?          @map("destination_link") @db.VarChar(500)
+  createdAt       DateTime         @default(now()) @map("created_at")
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  campaign     Campaign     @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+
+  @@index([campaignId, order])
+  @@index([organizationId])
+  @@map("campaign_items")
+}
+
+model Lead {
+  id             String  @id @default(uuid()) @db.Uuid
+  userId         String? @map("user_id") @db.Uuid
+  organizationId String? @map("organization_id") @db.Uuid
+  tenantId       String? @map("tenant_id") @db.Uuid
+
+  name           String?    @db.VarChar(255)
+  email          String?    @db.VarChar(255)
+  phone          String?    @db.VarChar(50)
+  cpf            String?    @db.VarChar(20)
+  mac            String?    @db.VarChar(50)
+  ip             String?    @db.VarChar(50)
+  status         LeadStatus @default(NEW)
+  source         String?    @default("portal") @db.VarChar(50)
+  observations   String?
+  lgpdAccepted   Boolean    @default(false) @map("lgpd_accepted")
+  lgpdAcceptedAt DateTime?  @map("lgpd_accepted_at")
+  createdAt      DateTime   @default(now()) @map("created_at")
+  updatedAt      DateTime?  @updatedAt @map("updated_at")
+  deletedAt      DateTime?  @map("deleted_at")
+
+  user         User?         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  organization Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  tenant       Tenant?       @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@index([tenantId])
+  @@index([email])
+  @@index([phone])
+  @@map("leads")
+}
+
+// -----------------------------------------------------------------------------
+// LGPD e logs operacionais
+// -----------------------------------------------------------------------------
+
+model LgpdConsent {
+  id     String @id @default(uuid()) @db.Uuid
+  userId String @map("user_id") @db.Uuid
+
+  consentTerms       Boolean @map("consent_terms")
+  consentMarketing   Boolean @map("consent_marketing")
+  consentDataSharing Boolean @map("consent_data_sharing")
+  consentAnalytics   Boolean @map("consent_analytics")
+
+  ipAddress      String            @map("ip_address") @db.VarChar(45)
+  macAddress     String?           @map("mac_address") @db.VarChar(20)
+  userAgent      String            @map("user_agent") @db.VarChar(500)
+  consentVersion String            @map("consent_version") @db.VarChar(10)
+  status         LgpdConsentStatus @default(ACTIVE)
+  withdrawnAt    DateTime?         @map("withdrawn_at")
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, consentVersion])
+  @@index([userId])
+  @@index([status])
+  @@index([deletedAt])
+  @@map("lgpd_consents")
+}
+
+model ConnectionLog {
+  id                String    @id @default(uuid()) @db.Uuid
+  organizationId    String    @map("organization_id") @db.Uuid
+  username          String    @db.VarChar(64)
+  cpf               String?   @db.VarChar(14)
+  mac               String    @db.VarChar(50)
+  assignedIp        String    @map("assigned_ip") @db.VarChar(45)
+  nasIp             String    @map("nas_ip") @db.VarChar(45)
+  connectionStartAt DateTime  @map("connection_start_at")
+  connectionEndAt   DateTime? @map("connection_end_at")
+  inputBytes        BigInt    @default(0) @map("input_bytes")
+  outputBytes       BigInt    @default(0) @map("output_bytes")
+  durationSeconds   Int       @default(0) @map("duration_seconds")
+  disconnectReason  String?   @map("disconnect_reason") @db.VarChar(32)
+  authResult        String?   @map("auth_result") @db.VarChar(32)
+  createdAt         DateTime  @default(now()) @map("created_at")
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@index([cpf])
+  @@index([mac])
+  @@index([assignedIp])
+  @@index([connectionStartAt, connectionEndAt])
+  @@index([username])
+  @@map("connection_logs")
+}
+
+model WhatsappLog {
+  id             String            @id @default(uuid()) @db.Uuid
+  organizationId String            @map("organization_id") @db.Uuid
+  portalId       String?           @map("portal_id") @db.Uuid
+  phone          String?           @db.VarChar(20)
+  message        String?
+  contextType    String?           @map("context_type") @db.VarChar(50)
+  referenceId    String?           @map("reference_id") @db.Uuid
+  status         WhatsappLogStatus
+  errorMessage   String?           @map("error_message")
+  skipReason     String?           @map("skip_reason") @db.VarChar(50)
+  createdAt      DateTime          @default(now()) @map("created_at")
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  portal       Portal?      @relation(fields: [portalId], references: [id], onDelete: SetNull)
+
+  @@index([organizationId, createdAt])
+  @@index([status])
+  @@index([portalId])
+  @@map("whatsapp_logs")
+}
+
+// -----------------------------------------------------------------------------
+// Sistema de updates, snapshots e backups
+// -----------------------------------------------------------------------------
+
+model Update {
+  id          String   @id @db.VarChar(20)
+  description String?
+  changelog   String?
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  files      UpdateFile[]
+  migrations UpdateMigration[]
+
+  @@map("updates")
+}
+
+model AppliedUpdate {
+  id          String   @id @db.VarChar(20)
+  description String?
+  appliedAt   DateTime @default(now()) @map("applied_at")
+
+  @@map("applied_updates")
+}
+
+model UpdateFile {
+  id          String            @id @default(uuid()) @db.Uuid
+  updateId    String?           @map("update_id") @db.VarChar(20)
+  filePath    String?           @map("file_path") @db.VarChar(500)
+  fileContent String?           @map("file_content")
+  action      UpdateFileAction? @default(UPDATE)
+
+  update Update? @relation(fields: [updateId], references: [id], onDelete: Cascade)
+
+  @@index([updateId])
+  @@map("update_files")
+}
+
+model UpdateMigration {
+  id         String  @id @default(uuid()) @db.Uuid
+  updateId   String? @map("update_id") @db.VarChar(20)
+  sqlContent String? @map("sql_content")
+  order      Int?    @default(1)
+
+  update Update? @relation(fields: [updateId], references: [id], onDelete: Cascade)
+
+  @@index([updateId])
+  @@map("update_migrations")
+}
+
+model UpdateApplyLog {
+  id        String               @id @default(uuid()) @db.Uuid
+  updateId  String               @map("update_id") @db.VarChar(20)
+  step      String               @db.VarChar(50)
+  status    UpdateApplyLogStatus @default(INFO)
+  message   String?
+  createdAt DateTime             @default(now()) @map("created_at")
+
+  @@index([updateId])
+  @@index([createdAt])
+  @@map("update_apply_logs")
+}
+
+model FileSnapshot {
+  id           String   @id @default(uuid()) @db.Uuid
+  filePath     String?  @unique @map("file_path") @db.VarChar(500)
+  md5Hash      String?  @map("md5_hash") @db.VarChar(32)
+  snapshotDate DateTime @default(now()) @map("snapshot_date")
+
+  @@map("file_snapshots")
+}
+
+model SchemaSnapshot {
+  tableName    String    @id @map("table_name") @db.VarChar(128)
+  columnsJson  String    @map("columns_json")
+  indexesJson  String    @map("indexes_json")
+  createSql    String?   @map("create_sql")
+  snapshotDate DateTime? @updatedAt @map("snapshot_date")
+
+  @@map("schema_snapshots")
+}
+
+model SystemBackup {
+  id           String            @id @default(uuid()) @db.Uuid
+  updateId     String?           @map("update_id") @db.VarChar(20)
+  type         SystemBackupType? @default(MANUAL)
+  dbDumpPath   String?           @map("db_dump_path") @db.VarChar(500)
+  filesZipPath String?           @map("files_zip_path") @db.VarChar(500)
+  createdAt    DateTime          @default(now()) @map("created_at")
+
+  @@map("system_backups")
+}
+
+// -----------------------------------------------------------------------------
+// Enums
+// -----------------------------------------------------------------------------
+
+enum UserProfileStatus {
+  ACTIVE
+  INACTIVE
+  BLOCKED
+}
+
+enum OrganizationStatus {
+  ACTIVE
+  INACTIVE
+  BLOCKED
+  DELETED
+}
+
+enum TokenType {
+  REFRESH
+  ACCESS
+  RESET_PASSWORD
+  EMAIL_VERIFICATION
+  API_KEY
+}
+
+enum ProviderType {
+  GOOGLE
+  FACEBOOK
+  APPLE
+  CREDENTIALS
+  OTHER
+}
+
+enum AddressType {
+  HOME
+  WORK
+  BILLING
+  ORGANIZATION
+  OTHER
+}
+
+enum DocumentType {
+  CPF
+  CNPJ
+  RG
+  OTHER
+}
+
+enum Environment {
+  SANDBOX
+  PRODUCTION
+}
+
+enum MikrotikStatus {
+  ONLINE
+  OFFLINE
+  ERROR
+}
+
+enum HotspotPlanType {
+  TIME
+  DATA
+  UNLIMITED
+}
+
+enum HotspotUserStatus {
+  ACTIVE
+  EXPIRED
+  BLOCKED
+  PENDING
+}
+
+enum VoucherStatus {
+  USED
+  UNUSED
+  EXPIRED
+  REVOKED
+  CANCELED
+}
+
+enum LgpdConsentStatus {
+  ACTIVE
+  REVOKED
+  WITHDRAWN
+}
+
+enum PlanStatus {
+  ACTIVE
+  INACTIVE
+  ARCHIVED
+}
+
+enum SubscriptionStatus {
+  TRIALING
+  ACTIVE
+  PAST_DUE
+  SUSPENDED
+  CANCELED
+  EXPIRED
+}
+
+enum BillingCycle {
+  MONTHLY
+  QUARTERLY
+  SEMIANNUAL
+  YEARLY
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  APPROVED
+  REJECTED
+  CANCELED
+  REFUNDED
+}
+
+enum CampaignItemType {
+  IMAGE
+  VIDEO
+}
+
+enum OrganizationConfigType {
+  MERCADOPAGO
+  EFI
+  WHATSAPP
+  PORTAL
+  HOTSPOT
+}
+
+enum LeadStatus {
+  NEW
+  ACTIVE
+  INACTIVE
+  BANNED
+  CONTACTED
+  CONVERTED
+  DISCARDED
+}
+
+enum UpdateFileAction {
+  CREATE
+  UPDATE
+  DELETE
+}
+
+enum UpdateApplyLogStatus {
+  INFO
+  OK
+  ERROR
+  SKIPPED
+}
+
+enum SystemBackupType {
+  PRE_UPDATE
+  MANUAL
+}
+
+enum WhatsappLogStatus {
+  INFO
+  OK
+  ERROR
+  SKIPPED
+}
+
+enum TenantStatus {
+  TRIALING
+  ACTIVE
+  SUSPENDED
+  CANCELED
+}
+
+enum MembershipRole {
+  OWNER
+  ADMIN
+  AFFILIATE
+  OPERATOR
+  CUSTOMER
+  MANAGER
+  SUPPORT
+  FINANCE
+  MEMBER
+}
+
+enum MembershipStatus {
+  ACTIVE
+  INVITED
+  SUSPENDED
+  REMOVED
+  DELETED
+}

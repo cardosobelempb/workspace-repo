@@ -1,0 +1,272 @@
+# Stack SURB para Docker Swarm + Traefik externo.
+# Requer a rede externa network_public criada no host do Traefik.
+# Variaveis recomendadas: copie .env.production.example para .env.production.
+
+x-api-environment: &api-environment
+  NODE_ENV: production
+  PORT: 3000
+  HOST: 0.0.0.0
+  PUBLIC_HOST: ${PUBLIC_HOST:-surb.com.br}
+  LOG_LEVEL: ${LOG_LEVEL:-info}
+  CORS_ORIGINS: ${CORS_ORIGINS:-https://surb.com.br}
+  DATABASE_URL: ${DATABASE_URL}
+  REDIS_URL: ${REDIS_URL}
+  REDIS_HOST: ${REDIS_HOST:-redis}
+  REDIS_PORT: ${REDIS_PORT:-6379}
+  REDIS_PASSWORD: ${REDIS_PASSWORD}
+  JWT_ACCESS_TOKEN_SECRET: ${JWT_ACCESS_TOKEN_SECRET}
+  JWT_ACCESS_TOKEN_EXPIRES_IN: ${JWT_ACCESS_TOKEN_EXPIRES_IN:-900}
+  JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET}
+  JWT_REFRESH_TOKEN_SECRET: ${JWT_REFRESH_TOKEN_SECRET}
+  JWT_REFRESH_TOKEN_EXPIRES_IN: ${JWT_REFRESH_TOKEN_EXPIRES_IN:-604800}
+  ACCESS_TOKEN_SECRET: ${ACCESS_TOKEN_SECRET}
+  ACCESS_TOKEN_EXPIRES_IN: ${ACCESS_TOKEN_EXPIRES_IN:-900}
+  REFRESH_TOKEN_SECRET: ${REFRESH_TOKEN_SECRET}
+  REFRESH_TOKEN_EXPIRES_IN: ${REFRESH_TOKEN_EXPIRES_IN:-604800}
+  COOKIE_SECRET: ${COOKIE_SECRET}
+
+x-default-deploy: &default-deploy
+  mode: replicated
+  placement:
+    constraints:
+      - node.role == manager
+  update_config:
+    parallelism: 1
+    delay: 10s
+    order: start-first
+    failure_action: rollback
+  rollback_config:
+    parallelism: 1
+    delay: 5s
+  restart_policy:
+    condition: on-failure
+    delay: 5s
+    max_attempts: 3
+
+x-logging: &default-logging
+  driver: "json-file"
+  options:
+    max-size: "10m"
+    max-file: "5"
+
+services:
+  frontend:
+    image: ${REGISTRY:-local}/surb-frontend:${IMAGE_TAG:-latest}
+    networks:
+      - network_public
+      - app_private
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      HOSTNAME: 0.0.0.0
+      NEXT_TELEMETRY_DISABLED: "1"
+      NEXT_PUBLIC_APP_NAME: ${NEXT_PUBLIC_APP_NAME:-SURB Servicos Urbanos}
+      NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-https://surb.com.br}
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-https://surb.com.br/api}
+      NEXT_PUBLIC_AUTH_URL: ${NEXT_PUBLIC_AUTH_URL:-https://surb.com.br/auth}
+      BASE_URL: ${BASE_URL:-https://surb.com.br}
+      SHORT_NAME: ${SHORT_NAME:-SURB}
+      CONTACT_EMAIL: ${CONTACT_EMAIL:-contato@surb.com.br}
+      WHATSAPPs: ${WHATSAPPs:-5583999999999}
+      CORS_ORIGINS: ${CORS_ORIGINS:-https://surb.com.br}
+      DATABASE_URL: ${DATABASE_URL}
+      JWT_ACCESS_TOKEN_SECRET: ${JWT_ACCESS_TOKEN_SECRET}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET}
+      ACCESS_TOKEN_SECRET: ${ACCESS_TOKEN_SECRET}
+      REFRESH_TOKEN_SECRET: ${REFRESH_TOKEN_SECRET}
+      COOKIE_SECRET: ${COOKIE_SECRET}
+    deploy:
+      <<: *default-deploy
+      replicas: ${FRONTEND_REPLICAS:-1}
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 1024M
+      labels:
+        - traefik.enable=true
+        - traefik.swarm.network=network_public
+        - traefik.http.routers.surb_frontend.rule=Host(`${DOMAIN:-surb.com.br}`)
+        - traefik.http.routers.surb_frontend.entrypoints=websecure
+        - traefik.http.routers.surb_frontend.tls=true
+        - traefik.http.routers.surb_frontend.tls.certresolver=${TRAEFIK_CERT_RESOLVER:-letsencryptresolver}
+        - traefik.http.routers.surb_frontend.service=surb_frontend
+        - traefik.http.routers.surb_frontend.priority=1
+        - traefik.http.services.surb_frontend.loadbalancer.server.port=3000
+        - traefik.http.services.surb_frontend.loadbalancer.passhostheader=true
+        - traefik.http.routers.surb_frontend_http.rule=Host(`${DOMAIN:-surb.com.br}`)
+        - traefik.http.routers.surb_frontend_http.entrypoints=web
+        - traefik.http.routers.surb_frontend_http.middlewares=surb_redirect_https
+        - traefik.http.middlewares.surb_redirect_https.redirectscheme.scheme=https
+        - traefik.http.middlewares.surb_redirect_https.redirectscheme.permanent=true
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:3000/ >/dev/null || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+    logging: *default-logging
+
+  backend:
+    image: ${REGISTRY:-local}/surb-backend:${IMAGE_TAG:-latest}
+    networks:
+      - network_public
+      - app_private
+    environment:
+      <<: *api-environment
+      AUTH_SERVICE_URL: http://auth-service:3000
+    deploy:
+      <<: *default-deploy
+      replicas: ${BACKEND_REPLICAS:-1}
+      resources:
+        limits:
+          cpus: "1.00"
+          memory: 1536M
+      labels:
+        - traefik.enable=true
+        - traefik.swarm.network=network_public
+        - traefik.http.routers.surb_backend.rule=Host(`${DOMAIN:-surb.com.br}`) && PathPrefix(`/api`)
+        - traefik.http.routers.surb_backend.entrypoints=websecure
+        - traefik.http.routers.surb_backend.tls=true
+        - traefik.http.routers.surb_backend.tls.certresolver=${TRAEFIK_CERT_RESOLVER:-letsencryptresolver}
+        - traefik.http.routers.surb_backend.service=surb_backend
+        - traefik.http.routers.surb_backend.priority=20
+        - traefik.http.routers.surb_backend.middlewares=surb_strip_api
+        - traefik.http.middlewares.surb_strip_api.stripprefix.prefixes=/api
+        - traefik.http.services.surb_backend.loadbalancer.server.port=3000
+        - traefik.http.services.surb_backend.loadbalancer.passhostheader=true
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:3000/docs >/dev/null || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 45s
+    logging: *default-logging
+
+  auth-service:
+    image: ${REGISTRY:-local}/surb-auth-service:${IMAGE_TAG:-latest}
+    networks:
+      - network_public
+      - app_private
+    environment:
+      <<: *api-environment
+      SESSION_COOKIE_NAME: ${SESSION_COOKIE_NAME:-sid}
+      SESSION_COOKIE_SECURE: ${SESSION_COOKIE_SECURE:-true}
+      SESSION_TTL_SECONDS: ${SESSION_TTL_SECONDS:-604800}
+    deploy:
+      <<: *default-deploy
+      replicas: ${AUTH_REPLICAS:-1}
+      resources:
+        limits:
+          cpus: "0.75"
+          memory: 1024M
+      labels:
+        - traefik.enable=true
+        - traefik.swarm.network=network_public
+        - traefik.http.routers.surb_auth.rule=Host(`${DOMAIN:-surb.com.br}`) && PathPrefix(`/auth`)
+        - traefik.http.routers.surb_auth.entrypoints=websecure
+        - traefik.http.routers.surb_auth.tls=true
+        - traefik.http.routers.surb_auth.tls.certresolver=${TRAEFIK_CERT_RESOLVER:-letsencryptresolver}
+        - traefik.http.routers.surb_auth.service=surb_auth
+        - traefik.http.routers.surb_auth.priority=30
+        - traefik.http.services.surb_auth.loadbalancer.server.port=3000
+        - traefik.http.services.surb_auth.loadbalancer.passhostheader=true
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:3000/docs >/dev/null || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 45s
+    logging: *default-logging
+
+  postgres:
+    image: postgres:16-alpine
+    networks:
+      - app_private
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      update_config:
+        parallelism: 1
+        order: stop-first
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 5
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 1024M
+      labels:
+        - traefik.enable=false
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    logging: *default-logging
+
+  redis:
+    image: redis:7-alpine
+    networks:
+      - app_private
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+    command:
+      - redis-server
+      - --appendonly
+      - "yes"
+      - --requirepass
+      - "${REDIS_PASSWORD}"
+    volumes:
+      - redis_data:/data
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      update_config:
+        parallelism: 1
+        order: stop-first
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 5
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 512M
+      labels:
+        - traefik.enable=false
+    healthcheck:
+      test: ["CMD-SHELL", 'redis-cli -a "$${REDIS_PASSWORD}" ping | grep -q PONG']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    logging: *default-logging
+
+volumes:
+  postgres_data:
+    external: true
+    name: surb_postgres_data
+  redis_data:
+    external: true
+    name: surb_redis_data
+
+networks:
+  network_public:
+    external: true
+    name: network_public
+  app_private:
+    driver: overlay
+    attachable: true

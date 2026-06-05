@@ -19,21 +19,21 @@ export class UserFactory {
   static build(input: CreateUserDto): UserEntity {
     return UserEntity.create({
       email: EmailVO.create(input.email),
-      passwordHash: PasswordVO.create(input.passwordHash),
+      password: PasswordVO.create(input.password),
     });
   }
 
-  static buildUserLogin({ email, passwordHash }: CreateUserDto): UserEntity {
+  static buildUserLogin({ email, password }: CreateUserDto): UserEntity {
     return UserEntity.create({
       email: EmailVO.create(email),
-      passwordHash: PasswordVO.create(passwordHash),
+      password: PasswordVO.create(password),
     });
   }
 
   static buildUserRegister(input: UserRegisterDto): UserEntity {
     return UserEntity.create({
       email: EmailVO.create(input.email),
-      passwordHash: PasswordVO.create(input.passwordHash),
+      password: PasswordVO.create(input.password),
     });
   }
 

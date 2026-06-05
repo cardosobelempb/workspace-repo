@@ -67,7 +67,7 @@ export class CreateSessionUseCase {
 
     const passwordMatches = await this.bcryptComparerService.compare(
       input.password,
-      user.passwordHash.getValue(),
+      user.password.getValue(),
     );
 
     if (!passwordMatches) {
@@ -101,7 +101,6 @@ export class CreateSessionUseCase {
       user: {
         id: user.id.getValue(),
         email: user.email.getValue().value,
-        emailVerified: user.emailVerified,
         createdAt: user.createdAt,
       },
       accessToken: sessionToken,

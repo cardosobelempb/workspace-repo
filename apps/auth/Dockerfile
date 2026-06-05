@@ -1,21 +1,76 @@
-FROM node:22-alpine
+# apps/auth-service/Dockerfile
+# context: raiz do monorepo
 
-WORKDIR /app
+FROM node:22-alpine AS base
 
-RUN corepack enable
+RUN apk add --no-cache bash curl libc6-compat openssl
+RUN corepack enable && corepack prepare pnpm@11.1.2 --activate
 
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
-COPY apps/auth/package.json ./apps/auth/package.json
-COPY apps/database/package.json ./apps/database/package.json
-COPY packages/common/package.json ./packages/common/package.json
-COPY packages/eslint-config/package.json ./packages/eslint-config/package.json
-COPY packages/jest-config/package.json ./packages/jest-config/package.json
-COPY packages/typescript-config/package.json ./packages/typescript-config/package.json
+WORKDIR /repo
 
-RUN pnpm install --filter @repo/env-config... --filter @repo/common... --filter @repo/eslint-config... --filter @repo/jest-config... --filter @repo/typescript-config...
+FROM base AS deps
+
+COPY pnpm-workspace.yaml package.json pnpm-lock.yaml ./
+COPY apps/auth-service/package.json ./apps/auth-service/
+COPY apps/backend/package.json ./apps/backend/
+COPY apps/frontend/package.json ./apps/frontend/
+COPY apps/mobile/package.json ./apps/mobile/
+COPY packages/cache/package.json ./packages/cache/
+COPY packages/common/package.json ./packages/common/
+COPY packages/database/package.json ./packages/database/
+COPY packages/env-config/package.json ./packages/env-config/
+COPY packages/eslint-config/package.json ./packages/eslint-config/
+COPY packages/jest-config/package.json ./packages/jest-config/
+COPY packages/logger/package.json ./packages/logger/
+COPY packages/typescript-config/package.json ./packages/typescript-config/
+
+RUN pnpm install --frozen-lockfile
+
+FROM deps AS development
+
+ENV NODE_ENV=development
 
 COPY . .
 
-EXPOSE 3334
+EXPOSE 3000
 
-CMD ["sh", "-c", "cd apps/auth && pnpm dev"]
+CMD ["pnpm", "--filter", "@repo/auth-service", "dev"]
+
+FROM deps AS test
+
+ENV NODE_ENV=test
+
+COPY . .
+
+CMD ["pnpm", "--filter", "@repo/auth-service", "test"]
+
+FROM deps AS builder
+
+ENV NODE_ENV=production
+ENV NODE_OPTIONS=--max-old-space-size=4096
+
+COPY . .
+
+RUN pnpm --filter @repo/common build
+RUN pnpm --filter @repo/env-config build
+RUN pnpm --filter @repo/logger build
+RUN pnpm --filter @repo/database prisma:generate
+RUN pnpm --filter @repo/database build
+RUN pnpm --filter @repo/cache build
+RUN pnpm --filter @repo/auth-service build
+
+FROM base AS production
+
+ENV NODE_ENV=production
+ENV PORT=3000
+ENV HOST=0.0.0.0
+
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+
+COPY --from=builder --chown=appuser:appgroup /repo /repo
+
+USER appuser
+
+EXPOSE 3000
+
+CMD ["pnpm", "--filter", "@repo/auth-service", "start"]

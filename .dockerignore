@@ -1,0 +1,33 @@
+# ── Node ──────────────────────────────────────────────────────
+**/node_modules
+**/.pnpm-store
+
+# ── Build outputs ─────────────────────────────────────────────
+**/dist
+**/.next
+**/.turbo
+**/*.tsbuildinfo
+
+# ── Testes e cobertura ────────────────────────────────────────
+**/coverage
+**/.vitest-cache
+
+# ── Envs e segredos ───────────────────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ── Git ───────────────────────────────────────────────────────
+.git
+.gitignore
+**/.gitkeep
+
+# ── Docs e configs locais ─────────────────────────────────────
+*.md
+.vscode
+.idea
+**/.DS_Store
+
+# ── Docker (não precisa copiar dentro do container) ───────────
+**/Dockerfile*
+docker-compose*.yml

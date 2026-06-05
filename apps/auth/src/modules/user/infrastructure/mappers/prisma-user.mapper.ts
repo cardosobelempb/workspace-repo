@@ -9,7 +9,7 @@ export class PrismaUserMapper {
     return UserEntity.create(
       {
         email: EmailVO.create(raw.email || ""),
-        passwordHash: PasswordVO.create(raw.passwordHash),
+        password: PasswordVO.create(raw.password),
       },
       UUIDVO.create(raw.id),
     );
@@ -19,8 +19,7 @@ export class PrismaUserMapper {
     return {
       id: entity.id.toString(),
       email: entity.email.getValue().value,
-      passwordHash: entity.passwordHash?.getValue(),
-      emailVerified: entity.emailVerified,
+      password: entity.password?.getValue(),
       createdAt: entity.createdAt,
       updatedAt: entity.updatedAt,
       deletedAt: entity.deletedAt,
@@ -31,8 +30,7 @@ export class PrismaUserMapper {
     return {
       id: entity.id.getValue(),
       email: entity.email.getValue().value,
-      passwordHash: entity.passwordHash?.getValue(),
-      emailVerified: entity.emailVerified,
+      password: entity.password?.getValue(),
       createdAt: entity.createdAt,
       updatedAt: entity.updatedAt,
       deletedAt: entity.deletedAt,

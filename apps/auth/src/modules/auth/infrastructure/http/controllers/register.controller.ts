@@ -1,9 +1,8 @@
 import { RegisterDto } from "@/modules/auth/application/dto/register.dto";
 import { RegisterUseCase } from "@/modules/auth/application/usecases/register.usecase";
-import { UserRegisterSchema } from "@/modules/user/infrastructure/http/schemas/user.schema";
 import { Controller, Post, Validate } from "@repo/common";
 import { FastifyReply, FastifyRequest } from "fastify";
-import { RegisterBodySchema } from "../schemas/register.schema";
+import { RegisterBodySchema, RegisterProjectionSchema } from "../schemas/register.schema";
 
 @Controller("/auth")
 export class RegisterController {
@@ -11,7 +10,7 @@ export class RegisterController {
 
   constructor(private readonly registerUseCase: RegisterUseCase) {}
 
-  @Validate({ body: UserRegisterSchema })
+  @Validate({ body: RegisterBodySchema })
   @Post("/register", {
     tags: ["Auth"],
     summary: "Registrar um novo usuário",
@@ -21,7 +20,7 @@ export class RegisterController {
     responses: {
       201: {
         description: "Usuário registrado com sucesso",
-        schema: RegisterBodySchema,
+        schema: RegisterProjectionSchema,
       },
       409: {
         description: "Conflito - E-mail já cadastrado",

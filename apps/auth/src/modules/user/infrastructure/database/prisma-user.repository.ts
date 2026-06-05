@@ -45,7 +45,6 @@ export class PrismaUserRepository
 
   async create(entity: UserEntity): Promise<UserEntity> {
     const data = PrismaUserMapper.toPrisma(entity);
-    console.log("data", data);
 
     const user = await this.prisma.user.create({ data });
 

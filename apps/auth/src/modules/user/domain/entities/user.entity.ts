@@ -9,8 +9,7 @@ import {
 
 export interface UserProps {
   email: EmailVO;
-  passwordHash: PasswordVO;
-  emailVerified: Date | null;
+  password: PasswordVO;
   status?: UserProfileStatus;
   createdAt: Date;
   updatedAt: Date | null;
@@ -21,12 +20,10 @@ export class UserEntity extends BaseAggregate<UserProps> {
   get email() {
     return this.props.email;
   }
-  get passwordHash() {
-    return this.props.passwordHash;
+  get password() {
+    return this.props.password;
   }
-  get emailVerified() {
-    return this.props.emailVerified;
-  }
+
   get status() {
     return this.props.status ?? UserProfileStatus.ACTIVE;
   }
@@ -77,7 +74,7 @@ export class UserEntity extends BaseAggregate<UserProps> {
     this.touch();
   }
   updatePassword(hash: PasswordVO): void {
-    this.props.passwordHash = hash;
+    this.props.password = hash;
     this.touch();
   }
 
@@ -86,16 +83,13 @@ export class UserEntity extends BaseAggregate<UserProps> {
   }
 
   static create(
-    props: Optional<
-      UserProps,
-      "createdAt" | "updatedAt" | "deletedAt" | "emailVerified" | "status"
-    >,
+    props: Optional<UserProps, "createdAt" | "updatedAt" | "deletedAt" | "status">,
     id?: UUIDVO,
   ) {
     return new UserEntity(
       {
         ...props,
-        emailVerified: props.emailVerified ?? null,
+
         status: props.status ?? UserProfileStatus.ACTIVE,
         createdAt: props.createdAt ?? new Date(),
         updatedAt: props.updatedAt ?? null,

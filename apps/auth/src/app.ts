@@ -6,7 +6,7 @@ import { serializerCompiler, validatorCompiler } from "fastify-type-provider-zod
 import { BadRequestError, LoggerFactory } from "@repo/common";
 import { getPrismaClient, PrismaLoggerAdapter } from "@repo/database";
 
-import { envAuth } from "./config/env-auth.js";
+import { envAuth } from "./config/env-auth";
 import { errorHandler } from "./middlewares/error-handler";
 import { registerRoutes } from "./routes";
 import { authPlugin } from "./shared/plugins/auth.plugin";

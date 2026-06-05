@@ -35,9 +35,8 @@ export const UserSchema = z
   .object({
     id: UuidSchema,
     email: s.email,
-    passwordHash: s.password,
+    password: s.password,
     createdAt: s.date,
-    emailVerified: s.nullableDate,
     updatedAt: s.nullableDate,
     deletedAt: s.nullableDate,
   })
@@ -61,7 +60,7 @@ export const UpdateUserSchema = UserSchema.partial();
 
 // Resposta completa: expõe tudo exceto campos de soft-delete
 export const UserResponseSchema = UserSchema.omit({
-  passwordHash: true,
+  password: true,
   updatedAt: true,
   deletedAt: true,
 });
@@ -70,7 +69,6 @@ export const UserResponseSchema = UserSchema.omit({
 export const UserProjectionSchema = UserSchema.pick({
   id: true,
   email: true,
-  emailVerified: true,
   createdAt: true,
 });
 
@@ -82,7 +80,6 @@ export const UserProjectionSchema = UserSchema.pick({
 
 export const UserRegisterSchema = UserSchema.omit({
   id: true,
-  emailVerified: true,
   createdAt: true,
   updatedAt: true,
   deletedAt: true,
@@ -93,7 +90,6 @@ export const UserRegisterProjectionSchema = UserSchema.pick({
   id: true,
   email: true,
   createdAt: true,
-  emailVerified: true,
 });
 
 export const UserCreateResponseSchema = createResponseSchema(UserResponseSchema);

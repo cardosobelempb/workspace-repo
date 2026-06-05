@@ -1,9 +1,3 @@
-import {
-  CreateUserProfileBodySchema,
-  CreateUserProfileSchema,
-  UserProfileProjectionSchema,
-} from "@/modules/user/infrastructure/http/schemas/user-profile.schema";
-import { UserProjectionSchema } from "@/modules/user/infrastructure/http/schemas/user.schema";
 import { s } from "@repo/common";
 import { z } from "zod";
 
@@ -18,17 +12,15 @@ import { z } from "zod";
 export const RegisterSchema = z.object({
   email: s.email,
   password: s.password,
-  profile: CreateUserProfileSchema,
 });
+
+export const CreateRegisterSchema = RegisterSchema.omit({});
 
 export const RegisterBodySchema = z.object({
   email: s.email,
   password: s.password,
-  profile: CreateUserProfileBodySchema,
 });
 
-// Payload de criação: sem campos gerados pelo servidor
-export const RegisterProjectionSchema = z.object({
-  user: UserProjectionSchema,
-  profile: UserProfileProjectionSchema,
+export const RegisterProjectionSchema = RegisterSchema.pick({
+  email: true,
 });

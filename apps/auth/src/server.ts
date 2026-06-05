@@ -1,6 +1,6 @@
 import { LoggerFactory } from "@repo/common";
 import { buildApp } from "./app.js";
-import { envAuth } from "./config/env-auth.js";
+import { envAuth } from "./config/env-auth";
 
 const PORT = envAuth.PORT;
 const HOST = envAuth.HOST;

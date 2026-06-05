@@ -1,5 +1,3 @@
-import { UserProfileProfileMapper } from "@/modules/user/application/mappers/user-profile.mapper";
-import { UserMapper } from "@/modules/user/application/mappers/user.mapper";
 import { PrismaUserProfileRepository } from "@/modules/user/infrastructure/database/prisma-user-profile.repository";
 import { PrismaUserRepository } from "@/modules/user/infrastructure/database/prisma-user.repository";
 import {
@@ -13,7 +11,7 @@ import {
 import { BcryptHasherService } from "../../domain/services/bcrypt-hasher.service";
 import { REPOSITORY_CONSTANTS } from "../../infrastructure/database/constant";
 import { RegisterBodyDto, RegisterProjectionDto } from "../dto/register.dto";
-import { UserProfileFactory } from "../factories/user-profile.factory";
+
 import { UserFactory } from "../factories/user.factory";
 
 export type RegisterUseCaseResponse = Either<BadRequestError, RegisterProjectionDto>;
@@ -47,20 +45,12 @@ export class RegisterUseCase {
 
     const userEntity = UserFactory.build({
       email: input.email,
-      passwordHash: passwordHash,
-      emailVerified: null,
+      password: passwordHash,
     });
     const createdUser = await this.prismaUserRepository.create(userEntity);
 
-    const profileEntity = UserProfileFactory.build({
-      ...input.profile,
-      userId: createdUser.id.getValue(),
-    });
-    const createdProfile = await this.prismaUserProfileRepository.create(profileEntity);
-
     return right({
-      user: UserMapper.toProjection(createdUser),
-      profile: UserProfileProfileMapper.toProjection(createdProfile),
+      email: createdUser.email.toString(),
     });
   }
 }

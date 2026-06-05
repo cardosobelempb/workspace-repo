@@ -1,0 +1,35 @@
+# ═══════════════════════════════════════════════════════════════
+#  .gitignore — raiz do monorepo
+# ═══════════════════════════════════════════════════════════════
+
+# ── Envs — NUNCA versionar ────────────────────────────────────
+.env
+.env.dev
+.env.test
+.env.prod
+.env.production
+.env.development
+.env.local
+.env.*.local
+
+# Exceção — apenas o exemplo é versionado
+!.env.example
+!**/.env.example
+
+# ── Prisma CLI ────────────────────────────────────────────────
+packages/database/.env
+
+# ── Build outputs ─────────────────────────────────────────────
+**/dist
+**/.next
+**/.turbo
+**/*.tsbuildinfo
+**/coverage
+
+# ── Deps ──────────────────────────────────────────────────────
+**/node_modules
+**/.pnpm-store
+
+# ── OS ────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db

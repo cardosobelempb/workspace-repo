@@ -7,7 +7,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "dev": "tsup src/index.ts --watch --format esm --dts --external @repo/common",
-    "build": "tsup src/index.ts --format esm --dts --clean --external @repo/common",
+    "build": "tsup src/index.ts --format esm --dts --clean",
     "test": "jest --config jest.config.ts --passWithNoTests",
     "test:watch": "jest --config jest.config.ts --watch",
     "test:coverage": "jest --config jest.config.ts --coverage",
@@ -16,7 +16,6 @@
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss}\""
   },
   "devDependencies": {
-    "@repo/common": "workspace:*",
     "@repo/eslint-config": "workspace:*",
     "@repo/jest-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
@@ -29,6 +28,7 @@
     "typescript": "^6.0.0"
   },
   "dependencies": {
+    "dotenv": "^17.4.2",
     "zod": "^4.4.3"
   }
 }

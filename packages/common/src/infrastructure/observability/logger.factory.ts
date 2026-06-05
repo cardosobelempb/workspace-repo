@@ -1,4 +1,3 @@
-import { env } from "../env";
 import { ConsoleLogger } from "./adapters/console.logger";
 import { PinoLogger } from "./adapters/pino.logger";
 import { BaseLogger } from "./base-logger";
@@ -13,7 +12,7 @@ import { BaseLogger } from "./base-logger";
 
 export class LoggerFactory {
   static create(context?: string): BaseLogger {
-    const isProduction = env?.NODE_ENV === "production";
+    const isProduction = process.env.NODE_ENV === "production";
 
     if (isProduction) {
       return new PinoLogger({

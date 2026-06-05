@@ -1,5 +1,7 @@
 # Guia Profissional — Módulo de Autenticação SaaS com RBAC em Monorepo
 
+- netstat -ano | Select-String ":4001"
+
 > Projeto base: monorepo com `auth-service`, `backend`, `frontend`, `database` e `common`.
 >
 > Stack sugerida: TypeScript, Fastify, Prisma, PostgreSQL, Zod, Axios, JWT, Bcrypt e arquitetura limpa.
@@ -197,17 +199,17 @@ export enum Role {
 
 ### Descrição das roles
 
-| Role | Descrição |
-|---|---|
-| OWNER | Dono do tenant. Tem acesso total. |
-| ADMIN | Administra usuários, configurações e módulos. |
-| MANAGER | Gerencia operação, mas sem controle total. |
-| FINANCE | Acessa pagamentos, cobranças e planos. |
-| SUPPORT | Acessa suporte e leitura de usuários. |
-| OPERATOR | Opera módulos como hotspot, vouchers e atendimento. |
-| AFFILIATE | Acessa recursos de afiliado/parceiro. |
-| MEMBER | Usuário interno comum. |
-| CUSTOMER | Cliente final com acesso limitado. |
+| Role      | Descrição                                           |
+| --------- | --------------------------------------------------- |
+| OWNER     | Dono do tenant. Tem acesso total.                   |
+| ADMIN     | Administra usuários, configurações e módulos.       |
+| MANAGER   | Gerencia operação, mas sem controle total.          |
+| FINANCE   | Acessa pagamentos, cobranças e planos.              |
+| SUPPORT   | Acessa suporte e leitura de usuários.               |
+| OPERATOR  | Opera módulos como hotspot, vouchers e atendimento. |
+| AFFILIATE | Acessa recursos de afiliado/parceiro.               |
+| MEMBER    | Usuário interno comum.                              |
+| CUSTOMER  | Cliente final com acesso limitado.                  |
 
 ---
 
@@ -335,13 +337,9 @@ export const rolePermissions: Record<Role, Permission[]> = {
     Permission.VOUCHER_READ,
   ],
 
-  [Role.AFFILIATE]: [
-    Permission.REPORT_READ,
-  ],
+  [Role.AFFILIATE]: [Permission.REPORT_READ],
 
-  [Role.MEMBER]: [
-    Permission.ORGANIZATION_READ,
-  ],
+  [Role.MEMBER]: [Permission.ORGANIZATION_READ],
 
   [Role.CUSTOMER]: [],
 };
@@ -663,9 +661,7 @@ export type FindActiveMembershipInput = {
  * - Se a membership está ativa.
  */
 export abstract class MembershipRepository {
-  abstract findActive(
-    input: FindActiveMembershipInput,
-  ): Promise<ActiveMembership | null>;
+  abstract findActive(input: FindActiveMembershipInput): Promise<ActiveMembership | null>;
 }
 ```
 
@@ -703,9 +699,7 @@ export class PrismaMembershipRepository extends MembershipRepository {
    * - status precisa ser ACTIVE.
    * - deletedAt precisa ser null.
    */
-  async findActive(
-    input: FindActiveMembershipInput,
-  ): Promise<ActiveMembership | null> {
+  async findActive(input: FindActiveMembershipInput): Promise<ActiveMembership | null> {
     const membership = await this.prisma.membership.findFirst({
       where: {
         userId: input.userId,
@@ -775,9 +769,7 @@ export function can(
     }
 
     const tenantId = request.headers["x-tenant-id"] as string | undefined;
-    const organizationId = request.headers["x-organization-id"] as
-      | string
-      | undefined;
+    const organizationId = request.headers["x-organization-id"] as string | undefined;
 
     if (!tenantId) {
       return reply.status(400).send({
@@ -832,9 +824,7 @@ import { PrismaMembershipRepository } from "@/modules/memberships/infrastructure
 export class CreateUserController {
   static inject = [PrismaMembershipRepository];
 
-  constructor(
-    private readonly membershipRepository: PrismaMembershipRepository,
-  ) {}
+  constructor(private readonly membershipRepository: PrismaMembershipRepository) {}
 
   /**
    * Cria usuário protegido por autenticação e autorização.
@@ -850,10 +840,7 @@ export class CreateUserController {
     preHandler: [
       authGuard,
       function (request, reply) {
-        return can(
-          Permission.USER_CREATE,
-          this.membershipRepository,
-        )(request, reply);
+        return can(Permission.USER_CREATE, this.membershipRepository)(request, reply);
       },
     ],
   })
@@ -1049,9 +1036,7 @@ export type RefreshTokenRecord = {
 export abstract class AuthTokenRepository {
   abstract createRefreshToken(input: CreateRefreshTokenInput): Promise<void>;
 
-  abstract findValidRefreshToken(
-    valueHash: string,
-  ): Promise<RefreshTokenRecord | null>;
+  abstract findValidRefreshToken(valueHash: string): Promise<RefreshTokenRecord | null>;
 
   abstract revokeRefreshToken(id: string): Promise<void>;
 }
@@ -1105,9 +1090,7 @@ export class PrismaAuthTokenRepository extends AuthTokenRepository {
    * - Não estar deletado.
    * - Não estar expirado.
    */
-  async findValidRefreshToken(
-    valueHash: string,
-  ): Promise<RefreshTokenRecord | null> {
+  async findValidRefreshToken(valueHash: string): Promise<RefreshTokenRecord | null> {
     const token = await this.prisma.token.findFirst({
       where: {
         valueHash,
@@ -1168,12 +1151,7 @@ import { AuthResponseDto, LoginDto } from "../dto/auth.dto";
 export type LoginUseCaseResponse = Either<UnauthorizedError, AuthResponseDto>;
 
 export class LoginUseCase {
-  static inject = [
-    PrismaUserRepository,
-    BcryptHasher,
-    TokenService,
-    AuthTokenRepository,
-  ];
+  static inject = [PrismaUserRepository, BcryptHasher, TokenService, AuthTokenRepository];
 
   constructor(
     private readonly userRepository: PrismaUserRepository,
@@ -1260,10 +1238,7 @@ import { AuthTokenRepository } from "../../domain/repositories/auth-token.reposi
 import { TokenService } from "../../domain/services/token.service";
 import { AuthResponseDto, RefreshTokenDto } from "../dto/auth.dto";
 
-export type RefreshTokenUseCaseResponse = Either<
-  UnauthorizedError,
-  AuthResponseDto
->;
+export type RefreshTokenUseCaseResponse = Either<UnauthorizedError, AuthResponseDto>;
 
 export class RefreshTokenUseCase {
   constructor(
@@ -1280,16 +1255,11 @@ export class RefreshTokenUseCase {
    * - Gera um novo refresh token.
    * - Gera um novo access token.
    */
-  async execute(
-    input: RefreshTokenDto,
-  ): Promise<RefreshTokenUseCaseResponse> {
-    const refreshTokenHash = await this.tokenService.hashToken(
-      input.refreshToken,
-    );
+  async execute(input: RefreshTokenDto): Promise<RefreshTokenUseCaseResponse> {
+    const refreshTokenHash = await this.tokenService.hashToken(input.refreshToken);
 
-    const storedToken = await this.authTokenRepository.findValidRefreshToken(
-      refreshTokenHash,
-    );
+    const storedToken =
+      await this.authTokenRepository.findValidRefreshToken(refreshTokenHash);
 
     if (!storedToken) {
       return left(
@@ -1317,9 +1287,7 @@ export class RefreshTokenUseCase {
     });
 
     const newRefreshToken = await this.tokenService.generateRefreshToken();
-    const newRefreshTokenHash = await this.tokenService.hashToken(
-      newRefreshToken,
-    );
+    const newRefreshTokenHash = await this.tokenService.hashToken(newRefreshToken);
 
     const expiredAt = new Date();
     expiredAt.setDate(expiredAt.getDate() + 7);
@@ -1725,13 +1693,13 @@ Refresh token funciona como credencial. Se vazar, permite renovar sessão. Salve
 
 ## 32. Big-O dos principais métodos
 
-| Método | Complexidade | Observação |
-|---|---:|---|
-| `findActiveByEmail` | O(log n) | Usa índice de e-mail. |
-| `findActiveById` | O(log n) | Usa chave primária. |
-| `findActiveMembership` | O(log n) | Usa índices de userId, tenantId e organizationId. |
-| `permissions.includes` | O(p) | p = número de permissões da role. Pequeno na prática. |
-| `rolePermissions[role]` | O(1) | Acesso direto por chave. |
+| Método                  | Complexidade | Observação                                            |
+| ----------------------- | -----------: | ----------------------------------------------------- |
+| `findActiveByEmail`     |     O(log n) | Usa índice de e-mail.                                 |
+| `findActiveById`        |     O(log n) | Usa chave primária.                                   |
+| `findActiveMembership`  |     O(log n) | Usa índices de userId, tenantId e organizationId.     |
+| `permissions.includes`  |         O(p) | p = número de permissões da role. Pequeno na prática. |
+| `rolePermissions[role]` |         O(1) | Acesso direto por chave.                              |
 
 ---
 

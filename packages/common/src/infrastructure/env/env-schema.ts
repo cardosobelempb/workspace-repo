@@ -45,16 +45,29 @@ export const envSchema = z.object({
   COOKIE_SECRET: z.string().min(1, "COOKIE_SECRET é obrigatória"),
 });
 
-export const env = createEnv(envSchema, {
-  context: "common.infrastructure.env",
-  onError: (issues) => {
-    const error = new EnvValidationError("process.env");
+export type Env = z.infer<typeof envSchema>;
 
-    issues.forEach((issue) => {
-      error.addFieldError(issue.field, issue.message);
-    });
+let cachedEnv: Env | undefined;
 
-    console.error(error.toJSON());
+function getEnv(): Env {
+  cachedEnv ??= createEnv(envSchema, {
+    context: "common.infrastructure.env",
+    onError: (issues) => {
+      const error = new EnvValidationError("process.env");
+
+      issues.forEach((issue) => {
+        error.addFieldError(issue.field, issue.message);
+      });
+
+      console.error(error.toJSON());
+    },
+  });
+
+  return cachedEnv;
+}
+
+export const env = new Proxy({} as Env, {
+  get(_target, property) {
+    return getEnv()[property as keyof Env];
   },
 });
-export type Env = z.infer<typeof envSchema>;
