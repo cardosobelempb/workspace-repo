@@ -58,8 +58,21 @@ export const UserProfileSchema = z
 // ─── Body schemas (entrada) ───────────────────────────────────────────────────
 
 // Payload de criação: sem campos gerados pelo servidor
+export const CreateUserProfileBodySchema = UserProfileSchema.omit({
+  id: true,
+  userId: true,
+  fullName: true,
+  displayName: true,
+  status: true,
+  createdAt: true,
+  updatedAt: true,
+  deletedAt: true,
+});
 export const CreateUserProfileSchema = UserProfileSchema.omit({
   id: true,
+  fullName: true,
+  displayName: true,
+  status: true,
   createdAt: true,
   updatedAt: true,
   deletedAt: true,

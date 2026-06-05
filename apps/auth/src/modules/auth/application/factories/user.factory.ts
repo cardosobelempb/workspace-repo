@@ -16,10 +16,10 @@ export class UserFactory {
   /**
    * Cria a entidade de usuário com e-mail e senha já hasheada.
    */
-  static build({ email, passwordHash }: CreateUserDto): UserEntity {
+  static build(input: CreateUserDto): UserEntity {
     return UserEntity.create({
-      email: EmailVO.create(email),
-      passwordHash: PasswordVO.create(passwordHash),
+      email: EmailVO.create(input.email),
+      passwordHash: PasswordVO.create(input.passwordHash),
     });
   }
 

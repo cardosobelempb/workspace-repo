@@ -5,9 +5,11 @@
 
 import z from "zod";
 import {
+  RegisterBodySchema,
   RegisterProjectionSchema,
   RegisterSchema,
 } from "../../infrastructure/http/schemas/register.schema";
 
 export type RegisterDto = z.infer<typeof RegisterSchema>;
 export type RegisterProjectionDto = z.infer<typeof RegisterProjectionSchema>;
+export type RegisterBodyDto = z.infer<typeof RegisterBodySchema>;

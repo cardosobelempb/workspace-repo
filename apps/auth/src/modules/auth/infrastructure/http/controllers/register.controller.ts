@@ -1,11 +1,9 @@
+import { RegisterDto } from "@/modules/auth/application/dto/register.dto";
 import { RegisterUseCase } from "@/modules/auth/application/usecases/register.usecase";
-import { UserRegisterDto } from "@/modules/user/application/dto/user.dto";
-import {
-  UserProjectionSchema,
-  UserRegisterSchema,
-} from "@/modules/user/infrastructure/http/schemas/user.schema";
+import { UserRegisterSchema } from "@/modules/user/infrastructure/http/schemas/user.schema";
 import { Controller, Post, Validate } from "@repo/common";
 import { FastifyReply, FastifyRequest } from "fastify";
+import { RegisterBodySchema } from "../schemas/register.schema";
 
 @Controller("/auth")
 export class RegisterController {
@@ -16,21 +14,22 @@ export class RegisterController {
   @Validate({ body: UserRegisterSchema })
   @Post("/register", {
     tags: ["Auth"],
-    summary: "Registra um novo usuário",
-    description: "Cria uma nova conta de usuário no auth-service.",
-    body: UserRegisterSchema,
+    summary: "Registrar um novo usuário",
+    description:
+      "Registra um novo usuário com e-mail, senha e perfil. Retorna os dados do usuário criado.",
+    body: RegisterBodySchema,
     responses: {
       201: {
         description: "Usuário registrado com sucesso",
-        schema: UserProjectionSchema,
+        schema: RegisterBodySchema,
       },
       409: {
-        description: "E-mail já cadastrado",
+        description: "Conflito - E-mail já cadastrado",
       },
     },
   })
   async handle(request: FastifyRequest, reply: FastifyReply) {
-    const body = request.body as UserRegisterDto;
+    const body = request.body as RegisterDto;
 
     const result = await this.registerUseCase.execute(body);
 

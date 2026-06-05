@@ -29,11 +29,8 @@ export class UserProfileProfileMapper {
   private static toCoreFields(entity: UserProfileEntity): CreateUserProfileDto {
     return {
       userId: entity.userId.toString(),
-      fullName: entity.fullName,
-      status: entity.status,
       firstName: entity.firstName,
       lastName: entity.lastName,
-      displayName: entity.displayName,
       birthDate: entity.birthDate.getValue(),
       phone: entity.phone.toString(),
       avatarUrl: entity.avatarUrl.toString(),

@@ -7,6 +7,7 @@ import {
   PrismaRepository,
   PrismaTransaction,
 } from "@repo/database";
+import { PrismaAuditLogMapper } from "../mappers/prisma-audit-log.mapper";
 
 export class PrismaAuditLogRepository
   extends PrismaRepository<AuditLogEntity>
@@ -30,24 +31,9 @@ export class PrismaAuditLogRepository
     return true;
   }
 
-  async findByEmail(email: string): Promise<AuditLogEntity | null> {
-    const auditlog = await this.prisma.auditLog.findUnique({ where: { email } });
-    if (!auditlog) return null;
-    return PrismaAuditLogMapper.toDomain(auditlog);
-  }
-
-  async existsByEmail(email: string): Promise<boolean> {
-    const auditlog = await this.prisma.auditLog.findUnique({ where: { email } });
-    if (!auditlog) return false;
-    return true;
-  }
-
   async create(entity: AuditLogEntity): Promise<AuditLogEntity> {
     const data = PrismaAuditLogMapper.toPrisma(entity);
-    console.log("data", data);
-
     const auditlog = await this.prisma.auditLog.create({ data });
-
     return PrismaAuditLogMapper.toDomain(auditlog);
   }
 
@@ -83,29 +69,7 @@ export class PrismaAuditLogRepository
     if (!auditlog) return null;
     return PrismaAuditLogMapper.toDomain(auditlog);
   }
-  async findActiveByEmail(email: string): Promise<AuditLogEntity | null> {
-    const auditlog = await this.prisma.auditLog.findFirst({
-      where: { email, deletedAt: null },
-    });
-    if (!auditlog) return null;
-    return PrismaAuditLogMapper.toDomain(auditlog);
-  }
-  async findActiveByIdWithProfile(id: string): Promise<AuditLogEntity | null> {
-    const auditlog = await this.prisma.auditLog.findFirst({
-      where: { id, deletedAt: null },
-      include: { profile: true },
-    });
-    if (!auditlog) return null;
-    return PrismaAuditLogMapper.toDomain(auditlog);
-  }
-  async findWithRelations(id: string): Promise<AuditLogEntity | null> {
-    const auditlog = await this.prisma.auditLog.findUnique({
-      where: { id },
-      include: { profile: true },
-    });
-    if (!auditlog) return null;
-    return PrismaAuditLogMapper.toDomain(auditlog);
-  }
+
   async existsActiveById(id: string): Promise<boolean> {
     const auditlog = await this.prisma.auditLog.findFirst({
       where: { id, deletedAt: null },
@@ -113,13 +77,7 @@ export class PrismaAuditLogRepository
     if (!auditlog) return false;
     return true;
   }
-  async existsActiveByEmail(email: string): Promise<boolean> {
-    const auditlog = await this.prisma.auditLog.findFirst({
-      where: { email, deletedAt: null },
-    });
-    if (!auditlog) return false;
-    return true;
-  }
+
   async countActiveByTenant(tenantId: string): Promise<number> {
     const count = await this.prisma.auditLog.count({
       where: { tenantId, deletedAt: null },

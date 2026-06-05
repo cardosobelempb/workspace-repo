@@ -8,7 +8,7 @@ import {
   actionResponseSchema,
   createResponseSchema,
   findResponseSchema,
-  MetadataSchema,
+  MetadataUnknownSchema,
   pageResponseSchema,
   s,
   updateResponseSchema,
@@ -34,6 +34,7 @@ export type AuditLogParams = z.infer<typeof AuditLogParamsSchema>;
 
 export const AuditLogSchema = z
   .object({
+    id: UuidSchema,
     userId: UuidSchema.nullable(),
     tenantId: UuidSchema.nullable(),
     organizationId: UuidSchema.nullable(),
@@ -42,8 +43,8 @@ export const AuditLogSchema = z
     resourceId: UuidSchema.nullable(),
     ipAddress: s.ipv4.nullable(),
     userAgent: s.string.nullable(),
-    metadata: MetadataSchema.nullable(),
-    createdAt: s.date.optional(),
+    metadata: MetadataUnknownSchema.nullable(),
+    createdAt: s.date,
   })
   .strict();
 

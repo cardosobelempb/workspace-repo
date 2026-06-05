@@ -103,13 +103,21 @@ export class UserProfileEntity extends BaseEntity<UserProfileProps> {
   static create(
     props: Optional<
       UserProfileProps,
-      "createdAt" | "updatedAt" | "deletedAt" | "status" | "documentType"
+      | "fullName"
+      | "displayName"
+      | "createdAt"
+      | "updatedAt"
+      | "deletedAt"
+      | "status"
+      | "documentType"
     >,
     id?: UUIDVO,
   ): UserProfileEntity {
     return new UserProfileEntity(
       {
         ...props,
+        fullName: `${props.firstName} ${props.lastName}`,
+        displayName: `${props.firstName[0]} ${props.lastName[0]}`,
         documentType: props.documentType ?? DocumentType.CPF,
         status: props.status ?? UserProfileStatus.ACTIVE,
         createdAt: props.createdAt ?? new Date(),

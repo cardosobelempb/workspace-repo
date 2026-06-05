@@ -11,6 +11,7 @@ export * from "./http";
 export * from "./ip-address/ip-address.vo";
 export * from "./location";
 export * from "./mac-address/mac-address.vo";
+export * from "./metadata.vo.ts";
 export * from "./name";
 export * from "./password/password.vo";
 export * from "./phone/phone.vo";

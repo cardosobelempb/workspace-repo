@@ -13,14 +13,24 @@ import { RegisterDto } from "../dto/register.dto";
  * ✅ Testável: cada método é puro (sem I/O), testável de forma isolada.
  * ✅ Desacoplada: o Use Case não precisa conhecer VOs nem regras de construção.
  */
-export class UserFactory {
+export class RegisterFactory {
   /**
    * Cria a entidade de usuário com e-mail e senha já hasheada.
    */
-  static build({ email, password }: RegisterDto): RegisterDto {
+  static build(input: RegisterDto): RegisterDto {
     return {
-      email: email, // O VO é criado no Use Case, aqui só passamos o valor recebido
-      password: password, // O hash é gerado no Use Case, aqui só passamos o valor recebido
+      email: input.email,
+      password: input.password,
+      profile: {
+        userId: input.profile.userId,
+        firstName: input.profile.firstName,
+        lastName: input.profile.lastName,
+        avatarUrl: input.profile.avatarUrl,
+        birthDate: input.profile.birthDate,
+        phone: input.profile.phone,
+        documentType: input.profile.documentType,
+        documentNumber: input.profile.documentNumber,
+      },
     };
   }
 

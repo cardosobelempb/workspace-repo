@@ -1,4 +1,4 @@
-import { BaseEntity, IpAddressVO, Optional, UUIDVO } from "@repo/common";
+import { BaseEntity, IpAddressVO, MetadataVO, Optional, UUIDVO } from "@repo/common";
 
 export interface AuditLogProps {
   userId: UUIDVO | null;
@@ -9,8 +9,8 @@ export interface AuditLogProps {
   resourceId: UUIDVO | null;
   ipAddress: IpAddressVO | null;
   userAgent: string | null;
-  metadata: Record<string, unknown> | null;
-  createdAt?: Date;
+  metadata: MetadataVO | null;
+  createdAt: Date;
 }
 
 export class AuditLogEntity extends BaseEntity<AuditLogProps> {

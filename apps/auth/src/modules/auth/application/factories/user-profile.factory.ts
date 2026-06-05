@@ -21,8 +21,6 @@ export class UserProfileFactory {
       userId: UUIDVO.create(input.userId),
       firstName: input.firstName,
       lastName: input.lastName,
-      fullName: `${input.firstName} ${input.lastName}`,
-      displayName: `${input.firstName} ${input.lastName}`,
       avatarUrl: UrlVO.create(input.avatarUrl), // Placeholder, pode ser atualizado depois
       birthDate: BirthDateVO.create(input.birthDate), // Ajuste conforme o formato de entrada
       phone: PhoneVO.create(input.phone), // Ajuste conforme o formato de entrada

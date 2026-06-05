@@ -7,6 +7,7 @@ import { USECASE_CONSTANTS } from "./application/usecases/constant";
 import { CreateSessionUseCase } from "./application/usecases/create-session.usecase";
 
 import { getPrismaClient, PRISMA_TOKENS } from "@repo/database";
+import { PrismaUserProfileRepository } from "../user/infrastructure/database/prisma-user-profile.repository";
 import { PrismaUserRepository } from "../user/infrastructure/database/prisma-user.repository";
 import { RegisterUseCase } from "./application/usecases/register.usecase";
 import { BcryptComparerService } from "./domain/services/bcrypt-comparer.service";
@@ -44,6 +45,10 @@ export const authModule: ModuleDefinition = {
     {
       token: REPOSITORY_CONSTANTS.PRISMA_USER_REPOSITORY,
       useClass: PrismaUserRepository,
+    },
+    {
+      token: REPOSITORY_CONSTANTS.PRISMA_USER_PROFILE_REPOSITORY,
+      useClass: PrismaUserProfileRepository,
     },
     {
       token: REPOSITORY_CONSTANTS.PRISMA_SESSION_REPOSITORY,
@@ -84,10 +89,17 @@ export const authModule: ModuleDefinition = {
       useFactory: (
         bcryptHasherService: BcryptHasherService,
         prismaUserRepository: PrismaUserRepository,
-      ) => new RegisterUseCase(bcryptHasherService, prismaUserRepository),
+        prismaUserProfileRepository: PrismaUserProfileRepository,
+      ) =>
+        new RegisterUseCase(
+          bcryptHasherService,
+          prismaUserRepository,
+          prismaUserProfileRepository,
+        ),
       inject: [
         CRYPTOGRAPHY_TOKENS.BCRYPT_HASHER,
         REPOSITORY_CONSTANTS.PRISMA_USER_REPOSITORY,
+        REPOSITORY_CONSTANTS.PRISMA_USER_PROFILE_REPOSITORY,
       ],
     },
   ],
