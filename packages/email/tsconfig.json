@@ -1,0 +1,41 @@
+{
+  "extends": "@repo/typescript-config/library.json",
+  "compilerOptions": {
+    "ignoreDeprecations": "6.0",
+    "outDir": "dist",
+    "rootDir": "src",
+    "paths": {
+      "@/common/*": [
+        "./src/*"
+      ],
+      "@/common": [
+        "./src/index"
+      ]
+    },
+    "types": [
+      "node",
+      "jest"
+    ]
+  },
+  "include": [
+    "src/index.ts",
+    "src/application/**/*.ts",
+    "src/domain/entities/**/*.ts",
+    "src/domain/errors/**/*.ts",
+    "src/domain/repositories/in-memory-repository/**/*.ts",
+    "src/domain/repositories/search.repository.ts",
+    "src/domain/repositories/types/**/*.ts",
+    "src/domain/values-objects/**/*.ts",
+    "src/infrastructure/env/**/*.ts",
+    "tests/**/*.ts",
+    "src/domain/repositories/pagination/page-request.ts",
+    "src/domain/repositories/pagination/types/filter.types.ts",
+    "src/domain/repositories/pagination/types/pagination.types.ts",
+    "src/domain/repositories/pagination/pagination.constants.ts",
+    "src/domain/repositories/pagination/types/sort-parser.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

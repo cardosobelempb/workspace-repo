@@ -1,5 +1,12 @@
-import { createEnv, logLevelSchema, nodeEnvSchema } from "@repo/env-config";
+import {
+  createEnv,
+  loadProjectEnv,
+  logLevelSchema,
+  nodeEnvSchema,
+} from "@repo/env-config";
 import { z } from "zod";
+
+loadProjectEnv();
 
 export const envDatabaseSchema = z.object({
   NODE_ENV: nodeEnvSchema,

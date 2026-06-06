@@ -12,6 +12,31 @@ datasource db {
 // -----------------------------------------------------------------------------
 // Autenticação no padrão NextAuth
 // -----------------------------------------------------------------------------
+model UploadedFile {
+  id       String  @id @default(uuid()) @db.Uuid
+  tenantId String?
+  ownerId  String?
+
+  originalName String
+  fileName     String
+  mimeType     String
+  extension    String
+  size         Int
+
+  path       String
+  url        String?
+  storage    String
+  visibility String  @default("private")
+
+  checksum  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([tenantId])
+  @@index([ownerId])
+  @@index([mimeType])
+  @@map("uploaded_files")
+}
 
 model User {
   id       String @id @default(uuid()) @db.Uuid

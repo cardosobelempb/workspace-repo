@@ -8,6 +8,7 @@ allowBuilds:
   prisma: false
   sharp: false
   unrs-resolver: false
+  wd: set this to true or false
 onlyBuiltDependencies:
   - "prisma"
   - "esbuild"
