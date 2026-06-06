@@ -18,7 +18,7 @@ echo ========================================
 echo  1. Ver configuracao atual
 echo  2. Criar imagem frontend
 echo  3. Criar imagem backend
-echo  4. Criar imagem auth-service
+echo  4. Criar imagem auth
 echo  5. Criar imagens APIs backend + auth
 echo  6. Criar todas as imagens proprias
 echo  7. Exportar frontend .tar.gz

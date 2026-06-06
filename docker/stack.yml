@@ -113,7 +113,7 @@ services:
       - app_private
     environment:
       <<: *api-environment
-      AUTH_SERVICE_URL: http://auth-service:3000
+      AUTH_SERVICE_URL: http://auth:3000
     deploy:
       <<: *default-deploy
       replicas: ${BACKEND_REPLICAS:-1}
@@ -142,8 +142,8 @@ services:
       start_period: 45s
     logging: *default-logging
 
-  auth-service:
-    image: ${REGISTRY:-local}/surb-auth-service:${IMAGE_TAG:-latest}
+  auth:
+    image: ${REGISTRY:-local}/surb-auth:${IMAGE_TAG:-latest}
     networks:
       - network_public
       - app_private

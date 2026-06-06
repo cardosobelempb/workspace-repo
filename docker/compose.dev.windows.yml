@@ -13,6 +13,7 @@ services:
       NODE_ENV: development
       PNPM_HOME: /pnpm
       PATH: /pnpm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      npm_config_node_linker: isolated
       DATABASE_URL: postgresql://${POSTGRES_USER:-app_user}:${POSTGRES_PASSWORD:-dev_password_123}@postgres:5432/${POSTGRES_DB:-app_db}
       REDIS_URL: redis://:${REDIS_PASSWORD:-dev_redis_password}@redis:6379
       REDIS_HOST: redis
@@ -21,20 +22,34 @@ services:
     command:
       - sh
       - -lc
-      - corepack enable && corepack prepare pnpm@11.1.2 --activate && rm -f /tmp/surb-deps-ready && pnpm install --frozen-lockfile --prefer-offline && pnpm --filter @repo/common build && pnpm --filter @repo/env-config build && pnpm --filter @repo/logger build && pnpm --filter @repo/database prisma:generate && pnpm --filter @repo/database build && pnpm --filter @repo/cache build && touch /tmp/surb-deps-ready && tail -f /dev/null
+      - corepack enable && corepack prepare pnpm@11.1.2 --activate && rm -f /tmp/surb-deps-ready && pnpm install --no-frozen-lockfile && pnpm --filter @repo/common build && pnpm --filter @repo/env-config build && pnpm --filter @repo/logger build && pnpm --filter @repo/database prisma:generate && pnpm --filter @repo/database build && pnpm --filter @repo/cache build && touch /tmp/surb-deps-ready && tail -f /dev/null
     healthcheck:
       test: ["CMD-SHELL", "test -f /tmp/surb-deps-ready"]
-      interval: 5s
-      timeout: 3s
-      retries: 60
-      start_period: 20s
+      interval: 10s
+      timeout: 5s
+      retries: 90
+      start_period: 300s
     volumes:
       - ..:/repo
       - surb_project_pnpm_store:/pnpm
       - surb_project_root_node_modules:/repo/node_modules
       - surb_project_frontend_node_modules:/repo/apps/frontend/node_modules
       - surb_project_backend_node_modules:/repo/apps/backend/node_modules
-      - surb_project_auth_node_modules:/repo/apps/auth-service/node_modules
+      - surb_project_auth_node_modules:/repo/apps/auth/node_modules
+      - surb_pkg_cache_node_modules:/repo/packages/cache/node_modules
+      - surb_pkg_common_node_modules:/repo/packages/common/node_modules
+      - surb_pkg_database_node_modules:/repo/packages/database/node_modules
+      - surb_pkg_env_config_node_modules:/repo/packages/env-config/node_modules
+      - surb_pkg_logger_node_modules:/repo/packages/logger/node_modules
+      - surb_pkg_notification_email_node_modules:/repo/packages/notification-email/node_modules
+      - surb_pkg_notification_whatsapp_node_modules:/repo/packages/notification-whatsapp/node_modules
+      - surb_pkg_notifications_core_node_modules:/repo/packages/notifications-core/node_modules
+      - surb_pkg_upload_core_node_modules:/repo/packages/upload-core/node_modules
+      - surb_pkg_upload_local_node_modules:/repo/packages/upload-provider-local/node_modules
+      - surb_pkg_upload_s3_node_modules:/repo/packages/upload-provider-s3-compatible/node_modules
+      - surb_pkg_eslint_config_node_modules:/repo/packages/eslint-config/node_modules
+      - surb_pkg_jest_config_node_modules:/repo/packages/jest-config/node_modules
+      - surb_pkg_typescript_config_node_modules:/repo/packages/typescript-config/node_modules
     networks:
       - surb_dev
     depends_on:
@@ -83,7 +98,8 @@ services:
     networks:
       - surb_dev
     healthcheck:
-      test: ["CMD-SHELL", "redis-cli -a \"$${REDIS_PASSWORD}\" ping | grep -q PONG"]
+      test:
+        ["CMD-SHELL", 'redis-cli -a "$${REDIS_PASSWORD}" ping | grep -q PONG']
       interval: 10s
       timeout: 5s
       retries: 5
@@ -123,6 +139,11 @@ services:
       - surb_project_pnpm_store:/pnpm
       - surb_project_root_node_modules:/repo/node_modules
       - surb_project_frontend_node_modules:/repo/apps/frontend/node_modules
+      - surb_pkg_cache_node_modules:/repo/packages/cache/node_modules
+      - surb_pkg_common_node_modules:/repo/packages/common/node_modules
+      - surb_pkg_database_node_modules:/repo/packages/database/node_modules
+      - surb_pkg_env_config_node_modules:/repo/packages/env-config/node_modules
+      - surb_pkg_logger_node_modules:/repo/packages/logger/node_modules
       - surb_frontend_next_cache:/repo/apps/frontend/.next
     networks:
       - surb_dev
@@ -155,7 +176,7 @@ services:
       REDIS_HOST: redis
       REDIS_PORT: 6379
       REDIS_PASSWORD: ${REDIS_PASSWORD:-dev_redis_password}
-      AUTH_SERVICE_URL: http://auth-service:3000
+      AUTH_SERVICE_URL: http://auth:3000
       JWT_ACCESS_TOKEN_SECRET: ${JWT_ACCESS_TOKEN_SECRET:-dev_access_jwt_secret}
       JWT_ACCESS_TOKEN_EXPIRES_IN: ${JWT_ACCESS_TOKEN_EXPIRES_IN:-900}
       JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-dev_refresh_jwt_secret}
@@ -178,6 +199,11 @@ services:
       - surb_project_pnpm_store:/pnpm
       - surb_project_root_node_modules:/repo/node_modules
       - surb_project_backend_node_modules:/repo/apps/backend/node_modules
+      - surb_pkg_cache_node_modules:/repo/packages/cache/node_modules
+      - surb_pkg_common_node_modules:/repo/packages/common/node_modules
+      - surb_pkg_database_node_modules:/repo/packages/database/node_modules
+      - surb_pkg_env_config_node_modules:/repo/packages/env-config/node_modules
+      - surb_pkg_logger_node_modules:/repo/packages/logger/node_modules
     networks:
       - surb_dev
     depends_on:
@@ -188,7 +214,7 @@ services:
       project:
         condition: service_healthy
 
-  auth-service:
+  auth:
     image: node:22-alpine
     container_name: surb_auth_dev
     restart: unless-stopped
@@ -225,7 +251,7 @@ services:
     command:
       - sh
       - -lc
-      - corepack enable && corepack prepare pnpm@11.1.2 --activate && while [ ! -d /repo/node_modules/.pnpm ]; do echo "waiting project dependencies"; sleep 2; done && pnpm --filter @repo/auth-service dev
+      - corepack enable && corepack prepare pnpm@11.1.2 --activate && while [ ! -d /repo/node_modules/.pnpm ]; do echo "waiting project dependencies"; sleep 2; done && pnpm --filter @repo/auth dev
     ports:
       - "${AUTH_PORT:-4001}:3000"
       - "${AUTH_DEBUG_PORT:-9230}:9229"
@@ -233,7 +259,12 @@ services:
       - ..:/repo
       - surb_project_pnpm_store:/pnpm
       - surb_project_root_node_modules:/repo/node_modules
-      - surb_project_auth_node_modules:/repo/apps/auth-service/node_modules
+      - surb_project_auth_node_modules:/repo/apps/auth/node_modules
+      - surb_pkg_cache_node_modules:/repo/packages/cache/node_modules
+      - surb_pkg_common_node_modules:/repo/packages/common/node_modules
+      - surb_pkg_database_node_modules:/repo/packages/database/node_modules
+      - surb_pkg_env_config_node_modules:/repo/packages/env-config/node_modules
+      - surb_pkg_logger_node_modules:/repo/packages/logger/node_modules
     networks:
       - surb_dev
     depends_on:
@@ -255,6 +286,20 @@ volumes:
   surb_project_frontend_node_modules:
   surb_project_backend_node_modules:
   surb_project_auth_node_modules:
+  surb_pkg_cache_node_modules:
+  surb_pkg_common_node_modules:
+  surb_pkg_database_node_modules:
+  surb_pkg_env_config_node_modules:
+  surb_pkg_logger_node_modules:
+  surb_pkg_notification_email_node_modules:
+  surb_pkg_notification_whatsapp_node_modules:
+  surb_pkg_notifications_core_node_modules:
+  surb_pkg_upload_core_node_modules:
+  surb_pkg_upload_local_node_modules:
+  surb_pkg_upload_s3_node_modules:
+  surb_pkg_eslint_config_node_modules:
+  surb_pkg_jest_config_node_modules:
+  surb_pkg_typescript_config_node_modules:
   surb_postgres_dev_data:
   surb_redis_dev_data:
   surb_frontend_next_cache:

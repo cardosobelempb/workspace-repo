@@ -1,5 +1,5 @@
 {
-  "name": "@repo/upload-provider-local",
+  "name": "@repo/upload-provider-s3-compatible",
   "version": "1.0.0",
   "private": true,
   "type": "module",

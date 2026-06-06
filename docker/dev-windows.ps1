@@ -255,21 +255,21 @@ function Main {
     }
 
     "backend" {
-      $services = @("postgres", "redis", "project", "auth-service", "backend")
+      $services = @("postgres", "redis", "project", "auth", "backend")
       Compose-Up $services
       Show-Urls
       if ($ShowLogs) { Show-ServiceLogs $services }
     }
 
     "auth" {
-      $services = @("postgres", "redis", "project", "auth-service")
+      $services = @("postgres", "redis", "project", "auth")
       Compose-Up $services
       Show-Urls
       if ($ShowLogs) { Show-ServiceLogs $services }
     }
 
     "up" {
-      $services = @("postgres", "redis", "project", "auth-service", "backend", "frontend")
+      $services = @("postgres", "redis", "project", "auth", "backend", "frontend")
       Compose-Up $services
       Show-Urls
       if ($ShowLogs) { Show-ServiceLogs $services }

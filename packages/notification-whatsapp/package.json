@@ -30,7 +30,6 @@
   },
   "dependencies": {
     "@repo/notifications-core": "workspace:*",
-    "nodemailer": "^8.0.10",
     "pino": "^10.3.1",
     "zod": "^4.4.3"
   }

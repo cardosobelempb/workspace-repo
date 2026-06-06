@@ -75,7 +75,7 @@ build_images() {
   echo "Build das imagens Docker..."
   docker build -f apps/frontend/Dockerfile --target production -t "${REGISTRY}/surb-frontend:${IMAGE_TAG}" "$ROOT_DIR"
   docker build -f apps/backend/Dockerfile --target production -t "${REGISTRY}/surb-backend:${IMAGE_TAG}" "$ROOT_DIR"
-  docker build -f apps/auth-service/Dockerfile --target production -t "${REGISTRY}/surb-auth-service:${IMAGE_TAG}" "$ROOT_DIR"
+  docker build -f apps/auth/Dockerfile --target production -t "${REGISTRY}/surb-auth:${IMAGE_TAG}" "$ROOT_DIR"
 }
 
 export_images() {
@@ -83,7 +83,7 @@ export_images() {
   docker save \
     "${REGISTRY}/surb-frontend:${IMAGE_TAG}" \
     "${REGISTRY}/surb-backend:${IMAGE_TAG}" \
-    "${REGISTRY}/surb-auth-service:${IMAGE_TAG}" \
+    "${REGISTRY}/surb-auth:${IMAGE_TAG}" \
     -o "$TAR_FILE"
 }
 

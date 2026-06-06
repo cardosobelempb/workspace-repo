@@ -12,7 +12,7 @@ if not "%errorlevel%"=="0" (
 
 echo.
 echo ========================================
-echo  SURB/SUTB Dev Local - Windows 10
+echo  SURB Dev Local - Windows 10
 echo ========================================
 echo.
 echo Este launcher vai:
