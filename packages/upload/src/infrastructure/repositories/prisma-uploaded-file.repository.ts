@@ -10,22 +10,30 @@ export class PrismaUploadedFileRepository
   constructor(prisma: PrismaDatabase) {
     super(prisma);
   }
-  findById(id: string): Promise<UploadedFileEntity | null> {
+  async findById(id: string): Promise<UploadedFileEntity | null> {
+    const record = await this.prisma.uploadedFile.findUnique({
+      where: { id },
+    });
+
+    if (!record) {
+      return null;
+    }
+
+    return this.toEntity(record);
+  }
+  async findManyByIds(ids: string[]): Promise<UploadedFileEntity[]> {
     throw new Error("Method not implemented.");
   }
-  findManyByIds(ids: string[]): Promise<UploadedFileEntity[]> {
+  async create(entity: UploadedFileEntity): Promise<UploadedFileEntity> {
     throw new Error("Method not implemented.");
   }
-  create(entity: UploadedFileEntity): Promise<UploadedFileEntity> {
+  async exists(id: string): Promise<boolean> {
     throw new Error("Method not implemented.");
   }
-  exists(id: string): Promise<boolean> {
+  async save(entity: UploadedFileEntity): Promise<UploadedFileEntity> {
     throw new Error("Method not implemented.");
   }
-  save(entity: UploadedFileEntity): Promise<UploadedFileEntity> {
-    throw new Error("Method not implemented.");
-  }
-  delete(entity: UploadedFileEntity): Promise<void> {
+  async delete(entity: UploadedFileEntity): Promise<void> {
     throw new Error("Method not implemented.");
   }
 }
