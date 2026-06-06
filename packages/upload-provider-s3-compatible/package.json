@@ -1,0 +1,28 @@
+{
+  "name": "@repo/upload-provider-local",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "dev": "tsup src/index.ts --watch --format esm --dts",
+    "build": "tsup src/index.ts --format esm --dts --clean",
+    "test": "jest --config jest.config.ts --passWithNoTests",
+    "test:watch": "jest --config jest.config.ts --watch",
+    "test:coverage": "jest --config jest.config.ts --coverage",
+    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "lint": "eslint src/index.ts \"src/domain/**/*.ts\" \"src/application/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss}\""
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.1062.0",
+    "@repo/upload-core": "workspace:*"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/jest-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "tsup": "^8.5.1"
+  }
+}
