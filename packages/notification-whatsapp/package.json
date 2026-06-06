@@ -1,5 +1,5 @@
 {
-  "name": "@repo/email",
+  "name": "@repo/notification-whatsapp",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -29,6 +29,8 @@
     "typescript": "^6.0.0"
   },
   "dependencies": {
+    "@repo/notifications-core": "workspace:*",
+    "nodemailer": "^8.0.10",
     "pino": "^10.3.1",
     "zod": "^4.4.3"
   }

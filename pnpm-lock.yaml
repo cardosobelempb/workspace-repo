@@ -621,49 +621,6 @@ importers:
         specifier: ^6.0.0
         version: 6.0.3
 
-  packages/email:
-    dependencies:
-      pino:
-        specifier: ^10.3.1
-        version: 10.3.1
-      zod:
-        specifier: ^4.4.3
-        version: 4.4.3
-    devDependencies:
-      '@repo/env-config':
-        specifier: workspace:*
-        version: link:../env-config
-      '@repo/eslint-config':
-        specifier: workspace:*
-        version: link:../eslint-config
-      '@repo/jest-config':
-        specifier: workspace:*
-        version: link:../jest-config
-      '@repo/typescript-config':
-        specifier: workspace:*
-        version: link:../typescript-config
-      '@types/jest':
-        specifier: ^30.0.0
-        version: 30.0.0
-      '@types/node':
-        specifier: ^22.15.21
-        version: 22.19.19
-      jest:
-        specifier: ^30.2.0
-        version: 30.4.2(@types/node@22.19.19)
-      jest-environment-node:
-        specifier: ^30.2.0
-        version: 30.4.1
-      ts-jest:
-        specifier: ^29.4.5
-        version: 29.4.11(@babel/core@7.29.0)(@jest/transform@30.4.1)(@jest/types@30.4.1)(babel-jest@30.4.1(@babel/core@7.29.0))(jest-util@30.4.1)(jest@30.4.2(@types/node@22.19.19))(typescript@6.0.3)
-      tsup:
-        specifier: ^8.5.1
-        version: 8.5.1(jiti@2.7.0)(postcss@8.5.15)(tsx@4.22.3)(typescript@6.0.3)(yaml@2.9.0)
-      typescript:
-        specifier: ^6.0.0
-        version: 6.0.3
-
   packages/env-config:
     dependencies:
       dotenv:
@@ -741,6 +698,150 @@ importers:
         version: 6.0.3
 
   packages/logger:
+    dependencies:
+      pino:
+        specifier: ^10.3.1
+        version: 10.3.1
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
+    devDependencies:
+      '@repo/env-config':
+        specifier: workspace:*
+        version: link:../env-config
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@repo/jest-config':
+        specifier: workspace:*
+        version: link:../jest-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@types/jest':
+        specifier: ^30.0.0
+        version: 30.0.0
+      '@types/node':
+        specifier: ^22.15.21
+        version: 22.19.19
+      jest:
+        specifier: ^30.2.0
+        version: 30.4.2(@types/node@22.19.19)
+      jest-environment-node:
+        specifier: ^30.2.0
+        version: 30.4.1
+      ts-jest:
+        specifier: ^29.4.5
+        version: 29.4.11(@babel/core@7.29.0)(@jest/transform@30.4.1)(@jest/types@30.4.1)(babel-jest@30.4.1(@babel/core@7.29.0))(jest-util@30.4.1)(jest@30.4.2(@types/node@22.19.19))(typescript@6.0.3)
+      tsup:
+        specifier: ^8.5.1
+        version: 8.5.1(jiti@2.7.0)(postcss@8.5.15)(tsx@4.22.3)(typescript@6.0.3)(yaml@2.9.0)
+      typescript:
+        specifier: ^6.0.0
+        version: 6.0.3
+
+  packages/notification-email:
+    dependencies:
+      '@repo/notifications-core':
+        specifier: workspace:*
+        version: link:../notifications-core
+      nodemailer:
+        specifier: ^8.0.10
+        version: 8.0.10
+      pino:
+        specifier: ^10.3.1
+        version: 10.3.1
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
+    devDependencies:
+      '@repo/env-config':
+        specifier: workspace:*
+        version: link:../env-config
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@repo/jest-config':
+        specifier: workspace:*
+        version: link:../jest-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@types/jest':
+        specifier: ^30.0.0
+        version: 30.0.0
+      '@types/node':
+        specifier: ^22.15.21
+        version: 22.19.19
+      '@types/nodemailer':
+        specifier: ^8.0.0
+        version: 8.0.0
+      jest:
+        specifier: ^30.2.0
+        version: 30.4.2(@types/node@22.19.19)
+      jest-environment-node:
+        specifier: ^30.2.0
+        version: 30.4.1
+      ts-jest:
+        specifier: ^29.4.5
+        version: 29.4.11(@babel/core@7.29.0)(@jest/transform@30.4.1)(@jest/types@30.4.1)(babel-jest@30.4.1(@babel/core@7.29.0))(jest-util@30.4.1)(jest@30.4.2(@types/node@22.19.19))(typescript@6.0.3)
+      tsup:
+        specifier: ^8.5.1
+        version: 8.5.1(jiti@2.7.0)(postcss@8.5.15)(tsx@4.22.3)(typescript@6.0.3)(yaml@2.9.0)
+      typescript:
+        specifier: ^6.0.0
+        version: 6.0.3
+
+  packages/notification-whatsapp:
+    dependencies:
+      '@repo/notifications-core':
+        specifier: workspace:*
+        version: link:../notifications-core
+      nodemailer:
+        specifier: ^8.0.10
+        version: 8.0.10
+      pino:
+        specifier: ^10.3.1
+        version: 10.3.1
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
+    devDependencies:
+      '@repo/env-config':
+        specifier: workspace:*
+        version: link:../env-config
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@repo/jest-config':
+        specifier: workspace:*
+        version: link:../jest-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@types/jest':
+        specifier: ^30.0.0
+        version: 30.0.0
+      '@types/node':
+        specifier: ^22.15.21
+        version: 22.19.19
+      jest:
+        specifier: ^30.2.0
+        version: 30.4.2(@types/node@22.19.19)
+      jest-environment-node:
+        specifier: ^30.2.0
+        version: 30.4.1
+      ts-jest:
+        specifier: ^29.4.5
+        version: 29.4.11(@babel/core@7.29.0)(@jest/transform@30.4.1)(@jest/types@30.4.1)(babel-jest@30.4.1(@babel/core@7.29.0))(jest-util@30.4.1)(jest@30.4.2(@types/node@22.19.19))(typescript@6.0.3)
+      tsup:
+        specifier: ^8.5.1
+        version: 8.5.1(jiti@2.7.0)(postcss@8.5.15)(tsx@4.22.3)(typescript@6.0.3)(yaml@2.9.0)
+      typescript:
+        specifier: ^6.0.0
+        version: 6.0.3
+
+  packages/notifications-core:
     dependencies:
       pino:
         specifier: ^10.3.1
@@ -3141,6 +3242,9 @@ packages:
 
   '@types/node@25.9.1':
     resolution: {integrity: sha512-xfrlY7UD5rMJk3ZVJP8BNzS28J36YJg+xp+LPXV1TdWxr8uMH5A860QNxYDGQe/ylDSgjxE52Q9VnO7p75tJxg==}
+
+  '@types/nodemailer@8.0.0':
+    resolution: {integrity: sha512-fyf8jWULsCo0d0BuoQ75i6IeoHs47qcqxWc7yUdUcV0pOZGjUTTOvwdG1PRXUDqN/8A64yQdQdnA2pZgcdi+cA==}
 
   '@types/pg@8.20.0':
     resolution: {integrity: sha512-bEPFOaMAHTEP1EzpvHTbmwR8UsFyHSKsRisLIHVMXnpNefSbGA1bD6CVy+qKjGSqmZqNqBDV2azOBo8TgkcVow==}
@@ -6165,6 +6269,10 @@ packages:
   node-releases@2.0.46:
     resolution: {integrity: sha512-GYVXHE2KnrzAfsAjl4uP++evGFCrAU1jta4ubEjIG7YWt/64Gqv66a30yKwWczVjA6j3bM4nBwH7Pk1JmDHaxQ==}
     engines: {node: '>=18'}
+
+  nodemailer@8.0.10:
+    resolution: {integrity: sha512-BLFuSth7QtHOkBzyqTehWWyub0NTRDuK2Q2SQfnGLsrJnzyU+Yeh4WpV1eZGuARFj1xQJHIdnTuJZLP+b9R1GQ==}
+    engines: {node: '>=6.0.0'}
 
   normalize-path@3.0.0:
     resolution: {integrity: sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==}
@@ -10469,6 +10577,10 @@ snapshots:
     dependencies:
       undici-types: 7.24.6
 
+  '@types/nodemailer@8.0.0':
+    dependencies:
+      '@types/node': 20.19.41
+
   '@types/pg@8.20.0':
     dependencies:
       '@types/node': 20.19.41
@@ -14390,6 +14502,8 @@ snapshots:
   node-int64@0.4.0: {}
 
   node-releases@2.0.46: {}
+
+  nodemailer@8.0.10: {}
 
   normalize-path@3.0.0: {}
 
