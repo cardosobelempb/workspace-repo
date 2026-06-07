@@ -1,11 +1,11 @@
-import { CacheService } from "./cache.service";
+import { RedisCacheService } from "./redis-cache.service";
 
 type CacheItem = {
   value: unknown;
   expiresAt: number;
 };
 
-export class MemoryCacheService implements CacheService {
+export class RedisMemoryCacheService implements RedisCacheService {
   private readonly store = new Map<string, CacheItem>();
 
   async get<T>(key: string): Promise<T | null> {

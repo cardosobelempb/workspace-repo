@@ -1,4 +1,4 @@
-export class CacheKeyFactory {
+export class RedisCacheKeyFactory {
   // sessions cache keys
   static sessionById(id: string) {
     return `sessions:id:${id}`;

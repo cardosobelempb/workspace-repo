@@ -1,0 +1,82 @@
+import { BaseAggregate, EmailVO, Optional, PasswordHashVO, UUIDVO } from "@repo/common";
+
+export interface UserProps {
+  email: EmailVO;
+  firstName: string;
+  lastName: string;
+  passwordHash: PasswordHashVO;
+  emailVerified: Date | null;
+  createdAt: Date;
+  updatedAt: Date | null;
+  deletedAt: Date | null;
+}
+
+export class UserEntity extends BaseAggregate<UserProps> {
+  get email() {
+    return this.props.email;
+  }
+  get firstName() {
+    return this.props.firstName;
+  }
+  get lastName() {
+    return this.props.lastName;
+  }
+  get passwordHash() {
+    return this.props.passwordHash;
+  }
+  get emailVerified() {
+    return this.props.emailVerified;
+  }
+  get createdAt() {
+    return this.props.createdAt;
+  }
+  get updatedAt() {
+    return this.props.updatedAt;
+  }
+  get deletedAt() {
+    return this.props.deletedAt;
+  }
+
+  softDelete(): void {
+    if (!this.isDeleted()) {
+      this.props.deletedAt = new Date();
+      this.touch();
+    }
+  }
+  restore(): void {
+    this.props.deletedAt = null;
+    this.touch();
+  }
+
+  isDeleted(): boolean {
+    return this.props.deletedAt !== null;
+  }
+
+  updateEmail(email: EmailVO): void {
+    this.props.email = email;
+    this.touch();
+  }
+  updatePasswordHash(hash: PasswordHashVO): void {
+    this.props.passwordHash = hash;
+    this.touch();
+  }
+
+  private touch(): void {
+    this.props.updatedAt = new Date();
+  }
+
+  static create(
+    props: Optional<UserProps, "createdAt" | "updatedAt" | "deletedAt">,
+    id?: UUIDVO,
+  ) {
+    return new UserEntity(
+      {
+        ...props,
+        createdAt: props.createdAt ?? new Date(),
+        updatedAt: props.updatedAt ?? null,
+        deletedAt: props.deletedAt ?? null,
+      },
+      id,
+    );
+  }
+}

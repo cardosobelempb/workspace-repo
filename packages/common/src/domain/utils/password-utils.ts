@@ -1,10 +1,10 @@
-import { BcryptHashComparer } from "../../shared/cryptography/bcrypt-hash-comparer";
-import { BcryptHashGenerator } from "../../shared/cryptography/bcrypt-hash-generator";
+import { HashComparer } from "../../shared/cryptography/hash-comparer";
+import { HashGenerator } from "../../shared/cryptography/hash-generator";
 
 export class PasswordUtils {
   constructor(
-    private readonly hashComparer: BcryptHashComparer,
-    private readonly hashGenerator: BcryptHashGenerator,
+    private readonly hashComparer: HashComparer,
+    private readonly hashGenerator: HashGenerator,
   ) {}
 
   // ---------------------------------------------------------------------------
@@ -115,7 +115,7 @@ export class PasswordUtils {
   // ---------------------------------------------------------------------------
 
   async hash(password: string): Promise<string> {
-    return this.hashGenerator.hash(password);
+    return this.hashGenerator.hash(password, 10);
   }
 
   async compare(password: string, hashed: string): Promise<boolean> {

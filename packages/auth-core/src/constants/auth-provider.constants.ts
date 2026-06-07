@@ -1,0 +1,10 @@
+export const AUTH_PROVIDER_CONSTANTS = {
+  PASSWORD: "PASSWORD",
+  OTP_EMAIL: "OTP_EMAIL",
+  MAGIC_LINK: "MAGIC_LINK",
+  GOOGLE: "GOOGLE",
+  FACEBOOK: "FACEBOOK",
+} as const;
+
+export type AuthProviderConstant =
+  (typeof AUTH_PROVIDER_CONSTANTS)[keyof typeof AUTH_PROVIDER_CONSTANTS];

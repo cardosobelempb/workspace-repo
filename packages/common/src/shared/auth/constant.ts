@@ -1,3 +1,0 @@
-export const JWT_TOKENS = {
-  JWT_ENCRYPTER: "JWT_ENCRYPTER",
-};
