@@ -1,0 +1,21 @@
+import { AuthProvider } from "../enums/auth-provider.enum";
+
+export type OAuthUserProfile = {
+  provider: AuthProvider;
+  providerAccountId: string;
+  email: string;
+  emailVerified: boolean;
+  name?: string | null;
+  avatarUrl?: string | null;
+};
+
+export abstract class OAuthProvider {
+  abstract provider: AuthProvider;
+
+  abstract getAuthorizationUrl(input: { state: string; redirectUri: string }): string;
+
+  abstract getUserProfile(input: {
+    code: string;
+    redirectUri: string;
+  }): Promise<OAuthUserProfile>;
+}

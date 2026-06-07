@@ -451,6 +451,9 @@ importers:
 
   packages/auth-core:
     dependencies:
+      '@repo/common':
+        specifier: workspace:*
+        version: link:../common
       pino:
         specifier: ^10.3.1
         version: 10.3.1
@@ -580,6 +583,12 @@ importers:
 
   packages/auth-fastify:
     dependencies:
+      '@repo/auth-core':
+        specifier: workspace:*
+        version: link:../auth-core
+      fastify:
+        specifier: ^5.0.0
+        version: 5.8.5
       pino:
         specifier: ^10.3.1
         version: 10.3.1
@@ -623,6 +632,9 @@ importers:
 
   packages/auth-google:
     dependencies:
+      '@repo/auth-core':
+        specifier: workspace:*
+        version: link:../auth-core
       pino:
         specifier: ^10.3.1
         version: 10.3.1
@@ -666,6 +678,9 @@ importers:
 
   packages/auth-magic-link:
     dependencies:
+      '@repo/auth-core':
+        specifier: workspace:*
+        version: link:../auth-core
       pino:
         specifier: ^10.3.1
         version: 10.3.1
@@ -709,6 +724,9 @@ importers:
 
   packages/auth-oauth:
     dependencies:
+      '@repo/auth-core':
+        specifier: workspace:*
+        version: link:../auth-core
       pino:
         specifier: ^10.3.1
         version: 10.3.1
@@ -752,6 +770,9 @@ importers:
 
   packages/auth-otp:
     dependencies:
+      '@repo/auth-core':
+        specifier: workspace:*
+        version: link:../auth-core
       pino:
         specifier: ^10.3.1
         version: 10.3.1
@@ -795,6 +816,9 @@ importers:
 
   packages/auth-password:
     dependencies:
+      '@repo/auth-core':
+        specifier: workspace:*
+        version: link:../auth-core
       pino:
         specifier: ^10.3.1
         version: 10.3.1
@@ -838,6 +862,15 @@ importers:
 
   packages/auth-prisma:
     dependencies:
+      '@repo/auth-core':
+        specifier: workspace:*
+        version: link:../auth-core
+      '@repo/common':
+        specifier: workspace:*
+        version: link:../common
+      '@repo/database':
+        specifier: workspace:*
+        version: link:../database
       pino:
         specifier: ^10.3.1
         version: 10.3.1
@@ -881,6 +914,12 @@ importers:
 
   packages/auth-redis:
     dependencies:
+      '@repo/auth-core':
+        specifier: workspace:*
+        version: link:../auth-core
+      '@repo/cache':
+        specifier: workspace:*
+        version: link:../cache
       pino:
         specifier: ^10.3.1
         version: 10.3.1
