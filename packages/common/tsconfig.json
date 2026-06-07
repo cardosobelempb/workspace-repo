@@ -32,7 +32,8 @@
     "src/domain/repositories/pagination/types/filter.types.ts",
     "src/domain/repositories/pagination/types/pagination.types.ts",
     "src/domain/repositories/pagination/pagination.constants.ts",
-    "src/domain/repositories/pagination/types/sort-parser.ts"
+    "src/domain/repositories/pagination/types/sort-parser.ts",
+    "src/domain/values-objects/metadata"
   ],
   "exclude": [
     "node_modules",

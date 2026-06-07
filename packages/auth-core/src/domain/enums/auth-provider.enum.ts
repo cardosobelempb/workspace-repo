@@ -1,0 +1,7 @@
+export enum AuthProvider {
+  PASSWORD = "PASSWORD",
+  OTP_EMAIL = "OTP_EMAIL",
+  MAGIC_LINK = "MAGIC_LINK",
+  GOOGLE = "GOOGLE",
+  FACEBOOK = "FACEBOOK",
+}

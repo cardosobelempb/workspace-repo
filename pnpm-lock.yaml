@@ -449,6 +449,479 @@ importers:
         specifier: workspace:*
         version: link:../../packages/typescript-config
 
+  packages/auth-core:
+    dependencies:
+      pino:
+        specifier: ^10.3.1
+        version: 10.3.1
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
+    devDependencies:
+      '@repo/env-config':
+        specifier: workspace:*
+        version: link:../env-config
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@repo/jest-config':
+        specifier: workspace:*
+        version: link:../jest-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@types/jest':
+        specifier: ^30.0.0
+        version: 30.0.0
+      '@types/node':
+        specifier: ^22.15.21
+        version: 22.19.19
+      jest:
+        specifier: ^30.2.0
+        version: 30.4.2(@types/node@22.19.19)
+      jest-environment-node:
+        specifier: ^30.2.0
+        version: 30.4.1
+      ts-jest:
+        specifier: ^29.4.5
+        version: 29.4.11(@babel/core@7.29.7)(@jest/transform@30.4.1)(@jest/types@30.4.1)(babel-jest@30.4.1(@babel/core@7.29.7))(jest-util@30.4.1)(jest@30.4.2)(typescript@6.0.3)
+      tsup:
+        specifier: ^8.5.1
+        version: 8.5.1(jiti@2.7.0)(postcss@8.5.15)(tsx@4.22.4)(typescript@6.0.3)(yaml@2.9.0)
+      typescript:
+        specifier: ^6.0.0
+        version: 6.0.3
+
+  packages/auth-email:
+    dependencies:
+      pino:
+        specifier: ^10.3.1
+        version: 10.3.1
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
+    devDependencies:
+      '@repo/env-config':
+        specifier: workspace:*
+        version: link:../env-config
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@repo/jest-config':
+        specifier: workspace:*
+        version: link:../jest-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@types/jest':
+        specifier: ^30.0.0
+        version: 30.0.0
+      '@types/node':
+        specifier: ^22.15.21
+        version: 22.19.19
+      jest:
+        specifier: ^30.2.0
+        version: 30.4.2(@types/node@22.19.19)
+      jest-environment-node:
+        specifier: ^30.2.0
+        version: 30.4.1
+      ts-jest:
+        specifier: ^29.4.5
+        version: 29.4.11(@babel/core@7.29.7)(@jest/transform@30.4.1)(@jest/types@30.4.1)(babel-jest@30.4.1(@babel/core@7.29.7))(jest-util@30.4.1)(jest@30.4.2)(typescript@6.0.3)
+      tsup:
+        specifier: ^8.5.1
+        version: 8.5.1(jiti@2.7.0)(postcss@8.5.15)(tsx@4.22.4)(typescript@6.0.3)(yaml@2.9.0)
+      typescript:
+        specifier: ^6.0.0
+        version: 6.0.3
+
+  packages/auth-facebook:
+    dependencies:
+      pino:
+        specifier: ^10.3.1
+        version: 10.3.1
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
+    devDependencies:
+      '@repo/env-config':
+        specifier: workspace:*
+        version: link:../env-config
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@repo/jest-config':
+        specifier: workspace:*
+        version: link:../jest-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@types/jest':
+        specifier: ^30.0.0
+        version: 30.0.0
+      '@types/node':
+        specifier: ^22.15.21
+        version: 22.19.19
+      jest:
+        specifier: ^30.2.0
+        version: 30.4.2(@types/node@22.19.19)
+      jest-environment-node:
+        specifier: ^30.2.0
+        version: 30.4.1
+      ts-jest:
+        specifier: ^29.4.5
+        version: 29.4.11(@babel/core@7.29.7)(@jest/transform@30.4.1)(@jest/types@30.4.1)(babel-jest@30.4.1(@babel/core@7.29.7))(jest-util@30.4.1)(jest@30.4.2)(typescript@6.0.3)
+      tsup:
+        specifier: ^8.5.1
+        version: 8.5.1(jiti@2.7.0)(postcss@8.5.15)(tsx@4.22.4)(typescript@6.0.3)(yaml@2.9.0)
+      typescript:
+        specifier: ^6.0.0
+        version: 6.0.3
+
+  packages/auth-fastify:
+    dependencies:
+      pino:
+        specifier: ^10.3.1
+        version: 10.3.1
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
+    devDependencies:
+      '@repo/env-config':
+        specifier: workspace:*
+        version: link:../env-config
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@repo/jest-config':
+        specifier: workspace:*
+        version: link:../jest-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@types/jest':
+        specifier: ^30.0.0
+        version: 30.0.0
+      '@types/node':
+        specifier: ^22.15.21
+        version: 22.19.19
+      jest:
+        specifier: ^30.2.0
+        version: 30.4.2(@types/node@22.19.19)
+      jest-environment-node:
+        specifier: ^30.2.0
+        version: 30.4.1
+      ts-jest:
+        specifier: ^29.4.5
+        version: 29.4.11(@babel/core@7.29.7)(@jest/transform@30.4.1)(@jest/types@30.4.1)(babel-jest@30.4.1(@babel/core@7.29.7))(jest-util@30.4.1)(jest@30.4.2)(typescript@6.0.3)
+      tsup:
+        specifier: ^8.5.1
+        version: 8.5.1(jiti@2.7.0)(postcss@8.5.15)(tsx@4.22.4)(typescript@6.0.3)(yaml@2.9.0)
+      typescript:
+        specifier: ^6.0.0
+        version: 6.0.3
+
+  packages/auth-google:
+    dependencies:
+      pino:
+        specifier: ^10.3.1
+        version: 10.3.1
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
+    devDependencies:
+      '@repo/env-config':
+        specifier: workspace:*
+        version: link:../env-config
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@repo/jest-config':
+        specifier: workspace:*
+        version: link:../jest-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@types/jest':
+        specifier: ^30.0.0
+        version: 30.0.0
+      '@types/node':
+        specifier: ^22.15.21
+        version: 22.19.19
+      jest:
+        specifier: ^30.2.0
+        version: 30.4.2(@types/node@22.19.19)
+      jest-environment-node:
+        specifier: ^30.2.0
+        version: 30.4.1
+      ts-jest:
+        specifier: ^29.4.5
+        version: 29.4.11(@babel/core@7.29.7)(@jest/transform@30.4.1)(@jest/types@30.4.1)(babel-jest@30.4.1(@babel/core@7.29.7))(jest-util@30.4.1)(jest@30.4.2)(typescript@6.0.3)
+      tsup:
+        specifier: ^8.5.1
+        version: 8.5.1(jiti@2.7.0)(postcss@8.5.15)(tsx@4.22.4)(typescript@6.0.3)(yaml@2.9.0)
+      typescript:
+        specifier: ^6.0.0
+        version: 6.0.3
+
+  packages/auth-magic-link:
+    dependencies:
+      pino:
+        specifier: ^10.3.1
+        version: 10.3.1
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
+    devDependencies:
+      '@repo/env-config':
+        specifier: workspace:*
+        version: link:../env-config
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@repo/jest-config':
+        specifier: workspace:*
+        version: link:../jest-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@types/jest':
+        specifier: ^30.0.0
+        version: 30.0.0
+      '@types/node':
+        specifier: ^22.15.21
+        version: 22.19.19
+      jest:
+        specifier: ^30.2.0
+        version: 30.4.2(@types/node@22.19.19)
+      jest-environment-node:
+        specifier: ^30.2.0
+        version: 30.4.1
+      ts-jest:
+        specifier: ^29.4.5
+        version: 29.4.11(@babel/core@7.29.7)(@jest/transform@30.4.1)(@jest/types@30.4.1)(babel-jest@30.4.1(@babel/core@7.29.7))(jest-util@30.4.1)(jest@30.4.2)(typescript@6.0.3)
+      tsup:
+        specifier: ^8.5.1
+        version: 8.5.1(jiti@2.7.0)(postcss@8.5.15)(tsx@4.22.4)(typescript@6.0.3)(yaml@2.9.0)
+      typescript:
+        specifier: ^6.0.0
+        version: 6.0.3
+
+  packages/auth-oauth:
+    dependencies:
+      pino:
+        specifier: ^10.3.1
+        version: 10.3.1
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
+    devDependencies:
+      '@repo/env-config':
+        specifier: workspace:*
+        version: link:../env-config
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@repo/jest-config':
+        specifier: workspace:*
+        version: link:../jest-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@types/jest':
+        specifier: ^30.0.0
+        version: 30.0.0
+      '@types/node':
+        specifier: ^22.15.21
+        version: 22.19.19
+      jest:
+        specifier: ^30.2.0
+        version: 30.4.2(@types/node@22.19.19)
+      jest-environment-node:
+        specifier: ^30.2.0
+        version: 30.4.1
+      ts-jest:
+        specifier: ^29.4.5
+        version: 29.4.11(@babel/core@7.29.7)(@jest/transform@30.4.1)(@jest/types@30.4.1)(babel-jest@30.4.1(@babel/core@7.29.7))(jest-util@30.4.1)(jest@30.4.2)(typescript@6.0.3)
+      tsup:
+        specifier: ^8.5.1
+        version: 8.5.1(jiti@2.7.0)(postcss@8.5.15)(tsx@4.22.4)(typescript@6.0.3)(yaml@2.9.0)
+      typescript:
+        specifier: ^6.0.0
+        version: 6.0.3
+
+  packages/auth-otp:
+    dependencies:
+      pino:
+        specifier: ^10.3.1
+        version: 10.3.1
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
+    devDependencies:
+      '@repo/env-config':
+        specifier: workspace:*
+        version: link:../env-config
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@repo/jest-config':
+        specifier: workspace:*
+        version: link:../jest-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@types/jest':
+        specifier: ^30.0.0
+        version: 30.0.0
+      '@types/node':
+        specifier: ^22.15.21
+        version: 22.19.19
+      jest:
+        specifier: ^30.2.0
+        version: 30.4.2(@types/node@22.19.19)
+      jest-environment-node:
+        specifier: ^30.2.0
+        version: 30.4.1
+      ts-jest:
+        specifier: ^29.4.5
+        version: 29.4.11(@babel/core@7.29.7)(@jest/transform@30.4.1)(@jest/types@30.4.1)(babel-jest@30.4.1(@babel/core@7.29.7))(jest-util@30.4.1)(jest@30.4.2)(typescript@6.0.3)
+      tsup:
+        specifier: ^8.5.1
+        version: 8.5.1(jiti@2.7.0)(postcss@8.5.15)(tsx@4.22.4)(typescript@6.0.3)(yaml@2.9.0)
+      typescript:
+        specifier: ^6.0.0
+        version: 6.0.3
+
+  packages/auth-password:
+    dependencies:
+      pino:
+        specifier: ^10.3.1
+        version: 10.3.1
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
+    devDependencies:
+      '@repo/env-config':
+        specifier: workspace:*
+        version: link:../env-config
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@repo/jest-config':
+        specifier: workspace:*
+        version: link:../jest-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@types/jest':
+        specifier: ^30.0.0
+        version: 30.0.0
+      '@types/node':
+        specifier: ^22.15.21
+        version: 22.19.19
+      jest:
+        specifier: ^30.2.0
+        version: 30.4.2(@types/node@22.19.19)
+      jest-environment-node:
+        specifier: ^30.2.0
+        version: 30.4.1
+      ts-jest:
+        specifier: ^29.4.5
+        version: 29.4.11(@babel/core@7.29.7)(@jest/transform@30.4.1)(@jest/types@30.4.1)(babel-jest@30.4.1(@babel/core@7.29.7))(jest-util@30.4.1)(jest@30.4.2)(typescript@6.0.3)
+      tsup:
+        specifier: ^8.5.1
+        version: 8.5.1(jiti@2.7.0)(postcss@8.5.15)(tsx@4.22.4)(typescript@6.0.3)(yaml@2.9.0)
+      typescript:
+        specifier: ^6.0.0
+        version: 6.0.3
+
+  packages/auth-prisma:
+    dependencies:
+      pino:
+        specifier: ^10.3.1
+        version: 10.3.1
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
+    devDependencies:
+      '@repo/env-config':
+        specifier: workspace:*
+        version: link:../env-config
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@repo/jest-config':
+        specifier: workspace:*
+        version: link:../jest-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@types/jest':
+        specifier: ^30.0.0
+        version: 30.0.0
+      '@types/node':
+        specifier: ^22.15.21
+        version: 22.19.19
+      jest:
+        specifier: ^30.2.0
+        version: 30.4.2(@types/node@22.19.19)
+      jest-environment-node:
+        specifier: ^30.2.0
+        version: 30.4.1
+      ts-jest:
+        specifier: ^29.4.5
+        version: 29.4.11(@babel/core@7.29.7)(@jest/transform@30.4.1)(@jest/types@30.4.1)(babel-jest@30.4.1(@babel/core@7.29.7))(jest-util@30.4.1)(jest@30.4.2)(typescript@6.0.3)
+      tsup:
+        specifier: ^8.5.1
+        version: 8.5.1(jiti@2.7.0)(postcss@8.5.15)(tsx@4.22.4)(typescript@6.0.3)(yaml@2.9.0)
+      typescript:
+        specifier: ^6.0.0
+        version: 6.0.3
+
+  packages/auth-redis:
+    dependencies:
+      pino:
+        specifier: ^10.3.1
+        version: 10.3.1
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
+    devDependencies:
+      '@repo/env-config':
+        specifier: workspace:*
+        version: link:../env-config
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@repo/jest-config':
+        specifier: workspace:*
+        version: link:../jest-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@types/jest':
+        specifier: ^30.0.0
+        version: 30.0.0
+      '@types/node':
+        specifier: ^22.15.21
+        version: 22.19.19
+      jest:
+        specifier: ^30.2.0
+        version: 30.4.2(@types/node@22.19.19)
+      jest-environment-node:
+        specifier: ^30.2.0
+        version: 30.4.1
+      ts-jest:
+        specifier: ^29.4.5
+        version: 29.4.11(@babel/core@7.29.7)(@jest/transform@30.4.1)(@jest/types@30.4.1)(babel-jest@30.4.1(@babel/core@7.29.7))(jest-util@30.4.1)(jest@30.4.2)(typescript@6.0.3)
+      tsup:
+        specifier: ^8.5.1
+        version: 8.5.1(jiti@2.7.0)(postcss@8.5.15)(tsx@4.22.4)(typescript@6.0.3)(yaml@2.9.0)
+      typescript:
+        specifier: ^6.0.0
+        version: 6.0.3
+
   packages/cache:
     dependencies:
       '@repo/env-config':
