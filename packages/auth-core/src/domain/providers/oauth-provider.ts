@@ -1,12 +1,13 @@
 import { AuthProvider } from "../enums/auth-provider.enum";
 
 export type OAuthUserProfile = {
+  [x: string]: string | null;
   provider: AuthProvider;
   providerAccountId: string;
   email: string;
-  emailVerified: boolean;
-  name?: string | null;
-  avatarUrl?: string | null;
+  emailVerified: string | null;
+  name: string | null;
+  avatarUrl: string | null;
 };
 
 export abstract class OAuthProvider {

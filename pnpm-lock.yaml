@@ -454,6 +454,9 @@ importers:
       '@repo/common':
         specifier: workspace:*
         version: link:../common
+      '@repo/notification-email':
+        specifier: workspace:*
+        version: link:../notification-email
       pino:
         specifier: ^10.3.1
         version: 10.3.1
