@@ -1,5 +1,6 @@
 export * from "./container";
 export * from "./cryptography";
+export * from "./email";
 export * from "./enums";
 export * from "./env-config";
 export * from "./http";
@@ -7,3 +8,5 @@ export * from "./lib";
 export * from "./mappers";
 export * from "./module";
 export * from "./token";
+export * from "./upload";
+export * from "./utils";

@@ -4,7 +4,7 @@ export * from "./base.repository";
 export * from "./in-memory-repository";
 export * from "./page-repository";
 export * from "./pagination";
-export * from "./Repository";
+export * from "./SearchableRepository";
 export * from "./search.repository";
 export * from "./searchable-soft-delete.repository";
 export * from "./soft-delete.repository";

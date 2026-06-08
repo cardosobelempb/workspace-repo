@@ -37,8 +37,9 @@ export class RequestMagicLinkUseCase {
       email: input.email,
       tokenHash,
       expiresAt: expiresAt.toISOString(),
-      ipAddress: input.ipAddress ?? null,
-      userAgent: input.userAgent ?? null,
+      ipAddress: input.ipAddress ?? "",
+      userAgent: input.userAgent ?? "",
+      usedAt: null,
     });
 
     await this.magicLinkRepository.create(magicLinkFactory);

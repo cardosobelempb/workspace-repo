@@ -82,7 +82,7 @@ export class RefreshSessionUseCase {
       SessionFactory.build({
         userId: user.id.getValue(),
         sessionToken: newHash,
-        expires: expiresAt,
+        expires: expiresAt.toDateString(),
         ipAddress: metadata.ipAddress,
         userAgent: metadata.userAgent,
       }),

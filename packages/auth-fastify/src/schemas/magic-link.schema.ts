@@ -2,13 +2,15 @@
 
 import { z } from "zod";
 
-export const RequestMagicLinkSchema = z.object({
+export const RequestMagicLinkTokenSchema = z.object({
   email: z.string().email("E-mail inválido"),
 });
 
-export const VerifyMagicLinkQuerySchema = z.object({
+export const VerifyMagicLinkTokenQuerySchema = z.object({
   token: z.string().min(20, "Token inválido"),
 });
 
-export type RequestMagicLinkDto = z.infer<typeof RequestMagicLinkSchema>;
-export type VerifyMagicLinkQueryDto = z.infer<typeof VerifyMagicLinkQuerySchema>;
+export type RequestMagicLinkTokenDto = z.infer<typeof RequestMagicLinkTokenSchema>;
+export type VerifyMagicLinkTokenQueryDto = z.infer<
+  typeof VerifyMagicLinkTokenQuerySchema
+>;

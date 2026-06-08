@@ -1,9 +1,9 @@
 import { EmailVO, IpAddressVO, UserAgentVO } from "@repo/common";
 import { MagicLinkTokenEntity } from "../../domain/entities";
-import { MagicLinkCreateDto } from "../dto";
+import { MagicLinkTokenCreateDto } from "../dto";
 
 export class MagicLinkTokenFactory {
-  static build(input: MagicLinkCreateDto): MagicLinkTokenEntity {
+  static build(input: MagicLinkTokenCreateDto): MagicLinkTokenEntity {
     return MagicLinkTokenEntity.create({
       email: EmailVO.create(input.email),
       tokenHash: input.tokenHash,

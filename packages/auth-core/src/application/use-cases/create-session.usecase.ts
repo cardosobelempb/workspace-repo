@@ -18,7 +18,10 @@ import { SessionFactory } from "../factories/session.factory";
 import { AUTH_DI_TOKENS, AUTH_TOKEN_CONSTANTS } from "../../constants";
 
 export type CreateSessionUseCaseResponse = Either<UnauthorizedError, AuthProjectionDto>;
-export type RequestMetadata = { ipAddress: string | null; userAgent: string | null };
+export type RequestSessionMetadata = {
+  ipAddress: string | null;
+  userAgent: string | null;
+};
 
 export class CreateSessionUseCase {
   static inject = [
@@ -41,7 +44,7 @@ export class CreateSessionUseCase {
 
   async execute(
     input: LoginDto,
-    metadata: RequestMetadata,
+    metadata: RequestSessionMetadata,
   ): Promise<CreateSessionUseCaseResponse> {
     const user = await this.userRepository.findActiveByEmail(
       input.email.toLowerCase().trim(),
@@ -77,7 +80,7 @@ export class CreateSessionUseCase {
     const sessionEntity = SessionFactory.build({
       userId: user.id.getValue(),
       sessionToken: sessionTokenHash,
-      expires: expiresAt,
+      expires: expiresAt.toISOString(),
       ipAddress: metadata.ipAddress,
       userAgent: metadata.userAgent,
     });

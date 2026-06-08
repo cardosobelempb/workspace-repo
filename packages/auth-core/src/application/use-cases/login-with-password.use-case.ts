@@ -19,7 +19,10 @@ export type LoginWithPasswordUseCaseResponse = Either<
   UnauthorizedError,
   AuthProjectionDto
 >;
-export type RequestMetadata = { ipAddress: string | null; userAgent: string | null };
+export type RequestLoginWithPasswordMetadata = {
+  ipAddress: string | null;
+  userAgent: string | null;
+};
 
 export class LoginWithPasswordUseCase {
   static inject = [
@@ -42,7 +45,7 @@ export class LoginWithPasswordUseCase {
 
   async execute(
     input: LoginDto,
-    metadata: RequestMetadata,
+    metadata: RequestLoginWithPasswordMetadata,
   ): Promise<LoginWithPasswordUseCaseResponse> {
     const user = await this.userRepository.findActiveByEmail(
       input.email.toLowerCase().trim(),
@@ -78,7 +81,7 @@ export class LoginWithPasswordUseCase {
     const sessionEntity = SessionFactory.build({
       userId: user.id.getValue(),
       sessionToken: sessionTokenHash,
-      expires: expiresAt,
+      expires: expiresAt.toISOString(),
       ipAddress: metadata.ipAddress,
       userAgent: metadata.userAgent,
     });
