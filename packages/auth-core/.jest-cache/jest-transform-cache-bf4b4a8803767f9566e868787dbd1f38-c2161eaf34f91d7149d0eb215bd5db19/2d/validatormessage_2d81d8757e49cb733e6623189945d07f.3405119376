@@ -1,0 +1,50 @@
+661ee1d7b4f54fca8229e6be7a5f468c
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ValidatorLimits = exports.ValidatorMessage = void 0;
+/**
+ * Catálogo padronizado de mensagens de validação.
+ * Todas as mensagens são claras, consistentes e adequadas para exibição ao usuário.
+ */
+var ValidatorMessage;
+(function (ValidatorMessage) {
+    // ---- REQUIRED ----
+    ValidatorMessage["REQUIRED_FIELD"] = "Este campo \u00E9 obrigat\u00F3rio.";
+    ValidatorMessage["REQUIRED_NUMBER"] = "Este campo deve conter apenas n\u00FAmeros positivos.";
+    ValidatorMessage["REQUIRED_PHONE"] = "O campo Telefone deve conter apenas d\u00EDgitos.";
+    ValidatorMessage["REQUIRED_EMAIL"] = "Informe um endere\u00E7o de e-mail v\u00E1lido.";
+    ValidatorMessage["REQUIRED_EMAIL_EXIST"] = "Este e-mail j\u00E1 est\u00E1 cadastrado.";
+    ValidatorMessage["REQUIRED_EXIST"] = "Este valor j\u00E1 est\u00E1 cadastrado.";
+    ValidatorMessage["NAME_EXIST"] = "Este nome j\u00E1 est\u00E1 cadastrado.";
+    ValidatorMessage["REQUIRED_PRICE_POSITIVE"] = "O pre\u00E7o deve ser um valor positivo.";
+    ValidatorMessage["REQUIRED_DATE_PRESENT"] = "A data informada n\u00E3o pode estar no futuro.";
+    // ---- EMAIL ----
+    ValidatorMessage["INVALID_EMAIL"] = "O e-mail informado n\u00E3o \u00E9 v\u00E1lido.";
+    ValidatorMessage["INVALID_URL"] = "O URL informado n\u00E3o \u00E9 v\u00E1lido.";
+    // ---- LENGTH ----
+    ValidatorMessage["MIN_LENGTH"] = "O valor informado \u00E9 menor do que o tamanho m\u00EDnimo permitido.";
+    ValidatorMessage["MAX_LENGTH"] = "O valor informado \u00E9 maior do que o tamanho m\u00E1ximo permitido.";
+    ValidatorMessage["BETWEEN_LENGTH"] = "O valor deve ter entre 5 e 15 caracteres.";
+    // ---- NUMERIC ----
+    ValidatorMessage["MIN_VALUE"] = "O valor informado \u00E9 menor do que o permitido.";
+    ValidatorMessage["MAX_VALUE"] = "O valor informado \u00E9 maior do que o permitido.";
+    // ---- GENERAL FORMAT ----
+    ValidatorMessage["INVALID_FORMAT"] = "O formato informado \u00E9 inv\u00E1lido.";
+    ValidatorMessage["INVALID_ORDER_BY"] = "O campo orderBy cont\u00E9m um valor inv\u00E1lido.";
+    // ---- DATE ----
+    ValidatorMessage["INVALID_ORDER_DATE"] = "A data informada \u00E9 inv\u00E1lida.";
+    ValidatorMessage["DATE_IN_THE_PAST"] = "A data n\u00E3o pode estar no passado.";
+    ValidatorMessage["EXCEEDS_DURATION"] = "O valor informado excede a dura\u00E7\u00E3o permitida.";
+    ValidatorMessage["DATE_OVERLAP"] = "Existe conflito entre as datas informadas.";
+    // ---- DUPLICATE ----
+    ValidatorMessage["DUPLICATE_VALUE"] = "Este valor j\u00E1 est\u00E1 cadastrado.";
+})(ValidatorMessage || (exports.ValidatorMessage = ValidatorMessage = {}));
+/**
+ * Valores padrão para limites numéricos utilizados em validações diversas.
+ */
+var ValidatorLimits;
+(function (ValidatorLimits) {
+    ValidatorLimits[ValidatorLimits["SIZE_MIN"] = 5] = "SIZE_MIN";
+    ValidatorLimits[ValidatorLimits["SIZE_MAX"] = 60] = "SIZE_MAX";
+})(ValidatorLimits || (exports.ValidatorLimits = ValidatorLimits = {}));
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXGRvbWFpblxcdmFsaWRhdGlvbnNcXHZhbGlkYXRvci1tZXNzYWdlLnRzIiwibWFwcGluZ3MiOiI7OztBQUFBOzs7R0FHRztBQUNILElBQVksZ0JBcUNYO0FBckNELFdBQVksZ0JBQWdCO0lBQzFCLHFCQUFxQjtJQUNyQiwwRUFBNEMsQ0FBQTtJQUM1Qyw2RkFBb0UsQ0FBQTtJQUNwRSx3RkFBK0QsQ0FBQTtJQUMvRCxzRkFBd0QsQ0FBQTtJQUN4RCxzRkFBd0QsQ0FBQTtJQUN4RCwrRUFBaUQsQ0FBQTtJQUNqRCwwRUFBNEMsQ0FBQTtJQUM1Qyx3RkFBK0QsQ0FBQTtJQUMvRCw2RkFBb0UsQ0FBQTtJQUVwRSxrQkFBa0I7SUFDbEIscUZBQWtELENBQUE7SUFDbEQsZ0ZBQTZDLENBQUE7SUFFN0MsbUJBQW1CO0lBQ25CLHlHQUEyRSxDQUFBO0lBQzNFLHlHQUEyRSxDQUFBO0lBQzNFLGdGQUE0RCxDQUFBO0lBRTVELG9CQUFvQjtJQUNwQixvRkFBMkQsQ0FBQTtJQUMzRCxvRkFBMkQsQ0FBQTtJQUUzRCwyQkFBMkI7SUFDM0IsZ0ZBQWtELENBQUE7SUFDbEQsNEZBQThELENBQUE7SUFFOUQsaUJBQWlCO0lBQ2pCLGlGQUFtRCxDQUFBO0lBQ25ELCtFQUFzRCxDQUFBO0lBQ3RELGdHQUFrRSxDQUFBO0lBQ2xFLCtFQUEyRCxDQUFBO0lBRTNELHNCQUFzQjtJQUN0QixnRkFBa0QsQ0FBQTtBQUNwRCxDQUFDLEVBckNXLGdCQUFnQixnQ0FBaEIsZ0JBQWdCLFFBcUMzQjtBQUVEOztHQUVHO0FBQ0gsSUFBWSxlQUdYO0FBSEQsV0FBWSxlQUFlO0lBQ3pCLDZEQUFZLENBQUE7SUFDWiw4REFBYSxDQUFBO0FBQ2YsQ0FBQyxFQUhXLGVBQWUsK0JBQWYsZUFBZSxRQUcxQiIsIm5hbWVzIjpbXSwic291cmNlcyI6WyJFOlxcd29ya3NwYWNlLXNhc3NcXHJlcG9cXHBhY2thZ2VzXFxjb21tb25cXHNyY1xcZG9tYWluXFx2YWxpZGF0aW9uc1xcdmFsaWRhdG9yLW1lc3NhZ2UudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBDYXTDoWxvZ28gcGFkcm9uaXphZG8gZGUgbWVuc2FnZW5zIGRlIHZhbGlkYcOnw6NvLlxuICogVG9kYXMgYXMgbWVuc2FnZW5zIHPDo28gY2xhcmFzLCBjb25zaXN0ZW50ZXMgZSBhZGVxdWFkYXMgcGFyYSBleGliacOnw6NvIGFvIHVzdcOhcmlvLlxuICovXG5leHBvcnQgZW51bSBWYWxpZGF0b3JNZXNzYWdlIHtcbiAgLy8gLS0tLSBSRVFVSVJFRCAtLS0tXG4gIFJFUVVJUkVEX0ZJRUxEID0gXCJFc3RlIGNhbXBvIMOpIG9icmlnYXTDs3Jpby5cIixcbiAgUkVRVUlSRURfTlVNQkVSID0gXCJFc3RlIGNhbXBvIGRldmUgY29udGVyIGFwZW5hcyBuw7ptZXJvcyBwb3NpdGl2b3MuXCIsXG4gIFJFUVVJUkVEX1BIT05FID0gXCJPIGNhbXBvIFRlbGVmb25lIGRldmUgY29udGVyIGFwZW5hcyBkw61naXRvcy5cIixcbiAgUkVRVUlSRURfRU1BSUwgPSBcIkluZm9ybWUgdW0gZW5kZXJlw6dvIGRlIGUtbWFpbCB2w6FsaWRvLlwiLFxuICBSRVFVSVJFRF9FTUFJTF9FWElTVCA9IFwiRXN0ZSBlLW1haWwgasOhIGVzdMOhIGNhZGFzdHJhZG8uXCIsXG4gIFJFUVVJUkVEX0VYSVNUID0gXCJFc3RlIHZhbG9yIGrDoSBlc3TDoSBjYWRhc3RyYWRvLlwiLFxuICBOQU1FX0VYSVNUID0gXCJFc3RlIG5vbWUgasOhIGVzdMOhIGNhZGFzdHJhZG8uXCIsXG4gIFJFUVVJUkVEX1BSSUNFX1BPU0lUSVZFID0gXCJPIHByZcOnbyBkZXZlIHNlciB1bSB2YWxvciBwb3NpdGl2by5cIixcbiAgUkVRVUlSRURfREFURV9QUkVTRU5UID0gXCJBIGRhdGEgaW5mb3JtYWRhIG7Do28gcG9kZSBlc3RhciBubyBmdXR1cm8uXCIsXG5cbiAgLy8gLS0tLSBFTUFJTCAtLS0tXG4gIElOVkFMSURfRU1BSUwgPSBcIk8gZS1tYWlsIGluZm9ybWFkbyBuw6NvIMOpIHbDoWxpZG8uXCIsXG4gIElOVkFMSURfVVJMID0gXCJPIFVSTCBpbmZvcm1hZG8gbsOjbyDDqSB2w6FsaWRvLlwiLFxuXG4gIC8vIC0tLS0gTEVOR1RIIC0tLS1cbiAgTUlOX0xFTkdUSCA9IFwiTyB2YWxvciBpbmZvcm1hZG8gw6kgbWVub3IgZG8gcXVlIG8gdGFtYW5obyBtw61uaW1vIHBlcm1pdGlkby5cIixcbiAgTUFYX0xFTkdUSCA9IFwiTyB2YWxvciBpbmZvcm1hZG8gw6kgbWFpb3IgZG8gcXVlIG8gdGFtYW5obyBtw6F4aW1vIHBlcm1pdGlkby5cIixcbiAgQkVUV0VFTl9MRU5HVEggPSBcIk8gdmFsb3IgZGV2ZSB0ZXIgZW50cmUgNSBlIDE1IGNhcmFjdGVyZXMuXCIsXG5cbiAgLy8gLS0tLSBOVU1FUklDIC0tLS1cbiAgTUlOX1ZBTFVFID0gXCJPIHZhbG9yIGluZm9ybWFkbyDDqSBtZW5vciBkbyBxdWUgbyBwZXJtaXRpZG8uXCIsXG4gIE1BWF9WQUxVRSA9IFwiTyB2YWxvciBpbmZvcm1hZG8gw6kgbWFpb3IgZG8gcXVlIG8gcGVybWl0aWRvLlwiLFxuXG4gIC8vIC0tLS0gR0VORVJBTCBGT1JNQVQgLS0tLVxuICBJTlZBTElEX0ZPUk1BVCA9IFwiTyBmb3JtYXRvIGluZm9ybWFkbyDDqSBpbnbDoWxpZG8uXCIsXG4gIElOVkFMSURfT1JERVJfQlkgPSBcIk8gY2FtcG8gb3JkZXJCeSBjb250w6ltIHVtIHZhbG9yIGludsOhbGlkby5cIixcblxuICAvLyAtLS0tIERBVEUgLS0tLVxuICBJTlZBTElEX09SREVSX0RBVEUgPSBcIkEgZGF0YSBpbmZvcm1hZGEgw6kgaW52w6FsaWRhLlwiLFxuICBEQVRFX0lOX1RIRV9QQVNUID0gXCJBIGRhdGEgbsOjbyBwb2RlIGVzdGFyIG5vIHBhc3NhZG8uXCIsXG4gIEVYQ0VFRFNfRFVSQVRJT04gPSBcIk8gdmFsb3IgaW5mb3JtYWRvIGV4Y2VkZSBhIGR1cmHDp8OjbyBwZXJtaXRpZGEuXCIsXG4gIERBVEVfT1ZFUkxBUCA9IFwiRXhpc3RlIGNvbmZsaXRvIGVudHJlIGFzIGRhdGFzIGluZm9ybWFkYXMuXCIsXG5cbiAgLy8gLS0tLSBEVVBMSUNBVEUgLS0tLVxuICBEVVBMSUNBVEVfVkFMVUUgPSBcIkVzdGUgdmFsb3IgasOhIGVzdMOhIGNhZGFzdHJhZG8uXCIsXG59XG5cbi8qKlxuICogVmFsb3JlcyBwYWRyw6NvIHBhcmEgbGltaXRlcyBudW3DqXJpY29zIHV0aWxpemFkb3MgZW0gdmFsaWRhw6fDtWVzIGRpdmVyc2FzLlxuICovXG5leHBvcnQgZW51bSBWYWxpZGF0b3JMaW1pdHMge1xuICBTSVpFX01JTiA9IDUsXG4gIFNJWkVfTUFYID0gNjAsXG59XG4iXSwidmVyc2lvbiI6M30=

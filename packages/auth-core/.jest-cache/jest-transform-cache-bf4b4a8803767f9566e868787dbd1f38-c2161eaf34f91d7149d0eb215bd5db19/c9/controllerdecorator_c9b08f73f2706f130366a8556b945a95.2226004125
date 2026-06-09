@@ -1,0 +1,17 @@
+ad76463731b7173d7be0fb1c23b9fdff
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Controller = Controller;
+const metadata_1 = require("./metadata");
+/**
+ * Define o prefixo base de um controller.
+ *
+ * Exemplo:
+ * @Controller("/users")
+ */
+function Controller(prefix = "") {
+    return function (target) {
+        (0, metadata_1.setControllerPrefix)(target, prefix);
+    };
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXHNoYXJlZFxcaHR0cFxcZGVjb3JhdG9yc1xcY29udHJvbGxlci5kZWNvcmF0b3IudHMiLCJtYXBwaW5ncyI6Ijs7QUFRQSxnQ0FJQztBQVpELHlDQUFpRDtBQUVqRDs7Ozs7R0FLRztBQUNILFNBQWdCLFVBQVUsQ0FBQyxTQUFpQixFQUFFO0lBQzVDLE9BQU8sVUFBVSxNQUFjO1FBQzdCLElBQUEsOEJBQW1CLEVBQUMsTUFBTSxFQUFFLE1BQU0sQ0FBQyxDQUFDO0lBQ3RDLENBQUMsQ0FBQztBQUNKLENBQUMiLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXHNoYXJlZFxcaHR0cFxcZGVjb3JhdG9yc1xcY29udHJvbGxlci5kZWNvcmF0b3IudHMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgc2V0Q29udHJvbGxlclByZWZpeCB9IGZyb20gXCIuL21ldGFkYXRhXCI7XG5cbi8qKlxuICogRGVmaW5lIG8gcHJlZml4byBiYXNlIGRlIHVtIGNvbnRyb2xsZXIuXG4gKlxuICogRXhlbXBsbzpcbiAqIEBDb250cm9sbGVyKFwiL3VzZXJzXCIpXG4gKi9cbmV4cG9ydCBmdW5jdGlvbiBDb250cm9sbGVyKHByZWZpeDogc3RyaW5nID0gXCJcIikge1xuICByZXR1cm4gZnVuY3Rpb24gKHRhcmdldDogb2JqZWN0KTogdm9pZCB7XG4gICAgc2V0Q29udHJvbGxlclByZWZpeCh0YXJnZXQsIHByZWZpeCk7XG4gIH07XG59XG4iXSwidmVyc2lvbiI6M30=

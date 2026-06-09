@@ -1,5 +1,3 @@
-// packages/auth-core/src/application/use-cases/me.use-case.ts
-
 import { Either, left, NotFoundError, right } from "@repo/common";
 import { UserRepository } from "../../domain/repositories/user.repository";
 import { UserProjectionDto } from "../dto/user.dto";

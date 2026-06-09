@@ -1,0 +1,11 @@
+feb61030a5d959532965b6abeb0a4ebd
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.DomainType = void 0;
+var DomainType;
+(function (DomainType) {
+    DomainType["STORE"] = "STORE";
+    DomainType["MARKETPLACE"] = "MARKETPLACE";
+    DomainType["CUSTOM"] = "CUSTOM";
+})(DomainType || (exports.DomainType = DomainType = {}));
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXHNoYXJlZFxcZW51bXNcXGRvbWFpbi10eXBlLmVudW0udHMiLCJtYXBwaW5ncyI6Ijs7O0FBQUEsSUFBWSxVQUlYO0FBSkQsV0FBWSxVQUFVO0lBQ3BCLDZCQUFlLENBQUE7SUFDZix5Q0FBMkIsQ0FBQTtJQUMzQiwrQkFBaUIsQ0FBQTtBQUNuQixDQUFDLEVBSlcsVUFBVSwwQkFBVixVQUFVLFFBSXJCIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIkU6XFx3b3Jrc3BhY2Utc2Fzc1xccmVwb1xccGFja2FnZXNcXGNvbW1vblxcc3JjXFxzaGFyZWRcXGVudW1zXFxkb21haW4tdHlwZS5lbnVtLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCBlbnVtIERvbWFpblR5cGUge1xuICBTVE9SRSA9IFwiU1RPUkVcIixcbiAgTUFSS0VUUExBQ0UgPSBcIk1BUktFVFBMQUNFXCIsXG4gIENVU1RPTSA9IFwiQ1VTVE9NXCIsXG59XG4iXSwidmVyc2lvbiI6M30=

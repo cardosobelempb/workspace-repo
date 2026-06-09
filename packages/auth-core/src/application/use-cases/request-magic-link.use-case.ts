@@ -1,9 +1,15 @@
 // packages/auth-core/src/application/use-cases/request-magic-link.use-case.ts
 
 import { AUTH_TOKEN_CONSTANTS } from "@/common/constants";
-import { Either, HashGenerator, right, TokenGenerator } from "@repo/common";
+import {
+  Either,
+  HashGenerator,
+  NotificationChannel,
+  right,
+  TokenGenerator,
+} from "@repo/common";
 import { NodemailerEmailAdapter } from "@repo/notification-email";
-import { NotificationChannel } from "../../../../notifications-core/dist";
+
 import { MagicLinkRepository } from "../../domain/repositories/magic-link.repository";
 import { MagicLinkTokenFactory } from "../factories";
 

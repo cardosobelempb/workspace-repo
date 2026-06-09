@@ -1,0 +1,55 @@
+376e18b98cc34ef74bb05beb4da224b3
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.BaseEntity = void 0;
+const uuid_vo_1 = require("../values-objects/uuid/uuid.vo");
+/**
+ * Entidade base para o modelo de domínio.
+ *
+ * - Fornece identidade única por meio de um UUIDVO (Value Object).
+ * - Garante imutabilidade do ID e controla os valores via props.
+ * - Evita duplicação de lógica de igualdade entre entidades.
+ *
+ * @template Props Tipo das propriedades internas da entidade.
+ */
+class BaseEntity {
+    /** Identidade única da entidade representada como Value Object */
+    _id;
+    /** Propriedades da entidade (imutáveis por convenção) */
+    props;
+    /**
+     * Cria uma nova instância de entidade.
+     * - Se o ID não for informado, um novo UUIDVO é gerado.
+     * - Mantém consistência e evita estados inválidos.
+     */
+    constructor(props, id) {
+        if (!props) {
+            throw new Error("Props are required to instantiate an Entity.");
+        }
+        this.props = props;
+        this._id = id ?? uuid_vo_1.UUIDVO.create(id);
+    }
+    /** Obtém o ID da entidade */
+    get id() {
+        return this._id;
+    }
+    /**
+     * Compara duas entidades por identidade.
+     *
+     * @returns true se ambas possuem o mesmo ID
+     */
+    equals(entity) {
+        // Caso especial: null, undefined ou outro tipo
+        if (!entity || !(entity instanceof BaseEntity)) {
+            return false;
+        }
+        // Caso especial: a própria instância
+        if (entity === this) {
+            return true;
+        }
+        // Comparação por ID (regra do DDD)
+        return entity.id.equals(this._id);
+    }
+}
+exports.BaseEntity = BaseEntity;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXGRvbWFpblxcZW50aXRpZXNcXGJhc2UuZW50aXR5LnRzIiwibWFwcGluZ3MiOiI7OztBQUFBLDREQUF3RDtBQUV4RDs7Ozs7Ozs7R0FRRztBQUNILE1BQXNCLFVBQVU7SUFDOUIsa0VBQWtFO0lBQ2pELEdBQUcsQ0FBUztJQUU3Qix5REFBeUQ7SUFDdEMsS0FBSyxDQUFRO0lBRWhDOzs7O09BSUc7SUFDSCxZQUFzQixLQUFZLEVBQUUsRUFBVztRQUM3QyxJQUFJLENBQUMsS0FBSyxFQUFFLENBQUM7WUFDWCxNQUFNLElBQUksS0FBSyxDQUFDLDhDQUE4QyxDQUFDLENBQUM7UUFDbEUsQ0FBQztRQUVELElBQUksQ0FBQyxLQUFLLEdBQUcsS0FBSyxDQUFDO1FBQ25CLElBQUksQ0FBQyxHQUFHLEdBQUcsRUFBRSxJQUFJLGdCQUFNLENBQUMsTUFBTSxDQUFDLEVBQUUsQ0FBQyxDQUFDO0lBQ3JDLENBQUM7SUFFRCw2QkFBNkI7SUFDN0IsSUFBSSxFQUFFO1FBQ0osT0FBTyxJQUFJLENBQUMsR0FBRyxDQUFDO0lBQ2xCLENBQUM7SUFFRDs7OztPQUlHO0lBQ0ksTUFBTSxDQUFDLE1BQTRCO1FBQ3hDLCtDQUErQztRQUMvQyxJQUFJLENBQUMsTUFBTSxJQUFJLENBQUMsQ0FBQyxNQUFNLFlBQVksVUFBVSxDQUFDLEVBQUUsQ0FBQztZQUMvQyxPQUFPLEtBQUssQ0FBQztRQUNmLENBQUM7UUFFRCxxQ0FBcUM7UUFDckMsSUFBSSxNQUFNLEtBQUssSUFBSSxFQUFFLENBQUM7WUFDcEIsT0FBTyxJQUFJLENBQUM7UUFDZCxDQUFDO1FBRUQsbUNBQW1DO1FBQ25DLE9BQU8sTUFBTSxDQUFDLEVBQUUsQ0FBQyxNQUFNLENBQUMsSUFBSSxDQUFDLEdBQUcsQ0FBQyxDQUFDO0lBQ3BDLENBQUM7Q0FDRjtBQTdDRCxnQ0E2Q0MiLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXGRvbWFpblxcZW50aXRpZXNcXGJhc2UuZW50aXR5LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IFVVSURWTyB9IGZyb20gXCIuLi92YWx1ZXMtb2JqZWN0cy91dWlkL3V1aWQudm9cIjtcblxuLyoqXG4gKiBFbnRpZGFkZSBiYXNlIHBhcmEgbyBtb2RlbG8gZGUgZG9tw61uaW8uXG4gKlxuICogLSBGb3JuZWNlIGlkZW50aWRhZGUgw7puaWNhIHBvciBtZWlvIGRlIHVtIFVVSURWTyAoVmFsdWUgT2JqZWN0KS5cbiAqIC0gR2FyYW50ZSBpbXV0YWJpbGlkYWRlIGRvIElEIGUgY29udHJvbGEgb3MgdmFsb3JlcyB2aWEgcHJvcHMuXG4gKiAtIEV2aXRhIGR1cGxpY2HDp8OjbyBkZSBsw7NnaWNhIGRlIGlndWFsZGFkZSBlbnRyZSBlbnRpZGFkZXMuXG4gKlxuICogQHRlbXBsYXRlIFByb3BzIFRpcG8gZGFzIHByb3ByaWVkYWRlcyBpbnRlcm5hcyBkYSBlbnRpZGFkZS5cbiAqL1xuZXhwb3J0IGFic3RyYWN0IGNsYXNzIEJhc2VFbnRpdHk8UHJvcHM+IHtcbiAgLyoqIElkZW50aWRhZGUgw7puaWNhIGRhIGVudGlkYWRlIHJlcHJlc2VudGFkYSBjb21vIFZhbHVlIE9iamVjdCAqL1xuICBwcml2YXRlIHJlYWRvbmx5IF9pZDogVVVJRFZPO1xuXG4gIC8qKiBQcm9wcmllZGFkZXMgZGEgZW50aWRhZGUgKGltdXTDoXZlaXMgcG9yIGNvbnZlbsOnw6NvKSAqL1xuICBwcm90ZWN0ZWQgcmVhZG9ubHkgcHJvcHM6IFByb3BzO1xuXG4gIC8qKlxuICAgKiBDcmlhIHVtYSBub3ZhIGluc3TDom5jaWEgZGUgZW50aWRhZGUuXG4gICAqIC0gU2UgbyBJRCBuw6NvIGZvciBpbmZvcm1hZG8sIHVtIG5vdm8gVVVJRFZPIMOpIGdlcmFkby5cbiAgICogLSBNYW50w6ltIGNvbnNpc3TDqm5jaWEgZSBldml0YSBlc3RhZG9zIGludsOhbGlkb3MuXG4gICAqL1xuICBwcm90ZWN0ZWQgY29uc3RydWN0b3IocHJvcHM6IFByb3BzLCBpZD86IFVVSURWTykge1xuICAgIGlmICghcHJvcHMpIHtcbiAgICAgIHRocm93IG5ldyBFcnJvcihcIlByb3BzIGFyZSByZXF1aXJlZCB0byBpbnN0YW50aWF0ZSBhbiBFbnRpdHkuXCIpO1xuICAgIH1cblxuICAgIHRoaXMucHJvcHMgPSBwcm9wcztcbiAgICB0aGlzLl9pZCA9IGlkID8/IFVVSURWTy5jcmVhdGUoaWQpO1xuICB9XG5cbiAgLyoqIE9idMOpbSBvIElEIGRhIGVudGlkYWRlICovXG4gIGdldCBpZCgpOiBVVUlEVk8ge1xuICAgIHJldHVybiB0aGlzLl9pZDtcbiAgfVxuXG4gIC8qKlxuICAgKiBDb21wYXJhIGR1YXMgZW50aWRhZGVzIHBvciBpZGVudGlkYWRlLlxuICAgKlxuICAgKiBAcmV0dXJucyB0cnVlIHNlIGFtYmFzIHBvc3N1ZW0gbyBtZXNtbyBJRFxuICAgKi9cbiAgcHVibGljIGVxdWFscyhlbnRpdHk/OiBCYXNlRW50aXR5PHVua25vd24+KTogYm9vbGVhbiB7XG4gICAgLy8gQ2FzbyBlc3BlY2lhbDogbnVsbCwgdW5kZWZpbmVkIG91IG91dHJvIHRpcG9cbiAgICBpZiAoIWVudGl0eSB8fCAhKGVudGl0eSBpbnN0YW5jZW9mIEJhc2VFbnRpdHkpKSB7XG4gICAgICByZXR1cm4gZmFsc2U7XG4gICAgfVxuXG4gICAgLy8gQ2FzbyBlc3BlY2lhbDogYSBwcsOzcHJpYSBpbnN0w6JuY2lhXG4gICAgaWYgKGVudGl0eSA9PT0gdGhpcykge1xuICAgICAgcmV0dXJuIHRydWU7XG4gICAgfVxuXG4gICAgLy8gQ29tcGFyYcOnw6NvIHBvciBJRCAocmVncmEgZG8gREREKVxuICAgIHJldHVybiBlbnRpdHkuaWQuZXF1YWxzKHRoaXMuX2lkKTtcbiAgfVxufVxuIl0sInZlcnNpb24iOjN9

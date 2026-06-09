@@ -1,0 +1,11 @@
+effc71229c314f6bce2aae31dff7124b
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.BannerScope = void 0;
+var BannerScope;
+(function (BannerScope) {
+    BannerScope["STORE"] = "STORE";
+    BannerScope["MARKETPLACE"] = "MARKETPLACE";
+    BannerScope["CUSTOM"] = "CUSTOM";
+})(BannerScope || (exports.BannerScope = BannerScope = {}));
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXHNoYXJlZFxcZW51bXNcXGJhbm5lci1zY29wZS5lbnVtLnRzIiwibWFwcGluZ3MiOiI7OztBQUFBLElBQVksV0FJWDtBQUpELFdBQVksV0FBVztJQUNyQiw4QkFBZSxDQUFBO0lBQ2YsMENBQTJCLENBQUE7SUFDM0IsZ0NBQWlCLENBQUE7QUFDbkIsQ0FBQyxFQUpXLFdBQVcsMkJBQVgsV0FBVyxRQUl0QiIsIm5hbWVzIjpbXSwic291cmNlcyI6WyJFOlxcd29ya3NwYWNlLXNhc3NcXHJlcG9cXHBhY2thZ2VzXFxjb21tb25cXHNyY1xcc2hhcmVkXFxlbnVtc1xcYmFubmVyLXNjb3BlLmVudW0udHMiXSwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGVudW0gQmFubmVyU2NvcGUge1xuICBTVE9SRSA9IFwiU1RPUkVcIixcbiAgTUFSS0VUUExBQ0UgPSBcIk1BUktFVFBMQUNFXCIsXG4gIENVU1RPTSA9IFwiQ1VTVE9NXCIsXG59XG4iXSwidmVyc2lvbiI6M30=

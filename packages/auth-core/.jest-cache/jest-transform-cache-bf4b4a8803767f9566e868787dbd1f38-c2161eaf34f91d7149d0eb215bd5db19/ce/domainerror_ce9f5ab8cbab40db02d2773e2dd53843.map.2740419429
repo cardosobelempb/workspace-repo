@@ -1,0 +1,1 @@
+{"file":"E:\\workspace-sass\\repo\\packages\\common\\src\\domain\\errors\\domain\\domain.error.ts","mappings":"","names":[],"sources":["E:\\workspace-sass\\repo\\packages\\common\\src\\domain\\errors\\domain\\domain.error.ts"],"sourcesContent":["export interface BaseDomainError {\n  message: string;\n}\n"],"version":3}

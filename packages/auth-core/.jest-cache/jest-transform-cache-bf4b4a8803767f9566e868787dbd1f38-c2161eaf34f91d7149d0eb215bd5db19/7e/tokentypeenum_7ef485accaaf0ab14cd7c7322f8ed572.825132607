@@ -1,0 +1,18 @@
+fe852a99ff515a6a8ad706109e0feed0
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.TokenTypeSchema = exports.TokenType = void 0;
+const zod_1 = __importDefault(require("zod"));
+var TokenType;
+(function (TokenType) {
+    TokenType["REFRESH"] = "REFRESH";
+    TokenType["ACCESS"] = "ACCESS";
+    TokenType["RESET_PASSWORD"] = "RESET_PASSWORD";
+    TokenType["API_KEY"] = "API_KEY";
+    TokenType["EMAIL_VERIFICATION"] = "EMAIL_VERIFICATION";
+})(TokenType || (exports.TokenType = TokenType = {}));
+exports.TokenTypeSchema = zod_1.default.enum(TokenType);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXHNoYXJlZFxcZW51bXNcXHRva2VuLXR5cGUuZW51bS50cyIsIm1hcHBpbmdzIjoiOzs7Ozs7QUFBQSw4Q0FBb0I7QUFFcEIsSUFBWSxTQU1YO0FBTkQsV0FBWSxTQUFTO0lBQ25CLGdDQUFtQixDQUFBO0lBQ25CLDhCQUFpQixDQUFBO0lBQ2pCLDhDQUFpQyxDQUFBO0lBQ2pDLGdDQUFtQixDQUFBO0lBQ25CLHNEQUF5QyxDQUFBO0FBQzNDLENBQUMsRUFOVyxTQUFTLHlCQUFULFNBQVMsUUFNcEI7QUFFWSxRQUFBLGVBQWUsR0FBRyxhQUFDLENBQUMsSUFBSSxDQUFDLFNBQVMsQ0FBQyxDQUFDIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIkU6XFx3b3Jrc3BhY2Utc2Fzc1xccmVwb1xccGFja2FnZXNcXGNvbW1vblxcc3JjXFxzaGFyZWRcXGVudW1zXFx0b2tlbi10eXBlLmVudW0udHMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHogZnJvbSBcInpvZFwiO1xuXG5leHBvcnQgZW51bSBUb2tlblR5cGUge1xuICBSRUZSRVNIID0gXCJSRUZSRVNIXCIsXG4gIEFDQ0VTUyA9IFwiQUNDRVNTXCIsXG4gIFJFU0VUX1BBU1NXT1JEID0gXCJSRVNFVF9QQVNTV09SRFwiLFxuICBBUElfS0VZID0gXCJBUElfS0VZXCIsXG4gIEVNQUlMX1ZFUklGSUNBVElPTiA9IFwiRU1BSUxfVkVSSUZJQ0FUSU9OXCIsXG59XG5cbmV4cG9ydCBjb25zdCBUb2tlblR5cGVTY2hlbWEgPSB6LmVudW0oVG9rZW5UeXBlKTtcbiJdLCJ2ZXJzaW9uIjozfQ==

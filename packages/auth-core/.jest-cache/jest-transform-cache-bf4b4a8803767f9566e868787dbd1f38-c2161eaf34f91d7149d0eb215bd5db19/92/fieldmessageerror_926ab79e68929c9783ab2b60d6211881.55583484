@@ -1,0 +1,20 @@
+45deebf82da3812765b6e0caaa1f7cd2
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.FieldMessage = void 0;
+/**
+ * Representa uma mensagem de erro associada a um campo específico.
+ * Ex: validações de formulário ou payload de API.
+ *
+ * Este objeto é imutável por design.
+ */
+class FieldMessage {
+    fieldName;
+    message;
+    constructor(props) {
+        this.fieldName = props.fieldName;
+        this.message = props.message;
+    }
+}
+exports.FieldMessage = FieldMessage;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXGRvbWFpblxcZXJyb3JzXFxmaWVsZC1tZXNzYWdlLmVycm9yLnRzIiwibWFwcGluZ3MiOiI7OztBQUtBOzs7OztHQUtHO0FBQ0gsTUFBYSxZQUFZO0lBQ2QsU0FBUyxDQUFTO0lBQ2xCLE9BQU8sQ0FBUztJQUV6QixZQUFZLEtBQXdCO1FBQ2xDLElBQUksQ0FBQyxTQUFTLEdBQUcsS0FBSyxDQUFDLFNBQVMsQ0FBQztRQUNqQyxJQUFJLENBQUMsT0FBTyxHQUFHLEtBQUssQ0FBQyxPQUFPLENBQUM7SUFDL0IsQ0FBQztDQUNGO0FBUkQsb0NBUUMiLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXGRvbWFpblxcZXJyb3JzXFxmaWVsZC1tZXNzYWdlLmVycm9yLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCBpbnRlcmZhY2UgRmllbGRNZXNzYWdlUHJvcHMge1xuICBmaWVsZE5hbWU6IHN0cmluZztcbiAgbWVzc2FnZTogc3RyaW5nO1xufVxuXG4vKipcbiAqIFJlcHJlc2VudGEgdW1hIG1lbnNhZ2VtIGRlIGVycm8gYXNzb2NpYWRhIGEgdW0gY2FtcG8gZXNwZWPDrWZpY28uXG4gKiBFeDogdmFsaWRhw6fDtWVzIGRlIGZvcm11bMOhcmlvIG91IHBheWxvYWQgZGUgQVBJLlxuICpcbiAqIEVzdGUgb2JqZXRvIMOpIGltdXTDoXZlbCBwb3IgZGVzaWduLlxuICovXG5leHBvcnQgY2xhc3MgRmllbGRNZXNzYWdlIHtcbiAgcmVhZG9ubHkgZmllbGROYW1lOiBzdHJpbmc7XG4gIHJlYWRvbmx5IG1lc3NhZ2U6IHN0cmluZztcblxuICBjb25zdHJ1Y3Rvcihwcm9wczogRmllbGRNZXNzYWdlUHJvcHMpIHtcbiAgICB0aGlzLmZpZWxkTmFtZSA9IHByb3BzLmZpZWxkTmFtZTtcbiAgICB0aGlzLm1lc3NhZ2UgPSBwcm9wcy5tZXNzYWdlO1xuICB9XG59XG4iXSwidmVyc2lvbiI6M30=

@@ -1,0 +1,12 @@
+46d802ded4cb925dcbc5900ec071820f
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.MacAddressSchema = void 0;
+const zod_1 = __importDefault(require("zod"));
+exports.MacAddressSchema = zod_1.default
+    .string()
+    .regex(/^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/, "Invalid MAC address format");
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXHNoYXJlZFxcbGliXFxzY2hlbWFzXFxtYWMtYWRkcmVzcy5zY2hlbWEudHMiLCJtYXBwaW5ncyI6Ijs7Ozs7O0FBQUEsOENBQW9CO0FBRVAsUUFBQSxnQkFBZ0IsR0FBRyxhQUFDO0tBQzlCLE1BQU0sRUFBRTtLQUNSLEtBQUssQ0FBQywyQ0FBMkMsRUFBRSw0QkFBNEIsQ0FBQyxDQUFDIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIkU6XFx3b3Jrc3BhY2Utc2Fzc1xccmVwb1xccGFja2FnZXNcXGNvbW1vblxcc3JjXFxzaGFyZWRcXGxpYlxcc2NoZW1hc1xcbWFjLWFkZHJlc3Muc2NoZW1hLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB6IGZyb20gXCJ6b2RcIjtcblxuZXhwb3J0IGNvbnN0IE1hY0FkZHJlc3NTY2hlbWEgPSB6XG4gIC5zdHJpbmcoKVxuICAucmVnZXgoL14oWzAtOUEtRmEtZl17Mn1bOi1dKXs1fShbMC05QS1GYS1mXXsyfSkkLywgXCJJbnZhbGlkIE1BQyBhZGRyZXNzIGZvcm1hdFwiKTtcbiJdLCJ2ZXJzaW9uIjozfQ==

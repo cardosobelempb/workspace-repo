@@ -1,0 +1,11 @@
+bd8c36081ed66452582d40c91c6a45c9
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.schema = void 0;
+exports.schema = {
+    id: { type: "number", required: true },
+    active: { type: "boolean", default: false },
+    name: { type: "string", required: true },
+    age: { type: "number", required: false },
+};
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXGRvbWFpblxcdmFsdWVzLW9iamVjdHNcXGh0dHBcXHVzZXItc2NoZW1hLnRzIiwibWFwcGluZ3MiOiI7OztBQUFhLFFBQUEsTUFBTSxHQUFHO0lBQ3BCLEVBQUUsRUFBRSxFQUFFLElBQUksRUFBRSxRQUFRLEVBQUUsUUFBUSxFQUFFLElBQUksRUFBRTtJQUN0QyxNQUFNLEVBQUUsRUFBRSxJQUFJLEVBQUUsU0FBUyxFQUFFLE9BQU8sRUFBRSxLQUFLLEVBQUU7SUFDM0MsSUFBSSxFQUFFLEVBQUUsSUFBSSxFQUFFLFFBQVEsRUFBRSxRQUFRLEVBQUUsSUFBSSxFQUFFO0lBQ3hDLEdBQUcsRUFBRSxFQUFFLElBQUksRUFBRSxRQUFRLEVBQUUsUUFBUSxFQUFFLEtBQUssRUFBRTtDQUN6QyxDQUFDIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIkU6XFx3b3Jrc3BhY2Utc2Fzc1xccmVwb1xccGFja2FnZXNcXGNvbW1vblxcc3JjXFxkb21haW5cXHZhbHVlcy1vYmplY3RzXFxodHRwXFx1c2VyLXNjaGVtYS50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgY29uc3Qgc2NoZW1hID0ge1xuICBpZDogeyB0eXBlOiBcIm51bWJlclwiLCByZXF1aXJlZDogdHJ1ZSB9LFxuICBhY3RpdmU6IHsgdHlwZTogXCJib29sZWFuXCIsIGRlZmF1bHQ6IGZhbHNlIH0sXG4gIG5hbWU6IHsgdHlwZTogXCJzdHJpbmdcIiwgcmVxdWlyZWQ6IHRydWUgfSxcbiAgYWdlOiB7IHR5cGU6IFwibnVtYmVyXCIsIHJlcXVpcmVkOiBmYWxzZSB9LFxufTtcbiJdLCJ2ZXJzaW9uIjozfQ==

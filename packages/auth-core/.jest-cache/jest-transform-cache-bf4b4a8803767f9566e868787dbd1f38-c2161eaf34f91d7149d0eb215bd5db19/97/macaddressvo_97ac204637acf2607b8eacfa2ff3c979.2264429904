@@ -1,0 +1,83 @@
+5853322d7c9b85bc278dbfbea33a048b
+"use strict";
+// ============================================================
+// MacAddressVO.ts - CORRIGIDO para sua BaseVO
+// ============================================================
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.MacAddressVO = void 0;
+const bad_request_error_1 = require("../../errors/controllers/bad-request.error");
+const base_vo_1 = require("../base.vo");
+class MacAddressVO extends base_vo_1.BaseVO {
+    static OUI_DATABASE = new Set([
+        "00:50:56",
+        "00:0C:29",
+        "08:00:27",
+        "52:54:00",
+    ]);
+    constructor(value) {
+        super(value);
+    }
+    /**
+     * ✅ Factory com validação - lança erro se inválido
+     */
+    static create(value) {
+        const normalized = MacAddressVO.normalize(value);
+        if (!MacAddressVO.isValidStatic(normalized)) {
+            throw new bad_request_error_1.BadRequestError({
+                fieldName: "macAddress",
+                value,
+                message: `Invalid MAC address: "${value}". Must be in format "XX:XX:XX:XX:XX:XX"`,
+            });
+        }
+        return new MacAddressVO(normalized);
+    }
+    /**
+     * ✅ Validação ESTÁTICA para factory
+     */
+    static isValidStatic(value) {
+        const macRegex = /^([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}$/i;
+        return macRegex.test(value);
+    }
+    /**
+     * ✅ INSTANCE isValid() - SEM parâmetros (compatível BaseVO)
+     */
+    isValid() {
+        return MacAddressVO.isValidStatic(this.value);
+    }
+    /**
+     * ✅ Static validate para uso prévio
+     */
+    static validate(value) {
+        return this.isValidStatic(this.normalize(value));
+    }
+    static normalize(mac) {
+        return (mac
+            .replace(/[^a-fA-F0-9]/g, "")
+            .match(/.{1,2}/g)
+            ?.join(":") ?? "");
+    }
+    getOUI() {
+        return this.value.slice(0, 8).toUpperCase();
+    }
+    isVirtual() {
+        return MacAddressVO.OUI_DATABASE.has(this.getOUI());
+    }
+}
+exports.MacAddressVO = MacAddressVO;
+// Exemplo de uso:
+// const mac = MacAddressVO.create("00:50:56:AA:BB:CC");
+// console.log(mac.value); // "00:50:56:AA:BB:CC"
+// console.log(mac.isVirtual()); // true
+// const invalidMac = MacAddressVO.create("invalid-mac"); // Lança BadRequestError
+// const normalizedMac = MacAddressVO.create("005056AABBCC");
+// console.log(normalizedMac.value); // "00:50:56:AA:BB:CC"
+/**
+  1. Client chama: MacAddressVO.create("00:11:22:33:44:55")
+  2. Factory: normalize() → isValidStatic() → new MacAddressVO()
+  3. Entity: new MikrotikEntity({ macAddress: macVO })
+  4. Domain: macVO.isValid() ✅ (instance method)
+  5. Domain: macVO.isVirtual() ✅ (instance method)
+  6. Controller: MacAddressVO.validate("invalid-mac") → false
+  7. Controller: MacAddressVO.create("invalid-mac") → BadRequestError
+ */
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXGRvbWFpblxcdmFsdWVzLW9iamVjdHNcXG1hYy1hZGRyZXNzXFxtYWMtYWRkcmVzcy52by50cyIsIm1hcHBpbmdzIjoiO0FBQUEsK0RBQStEO0FBQy9ELDhDQUE4QztBQUM5QywrREFBK0Q7OztBQUUvRCxrRkFBNkU7QUFDN0Usd0NBQW9DO0FBRXBDLE1BQWEsWUFBYSxTQUFRLGdCQUFjO0lBQ3RDLE1BQU0sQ0FBVSxZQUFZLEdBQUcsSUFBSSxHQUFHLENBQUM7UUFDN0MsVUFBVTtRQUNWLFVBQVU7UUFDVixVQUFVO1FBQ1YsVUFBVTtLQUNYLENBQUMsQ0FBQztJQUVILFlBQW9CLEtBQWE7UUFDL0IsS0FBSyxDQUFDLEtBQUssQ0FBQyxDQUFDO0lBQ2YsQ0FBQztJQUVEOztPQUVHO0lBQ0ksTUFBTSxDQUFDLE1BQU0sQ0FBQyxLQUFhO1FBQ2hDLE1BQU0sVUFBVSxHQUFHLFlBQVksQ0FBQyxTQUFTLENBQUMsS0FBSyxDQUFDLENBQUM7UUFFakQsSUFBSSxDQUFDLFlBQVksQ0FBQyxhQUFhLENBQUMsVUFBVSxDQUFDLEVBQUUsQ0FBQztZQUM1QyxNQUFNLElBQUksbUNBQWUsQ0FBQztnQkFDeEIsU0FBUyxFQUFFLFlBQVk7Z0JBQ3ZCLEtBQUs7Z0JBQ0wsT0FBTyxFQUFFLHlCQUF5QixLQUFLLDBDQUEwQzthQUNsRixDQUFDLENBQUM7UUFDTCxDQUFDO1FBRUQsT0FBTyxJQUFJLFlBQVksQ0FBQyxVQUFVLENBQUMsQ0FBQztJQUN0QyxDQUFDO0lBRUQ7O09BRUc7SUFDSyxNQUFNLENBQUMsYUFBYSxDQUFDLEtBQWE7UUFDeEMsTUFBTSxRQUFRLEdBQUcsdUNBQXVDLENBQUM7UUFDekQsT0FBTyxRQUFRLENBQUMsSUFBSSxDQUFDLEtBQUssQ0FBQyxDQUFDO0lBQzlCLENBQUM7SUFFRDs7T0FFRztJQUNJLE9BQU87UUFDWixPQUFPLFlBQVksQ0FBQyxhQUFhLENBQUMsSUFBSSxDQUFDLEtBQUssQ0FBQyxDQUFDO0lBQ2hELENBQUM7SUFFRDs7T0FFRztJQUNJLE1BQU0sQ0FBQyxRQUFRLENBQUMsS0FBYTtRQUNsQyxPQUFPLElBQUksQ0FBQyxhQUFhLENBQUMsSUFBSSxDQUFDLFNBQVMsQ0FBQyxLQUFLLENBQUMsQ0FBQyxDQUFDO0lBQ25ELENBQUM7SUFFTyxNQUFNLENBQUMsU0FBUyxDQUFDLEdBQVc7UUFDbEMsT0FBTyxDQUNMLEdBQUc7YUFDQSxPQUFPLENBQUMsZUFBZSxFQUFFLEVBQUUsQ0FBQzthQUM1QixLQUFLLENBQUMsU0FBUyxDQUFDO1lBQ2pCLEVBQUUsSUFBSSxDQUFDLEdBQUcsQ0FBQyxJQUFJLEVBQUUsQ0FDcEIsQ0FBQztJQUNKLENBQUM7SUFFTSxNQUFNO1FBQ1gsT0FBTyxJQUFJLENBQUMsS0FBSyxDQUFDLEtBQUssQ0FBQyxDQUFDLEVBQUUsQ0FBQyxDQUFDLENBQUMsV0FBVyxFQUFFLENBQUM7SUFDOUMsQ0FBQztJQUVNLFNBQVM7UUFDZCxPQUFPLFlBQVksQ0FBQyxZQUFZLENBQUMsR0FBRyxDQUFDLElBQUksQ0FBQyxNQUFNLEVBQUUsQ0FBQyxDQUFDO0lBQ3RELENBQUM7O0FBbEVILG9DQW1FQztBQUVELGtCQUFrQjtBQUNsQix3REFBd0Q7QUFDeEQsaURBQWlEO0FBQ2pELHdDQUF3QztBQUN4QyxrRkFBa0Y7QUFDbEYsNkRBQTZEO0FBQzdELDJEQUEyRDtBQUUzRDs7Ozs7Ozs7R0FRRyIsIm5hbWVzIjpbXSwic291cmNlcyI6WyJFOlxcd29ya3NwYWNlLXNhc3NcXHJlcG9cXHBhY2thZ2VzXFxjb21tb25cXHNyY1xcZG9tYWluXFx2YWx1ZXMtb2JqZWN0c1xcbWFjLWFkZHJlc3NcXG1hYy1hZGRyZXNzLnZvLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuLy8gTWFjQWRkcmVzc1ZPLnRzIC0gQ09SUklHSURPIHBhcmEgc3VhIEJhc2VWT1xuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG5cbmltcG9ydCB7IEJhZFJlcXVlc3RFcnJvciB9IGZyb20gXCIuLi8uLi9lcnJvcnMvY29udHJvbGxlcnMvYmFkLXJlcXVlc3QuZXJyb3JcIjtcbmltcG9ydCB7IEJhc2VWTyB9IGZyb20gXCIuLi9iYXNlLnZvXCI7XG5cbmV4cG9ydCBjbGFzcyBNYWNBZGRyZXNzVk8gZXh0ZW5kcyBCYXNlVk88c3RyaW5nPiB7XG4gIHByaXZhdGUgc3RhdGljIHJlYWRvbmx5IE9VSV9EQVRBQkFTRSA9IG5ldyBTZXQoW1xuICAgIFwiMDA6NTA6NTZcIixcbiAgICBcIjAwOjBDOjI5XCIsXG4gICAgXCIwODowMDoyN1wiLFxuICAgIFwiNTI6NTQ6MDBcIixcbiAgXSk7XG5cbiAgcHJpdmF0ZSBjb25zdHJ1Y3Rvcih2YWx1ZTogc3RyaW5nKSB7XG4gICAgc3VwZXIodmFsdWUpO1xuICB9XG5cbiAgLyoqXG4gICAqIOKchSBGYWN0b3J5IGNvbSB2YWxpZGHDp8OjbyAtIGxhbsOnYSBlcnJvIHNlIGludsOhbGlkb1xuICAgKi9cbiAgcHVibGljIHN0YXRpYyBjcmVhdGUodmFsdWU6IHN0cmluZyk6IE1hY0FkZHJlc3NWTyB7XG4gICAgY29uc3Qgbm9ybWFsaXplZCA9IE1hY0FkZHJlc3NWTy5ub3JtYWxpemUodmFsdWUpO1xuXG4gICAgaWYgKCFNYWNBZGRyZXNzVk8uaXNWYWxpZFN0YXRpYyhub3JtYWxpemVkKSkge1xuICAgICAgdGhyb3cgbmV3IEJhZFJlcXVlc3RFcnJvcih7XG4gICAgICAgIGZpZWxkTmFtZTogXCJtYWNBZGRyZXNzXCIsXG4gICAgICAgIHZhbHVlLFxuICAgICAgICBtZXNzYWdlOiBgSW52YWxpZCBNQUMgYWRkcmVzczogXCIke3ZhbHVlfVwiLiBNdXN0IGJlIGluIGZvcm1hdCBcIlhYOlhYOlhYOlhYOlhYOlhYXCJgLFxuICAgICAgfSk7XG4gICAgfVxuXG4gICAgcmV0dXJuIG5ldyBNYWNBZGRyZXNzVk8obm9ybWFsaXplZCk7XG4gIH1cblxuICAvKipcbiAgICog4pyFIFZhbGlkYcOnw6NvIEVTVMOBVElDQSBwYXJhIGZhY3RvcnlcbiAgICovXG4gIHByaXZhdGUgc3RhdGljIGlzVmFsaWRTdGF0aWModmFsdWU6IHN0cmluZyk6IGJvb2xlYW4ge1xuICAgIGNvbnN0IG1hY1JlZ2V4ID0gL14oWzAtOWEtZkEtRl17Mn06KXs1fVswLTlhLWZBLUZdezJ9JC9pO1xuICAgIHJldHVybiBtYWNSZWdleC50ZXN0KHZhbHVlKTtcbiAgfVxuXG4gIC8qKlxuICAgKiDinIUgSU5TVEFOQ0UgaXNWYWxpZCgpIC0gU0VNIHBhcsOibWV0cm9zIChjb21wYXTDrXZlbCBCYXNlVk8pXG4gICAqL1xuICBwdWJsaWMgaXNWYWxpZCgpOiBib29sZWFuIHtcbiAgICByZXR1cm4gTWFjQWRkcmVzc1ZPLmlzVmFsaWRTdGF0aWModGhpcy52YWx1ZSk7XG4gIH1cblxuICAvKipcbiAgICog4pyFIFN0YXRpYyB2YWxpZGF0ZSBwYXJhIHVzbyBwcsOpdmlvXG4gICAqL1xuICBwdWJsaWMgc3RhdGljIHZhbGlkYXRlKHZhbHVlOiBzdHJpbmcpOiBib29sZWFuIHtcbiAgICByZXR1cm4gdGhpcy5pc1ZhbGlkU3RhdGljKHRoaXMubm9ybWFsaXplKHZhbHVlKSk7XG4gIH1cblxuICBwcml2YXRlIHN0YXRpYyBub3JtYWxpemUobWFjOiBzdHJpbmcpOiBzdHJpbmcge1xuICAgIHJldHVybiAoXG4gICAgICBtYWNcbiAgICAgICAgLnJlcGxhY2UoL1teYS1mQS1GMC05XS9nLCBcIlwiKVxuICAgICAgICAubWF0Y2goLy57MSwyfS9nKVxuICAgICAgICA/LmpvaW4oXCI6XCIpID8/IFwiXCJcbiAgICApO1xuICB9XG5cbiAgcHVibGljIGdldE9VSSgpOiBzdHJpbmcge1xuICAgIHJldHVybiB0aGlzLnZhbHVlLnNsaWNlKDAsIDgpLnRvVXBwZXJDYXNlKCk7XG4gIH1cblxuICBwdWJsaWMgaXNWaXJ0dWFsKCk6IGJvb2xlYW4ge1xuICAgIHJldHVybiBNYWNBZGRyZXNzVk8uT1VJX0RBVEFCQVNFLmhhcyh0aGlzLmdldE9VSSgpKTtcbiAgfVxufVxuXG4vLyBFeGVtcGxvIGRlIHVzbzpcbi8vIGNvbnN0IG1hYyA9IE1hY0FkZHJlc3NWTy5jcmVhdGUoXCIwMDo1MDo1NjpBQTpCQjpDQ1wiKTtcbi8vIGNvbnNvbGUubG9nKG1hYy52YWx1ZSk7IC8vIFwiMDA6NTA6NTY6QUE6QkI6Q0NcIlxuLy8gY29uc29sZS5sb2cobWFjLmlzVmlydHVhbCgpKTsgLy8gdHJ1ZVxuLy8gY29uc3QgaW52YWxpZE1hYyA9IE1hY0FkZHJlc3NWTy5jcmVhdGUoXCJpbnZhbGlkLW1hY1wiKTsgLy8gTGFuw6dhIEJhZFJlcXVlc3RFcnJvclxuLy8gY29uc3Qgbm9ybWFsaXplZE1hYyA9IE1hY0FkZHJlc3NWTy5jcmVhdGUoXCIwMDUwNTZBQUJCQ0NcIik7XG4vLyBjb25zb2xlLmxvZyhub3JtYWxpemVkTWFjLnZhbHVlKTsgLy8gXCIwMDo1MDo1NjpBQTpCQjpDQ1wiXG5cbi8qKlxuICAxLiBDbGllbnQgY2hhbWE6IE1hY0FkZHJlc3NWTy5jcmVhdGUoXCIwMDoxMToyMjozMzo0NDo1NVwiKVxuICAyLiBGYWN0b3J5OiBub3JtYWxpemUoKSDihpIgaXNWYWxpZFN0YXRpYygpIOKGkiBuZXcgTWFjQWRkcmVzc1ZPKClcbiAgMy4gRW50aXR5OiBuZXcgTWlrcm90aWtFbnRpdHkoeyBtYWNBZGRyZXNzOiBtYWNWTyB9KVxuICA0LiBEb21haW46IG1hY1ZPLmlzVmFsaWQoKSDinIUgKGluc3RhbmNlIG1ldGhvZClcbiAgNS4gRG9tYWluOiBtYWNWTy5pc1ZpcnR1YWwoKSDinIUgKGluc3RhbmNlIG1ldGhvZClcbiAgNi4gQ29udHJvbGxlcjogTWFjQWRkcmVzc1ZPLnZhbGlkYXRlKFwiaW52YWxpZC1tYWNcIikg4oaSIGZhbHNlXG4gIDcuIENvbnRyb2xsZXI6IE1hY0FkZHJlc3NWTy5jcmVhdGUoXCJpbnZhbGlkLW1hY1wiKSDihpIgQmFkUmVxdWVzdEVycm9yXG4gKi9cbiJdLCJ2ZXJzaW9uIjozfQ==

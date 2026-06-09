@@ -1,0 +1,51 @@
+a2753c7e5cfa8ad62768a7be7afb6a54
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.BaseAggregate = void 0;
+const base_build_event_1 = require("../events/base-build.event");
+const base_entity_1 = require("./base.entity");
+/**
+ * EntityAggregate
+ *
+ * - Representa a raiz de um Agregado no DDD.
+ * - É responsável por controlar eventos de domínio disparados
+ *   durante mudanças no estado interno.
+ * - Mantém encapsulação dos eventos e registra automaticamente
+ *   o agregado no sistema de despacho de eventos.
+ */
+class BaseAggregate extends base_entity_1.BaseEntity {
+    /**
+     * Lista interna de eventos de domínio pendentes.
+     * Mantida privada para evitar mutações externas.
+     */
+    domainEventsQueue = [];
+    /**
+     * Retorna uma cópia dos eventos pendentes.
+     * Boa prática: não retornar a referência interna
+     * para evitar mutações externas inesperadas.
+     */
+    get domainEvents() {
+        return [...this.domainEventsQueue];
+    }
+    /**
+     * Registra um evento de domínio e notifica o dispatcher global.
+     *
+     * Justificativa:
+     * - Nome "register" expressa a intenção de "registrar no sistema".
+     * - Evita confusões com métodos que apenas adicionariam ao array.
+     */
+    registerEvent(event) {
+        this.domainEventsQueue.push(event);
+        // Notifica o mecanismo de Domain Events
+        base_build_event_1.BaseBuildEvent.markAggregateForDispatch(this);
+    }
+    /**
+     * Limpa todos os eventos pendentes.
+     * Utilizado após a publicação dos eventos.
+     */
+    clearEvents() {
+        this.domainEventsQueue = [];
+    }
+}
+exports.BaseAggregate = BaseAggregate;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXGRvbWFpblxcZW50aXRpZXNcXGJhc2UtYWdyZWdhdGUuZW50aXR5LnRzIiwibWFwcGluZ3MiOiI7OztBQUFBLGlFQUE0RDtBQUU1RCwrQ0FBMkM7QUFFM0M7Ozs7Ozs7O0dBUUc7QUFDSCxNQUFzQixhQUFxQixTQUFRLHdCQUFpQjtJQUNsRTs7O09BR0c7SUFDSyxpQkFBaUIsR0FBZ0IsRUFBRSxDQUFDO0lBRTVDOzs7O09BSUc7SUFDSCxJQUFJLFlBQVk7UUFDZCxPQUFPLENBQUMsR0FBRyxJQUFJLENBQUMsaUJBQWlCLENBQUMsQ0FBQztJQUNyQyxDQUFDO0lBRUQ7Ozs7OztPQU1HO0lBQ08sYUFBYSxDQUFDLEtBQWdCO1FBQ3RDLElBQUksQ0FBQyxpQkFBaUIsQ0FBQyxJQUFJLENBQUMsS0FBSyxDQUFDLENBQUM7UUFFbkMsd0NBQXdDO1FBQ3hDLGlDQUFjLENBQUMsd0JBQXdCLENBQUMsSUFBSSxDQUFDLENBQUM7SUFDaEQsQ0FBQztJQUVEOzs7T0FHRztJQUNILFdBQVc7UUFDVCxJQUFJLENBQUMsaUJBQWlCLEdBQUcsRUFBRSxDQUFDO0lBQzlCLENBQUM7Q0FDRjtBQXJDRCxzQ0FxQ0MiLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXGRvbWFpblxcZW50aXRpZXNcXGJhc2UtYWdyZWdhdGUuZW50aXR5LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IEJhc2VCdWlsZEV2ZW50IH0gZnJvbSBcIi4uL2V2ZW50cy9iYXNlLWJ1aWxkLmV2ZW50XCI7XG5pbXBvcnQgeyBCYXNlRXZlbnQgfSBmcm9tIFwiLi4vZXZlbnRzL2Jhc2UuZXZlbnRcIjtcbmltcG9ydCB7IEJhc2VFbnRpdHkgfSBmcm9tIFwiLi9iYXNlLmVudGl0eVwiO1xuXG4vKipcbiAqIEVudGl0eUFnZ3JlZ2F0ZVxuICpcbiAqIC0gUmVwcmVzZW50YSBhIHJhaXogZGUgdW0gQWdyZWdhZG8gbm8gRERELlxuICogLSDDiSByZXNwb25zw6F2ZWwgcG9yIGNvbnRyb2xhciBldmVudG9zIGRlIGRvbcOtbmlvIGRpc3BhcmFkb3NcbiAqICAgZHVyYW50ZSBtdWRhbsOnYXMgbm8gZXN0YWRvIGludGVybm8uXG4gKiAtIE1hbnTDqW0gZW5jYXBzdWxhw6fDo28gZG9zIGV2ZW50b3MgZSByZWdpc3RyYSBhdXRvbWF0aWNhbWVudGVcbiAqICAgbyBhZ3JlZ2FkbyBubyBzaXN0ZW1hIGRlIGRlc3BhY2hvIGRlIGV2ZW50b3MuXG4gKi9cbmV4cG9ydCBhYnN0cmFjdCBjbGFzcyBCYXNlQWdncmVnYXRlPFByb3BzPiBleHRlbmRzIEJhc2VFbnRpdHk8UHJvcHM+IHtcbiAgLyoqXG4gICAqIExpc3RhIGludGVybmEgZGUgZXZlbnRvcyBkZSBkb23DrW5pbyBwZW5kZW50ZXMuXG4gICAqIE1hbnRpZGEgcHJpdmFkYSBwYXJhIGV2aXRhciBtdXRhw6fDtWVzIGV4dGVybmFzLlxuICAgKi9cbiAgcHJpdmF0ZSBkb21haW5FdmVudHNRdWV1ZTogQmFzZUV2ZW50W10gPSBbXTtcblxuICAvKipcbiAgICogUmV0b3JuYSB1bWEgY8OzcGlhIGRvcyBldmVudG9zIHBlbmRlbnRlcy5cbiAgICogQm9hIHByw6F0aWNhOiBuw6NvIHJldG9ybmFyIGEgcmVmZXLDqm5jaWEgaW50ZXJuYVxuICAgKiBwYXJhIGV2aXRhciBtdXRhw6fDtWVzIGV4dGVybmFzIGluZXNwZXJhZGFzLlxuICAgKi9cbiAgZ2V0IGRvbWFpbkV2ZW50cygpOiBCYXNlRXZlbnRbXSB7XG4gICAgcmV0dXJuIFsuLi50aGlzLmRvbWFpbkV2ZW50c1F1ZXVlXTtcbiAgfVxuXG4gIC8qKlxuICAgKiBSZWdpc3RyYSB1bSBldmVudG8gZGUgZG9tw61uaW8gZSBub3RpZmljYSBvIGRpc3BhdGNoZXIgZ2xvYmFsLlxuICAgKlxuICAgKiBKdXN0aWZpY2F0aXZhOlxuICAgKiAtIE5vbWUgXCJyZWdpc3RlclwiIGV4cHJlc3NhIGEgaW50ZW7Dp8OjbyBkZSBcInJlZ2lzdHJhciBubyBzaXN0ZW1hXCIuXG4gICAqIC0gRXZpdGEgY29uZnVzw7VlcyBjb20gbcOpdG9kb3MgcXVlIGFwZW5hcyBhZGljaW9uYXJpYW0gYW8gYXJyYXkuXG4gICAqL1xuICBwcm90ZWN0ZWQgcmVnaXN0ZXJFdmVudChldmVudDogQmFzZUV2ZW50KTogdm9pZCB7XG4gICAgdGhpcy5kb21haW5FdmVudHNRdWV1ZS5wdXNoKGV2ZW50KTtcblxuICAgIC8vIE5vdGlmaWNhIG8gbWVjYW5pc21vIGRlIERvbWFpbiBFdmVudHNcbiAgICBCYXNlQnVpbGRFdmVudC5tYXJrQWdncmVnYXRlRm9yRGlzcGF0Y2godGhpcyk7XG4gIH1cblxuICAvKipcbiAgICogTGltcGEgdG9kb3Mgb3MgZXZlbnRvcyBwZW5kZW50ZXMuXG4gICAqIFV0aWxpemFkbyBhcMOzcyBhIHB1YmxpY2HDp8OjbyBkb3MgZXZlbnRvcy5cbiAgICovXG4gIGNsZWFyRXZlbnRzKCk6IHZvaWQge1xuICAgIHRoaXMuZG9tYWluRXZlbnRzUXVldWUgPSBbXTtcbiAgfVxufVxuIl0sInZlcnNpb24iOjN9

@@ -1,0 +1,18 @@
+cb703a72c01cbe0fa8f24d1fa9bda1d4
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ValidationException = void 0;
+const standard_error_1 = require("../errors/standard.error");
+class ValidationException extends standard_error_1.StandardError {
+    constructor(params) {
+        super({
+            statusCode: 400,
+            code: "ValidationException ",
+            error: "Validation Error",
+            message: params.message ?? `${params.fieldName} "${params.value}" já existe`,
+            fieldName: params.fieldName,
+        });
+    }
+}
+exports.ValidationException = ValidationException;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXGRvbWFpblxcdmFsaWRhdGlvbnNcXHZhbGlkYXRpb24uZXhjZXB0aW9uLmV4Y2VwdGlvbi50cyIsIm1hcHBpbmdzIjoiOzs7QUFBQSw2REFBeUQ7QUFHekQsTUFBYSxtQkFBb0IsU0FBUSw4QkFBYTtJQUNwRCxZQUFZLE1BQStEO1FBQ3pFLEtBQUssQ0FBQztZQUNKLFVBQVUsRUFBRSxHQUFHO1lBQ2YsSUFBSSxFQUFFLHNCQUFzQjtZQUM1QixLQUFLLEVBQUUsa0JBQWtCO1lBQ3pCLE9BQU8sRUFBRSxNQUFNLENBQUMsT0FBTyxJQUFJLEdBQUcsTUFBTSxDQUFDLFNBQVMsS0FBSyxNQUFNLENBQUMsS0FBSyxhQUFhO1lBQzVFLFNBQVMsRUFBRSxNQUFNLENBQUMsU0FBUztTQUM1QixDQUFDLENBQUM7SUFDTCxDQUFDO0NBQ0Y7QUFWRCxrREFVQyIsIm5hbWVzIjpbXSwic291cmNlcyI6WyJFOlxcd29ya3NwYWNlLXNhc3NcXHJlcG9cXHBhY2thZ2VzXFxjb21tb25cXHNyY1xcZG9tYWluXFx2YWxpZGF0aW9uc1xcdmFsaWRhdGlvbi5leGNlcHRpb24uZXhjZXB0aW9uLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IFN0YW5kYXJkRXJyb3IgfSBmcm9tIFwiLi4vZXJyb3JzL3N0YW5kYXJkLmVycm9yXCI7XG5pbXBvcnQgeyBCYXNlVXNlQ2FzZUVycm9yIH0gZnJvbSBcIi4uL2Vycm9ycy91c2VjYXNlcy9iYXNlLXVzZWNhc2UuZXJyb3JcIjtcblxuZXhwb3J0IGNsYXNzIFZhbGlkYXRpb25FeGNlcHRpb24gZXh0ZW5kcyBTdGFuZGFyZEVycm9yIGltcGxlbWVudHMgQmFzZVVzZUNhc2VFcnJvciB7XG4gIGNvbnN0cnVjdG9yKHBhcmFtczogeyBmaWVsZE5hbWU6IHN0cmluZzsgdmFsdWU/OiBzdHJpbmc7IG1lc3NhZ2U/OiBzdHJpbmcgfSkge1xuICAgIHN1cGVyKHtcbiAgICAgIHN0YXR1c0NvZGU6IDQwMCxcbiAgICAgIGNvZGU6IFwiVmFsaWRhdGlvbkV4Y2VwdGlvbiBcIixcbiAgICAgIGVycm9yOiBcIlZhbGlkYXRpb24gRXJyb3JcIixcbiAgICAgIG1lc3NhZ2U6IHBhcmFtcy5tZXNzYWdlID8/IGAke3BhcmFtcy5maWVsZE5hbWV9IFwiJHtwYXJhbXMudmFsdWV9XCIgasOhIGV4aXN0ZWAsXG4gICAgICBmaWVsZE5hbWU6IHBhcmFtcy5maWVsZE5hbWUsXG4gICAgfSk7XG4gIH1cbn1cbiJdLCJ2ZXJzaW9uIjozfQ==

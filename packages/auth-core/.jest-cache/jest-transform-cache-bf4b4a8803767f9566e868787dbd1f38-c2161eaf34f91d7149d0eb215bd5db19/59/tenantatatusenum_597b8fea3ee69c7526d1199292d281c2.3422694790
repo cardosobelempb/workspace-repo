@@ -1,0 +1,12 @@
+315b05602f2a93848012871a9e245a89
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.TenantStatus = void 0;
+var TenantStatus;
+(function (TenantStatus) {
+    TenantStatus["TRIALING"] = "TRIALING";
+    TenantStatus["ACTIVE"] = "ACTIVE";
+    TenantStatus["SUSPENDED"] = "SUSPENDED";
+    TenantStatus["CANCELED"] = "CANCELED";
+})(TenantStatus || (exports.TenantStatus = TenantStatus = {}));
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXHNoYXJlZFxcZW51bXNcXHRlbmFudC1hdGF0dXMuZW51bS50cyIsIm1hcHBpbmdzIjoiOzs7QUFBQSxJQUFZLFlBS1g7QUFMRCxXQUFZLFlBQVk7SUFDdEIscUNBQXFCLENBQUE7SUFDckIsaUNBQWlCLENBQUE7SUFDakIsdUNBQXVCLENBQUE7SUFDdkIscUNBQXFCLENBQUE7QUFDdkIsQ0FBQyxFQUxXLFlBQVksNEJBQVosWUFBWSxRQUt2QiIsIm5hbWVzIjpbXSwic291cmNlcyI6WyJFOlxcd29ya3NwYWNlLXNhc3NcXHJlcG9cXHBhY2thZ2VzXFxjb21tb25cXHNyY1xcc2hhcmVkXFxlbnVtc1xcdGVuYW50LWF0YXR1cy5lbnVtLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCBlbnVtIFRlbmFudFN0YXR1cyB7XG4gIFRSSUFMSU5HID0gXCJUUklBTElOR1wiLFxuICBBQ1RJVkUgPSBcIkFDVElWRVwiLFxuICBTVVNQRU5ERUQgPSBcIlNVU1BFTkRFRFwiLFxuICBDQU5DRUxFRCA9IFwiQ0FOQ0VMRURcIixcbn1cbiJdLCJ2ZXJzaW9uIjozfQ==

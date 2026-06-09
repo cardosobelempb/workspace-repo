@@ -16,6 +16,7 @@ export * from "./member-invitation-status.enum";
 export * from "./member-ship-role.enum";
 export * from "./member-ship-status.enum";
 export * from "./mikrotik-status.enum";
+export * from "./notification-channel";
 export * from "./order-status.enum";
 export * from "./organization-status-scope.enum";
 export * from "./organization-status.enum";

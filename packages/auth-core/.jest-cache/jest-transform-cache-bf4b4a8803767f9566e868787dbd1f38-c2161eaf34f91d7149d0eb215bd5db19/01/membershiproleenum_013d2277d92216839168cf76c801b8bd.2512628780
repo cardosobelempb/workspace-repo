@@ -1,0 +1,22 @@
+4c327805fa2969640d34c7985977ffa7
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.MemberRoleSchema = exports.MembershipRole = void 0;
+const zod_1 = __importDefault(require("zod"));
+var MembershipRole;
+(function (MembershipRole) {
+    MembershipRole["OWNER"] = "OWNER";
+    MembershipRole["ADMIN"] = "ADMIN";
+    MembershipRole["AFFILIATE"] = "AFFILIATE";
+    MembershipRole["OPERATOR"] = "OPERATOR";
+    MembershipRole["CUSTOMER"] = "CUSTOMER";
+    MembershipRole["MANAGER"] = "MANAGER";
+    MembershipRole["SUPPORT"] = "SUPPORT";
+    MembershipRole["FINANCE"] = "FINANCE";
+    MembershipRole["MEMBER"] = "MEMBER";
+})(MembershipRole || (exports.MembershipRole = MembershipRole = {}));
+exports.MemberRoleSchema = zod_1.default.enum(MembershipRole);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXHNoYXJlZFxcZW51bXNcXG1lbWJlci1zaGlwLXJvbGUuZW51bS50cyIsIm1hcHBpbmdzIjoiOzs7Ozs7QUFBQSw4Q0FBb0I7QUFFcEIsSUFBWSxjQVVYO0FBVkQsV0FBWSxjQUFjO0lBQ3hCLGlDQUFlLENBQUE7SUFDZixpQ0FBZSxDQUFBO0lBQ2YseUNBQXVCLENBQUE7SUFDdkIsdUNBQXFCLENBQUE7SUFDckIsdUNBQXFCLENBQUE7SUFDckIscUNBQW1CLENBQUE7SUFDbkIscUNBQW1CLENBQUE7SUFDbkIscUNBQW1CLENBQUE7SUFDbkIsbUNBQWlCLENBQUE7QUFDbkIsQ0FBQyxFQVZXLGNBQWMsOEJBQWQsY0FBYyxRQVV6QjtBQUVZLFFBQUEsZ0JBQWdCLEdBQUcsYUFBQyxDQUFDLElBQUksQ0FBQyxjQUFjLENBQUMsQ0FBQyIsIm5hbWVzIjpbXSwic291cmNlcyI6WyJFOlxcd29ya3NwYWNlLXNhc3NcXHJlcG9cXHBhY2thZ2VzXFxjb21tb25cXHNyY1xcc2hhcmVkXFxlbnVtc1xcbWVtYmVyLXNoaXAtcm9sZS5lbnVtLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB6IGZyb20gXCJ6b2RcIjtcblxuZXhwb3J0IGVudW0gTWVtYmVyc2hpcFJvbGUge1xuICBPV05FUiA9IFwiT1dORVJcIixcbiAgQURNSU4gPSBcIkFETUlOXCIsXG4gIEFGRklMSUFURSA9IFwiQUZGSUxJQVRFXCIsXG4gIE9QRVJBVE9SID0gXCJPUEVSQVRPUlwiLFxuICBDVVNUT01FUiA9IFwiQ1VTVE9NRVJcIixcbiAgTUFOQUdFUiA9IFwiTUFOQUdFUlwiLFxuICBTVVBQT1JUID0gXCJTVVBQT1JUXCIsXG4gIEZJTkFOQ0UgPSBcIkZJTkFOQ0VcIixcbiAgTUVNQkVSID0gXCJNRU1CRVJcIixcbn1cblxuZXhwb3J0IGNvbnN0IE1lbWJlclJvbGVTY2hlbWEgPSB6LmVudW0oTWVtYmVyc2hpcFJvbGUpO1xuIl0sInZlcnNpb24iOjN9

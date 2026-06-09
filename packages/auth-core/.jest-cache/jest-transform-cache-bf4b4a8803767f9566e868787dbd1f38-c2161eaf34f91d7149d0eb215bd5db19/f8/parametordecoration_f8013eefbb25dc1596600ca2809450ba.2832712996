@@ -1,0 +1,25 @@
+56618b598e7287edefc857a2db2c9f83
+"use strict";
+/**
+ * Decorator para marcar um parâmetro como corpo da requisição.
+ * @param target O protótipo do objeto que contém o método decorado. Representa a classe onde o método está definido.
+ * @param propertyKey  O nome do método decorado. Representa o nome do método onde o parâmetro está definido.
+ * @param index A posição do parâmetro decorado na lista de parâmetros do método. Representa a ordem dos parâmetros no método, começando em 0.
+ * @returns Uma função decoradora que loga a posição do parâmetro decorado como corpo da requisição no console.
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Body = Body;
+function Body(target, propertyKey, index) {
+    console.log(`Parâmetro body na posição ${index}`);
+}
+/*
+ * Exemplo de uso do decorador Body:
+ * class UserController {
+ *  createUser(@Body userData: any) {
+ *   // Lógica para criar um usuário usando os dados do corpo da requisição
+ *   }
+ * }
+ * // Saída no console:
+ * // Parâmetro body na posição 0
+ * */
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXHNoYXJlZFxcaHR0cFxcZGVjb3JhdG9yc1xccGFyYW1ldG9yLmRlY29yYXRpb24udHMiLCJtYXBwaW5ncyI6IjtBQUFBOzs7Ozs7R0FNRzs7QUFFSCxvQkFFQztBQUZELFNBQWdCLElBQUksQ0FBQyxNQUFjLEVBQUUsV0FBbUIsRUFBRSxLQUFhO0lBQ3JFLE9BQU8sQ0FBQyxHQUFHLENBQUMsNkJBQTZCLEtBQUssRUFBRSxDQUFDLENBQUM7QUFDcEQsQ0FBQztBQUVEOzs7Ozs7Ozs7S0FTSyIsIm5hbWVzIjpbXSwic291cmNlcyI6WyJFOlxcd29ya3NwYWNlLXNhc3NcXHJlcG9cXHBhY2thZ2VzXFxjb21tb25cXHNyY1xcc2hhcmVkXFxodHRwXFxkZWNvcmF0b3JzXFxwYXJhbWV0b3IuZGVjb3JhdGlvbi50cyJdLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIERlY29yYXRvciBwYXJhIG1hcmNhciB1bSBwYXLDom1ldHJvIGNvbW8gY29ycG8gZGEgcmVxdWlzacOnw6NvLlxuICogQHBhcmFtIHRhcmdldCBPIHByb3TDs3RpcG8gZG8gb2JqZXRvIHF1ZSBjb250w6ltIG8gbcOpdG9kbyBkZWNvcmFkby4gUmVwcmVzZW50YSBhIGNsYXNzZSBvbmRlIG8gbcOpdG9kbyBlc3TDoSBkZWZpbmlkby5cbiAqIEBwYXJhbSBwcm9wZXJ0eUtleSAgTyBub21lIGRvIG3DqXRvZG8gZGVjb3JhZG8uIFJlcHJlc2VudGEgbyBub21lIGRvIG3DqXRvZG8gb25kZSBvIHBhcsOibWV0cm8gZXN0w6EgZGVmaW5pZG8uXG4gKiBAcGFyYW0gaW5kZXggQSBwb3Npw6fDo28gZG8gcGFyw6JtZXRybyBkZWNvcmFkbyBuYSBsaXN0YSBkZSBwYXLDom1ldHJvcyBkbyBtw6l0b2RvLiBSZXByZXNlbnRhIGEgb3JkZW0gZG9zIHBhcsOibWV0cm9zIG5vIG3DqXRvZG8sIGNvbWXDp2FuZG8gZW0gMC5cbiAqIEByZXR1cm5zIFVtYSBmdW7Dp8OjbyBkZWNvcmFkb3JhIHF1ZSBsb2dhIGEgcG9zacOnw6NvIGRvIHBhcsOibWV0cm8gZGVjb3JhZG8gY29tbyBjb3JwbyBkYSByZXF1aXNpw6fDo28gbm8gY29uc29sZS5cbiAqL1xuXG5leHBvcnQgZnVuY3Rpb24gQm9keSh0YXJnZXQ6IG9iamVjdCwgcHJvcGVydHlLZXk6IHN0cmluZywgaW5kZXg6IG51bWJlcikge1xuICBjb25zb2xlLmxvZyhgUGFyw6JtZXRybyBib2R5IG5hIHBvc2nDp8OjbyAke2luZGV4fWApO1xufVxuXG4vKlxuICogRXhlbXBsbyBkZSB1c28gZG8gZGVjb3JhZG9yIEJvZHk6XG4gKiBjbGFzcyBVc2VyQ29udHJvbGxlciB7XG4gKiAgY3JlYXRlVXNlcihAQm9keSB1c2VyRGF0YTogYW55KSB7XG4gKiAgIC8vIEzDs2dpY2EgcGFyYSBjcmlhciB1bSB1c3XDoXJpbyB1c2FuZG8gb3MgZGFkb3MgZG8gY29ycG8gZGEgcmVxdWlzacOnw6NvXG4gKiAgIH1cbiAqIH1cbiAqIC8vIFNhw61kYSBubyBjb25zb2xlOlxuICogLy8gUGFyw6JtZXRybyBib2R5IG5hIHBvc2nDp8OjbyAwXG4gKiAqL1xuIl0sInZlcnNpb24iOjN9

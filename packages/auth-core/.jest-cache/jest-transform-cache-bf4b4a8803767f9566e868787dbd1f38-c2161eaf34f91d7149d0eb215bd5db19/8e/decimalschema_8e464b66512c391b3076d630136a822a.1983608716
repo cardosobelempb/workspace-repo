@@ -1,0 +1,14 @@
+404526899a924947bee8da45e5426b03
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.DecimalSchema = void 0;
+const zod_1 = __importDefault(require("zod"));
+exports.DecimalSchema = zod_1.default.string().refine((value) => {
+    return !isNaN(Number(value));
+}, {
+    message: "Invalid decimal number",
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXHNoYXJlZFxcbGliXFxzY2hlbWFzXFxkZWNpbWFsLnNjaGVtYS50cyIsIm1hcHBpbmdzIjoiOzs7Ozs7QUFBQSw4Q0FBb0I7QUFFUCxRQUFBLGFBQWEsR0FBRyxhQUFDLENBQUMsTUFBTSxFQUFFLENBQUMsTUFBTSxDQUM1QyxDQUFDLEtBQUssRUFBRSxFQUFFO0lBQ1IsT0FBTyxDQUFDLEtBQUssQ0FBQyxNQUFNLENBQUMsS0FBSyxDQUFDLENBQUMsQ0FBQztBQUMvQixDQUFDLEVBQ0Q7SUFDRSxPQUFPLEVBQUUsd0JBQXdCO0NBQ2xDLENBQ0YsQ0FBQyIsIm5hbWVzIjpbXSwic291cmNlcyI6WyJFOlxcd29ya3NwYWNlLXNhc3NcXHJlcG9cXHBhY2thZ2VzXFxjb21tb25cXHNyY1xcc2hhcmVkXFxsaWJcXHNjaGVtYXNcXGRlY2ltYWwuc2NoZW1hLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB6IGZyb20gXCJ6b2RcIjtcblxuZXhwb3J0IGNvbnN0IERlY2ltYWxTY2hlbWEgPSB6LnN0cmluZygpLnJlZmluZShcbiAgKHZhbHVlKSA9PiB7XG4gICAgcmV0dXJuICFpc05hTihOdW1iZXIodmFsdWUpKTtcbiAgfSxcbiAge1xuICAgIG1lc3NhZ2U6IFwiSW52YWxpZCBkZWNpbWFsIG51bWJlclwiLFxuICB9LFxuKTtcbiJdLCJ2ZXJzaW9uIjozfQ==

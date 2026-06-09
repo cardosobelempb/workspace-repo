@@ -13,7 +13,11 @@ export function createNodeConfig(options: NodeOptions): Config {
     roots: options.roots,
     testMatch: ["**/*.spec.ts", "**/*.test.ts"],
     setupFilesAfterEnv: options.setupFilesAfterEnv ?? [],
-    moduleNameMapper: options.moduleNameMapper,
+    moduleNameMapper: {
+      "^@repo/([^/]+)$": "<rootDir>/../$1/src/index.ts",
+      "^@repo/([^/]+)/(.*)$": "<rootDir>/../$1/src/$2",
+      ...options.moduleNameMapper,
+    },
     transform: {
       "^.+\\.tsx?$": [
         "ts-jest",

@@ -1,0 +1,40 @@
+40dbe153a05fd819a33794008fc6f167
+"use strict";
+// ============================================================
+// page-response.schema.ts
+// Schema Zod genérico para validação/parsing de respostas paginadas
+// ============================================================
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PageResponseSchema = void 0;
+const zod_1 = require("zod");
+const pageable_schema_1 = require("./pageable.schema");
+const sort_schema_1 = require("./sort.schema");
+/**
+ * Factory de schema paginado — recebe o schema do conteúdo e retorna
+ * o schema completo no contrato Spring Data Page<T>.
+ *
+ * @param contentSchema - Schema Zod do item individual do content
+ *
+ * @example
+ * const OrganizationPageSchema = PageResponseSchema(OrganizationSchema);
+ * type OrganizationPage = z.infer<typeof OrganizationPageSchema>;
+ */
+const PageResponseSchema = (contentSchema) => zod_1.z.object({
+    content: zod_1.z.array(contentSchema),
+    pageable: pageable_schema_1.PageableSchema,
+    totalPages: zod_1.z.number().int().nonnegative(),
+    totalElements: zod_1.z.number().int().nonnegative(),
+    last: zod_1.z.boolean(),
+    size: zod_1.z.number().int().positive(),
+    number: zod_1.z.number().int().nonnegative(),
+    sort: sort_schema_1.SortSchema,
+    numberOfElements: zod_1.z.number().int().nonnegative(),
+    first: zod_1.z.boolean(),
+    empty: zod_1.z.boolean(),
+});
+exports.PageResponseSchema = PageResponseSchema;
+// ─── Tipos inferidos ──────────────────────────────────────────────────────────
+// export type SortSchema = z.infer<typeof SortSchema>;
+// export type PageableSchema = z.infer<typeof PageableSchema>;
+// export type PageResponse<T> = ReturnType<typeof PageResponseSchema<z.ZodType<T>>>["type"];
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXHNoYXJlZFxcbGliXFxzY2hlbWFzXFxwYWdpbmF0aW9uLXJlc3BvbnNlLnNjaGVtYS50cyIsIm1hcHBpbmdzIjoiO0FBQUEsK0RBQStEO0FBQy9ELDBCQUEwQjtBQUMxQixvRUFBb0U7QUFDcEUsK0RBQStEOzs7QUFFL0QsNkJBQXdCO0FBQ3hCLHVEQUFtRDtBQUNuRCwrQ0FBMkM7QUFFM0M7Ozs7Ozs7OztHQVNHO0FBQ0ksTUFBTSxrQkFBa0IsR0FBRyxDQUF5QixhQUFnQixFQUFFLEVBQUUsQ0FDN0UsT0FBQyxDQUFDLE1BQU0sQ0FBQztJQUNQLE9BQU8sRUFBRSxPQUFDLENBQUMsS0FBSyxDQUFDLGFBQWEsQ0FBQztJQUMvQixRQUFRLEVBQUUsZ0NBQWM7SUFDeEIsVUFBVSxFQUFFLE9BQUMsQ0FBQyxNQUFNLEVBQUUsQ0FBQyxHQUFHLEVBQUUsQ0FBQyxXQUFXLEVBQUU7SUFDMUMsYUFBYSxFQUFFLE9BQUMsQ0FBQyxNQUFNLEVBQUUsQ0FBQyxHQUFHLEVBQUUsQ0FBQyxXQUFXLEVBQUU7SUFDN0MsSUFBSSxFQUFFLE9BQUMsQ0FBQyxPQUFPLEVBQUU7SUFDakIsSUFBSSxFQUFFLE9BQUMsQ0FBQyxNQUFNLEVBQUUsQ0FBQyxHQUFHLEVBQUUsQ0FBQyxRQUFRLEVBQUU7SUFDakMsTUFBTSxFQUFFLE9BQUMsQ0FBQyxNQUFNLEVBQUUsQ0FBQyxHQUFHLEVBQUUsQ0FBQyxXQUFXLEVBQUU7SUFDdEMsSUFBSSxFQUFFLHdCQUFVO0lBQ2hCLGdCQUFnQixFQUFFLE9BQUMsQ0FBQyxNQUFNLEVBQUUsQ0FBQyxHQUFHLEVBQUUsQ0FBQyxXQUFXLEVBQUU7SUFDaEQsS0FBSyxFQUFFLE9BQUMsQ0FBQyxPQUFPLEVBQUU7SUFDbEIsS0FBSyxFQUFFLE9BQUMsQ0FBQyxPQUFPLEVBQUU7Q0FDbkIsQ0FBQyxDQUFDO0FBYlEsUUFBQSxrQkFBa0Isc0JBYTFCO0FBRUwsaUZBQWlGO0FBQ2pGLHVEQUF1RDtBQUN2RCwrREFBK0Q7QUFDL0QsNkZBQTZGIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIkU6XFx3b3Jrc3BhY2Utc2Fzc1xccmVwb1xccGFja2FnZXNcXGNvbW1vblxcc3JjXFxzaGFyZWRcXGxpYlxcc2NoZW1hc1xccGFnaW5hdGlvbi1yZXNwb25zZS5zY2hlbWEudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4vLyBwYWdlLXJlc3BvbnNlLnNjaGVtYS50c1xuLy8gU2NoZW1hIFpvZCBnZW7DqXJpY28gcGFyYSB2YWxpZGHDp8Ojby9wYXJzaW5nIGRlIHJlc3Bvc3RhcyBwYWdpbmFkYXNcbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuXG5pbXBvcnQgeyB6IH0gZnJvbSBcInpvZFwiO1xuaW1wb3J0IHsgUGFnZWFibGVTY2hlbWEgfSBmcm9tIFwiLi9wYWdlYWJsZS5zY2hlbWFcIjtcbmltcG9ydCB7IFNvcnRTY2hlbWEgfSBmcm9tIFwiLi9zb3J0LnNjaGVtYVwiO1xuXG4vKipcbiAqIEZhY3RvcnkgZGUgc2NoZW1hIHBhZ2luYWRvIOKAlCByZWNlYmUgbyBzY2hlbWEgZG8gY29udGXDumRvIGUgcmV0b3JuYVxuICogbyBzY2hlbWEgY29tcGxldG8gbm8gY29udHJhdG8gU3ByaW5nIERhdGEgUGFnZTxUPi5cbiAqXG4gKiBAcGFyYW0gY29udGVudFNjaGVtYSAtIFNjaGVtYSBab2QgZG8gaXRlbSBpbmRpdmlkdWFsIGRvIGNvbnRlbnRcbiAqXG4gKiBAZXhhbXBsZVxuICogY29uc3QgT3JnYW5pemF0aW9uUGFnZVNjaGVtYSA9IFBhZ2VSZXNwb25zZVNjaGVtYShPcmdhbml6YXRpb25TY2hlbWEpO1xuICogdHlwZSBPcmdhbml6YXRpb25QYWdlID0gei5pbmZlcjx0eXBlb2YgT3JnYW5pemF0aW9uUGFnZVNjaGVtYT47XG4gKi9cbmV4cG9ydCBjb25zdCBQYWdlUmVzcG9uc2VTY2hlbWEgPSA8VCBleHRlbmRzIHouWm9kVHlwZUFueT4oY29udGVudFNjaGVtYTogVCkgPT5cbiAgei5vYmplY3Qoe1xuICAgIGNvbnRlbnQ6IHouYXJyYXkoY29udGVudFNjaGVtYSksXG4gICAgcGFnZWFibGU6IFBhZ2VhYmxlU2NoZW1hLFxuICAgIHRvdGFsUGFnZXM6IHoubnVtYmVyKCkuaW50KCkubm9ubmVnYXRpdmUoKSxcbiAgICB0b3RhbEVsZW1lbnRzOiB6Lm51bWJlcigpLmludCgpLm5vbm5lZ2F0aXZlKCksXG4gICAgbGFzdDogei5ib29sZWFuKCksXG4gICAgc2l6ZTogei5udW1iZXIoKS5pbnQoKS5wb3NpdGl2ZSgpLFxuICAgIG51bWJlcjogei5udW1iZXIoKS5pbnQoKS5ub25uZWdhdGl2ZSgpLFxuICAgIHNvcnQ6IFNvcnRTY2hlbWEsXG4gICAgbnVtYmVyT2ZFbGVtZW50czogei5udW1iZXIoKS5pbnQoKS5ub25uZWdhdGl2ZSgpLFxuICAgIGZpcnN0OiB6LmJvb2xlYW4oKSxcbiAgICBlbXB0eTogei5ib29sZWFuKCksXG4gIH0pO1xuXG4vLyDilIDilIDilIAgVGlwb3MgaW5mZXJpZG9zIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuLy8gZXhwb3J0IHR5cGUgU29ydFNjaGVtYSA9IHouaW5mZXI8dHlwZW9mIFNvcnRTY2hlbWE+O1xuLy8gZXhwb3J0IHR5cGUgUGFnZWFibGVTY2hlbWEgPSB6LmluZmVyPHR5cGVvZiBQYWdlYWJsZVNjaGVtYT47XG4vLyBleHBvcnQgdHlwZSBQYWdlUmVzcG9uc2U8VD4gPSBSZXR1cm5UeXBlPHR5cGVvZiBQYWdlUmVzcG9uc2VTY2hlbWE8ei5ab2RUeXBlPFQ+Pj5bXCJ0eXBlXCJdO1xuIl0sInZlcnNpb24iOjN9

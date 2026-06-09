@@ -108,7 +108,7 @@ export class OAuthLoginUseCase {
     const sessionFactory = SessionFactory.build({
       userId: user.id.getValue(),
       sessionToken: tokenHash,
-      expires: expiresAt,
+      expires: expiresAt.toISOString(),
       ipAddress: input.ipAddress ?? null,
       userAgent: input.userAgent ?? null,
     });

@@ -1,0 +1,26 @@
+a8edd6d53ac16bffb3d82a1f4b8e74f4
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Auth = Auth;
+const metadata_1 = require("./metadata");
+/**
+ * Marca uma rota como protegida.
+ *
+ * A implementação real da autenticação fica no register-routes.
+ * Exemplo:
+ * @Auth()
+ * async getProtectedResource() {
+ *   // lógica para obter recurso protegido
+ * }
+ */
+function Auth() {
+    return function (target, propertyKey) {
+        const routes = (0, metadata_1.getRoutes)(target.constructor);
+        const route = routes.find((item) => item.handlerName === String(propertyKey));
+        if (!route) {
+            throw new Error(`@Auth precisa ser usado junto com um decorator de rota em ${String(propertyKey)}`);
+        }
+        route.auth = true;
+    };
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXHNoYXJlZFxcaHR0cFxcZGVjb3JhdG9yc1xcYXV0aC5kZWNvcmF0b3IudHMiLCJtYXBwaW5ncyI6Ijs7QUFZQSxvQkFjQztBQTFCRCx5Q0FBdUM7QUFFdkM7Ozs7Ozs7OztHQVNHO0FBQ0gsU0FBZ0IsSUFBSTtJQUNsQixPQUFPLFVBQVUsTUFBYyxFQUFFLFdBQTRCO1FBQzNELE1BQU0sTUFBTSxHQUFHLElBQUEsb0JBQVMsRUFBQyxNQUFNLENBQUMsV0FBVyxDQUFDLENBQUM7UUFFN0MsTUFBTSxLQUFLLEdBQUcsTUFBTSxDQUFDLElBQUksQ0FBQyxDQUFDLElBQUksRUFBRSxFQUFFLENBQUMsSUFBSSxDQUFDLFdBQVcsS0FBSyxNQUFNLENBQUMsV0FBVyxDQUFDLENBQUMsQ0FBQztRQUU5RSxJQUFJLENBQUMsS0FBSyxFQUFFLENBQUM7WUFDWCxNQUFNLElBQUksS0FBSyxDQUNiLDZEQUE2RCxNQUFNLENBQUMsV0FBVyxDQUFDLEVBQUUsQ0FDbkYsQ0FBQztRQUNKLENBQUM7UUFFRCxLQUFLLENBQUMsSUFBSSxHQUFHLElBQUksQ0FBQztJQUNwQixDQUFDLENBQUM7QUFDSixDQUFDIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIkU6XFx3b3Jrc3BhY2Utc2Fzc1xccmVwb1xccGFja2FnZXNcXGNvbW1vblxcc3JjXFxzaGFyZWRcXGh0dHBcXGRlY29yYXRvcnNcXGF1dGguZGVjb3JhdG9yLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IGdldFJvdXRlcyB9IGZyb20gXCIuL21ldGFkYXRhXCI7XG5cbi8qKlxuICogTWFyY2EgdW1hIHJvdGEgY29tbyBwcm90ZWdpZGEuXG4gKlxuICogQSBpbXBsZW1lbnRhw6fDo28gcmVhbCBkYSBhdXRlbnRpY2HDp8OjbyBmaWNhIG5vIHJlZ2lzdGVyLXJvdXRlcy5cbiAqIEV4ZW1wbG86XG4gKiBAQXV0aCgpXG4gKiBhc3luYyBnZXRQcm90ZWN0ZWRSZXNvdXJjZSgpIHtcbiAqICAgLy8gbMOzZ2ljYSBwYXJhIG9idGVyIHJlY3Vyc28gcHJvdGVnaWRvXG4gKiB9XG4gKi9cbmV4cG9ydCBmdW5jdGlvbiBBdXRoKCkge1xuICByZXR1cm4gZnVuY3Rpb24gKHRhcmdldDogb2JqZWN0LCBwcm9wZXJ0eUtleTogc3RyaW5nIHwgc3ltYm9sKTogdm9pZCB7XG4gICAgY29uc3Qgcm91dGVzID0gZ2V0Um91dGVzKHRhcmdldC5jb25zdHJ1Y3Rvcik7XG5cbiAgICBjb25zdCByb3V0ZSA9IHJvdXRlcy5maW5kKChpdGVtKSA9PiBpdGVtLmhhbmRsZXJOYW1lID09PSBTdHJpbmcocHJvcGVydHlLZXkpKTtcblxuICAgIGlmICghcm91dGUpIHtcbiAgICAgIHRocm93IG5ldyBFcnJvcihcbiAgICAgICAgYEBBdXRoIHByZWNpc2Egc2VyIHVzYWRvIGp1bnRvIGNvbSB1bSBkZWNvcmF0b3IgZGUgcm90YSBlbSAke1N0cmluZyhwcm9wZXJ0eUtleSl9YCxcbiAgICAgICk7XG4gICAgfVxuXG4gICAgcm91dGUuYXV0aCA9IHRydWU7XG4gIH07XG59XG4iXSwidmVyc2lvbiI6M30=

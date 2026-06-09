@@ -1,0 +1,7 @@
+712a2b212058843f58a83b09776a3035
+"use strict";
+// ============================================================
+// Tipos reutilizáveis do sistema de logs
+// ============================================================
+Object.defineProperty(exports, "__esModule", { value: true });
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXGluZnJhc3RydWN0dXJlXFxvYnNlcnZhYmlsaXR5XFxsb2dnZXIudHlwZXMudHMiLCJtYXBwaW5ncyI6IjtBQUFBLCtEQUErRDtBQUMvRCx5Q0FBeUM7QUFDekMsK0RBQStEIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIkU6XFx3b3Jrc3BhY2Utc2Fzc1xccmVwb1xccGFja2FnZXNcXGNvbW1vblxcc3JjXFxpbmZyYXN0cnVjdHVyZVxcb2JzZXJ2YWJpbGl0eVxcbG9nZ2VyLnR5cGVzLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuLy8gVGlwb3MgcmV1dGlsaXrDoXZlaXMgZG8gc2lzdGVtYSBkZSBsb2dzXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cblxuZXhwb3J0IHR5cGUgTG9nZ2VyTWV0YWRhdGEgPSBSZWNvcmQ8c3RyaW5nLCB1bmtub3duPjtcblxuZXhwb3J0IGludGVyZmFjZSBMb2dnZXJPcHRpb25zIHtcbiAgY29udGV4dD86IHN0cmluZztcbiAgdHJhY2VJZD86IHN0cmluZztcbiAgcmVxdWVzdElkPzogc3RyaW5nO1xufVxuIl0sInZlcnNpb24iOjN9

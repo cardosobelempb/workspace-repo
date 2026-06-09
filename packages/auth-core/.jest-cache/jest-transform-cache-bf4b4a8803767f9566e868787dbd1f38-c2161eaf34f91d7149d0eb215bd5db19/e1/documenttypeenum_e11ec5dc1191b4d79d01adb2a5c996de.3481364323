@@ -1,0 +1,12 @@
+20c80f73a349a0df776b8a58f28ccf34
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.DocumentType = void 0;
+var DocumentType;
+(function (DocumentType) {
+    DocumentType["CPF"] = "CPF";
+    DocumentType["CNPJ"] = "CNPJ";
+    DocumentType["RG"] = "RG";
+    DocumentType["OTHER"] = "OTHER";
+})(DocumentType || (exports.DocumentType = DocumentType = {}));
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXHNoYXJlZFxcZW51bXNcXGRvY3VtZW50LXR5cGUuZW51bS50cyIsIm1hcHBpbmdzIjoiOzs7QUFBQSxJQUFZLFlBS1g7QUFMRCxXQUFZLFlBQVk7SUFDdEIsMkJBQVcsQ0FBQTtJQUNYLDZCQUFhLENBQUE7SUFDYix5QkFBUyxDQUFBO0lBQ1QsK0JBQWUsQ0FBQTtBQUNqQixDQUFDLEVBTFcsWUFBWSw0QkFBWixZQUFZLFFBS3ZCIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIkU6XFx3b3Jrc3BhY2Utc2Fzc1xccmVwb1xccGFja2FnZXNcXGNvbW1vblxcc3JjXFxzaGFyZWRcXGVudW1zXFxkb2N1bWVudC10eXBlLmVudW0udHMiXSwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGVudW0gRG9jdW1lbnRUeXBlIHtcbiAgQ1BGID0gXCJDUEZcIixcbiAgQ05QSiA9IFwiQ05QSlwiLFxuICBSRyA9IFwiUkdcIixcbiAgT1RIRVIgPSBcIk9USEVSXCIsXG59XG4iXSwidmVyc2lvbiI6M30=

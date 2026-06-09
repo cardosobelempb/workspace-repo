@@ -1,0 +1,10 @@
+241804db08f3320a02792b5066358d11
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PortSchema = void 0;
+const zod_1 = __importDefault(require("zod"));
+exports.PortSchema = zod_1.default.number().int().min(1).max(65535);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXHNoYXJlZFxcbGliXFxzY2hlbWFzXFxwb3J0cy5jaGVtYS50cyIsIm1hcHBpbmdzIjoiOzs7Ozs7QUFBQSw4Q0FBb0I7QUFFUCxRQUFBLFVBQVUsR0FBRyxhQUFDLENBQUMsTUFBTSxFQUFFLENBQUMsR0FBRyxFQUFFLENBQUMsR0FBRyxDQUFDLENBQUMsQ0FBQyxDQUFDLEdBQUcsQ0FBQyxLQUFLLENBQUMsQ0FBQyIsIm5hbWVzIjpbXSwic291cmNlcyI6WyJFOlxcd29ya3NwYWNlLXNhc3NcXHJlcG9cXHBhY2thZ2VzXFxjb21tb25cXHNyY1xcc2hhcmVkXFxsaWJcXHNjaGVtYXNcXHBvcnRzLmNoZW1hLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB6IGZyb20gXCJ6b2RcIjtcblxuZXhwb3J0IGNvbnN0IFBvcnRTY2hlbWEgPSB6Lm51bWJlcigpLmludCgpLm1pbigxKS5tYXgoNjU1MzUpO1xuIl0sInZlcnNpb24iOjN9

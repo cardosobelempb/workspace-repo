@@ -1,0 +1,17 @@
+65574171a8817d6b16388a44aae156b2
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.messages = void 0;
+exports.messages = {
+    pt: {
+        EMPTY: "A descrição não pode estar vazia.",
+        TOO_LONG: "A descrição excede o tamanho máximo permitido.",
+        TOO_SHORT: "A descrição está abaixo do tamanho mínimo permitido.",
+    },
+    en: {
+        EMPTY: "Description cannot be empty.",
+        TOO_LONG: "Description exceeds the maximum allowed length.",
+        TOO_SHORT: "Description is below the minimum allowed length.",
+    },
+};
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXGRvbWFpblxcdmFsdWVzLW9iamVjdHNcXGRlc2NyaXB0aW9uXFxkZXNjaXB0aW9uLW1lc3NhZ2Uudm8udHMiLCJtYXBwaW5ncyI6Ijs7O0FBQWEsUUFBQSxRQUFRLEdBQUc7SUFDdEIsRUFBRSxFQUFFO1FBQ0YsS0FBSyxFQUFFLG1DQUFtQztRQUMxQyxRQUFRLEVBQUUsZ0RBQWdEO1FBQzFELFNBQVMsRUFBRSxzREFBc0Q7S0FDbEU7SUFDRCxFQUFFLEVBQUU7UUFDRixLQUFLLEVBQUUsOEJBQThCO1FBQ3JDLFFBQVEsRUFBRSxpREFBaUQ7UUFDM0QsU0FBUyxFQUFFLGtEQUFrRDtLQUM5RDtDQUNGLENBQUMiLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXGRvbWFpblxcdmFsdWVzLW9iamVjdHNcXGRlc2NyaXB0aW9uXFxkZXNjaXB0aW9uLW1lc3NhZ2Uudm8udHMiXSwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGNvbnN0IG1lc3NhZ2VzID0ge1xuICBwdDoge1xuICAgIEVNUFRZOiBcIkEgZGVzY3Jpw6fDo28gbsOjbyBwb2RlIGVzdGFyIHZhemlhLlwiLFxuICAgIFRPT19MT05HOiBcIkEgZGVzY3Jpw6fDo28gZXhjZWRlIG8gdGFtYW5obyBtw6F4aW1vIHBlcm1pdGlkby5cIixcbiAgICBUT09fU0hPUlQ6IFwiQSBkZXNjcmnDp8OjbyBlc3TDoSBhYmFpeG8gZG8gdGFtYW5obyBtw61uaW1vIHBlcm1pdGlkby5cIixcbiAgfSxcbiAgZW46IHtcbiAgICBFTVBUWTogXCJEZXNjcmlwdGlvbiBjYW5ub3QgYmUgZW1wdHkuXCIsXG4gICAgVE9PX0xPTkc6IFwiRGVzY3JpcHRpb24gZXhjZWVkcyB0aGUgbWF4aW11bSBhbGxvd2VkIGxlbmd0aC5cIixcbiAgICBUT09fU0hPUlQ6IFwiRGVzY3JpcHRpb24gaXMgYmVsb3cgdGhlIG1pbmltdW0gYWxsb3dlZCBsZW5ndGguXCIsXG4gIH0sXG59O1xuIl0sInZlcnNpb24iOjN9

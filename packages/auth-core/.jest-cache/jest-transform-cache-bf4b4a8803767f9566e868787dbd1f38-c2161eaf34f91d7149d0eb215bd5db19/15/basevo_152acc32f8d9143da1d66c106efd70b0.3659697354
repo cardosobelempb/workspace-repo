@@ -1,0 +1,48 @@
+3557f029ef8fcc8ca850dc5196577a00
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.BaseVO = void 0;
+/**
+ * 🧱 Classe base abstrata para todos os Value Objects do domínio.
+ *
+ * Define comportamento padrão e garante imutabilidade.
+ *
+ * Benefícios:
+ *  - Reuso de lógica comum entre VOs
+ *  - Consistência entre implementações
+ *  - Aplicação de princípios SOLID (especialmente SRP e LSP)
+ */
+class BaseVO {
+    value;
+    constructor(value) {
+        // Garante imutabilidade e validação centralizada
+        this.value = value;
+        Object.freeze(value);
+    }
+    /**
+     * 🔒 Retorna o valor encapsulado
+     */
+    getValue() {
+        return this.value;
+    }
+    /**
+     * 🔁 Compara dois Value Objects pelo valor interno
+     * @param other - Outro Value Object
+     * @returns true se forem equivalentes
+     */
+    equals(other) {
+        if (!other)
+            return false;
+        if (other.constructor !== this.constructor)
+            return false;
+        return JSON.stringify(this.value) === JSON.stringify(other.value);
+    }
+    /**
+     * 🪶 Representação string do valor (para logs, JSON, etc.)
+     */
+    toString() {
+        return String(this.value);
+    }
+}
+exports.BaseVO = BaseVO;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXGRvbWFpblxcdmFsdWVzLW9iamVjdHNcXGJhc2Uudm8udHMiLCJtYXBwaW5ncyI6Ijs7O0FBQUE7Ozs7Ozs7OztHQVNHO0FBQ0gsTUFBc0IsTUFBTTtJQUNQLEtBQUssQ0FBSTtJQUU1QixZQUFzQixLQUFRO1FBQzVCLGlEQUFpRDtRQUNqRCxJQUFJLENBQUMsS0FBSyxHQUFHLEtBQUssQ0FBQztRQUNuQixNQUFNLENBQUMsTUFBTSxDQUFDLEtBQUssQ0FBQyxDQUFDO0lBQ3ZCLENBQUM7SUFFRDs7T0FFRztJQUNJLFFBQVE7UUFDYixPQUFPLElBQUksQ0FBQyxLQUFLLENBQUM7SUFDcEIsQ0FBQztJQUVEOzs7O09BSUc7SUFDSSxNQUFNLENBQUMsS0FBd0I7UUFDcEMsSUFBSSxDQUFDLEtBQUs7WUFBRSxPQUFPLEtBQUssQ0FBQztRQUN6QixJQUFJLEtBQUssQ0FBQyxXQUFXLEtBQUssSUFBSSxDQUFDLFdBQVc7WUFBRSxPQUFPLEtBQUssQ0FBQztRQUN6RCxPQUFPLElBQUksQ0FBQyxTQUFTLENBQUMsSUFBSSxDQUFDLEtBQUssQ0FBQyxLQUFLLElBQUksQ0FBQyxTQUFTLENBQUMsS0FBSyxDQUFDLEtBQUssQ0FBQyxDQUFDO0lBQ3BFLENBQUM7SUFRRDs7T0FFRztJQUNJLFFBQVE7UUFDYixPQUFPLE1BQU0sQ0FBQyxJQUFJLENBQUMsS0FBSyxDQUFDLENBQUM7SUFDNUIsQ0FBQztDQUNGO0FBdkNELHdCQXVDQyIsIm5hbWVzIjpbXSwic291cmNlcyI6WyJFOlxcd29ya3NwYWNlLXNhc3NcXHJlcG9cXHBhY2thZ2VzXFxjb21tb25cXHNyY1xcZG9tYWluXFx2YWx1ZXMtb2JqZWN0c1xcYmFzZS52by50cyJdLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIPCfp7EgQ2xhc3NlIGJhc2UgYWJzdHJhdGEgcGFyYSB0b2RvcyBvcyBWYWx1ZSBPYmplY3RzIGRvIGRvbcOtbmlvLlxuICpcbiAqIERlZmluZSBjb21wb3J0YW1lbnRvIHBhZHLDo28gZSBnYXJhbnRlIGltdXRhYmlsaWRhZGUuXG4gKlxuICogQmVuZWbDrWNpb3M6XG4gKiAgLSBSZXVzbyBkZSBsw7NnaWNhIGNvbXVtIGVudHJlIFZPc1xuICogIC0gQ29uc2lzdMOqbmNpYSBlbnRyZSBpbXBsZW1lbnRhw6fDtWVzXG4gKiAgLSBBcGxpY2HDp8OjbyBkZSBwcmluY8OtcGlvcyBTT0xJRCAoZXNwZWNpYWxtZW50ZSBTUlAgZSBMU1ApXG4gKi9cbmV4cG9ydCBhYnN0cmFjdCBjbGFzcyBCYXNlVk88VD4ge1xuICBwcm90ZWN0ZWQgcmVhZG9ubHkgdmFsdWU6IFQ7XG5cbiAgcHJvdGVjdGVkIGNvbnN0cnVjdG9yKHZhbHVlOiBUKSB7XG4gICAgLy8gR2FyYW50ZSBpbXV0YWJpbGlkYWRlIGUgdmFsaWRhw6fDo28gY2VudHJhbGl6YWRhXG4gICAgdGhpcy52YWx1ZSA9IHZhbHVlO1xuICAgIE9iamVjdC5mcmVlemUodmFsdWUpO1xuICB9XG5cbiAgLyoqXG4gICAqIPCflJIgUmV0b3JuYSBvIHZhbG9yIGVuY2Fwc3VsYWRvXG4gICAqL1xuICBwdWJsaWMgZ2V0VmFsdWUoKTogVCB7XG4gICAgcmV0dXJuIHRoaXMudmFsdWU7XG4gIH1cblxuICAvKipcbiAgICog8J+UgSBDb21wYXJhIGRvaXMgVmFsdWUgT2JqZWN0cyBwZWxvIHZhbG9yIGludGVybm9cbiAgICogQHBhcmFtIG90aGVyIC0gT3V0cm8gVmFsdWUgT2JqZWN0XG4gICAqIEByZXR1cm5zIHRydWUgc2UgZm9yZW0gZXF1aXZhbGVudGVzXG4gICAqL1xuICBwdWJsaWMgZXF1YWxzKG90aGVyPzogQmFzZVZPPFQ+IHwgbnVsbCk6IGJvb2xlYW4ge1xuICAgIGlmICghb3RoZXIpIHJldHVybiBmYWxzZTtcbiAgICBpZiAob3RoZXIuY29uc3RydWN0b3IgIT09IHRoaXMuY29uc3RydWN0b3IpIHJldHVybiBmYWxzZTtcbiAgICByZXR1cm4gSlNPTi5zdHJpbmdpZnkodGhpcy52YWx1ZSkgPT09IEpTT04uc3RyaW5naWZ5KG90aGVyLnZhbHVlKTtcbiAgfVxuXG4gIC8qKlxuICAgKiDwn6eqIE3DqXRvZG8gYWJzdHJhdG8gcGFyYSB2YWxpZGFyIG8gdmFsb3IuXG4gICAqIERldmUgc2VyIGltcGxlbWVudGFkbyBwb3IgY2FkYSBWTyBjb25jcmV0by5cbiAgICovXG4gIHB1YmxpYyBhYnN0cmFjdCBpc1ZhbGlkKCk6IGJvb2xlYW47XG5cbiAgLyoqXG4gICAqIPCfqrYgUmVwcmVzZW50YcOnw6NvIHN0cmluZyBkbyB2YWxvciAocGFyYSBsb2dzLCBKU09OLCBldGMuKVxuICAgKi9cbiAgcHVibGljIHRvU3RyaW5nKCk6IHN0cmluZyB7XG4gICAgcmV0dXJuIFN0cmluZyh0aGlzLnZhbHVlKTtcbiAgfVxufVxuIl0sInZlcnNpb24iOjN9

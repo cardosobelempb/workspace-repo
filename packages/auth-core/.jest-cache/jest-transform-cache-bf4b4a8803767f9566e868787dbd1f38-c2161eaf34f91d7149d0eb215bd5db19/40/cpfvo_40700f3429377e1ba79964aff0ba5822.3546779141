@@ -1,0 +1,87 @@
+e97f7b0f241e4b02b3ea4878ade39bf3
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CpfVO = void 0;
+const bad_request_error_1 = require("../../errors/controllers/bad-request.error");
+class CpfVO {
+    value;
+    constructor(cpf) {
+        // Verifica se o CPF contém exatamente 11 dígitos numéricos
+        if (!/^\d{11}$/.test(cpf)) {
+            throw new bad_request_error_1.BadRequestError({
+                fieldName: "cpf",
+                value: cpf,
+                message: `CPF deve conter exatamente 11 dígitos numéricos. Valor fornecido: "${cpf}"`,
+            });
+        }
+        // Limpa o CPF (remove pontuações) e valida
+        const sanitizedCpf = CpfVO.sanitize(cpf);
+        if (!CpfVO.isValid(sanitizedCpf)) {
+            throw new bad_request_error_1.BadRequestError({
+                fieldName: "cpf",
+                value: cpf,
+                message: `CPF inválido. Valor fornecido: ${sanitizedCpf}`,
+            });
+        }
+        this.value = sanitizedCpf;
+    }
+    getValue() {
+        return this.value;
+    }
+    getFormatted() {
+        return CpfVO.format(this.value);
+    }
+    equals(other) {
+        return this.value === other.getValue();
+    }
+    // Valida o CPF, incluindo a verificação dos dois dígitos de controle
+    static isValid(cpf) {
+        const sanitizedCpf = this.sanitize(cpf);
+        if (!/^\d{11}$/.test(sanitizedCpf))
+            return false;
+        if (/^(\d)\1+$/.test(sanitizedCpf))
+            return false; // CPF com todos os números iguais é inválido
+        const digits = sanitizedCpf.split("").map(Number);
+        // Função auxiliar para calcular o dígito de verificação
+        const calcCheckDigit = (base, arr) => {
+            const sum = arr
+                .slice(0, base)
+                .reduce((acc, digit, idx) => acc + digit * (base + 1 - idx), 0);
+            const rest = sum % 11;
+            return rest < 2 ? 0 : 11 - rest;
+        };
+        const d1 = calcCheckDigit(9, digits);
+        const d2 = calcCheckDigit(10, [...digits.slice(0, 9), d1]);
+        return d1 === digits[9] && d2 === digits[10];
+    }
+    // Formata o CPF no formato XXX.XXX.XXX-XX
+    static format(cpf) {
+        const sanitizedCpf = this.sanitize(cpf);
+        if (sanitizedCpf.length !== 11) {
+            throw new Error("CPF deve conter 11 dígitos.");
+        }
+        return sanitizedCpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+    }
+    // Remove todos os caracteres não numéricos
+    static sanitize(cpf) {
+        return cpf.replace(/\D/g, "");
+    }
+}
+exports.CpfVO = CpfVO;
+/*
+const cpf2 = new CpfVO('529.982.247-25')
+console.log(cpf2.getValue()) // CPF sem formatação
+console.log(cpf2.getFormatted()) // CPF formatado
+console.log(cpf2.equals(new CpfVO('52998224725'))) // Comparação
+
+try {
+  const cpf = new CpfVO('529.982.247-25')
+  console.log(cpf.getValue())        // '52998224725'
+  console.log(cpf.getFormatted())    // '529.982.247-25'
+  console.log(cpf.equals(new CpfVO('52998224725'))) // true
+} catch (error) {
+  console.error(error.message) // Caso o CPF seja inválido
+}
+
+*/
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXGRvbWFpblxcdmFsdWVzLW9iamVjdHNcXGNwZlxcY3BmLnZvLnRzIiwibWFwcGluZ3MiOiI7OztBQUFBLGtGQUE2RTtBQUU3RSxNQUFhLEtBQUs7SUFDQyxLQUFLLENBQVM7SUFFL0IsWUFBWSxHQUFXO1FBQ3JCLDJEQUEyRDtRQUMzRCxJQUFJLENBQUMsVUFBVSxDQUFDLElBQUksQ0FBQyxHQUFHLENBQUMsRUFBRSxDQUFDO1lBQzFCLE1BQU0sSUFBSSxtQ0FBZSxDQUFDO2dCQUN4QixTQUFTLEVBQUUsS0FBSztnQkFDaEIsS0FBSyxFQUFFLEdBQUc7Z0JBQ1YsT0FBTyxFQUFFLHNFQUFzRSxHQUFHLEdBQUc7YUFDdEYsQ0FBQyxDQUFDO1FBQ0wsQ0FBQztRQUVELDJDQUEyQztRQUMzQyxNQUFNLFlBQVksR0FBRyxLQUFLLENBQUMsUUFBUSxDQUFDLEdBQUcsQ0FBQyxDQUFDO1FBRXpDLElBQUksQ0FBQyxLQUFLLENBQUMsT0FBTyxDQUFDLFlBQVksQ0FBQyxFQUFFLENBQUM7WUFDakMsTUFBTSxJQUFJLG1DQUFlLENBQUM7Z0JBQ3hCLFNBQVMsRUFBRSxLQUFLO2dCQUNoQixLQUFLLEVBQUUsR0FBRztnQkFDVixPQUFPLEVBQUUsa0NBQWtDLFlBQVksRUFBRTthQUMxRCxDQUFDLENBQUM7UUFDTCxDQUFDO1FBRUQsSUFBSSxDQUFDLEtBQUssR0FBRyxZQUFZLENBQUM7SUFDNUIsQ0FBQztJQUVNLFFBQVE7UUFDYixPQUFPLElBQUksQ0FBQyxLQUFLLENBQUM7SUFDcEIsQ0FBQztJQUVNLFlBQVk7UUFDakIsT0FBTyxLQUFLLENBQUMsTUFBTSxDQUFDLElBQUksQ0FBQyxLQUFLLENBQUMsQ0FBQztJQUNsQyxDQUFDO0lBRU0sTUFBTSxDQUFDLEtBQVk7UUFDeEIsT0FBTyxJQUFJLENBQUMsS0FBSyxLQUFLLEtBQUssQ0FBQyxRQUFRLEVBQUUsQ0FBQztJQUN6QyxDQUFDO0lBRUQscUVBQXFFO0lBQzlELE1BQU0sQ0FBQyxPQUFPLENBQUMsR0FBVztRQUMvQixNQUFNLFlBQVksR0FBRyxJQUFJLENBQUMsUUFBUSxDQUFDLEdBQUcsQ0FBQyxDQUFDO1FBRXhDLElBQUksQ0FBQyxVQUFVLENBQUMsSUFBSSxDQUFDLFlBQVksQ0FBQztZQUFFLE9BQU8sS0FBSyxDQUFDO1FBQ2pELElBQUksV0FBVyxDQUFDLElBQUksQ0FBQyxZQUFZLENBQUM7WUFBRSxPQUFPLEtBQUssQ0FBQyxDQUFDLDZDQUE2QztRQUUvRixNQUFNLE1BQU0sR0FBRyxZQUFZLENBQUMsS0FBSyxDQUFDLEVBQUUsQ0FBQyxDQUFDLEdBQUcsQ0FBQyxNQUFNLENBQUMsQ0FBQztRQUVsRCx3REFBd0Q7UUFDeEQsTUFBTSxjQUFjLEdBQUcsQ0FBQyxJQUFZLEVBQUUsR0FBYSxFQUFVLEVBQUU7WUFDN0QsTUFBTSxHQUFHLEdBQUcsR0FBRztpQkFDWixLQUFLLENBQUMsQ0FBQyxFQUFFLElBQUksQ0FBQztpQkFDZCxNQUFNLENBQUMsQ0FBQyxHQUFHLEVBQUUsS0FBSyxFQUFFLEdBQUcsRUFBRSxFQUFFLENBQUMsR0FBRyxHQUFHLEtBQUssR0FBRyxDQUFDLElBQUksR0FBRyxDQUFDLEdBQUcsR0FBRyxDQUFDLEVBQUUsQ0FBQyxDQUFDLENBQUM7WUFDbEUsTUFBTSxJQUFJLEdBQUcsR0FBRyxHQUFHLEVBQUUsQ0FBQztZQUN0QixPQUFPLElBQUksR0FBRyxDQUFDLENBQUMsQ0FBQyxDQUFDLENBQUMsQ0FBQyxDQUFDLENBQUMsRUFBRSxHQUFHLElBQUksQ0FBQztRQUNsQyxDQUFDLENBQUM7UUFFRixNQUFNLEVBQUUsR0FBRyxjQUFjLENBQUMsQ0FBQyxFQUFFLE1BQU0sQ0FBQyxDQUFDO1FBQ3JDLE1BQU0sRUFBRSxHQUFHLGNBQWMsQ0FBQyxFQUFFLEVBQUUsQ0FBQyxHQUFHLE1BQU0sQ0FBQyxLQUFLLENBQUMsQ0FBQyxFQUFFLENBQUMsQ0FBQyxFQUFFLEVBQUUsQ0FBQyxDQUFDLENBQUM7UUFFM0QsT0FBTyxFQUFFLEtBQUssTUFBTSxDQUFDLENBQUMsQ0FBQyxJQUFJLEVBQUUsS0FBSyxNQUFNLENBQUMsRUFBRSxDQUFDLENBQUM7SUFDL0MsQ0FBQztJQUVELDBDQUEwQztJQUNuQyxNQUFNLENBQUMsTUFBTSxDQUFDLEdBQVc7UUFDOUIsTUFBTSxZQUFZLEdBQUcsSUFBSSxDQUFDLFFBQVEsQ0FBQyxHQUFHLENBQUMsQ0FBQztRQUN4QyxJQUFJLFlBQVksQ0FBQyxNQUFNLEtBQUssRUFBRSxFQUFFLENBQUM7WUFDL0IsTUFBTSxJQUFJLEtBQUssQ0FBQyw2QkFBNkIsQ0FBQyxDQUFDO1FBQ2pELENBQUM7UUFDRCxPQUFPLFlBQVksQ0FBQyxPQUFPLENBQUMsOEJBQThCLEVBQUUsYUFBYSxDQUFDLENBQUM7SUFDN0UsQ0FBQztJQUVELDJDQUEyQztJQUNuQyxNQUFNLENBQUMsUUFBUSxDQUFDLEdBQVc7UUFDakMsT0FBTyxHQUFHLENBQUMsT0FBTyxDQUFDLEtBQUssRUFBRSxFQUFFLENBQUMsQ0FBQztJQUNoQyxDQUFDO0NBQ0Y7QUE1RUQsc0JBNEVDO0FBRUQ7Ozs7Ozs7Ozs7Ozs7OztFQWVFIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIkU6XFx3b3Jrc3BhY2Utc2Fzc1xccmVwb1xccGFja2FnZXNcXGNvbW1vblxcc3JjXFxkb21haW5cXHZhbHVlcy1vYmplY3RzXFxjcGZcXGNwZi52by50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBCYWRSZXF1ZXN0RXJyb3IgfSBmcm9tIFwiLi4vLi4vZXJyb3JzL2NvbnRyb2xsZXJzL2JhZC1yZXF1ZXN0LmVycm9yXCI7XG5cbmV4cG9ydCBjbGFzcyBDcGZWTyB7XG4gIHByaXZhdGUgcmVhZG9ubHkgdmFsdWU6IHN0cmluZztcblxuICBjb25zdHJ1Y3RvcihjcGY6IHN0cmluZykge1xuICAgIC8vIFZlcmlmaWNhIHNlIG8gQ1BGIGNvbnTDqW0gZXhhdGFtZW50ZSAxMSBkw61naXRvcyBudW3DqXJpY29zXG4gICAgaWYgKCEvXlxcZHsxMX0kLy50ZXN0KGNwZikpIHtcbiAgICAgIHRocm93IG5ldyBCYWRSZXF1ZXN0RXJyb3Ioe1xuICAgICAgICBmaWVsZE5hbWU6IFwiY3BmXCIsXG4gICAgICAgIHZhbHVlOiBjcGYsXG4gICAgICAgIG1lc3NhZ2U6IGBDUEYgZGV2ZSBjb250ZXIgZXhhdGFtZW50ZSAxMSBkw61naXRvcyBudW3DqXJpY29zLiBWYWxvciBmb3JuZWNpZG86IFwiJHtjcGZ9XCJgLFxuICAgICAgfSk7XG4gICAgfVxuXG4gICAgLy8gTGltcGEgbyBDUEYgKHJlbW92ZSBwb250dWHDp8O1ZXMpIGUgdmFsaWRhXG4gICAgY29uc3Qgc2FuaXRpemVkQ3BmID0gQ3BmVk8uc2FuaXRpemUoY3BmKTtcblxuICAgIGlmICghQ3BmVk8uaXNWYWxpZChzYW5pdGl6ZWRDcGYpKSB7XG4gICAgICB0aHJvdyBuZXcgQmFkUmVxdWVzdEVycm9yKHtcbiAgICAgICAgZmllbGROYW1lOiBcImNwZlwiLFxuICAgICAgICB2YWx1ZTogY3BmLFxuICAgICAgICBtZXNzYWdlOiBgQ1BGIGludsOhbGlkby4gVmFsb3IgZm9ybmVjaWRvOiAke3Nhbml0aXplZENwZn1gLFxuICAgICAgfSk7XG4gICAgfVxuXG4gICAgdGhpcy52YWx1ZSA9IHNhbml0aXplZENwZjtcbiAgfVxuXG4gIHB1YmxpYyBnZXRWYWx1ZSgpOiBzdHJpbmcge1xuICAgIHJldHVybiB0aGlzLnZhbHVlO1xuICB9XG5cbiAgcHVibGljIGdldEZvcm1hdHRlZCgpOiBzdHJpbmcge1xuICAgIHJldHVybiBDcGZWTy5mb3JtYXQodGhpcy52YWx1ZSk7XG4gIH1cblxuICBwdWJsaWMgZXF1YWxzKG90aGVyOiBDcGZWTyk6IGJvb2xlYW4ge1xuICAgIHJldHVybiB0aGlzLnZhbHVlID09PSBvdGhlci5nZXRWYWx1ZSgpO1xuICB9XG5cbiAgLy8gVmFsaWRhIG8gQ1BGLCBpbmNsdWluZG8gYSB2ZXJpZmljYcOnw6NvIGRvcyBkb2lzIGTDrWdpdG9zIGRlIGNvbnRyb2xlXG4gIHB1YmxpYyBzdGF0aWMgaXNWYWxpZChjcGY6IHN0cmluZyk6IGJvb2xlYW4ge1xuICAgIGNvbnN0IHNhbml0aXplZENwZiA9IHRoaXMuc2FuaXRpemUoY3BmKTtcblxuICAgIGlmICghL15cXGR7MTF9JC8udGVzdChzYW5pdGl6ZWRDcGYpKSByZXR1cm4gZmFsc2U7XG4gICAgaWYgKC9eKFxcZClcXDErJC8udGVzdChzYW5pdGl6ZWRDcGYpKSByZXR1cm4gZmFsc2U7IC8vIENQRiBjb20gdG9kb3Mgb3MgbsO6bWVyb3MgaWd1YWlzIMOpIGludsOhbGlkb1xuXG4gICAgY29uc3QgZGlnaXRzID0gc2FuaXRpemVkQ3BmLnNwbGl0KFwiXCIpLm1hcChOdW1iZXIpO1xuXG4gICAgLy8gRnVuw6fDo28gYXV4aWxpYXIgcGFyYSBjYWxjdWxhciBvIGTDrWdpdG8gZGUgdmVyaWZpY2HDp8Ojb1xuICAgIGNvbnN0IGNhbGNDaGVja0RpZ2l0ID0gKGJhc2U6IG51bWJlciwgYXJyOiBudW1iZXJbXSk6IG51bWJlciA9PiB7XG4gICAgICBjb25zdCBzdW0gPSBhcnJcbiAgICAgICAgLnNsaWNlKDAsIGJhc2UpXG4gICAgICAgIC5yZWR1Y2UoKGFjYywgZGlnaXQsIGlkeCkgPT4gYWNjICsgZGlnaXQgKiAoYmFzZSArIDEgLSBpZHgpLCAwKTtcbiAgICAgIGNvbnN0IHJlc3QgPSBzdW0gJSAxMTtcbiAgICAgIHJldHVybiByZXN0IDwgMiA/IDAgOiAxMSAtIHJlc3Q7XG4gICAgfTtcblxuICAgIGNvbnN0IGQxID0gY2FsY0NoZWNrRGlnaXQoOSwgZGlnaXRzKTtcbiAgICBjb25zdCBkMiA9IGNhbGNDaGVja0RpZ2l0KDEwLCBbLi4uZGlnaXRzLnNsaWNlKDAsIDkpLCBkMV0pO1xuXG4gICAgcmV0dXJuIGQxID09PSBkaWdpdHNbOV0gJiYgZDIgPT09IGRpZ2l0c1sxMF07XG4gIH1cblxuICAvLyBGb3JtYXRhIG8gQ1BGIG5vIGZvcm1hdG8gWFhYLlhYWC5YWFgtWFhcbiAgcHVibGljIHN0YXRpYyBmb3JtYXQoY3BmOiBzdHJpbmcpOiBzdHJpbmcge1xuICAgIGNvbnN0IHNhbml0aXplZENwZiA9IHRoaXMuc2FuaXRpemUoY3BmKTtcbiAgICBpZiAoc2FuaXRpemVkQ3BmLmxlbmd0aCAhPT0gMTEpIHtcbiAgICAgIHRocm93IG5ldyBFcnJvcihcIkNQRiBkZXZlIGNvbnRlciAxMSBkw61naXRvcy5cIik7XG4gICAgfVxuICAgIHJldHVybiBzYW5pdGl6ZWRDcGYucmVwbGFjZSgvKFxcZHszfSkoXFxkezN9KShcXGR7M30pKFxcZHsyfSkvLCBcIiQxLiQyLiQzLSQ0XCIpO1xuICB9XG5cbiAgLy8gUmVtb3ZlIHRvZG9zIG9zIGNhcmFjdGVyZXMgbsOjbyBudW3DqXJpY29zXG4gIHByaXZhdGUgc3RhdGljIHNhbml0aXplKGNwZjogc3RyaW5nKTogc3RyaW5nIHtcbiAgICByZXR1cm4gY3BmLnJlcGxhY2UoL1xcRC9nLCBcIlwiKTtcbiAgfVxufVxuXG4vKlxuY29uc3QgY3BmMiA9IG5ldyBDcGZWTygnNTI5Ljk4Mi4yNDctMjUnKVxuY29uc29sZS5sb2coY3BmMi5nZXRWYWx1ZSgpKSAvLyBDUEYgc2VtIGZvcm1hdGHDp8Ojb1xuY29uc29sZS5sb2coY3BmMi5nZXRGb3JtYXR0ZWQoKSkgLy8gQ1BGIGZvcm1hdGFkb1xuY29uc29sZS5sb2coY3BmMi5lcXVhbHMobmV3IENwZlZPKCc1Mjk5ODIyNDcyNScpKSkgLy8gQ29tcGFyYcOnw6NvXG5cbnRyeSB7XG4gIGNvbnN0IGNwZiA9IG5ldyBDcGZWTygnNTI5Ljk4Mi4yNDctMjUnKVxuICBjb25zb2xlLmxvZyhjcGYuZ2V0VmFsdWUoKSkgICAgICAgIC8vICc1Mjk5ODIyNDcyNSdcbiAgY29uc29sZS5sb2coY3BmLmdldEZvcm1hdHRlZCgpKSAgICAvLyAnNTI5Ljk4Mi4yNDctMjUnXG4gIGNvbnNvbGUubG9nKGNwZi5lcXVhbHMobmV3IENwZlZPKCc1Mjk5ODIyNDcyNScpKSkgLy8gdHJ1ZVxufSBjYXRjaCAoZXJyb3IpIHtcbiAgY29uc29sZS5lcnJvcihlcnJvci5tZXNzYWdlKSAvLyBDYXNvIG8gQ1BGIHNlamEgaW52w6FsaWRvXG59XG5cbiovXG4iXSwidmVyc2lvbiI6M30=

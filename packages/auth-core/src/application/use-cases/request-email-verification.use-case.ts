@@ -1,8 +1,15 @@
 import { AUTH_TOKEN_CONSTANTS } from "@/common/constants";
-import { EmailVerificationTokenRepository } from "@/common/domain";
-import { Either, HashGenerator, right, TokenGenerator } from "@repo/common";
+import {
+  Either,
+  HashGenerator,
+  NotificationChannel,
+  right,
+  TokenGenerator,
+} from "@repo/common";
+import { EmailVerificationTokenRepository } from "../../domain/repositories";
+
 import { NodemailerEmailAdapter } from "@repo/notification-email";
-import { NotificationChannel } from "../../../../notifications-core/dist";
+
 import { EmailVerificationTokenFactory } from "../factories";
 
 export type RequestEmailVerificationInput = {

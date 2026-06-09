@@ -1,0 +1,31 @@
+4aea30b99249403cb01ad86995818c91
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.BaseUseCase = void 0;
+/**
+ * Classe base para implementação de casos de uso.
+ *
+ * @typeParam TDeps - Objeto contendo 1 ou mais dependências (repos, gateways, serviços).
+ * @typeParam TResponse - Tipo da resposta retornada pelo caso de uso.
+ * @typeParam TRequest - Tipo da requisição de entrada (padrão: void).
+ */
+class BaseUseCase {
+    /**
+     * Dependências injetadas no caso de uso.
+     * Podem ser repositórios, gateways, serviços, etc.
+     *
+     * Ex: { userRepo, mailService, logger }
+     */
+    deps;
+    constructor(deps) {
+        this.deps = deps;
+    }
+    /**
+     * Método utilitário para padronizar erros.
+     */
+    fail(message) {
+        throw new Error(`[UseCase Error] ${message}`);
+    }
+}
+exports.BaseUseCase = BaseUseCase;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXHNoYXJlZFxcdXRpbHNcXGJhc2UtdXNlY2FzZS50cyIsIm1hcHBpbmdzIjoiOzs7QUFBQTs7Ozs7O0dBTUc7QUFDSCxNQUFzQixXQUFXO0lBSy9COzs7OztPQUtHO0lBQ2dCLElBQUksQ0FBUTtJQUUvQixZQUFZLElBQVc7UUFDckIsSUFBSSxDQUFDLElBQUksR0FBRyxJQUFJLENBQUM7SUFDbkIsQ0FBQztJQVlEOztPQUVHO0lBQ08sSUFBSSxDQUFDLE9BQWU7UUFDNUIsTUFBTSxJQUFJLEtBQUssQ0FBQyxtQkFBbUIsT0FBTyxFQUFFLENBQUMsQ0FBQztJQUNoRCxDQUFDO0NBQ0Y7QUFqQ0Qsa0NBaUNDIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIkU6XFx3b3Jrc3BhY2Utc2Fzc1xccmVwb1xccGFja2FnZXNcXGNvbW1vblxcc3JjXFxzaGFyZWRcXHV0aWxzXFxiYXNlLXVzZWNhc2UudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBDbGFzc2UgYmFzZSBwYXJhIGltcGxlbWVudGHDp8OjbyBkZSBjYXNvcyBkZSB1c28uXG4gKlxuICogQHR5cGVQYXJhbSBURGVwcyAtIE9iamV0byBjb250ZW5kbyAxIG91IG1haXMgZGVwZW5kw6puY2lhcyAocmVwb3MsIGdhdGV3YXlzLCBzZXJ2acOnb3MpLlxuICogQHR5cGVQYXJhbSBUUmVzcG9uc2UgLSBUaXBvIGRhIHJlc3Bvc3RhIHJldG9ybmFkYSBwZWxvIGNhc28gZGUgdXNvLlxuICogQHR5cGVQYXJhbSBUUmVxdWVzdCAtIFRpcG8gZGEgcmVxdWlzacOnw6NvIGRlIGVudHJhZGEgKHBhZHLDo286IHZvaWQpLlxuICovXG5leHBvcnQgYWJzdHJhY3QgY2xhc3MgQmFzZVVzZUNhc2U8XG4gIFREZXBzIGV4dGVuZHMgUmVjb3JkPHN0cmluZywgYW55PiwgLy8gZ2FyYW50ZSBxdWUgc2VqYSB1bSBvYmpldG8gZGUgZGVwZW5kw6puY2lhc1xuICBUUmVzcG9uc2UsXG4gIFRSZXF1ZXN0ID0gdm9pZCxcbj4ge1xuICAvKipcbiAgICogRGVwZW5kw6puY2lhcyBpbmpldGFkYXMgbm8gY2FzbyBkZSB1c28uXG4gICAqIFBvZGVtIHNlciByZXBvc2l0w7NyaW9zLCBnYXRld2F5cywgc2VydmnDp29zLCBldGMuXG4gICAqXG4gICAqIEV4OiB7IHVzZXJSZXBvLCBtYWlsU2VydmljZSwgbG9nZ2VyIH1cbiAgICovXG4gIHByb3RlY3RlZCByZWFkb25seSBkZXBzOiBURGVwcztcblxuICBjb25zdHJ1Y3RvcihkZXBzOiBURGVwcykge1xuICAgIHRoaXMuZGVwcyA9IGRlcHM7XG4gIH1cblxuICAvKipcbiAgICogTcOpdG9kbyBwcmluY2lwYWwgcXVlIGRldmUgc2VyIGltcGxlbWVudGFkbyBwb3IgdG9kb3Mgb3MgY2Fzb3MgZGUgdXNvLlxuICAgKi9cbiAgYWJzdHJhY3QgZXhlY3V0ZShyZXF1ZXN0OiBUUmVxdWVzdCk6IFByb21pc2U8VFJlc3BvbnNlPjtcblxuICAvKipcbiAgICogSG9vayBvcGNpb25hbCBwYXJhIHZhbGlkYcOnw7Vlcy5cbiAgICovXG4gIHByb3RlY3RlZCB2YWxpZGF0ZT8ocmVxdWVzdDogVFJlcXVlc3QpOiB2b2lkIHwgbmV2ZXI7XG5cbiAgLyoqXG4gICAqIE3DqXRvZG8gdXRpbGl0w6FyaW8gcGFyYSBwYWRyb25pemFyIGVycm9zLlxuICAgKi9cbiAgcHJvdGVjdGVkIGZhaWwobWVzc2FnZTogc3RyaW5nKTogbmV2ZXIge1xuICAgIHRocm93IG5ldyBFcnJvcihgW1VzZUNhc2UgRXJyb3JdICR7bWVzc2FnZX1gKTtcbiAgfVxufVxuIl0sInZlcnNpb24iOjN9

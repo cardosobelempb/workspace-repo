@@ -1,0 +1,19 @@
+5207672eececc15327635a844deb3588
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.TokenExpiredError = void 0;
+const standard_error_1 = require("../standard.error");
+const code_error_1 = require("./code.error");
+class TokenExpiredError extends standard_error_1.StandardError {
+    constructor(params) {
+        super({
+            statusCode: 401,
+            code: "TOKEN_EXPIRED",
+            error: code_error_1.CodeError.TOKEN_EXPIRED,
+            message: params.message ?? `${params.fieldName} "${params.value}" é inválido`,
+            fieldName: params.fieldName,
+        });
+    }
+}
+exports.TokenExpiredError = TokenExpiredError;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXGRvbWFpblxcZXJyb3JzXFx1c2VjYXNlc1xcdG9rZW4tZXhwaXJlZC5lcnJvci50cyIsIm1hcHBpbmdzIjoiOzs7QUFBQSxzREFBa0Q7QUFFbEQsNkNBQXlDO0FBRXpDLE1BQWEsaUJBQWtCLFNBQVEsOEJBQWE7SUFDbEQsWUFBWSxNQUErRDtRQUN6RSxLQUFLLENBQUM7WUFDSixVQUFVLEVBQUUsR0FBRztZQUNmLElBQUksRUFBRSxlQUFlO1lBQ3JCLEtBQUssRUFBRSxzQkFBUyxDQUFDLGFBQWE7WUFDOUIsT0FBTyxFQUFFLE1BQU0sQ0FBQyxPQUFPLElBQUksR0FBRyxNQUFNLENBQUMsU0FBUyxLQUFLLE1BQU0sQ0FBQyxLQUFLLGNBQWM7WUFDN0UsU0FBUyxFQUFFLE1BQU0sQ0FBQyxTQUFTO1NBQzVCLENBQUMsQ0FBQztJQUNMLENBQUM7Q0FDRjtBQVZELDhDQVVDIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIkU6XFx3b3Jrc3BhY2Utc2Fzc1xccmVwb1xccGFja2FnZXNcXGNvbW1vblxcc3JjXFxkb21haW5cXGVycm9yc1xcdXNlY2FzZXNcXHRva2VuLWV4cGlyZWQuZXJyb3IudHMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgU3RhbmRhcmRFcnJvciB9IGZyb20gXCIuLi9zdGFuZGFyZC5lcnJvclwiO1xuaW1wb3J0IHsgQmFzZVVzZUNhc2VFcnJvciB9IGZyb20gXCIuL2Jhc2UtdXNlY2FzZS5lcnJvclwiO1xuaW1wb3J0IHsgQ29kZUVycm9yIH0gZnJvbSBcIi4vY29kZS5lcnJvclwiO1xuXG5leHBvcnQgY2xhc3MgVG9rZW5FeHBpcmVkRXJyb3IgZXh0ZW5kcyBTdGFuZGFyZEVycm9yIGltcGxlbWVudHMgQmFzZVVzZUNhc2VFcnJvciB7XG4gIGNvbnN0cnVjdG9yKHBhcmFtczogeyBmaWVsZE5hbWU6IHN0cmluZzsgdmFsdWU/OiBzdHJpbmc7IG1lc3NhZ2U/OiBzdHJpbmcgfSkge1xuICAgIHN1cGVyKHtcbiAgICAgIHN0YXR1c0NvZGU6IDQwMSxcbiAgICAgIGNvZGU6IFwiVE9LRU5fRVhQSVJFRFwiLFxuICAgICAgZXJyb3I6IENvZGVFcnJvci5UT0tFTl9FWFBJUkVELFxuICAgICAgbWVzc2FnZTogcGFyYW1zLm1lc3NhZ2UgPz8gYCR7cGFyYW1zLmZpZWxkTmFtZX0gXCIke3BhcmFtcy52YWx1ZX1cIiDDqSBpbnbDoWxpZG9gLFxuICAgICAgZmllbGROYW1lOiBwYXJhbXMuZmllbGROYW1lLFxuICAgIH0pO1xuICB9XG59XG4iXSwidmVyc2lvbiI6M30=

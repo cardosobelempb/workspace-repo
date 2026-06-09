@@ -1,0 +1,31 @@
+7c44c213159af6b4eb30305444ca2adf
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Role = void 0;
+var Role;
+(function (Role) {
+    Role["OWNER"] = "OWNER";
+    Role["ADMIN"] = "ADMIN";
+    Role["MANAGER"] = "MANAGER";
+    Role["FINANCE"] = "FINANCE";
+    Role["SUPPORT"] = "SUPPORT";
+    Role["OPERATOR"] = "OPERATOR";
+    Role["AFFILIATE"] = "AFFILIATE";
+    Role["MEMBER"] = "MEMBER";
+    Role["CUSTOMER"] = "CUSTOMER";
+})(Role || (exports.Role = Role = {}));
+/**
+### Descrição das roles
+| Role | Descrição |
+|---|---|
+| OWNER | Dono do tenant. Tem acesso total. |
+| ADMIN | Administra usuários, configurações e módulos. |
+| MANAGER | Gerencia operação, mas sem controle total. |
+| FINANCE | Acessa pagamentos, cobranças e planos. |
+| SUPPORT | Acessa suporte e leitura de usuários. |
+| OPERATOR | Opera módulos como hotspot, vouchers e atendimento. |
+| AFFILIATE | Acessa recursos de afiliado/parceiro. |
+| MEMBER | Usuário interno comum. |
+| CUSTOMER | Cliente final com acesso limitado. |
+ */
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXHNoYXJlZFxcZW51bXNcXHJvbGUuZW51bS50cyIsIm1hcHBpbmdzIjoiOzs7QUFBQSxJQUFZLElBVVg7QUFWRCxXQUFZLElBQUk7SUFDZCx1QkFBZSxDQUFBO0lBQ2YsdUJBQWUsQ0FBQTtJQUNmLDJCQUFtQixDQUFBO0lBQ25CLDJCQUFtQixDQUFBO0lBQ25CLDJCQUFtQixDQUFBO0lBQ25CLDZCQUFxQixDQUFBO0lBQ3JCLCtCQUF1QixDQUFBO0lBQ3ZCLHlCQUFpQixDQUFBO0lBQ2pCLDZCQUFxQixDQUFBO0FBQ3ZCLENBQUMsRUFWVyxJQUFJLG9CQUFKLElBQUksUUFVZjtBQUNEOzs7Ozs7Ozs7Ozs7O0dBYUciLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXHNoYXJlZFxcZW51bXNcXHJvbGUuZW51bS50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgZW51bSBSb2xlIHtcbiAgT1dORVIgPSBcIk9XTkVSXCIsXG4gIEFETUlOID0gXCJBRE1JTlwiLFxuICBNQU5BR0VSID0gXCJNQU5BR0VSXCIsXG4gIEZJTkFOQ0UgPSBcIkZJTkFOQ0VcIixcbiAgU1VQUE9SVCA9IFwiU1VQUE9SVFwiLFxuICBPUEVSQVRPUiA9IFwiT1BFUkFUT1JcIixcbiAgQUZGSUxJQVRFID0gXCJBRkZJTElBVEVcIixcbiAgTUVNQkVSID0gXCJNRU1CRVJcIixcbiAgQ1VTVE9NRVIgPSBcIkNVU1RPTUVSXCIsXG59XG4vKipcbiMjIyBEZXNjcmnDp8OjbyBkYXMgcm9sZXNcbnwgUm9sZSB8IERlc2NyacOnw6NvIHxcbnwtLS18LS0tfFxufCBPV05FUiB8IERvbm8gZG8gdGVuYW50LiBUZW0gYWNlc3NvIHRvdGFsLiB8XG58IEFETUlOIHwgQWRtaW5pc3RyYSB1c3XDoXJpb3MsIGNvbmZpZ3VyYcOnw7VlcyBlIG3Ds2R1bG9zLiB8XG58IE1BTkFHRVIgfCBHZXJlbmNpYSBvcGVyYcOnw6NvLCBtYXMgc2VtIGNvbnRyb2xlIHRvdGFsLiB8XG58IEZJTkFOQ0UgfCBBY2Vzc2EgcGFnYW1lbnRvcywgY29icmFuw6dhcyBlIHBsYW5vcy4gfFxufCBTVVBQT1JUIHwgQWNlc3NhIHN1cG9ydGUgZSBsZWl0dXJhIGRlIHVzdcOhcmlvcy4gfFxufCBPUEVSQVRPUiB8IE9wZXJhIG3Ds2R1bG9zIGNvbW8gaG90c3BvdCwgdm91Y2hlcnMgZSBhdGVuZGltZW50by4gfFxufCBBRkZJTElBVEUgfCBBY2Vzc2EgcmVjdXJzb3MgZGUgYWZpbGlhZG8vcGFyY2Vpcm8uIHxcbnwgTUVNQkVSIHwgVXN1w6FyaW8gaW50ZXJubyBjb211bS4gfFxufCBDVVNUT01FUiB8IENsaWVudGUgZmluYWwgY29tIGFjZXNzbyBsaW1pdGFkby4gfFxuICovXG4iXSwidmVyc2lvbiI6M30=

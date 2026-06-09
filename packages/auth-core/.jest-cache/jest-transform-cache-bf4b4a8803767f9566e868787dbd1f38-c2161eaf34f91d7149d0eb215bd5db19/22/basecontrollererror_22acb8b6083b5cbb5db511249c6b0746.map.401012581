@@ -1,0 +1,1 @@
+{"file":"E:\\workspace-sass\\repo\\packages\\common\\src\\domain\\errors\\controllers\\base-controller.error.ts","mappings":"","names":[],"sources":["E:\\workspace-sass\\repo\\packages\\common\\src\\domain\\errors\\controllers\\base-controller.error.ts"],"sourcesContent":["export interface BaseControllerError {\n  message: string;\n}\n"],"version":3}

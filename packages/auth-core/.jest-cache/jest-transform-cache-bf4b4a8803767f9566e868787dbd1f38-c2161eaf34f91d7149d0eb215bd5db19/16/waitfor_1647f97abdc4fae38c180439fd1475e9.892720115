@@ -1,0 +1,36 @@
+741d36658b1f72c3216bd7c556ecc9a2
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.waitFor = waitFor;
+/**
+ * Reexecuta assertions até que todas passem ou o tempo máximo seja atingido.
+ *
+ * Útil para testar comportamentos assíncronos/eventuais,
+ * como subscribers, side effects ou event buses.
+ *
+ * @param assertions Função contendo as assertions (deve lançar erro se falhar)
+ * @param timeout Tempo máximo de espera em ms
+ * @param interval Intervalo entre tentativas em ms
+ */
+async function waitFor(assertions, timeout = 1000, interval = 10) {
+    const startTime = Date.now();
+    let lastError;
+    return new Promise((resolve, reject) => {
+        const attempt = () => {
+            try {
+                assertions();
+                return resolve();
+            }
+            catch (error) {
+                lastError = error;
+                const elapsedTime = Date.now() - startTime;
+                if (elapsedTime >= timeout) {
+                    return reject(lastError);
+                }
+                setTimeout(attempt, interval);
+            }
+        };
+        attempt();
+    });
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXGRvbWFpblxcdGVzdFxcd2FpdC1mb3IudHMiLCJtYXBwaW5ncyI6Ijs7QUFVQSwwQkE0QkM7QUF0Q0Q7Ozs7Ozs7OztHQVNHO0FBQ0ksS0FBSyxVQUFVLE9BQU8sQ0FDM0IsVUFBc0IsRUFDdEIsT0FBTyxHQUFHLElBQUksRUFDZCxRQUFRLEdBQUcsRUFBRTtJQUViLE1BQU0sU0FBUyxHQUFHLElBQUksQ0FBQyxHQUFHLEVBQUUsQ0FBQztJQUM3QixJQUFJLFNBQWtCLENBQUM7SUFFdkIsT0FBTyxJQUFJLE9BQU8sQ0FBQyxDQUFDLE9BQU8sRUFBRSxNQUFNLEVBQUUsRUFBRTtRQUNyQyxNQUFNLE9BQU8sR0FBRyxHQUFHLEVBQUU7WUFDbkIsSUFBSSxDQUFDO2dCQUNILFVBQVUsRUFBRSxDQUFDO2dCQUNiLE9BQU8sT0FBTyxFQUFFLENBQUM7WUFDbkIsQ0FBQztZQUFDLE9BQU8sS0FBSyxFQUFFLENBQUM7Z0JBQ2YsU0FBUyxHQUFHLEtBQUssQ0FBQztnQkFFbEIsTUFBTSxXQUFXLEdBQUcsSUFBSSxDQUFDLEdBQUcsRUFBRSxHQUFHLFNBQVMsQ0FBQztnQkFFM0MsSUFBSSxXQUFXLElBQUksT0FBTyxFQUFFLENBQUM7b0JBQzNCLE9BQU8sTUFBTSxDQUFDLFNBQVMsQ0FBQyxDQUFDO2dCQUMzQixDQUFDO2dCQUVELFVBQVUsQ0FBQyxPQUFPLEVBQUUsUUFBUSxDQUFDLENBQUM7WUFDaEMsQ0FBQztRQUNILENBQUMsQ0FBQztRQUVGLE9BQU8sRUFBRSxDQUFDO0lBQ1osQ0FBQyxDQUFDLENBQUM7QUFDTCxDQUFDIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIkU6XFx3b3Jrc3BhY2Utc2Fzc1xccmVwb1xccGFja2FnZXNcXGNvbW1vblxcc3JjXFxkb21haW5cXHRlc3RcXHdhaXQtZm9yLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogUmVleGVjdXRhIGFzc2VydGlvbnMgYXTDqSBxdWUgdG9kYXMgcGFzc2VtIG91IG8gdGVtcG8gbcOheGltbyBzZWphIGF0aW5naWRvLlxuICpcbiAqIMOadGlsIHBhcmEgdGVzdGFyIGNvbXBvcnRhbWVudG9zIGFzc8OtbmNyb25vcy9ldmVudHVhaXMsXG4gKiBjb21vIHN1YnNjcmliZXJzLCBzaWRlIGVmZmVjdHMgb3UgZXZlbnQgYnVzZXMuXG4gKlxuICogQHBhcmFtIGFzc2VydGlvbnMgRnVuw6fDo28gY29udGVuZG8gYXMgYXNzZXJ0aW9ucyAoZGV2ZSBsYW7Dp2FyIGVycm8gc2UgZmFsaGFyKVxuICogQHBhcmFtIHRpbWVvdXQgVGVtcG8gbcOheGltbyBkZSBlc3BlcmEgZW0gbXNcbiAqIEBwYXJhbSBpbnRlcnZhbCBJbnRlcnZhbG8gZW50cmUgdGVudGF0aXZhcyBlbSBtc1xuICovXG5leHBvcnQgYXN5bmMgZnVuY3Rpb24gd2FpdEZvcihcbiAgYXNzZXJ0aW9uczogKCkgPT4gdm9pZCxcbiAgdGltZW91dCA9IDEwMDAsXG4gIGludGVydmFsID0gMTAsXG4pOiBQcm9taXNlPHZvaWQ+IHtcbiAgY29uc3Qgc3RhcnRUaW1lID0gRGF0ZS5ub3coKTtcbiAgbGV0IGxhc3RFcnJvcjogdW5rbm93bjtcblxuICByZXR1cm4gbmV3IFByb21pc2UoKHJlc29sdmUsIHJlamVjdCkgPT4ge1xuICAgIGNvbnN0IGF0dGVtcHQgPSAoKSA9PiB7XG4gICAgICB0cnkge1xuICAgICAgICBhc3NlcnRpb25zKCk7XG4gICAgICAgIHJldHVybiByZXNvbHZlKCk7XG4gICAgICB9IGNhdGNoIChlcnJvcikge1xuICAgICAgICBsYXN0RXJyb3IgPSBlcnJvcjtcblxuICAgICAgICBjb25zdCBlbGFwc2VkVGltZSA9IERhdGUubm93KCkgLSBzdGFydFRpbWU7XG5cbiAgICAgICAgaWYgKGVsYXBzZWRUaW1lID49IHRpbWVvdXQpIHtcbiAgICAgICAgICByZXR1cm4gcmVqZWN0KGxhc3RFcnJvcik7XG4gICAgICAgIH1cblxuICAgICAgICBzZXRUaW1lb3V0KGF0dGVtcHQsIGludGVydmFsKTtcbiAgICAgIH1cbiAgICB9O1xuXG4gICAgYXR0ZW1wdCgpO1xuICB9KTtcbn1cbiJdLCJ2ZXJzaW9uIjozfQ==

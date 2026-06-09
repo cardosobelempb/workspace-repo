@@ -48,6 +48,11 @@ export class UserEntity extends BaseAggregate<UserProps> {
     this.touch();
   }
 
+  updateEmailVerified(verifiedAt: Date): void {
+    this.props.emailVerified = new Date(verifiedAt);
+    this.touch();
+  }
+
   isDeleted(): boolean {
     return this.props.deletedAt !== null;
   }

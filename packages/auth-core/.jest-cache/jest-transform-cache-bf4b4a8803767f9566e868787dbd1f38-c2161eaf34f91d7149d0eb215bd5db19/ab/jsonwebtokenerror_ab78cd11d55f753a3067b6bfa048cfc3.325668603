@@ -1,0 +1,19 @@
+40a2673168af194c5bae88aca1aa4a1a
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.JsonWebTokenError = void 0;
+const standard_error_1 = require("../standard.error");
+const code_error_1 = require("./code.error");
+class JsonWebTokenError extends standard_error_1.StandardError {
+    constructor(params) {
+        super({
+            statusCode: 401,
+            code: "JWT_ERROR",
+            error: code_error_1.CodeError.JWT_ERROR,
+            message: params.message ?? `${params.fieldName} "${params.value}" é inválido`,
+            fieldName: params.fieldName,
+        });
+    }
+}
+exports.JsonWebTokenError = JsonWebTokenError;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXGRvbWFpblxcZXJyb3JzXFx1c2VjYXNlc1xcanNvbi13ZWItdG9rZW4uZXJyb3IudHMiLCJtYXBwaW5ncyI6Ijs7O0FBQUEsc0RBQWtEO0FBRWxELDZDQUF5QztBQUV6QyxNQUFhLGlCQUFrQixTQUFRLDhCQUFhO0lBQ2xELFlBQVksTUFBK0Q7UUFDekUsS0FBSyxDQUFDO1lBQ0osVUFBVSxFQUFFLEdBQUc7WUFDZixJQUFJLEVBQUUsV0FBVztZQUNqQixLQUFLLEVBQUUsc0JBQVMsQ0FBQyxTQUFTO1lBQzFCLE9BQU8sRUFBRSxNQUFNLENBQUMsT0FBTyxJQUFJLEdBQUcsTUFBTSxDQUFDLFNBQVMsS0FBSyxNQUFNLENBQUMsS0FBSyxjQUFjO1lBQzdFLFNBQVMsRUFBRSxNQUFNLENBQUMsU0FBUztTQUM1QixDQUFDLENBQUM7SUFDTCxDQUFDO0NBQ0Y7QUFWRCw4Q0FVQyIsIm5hbWVzIjpbXSwic291cmNlcyI6WyJFOlxcd29ya3NwYWNlLXNhc3NcXHJlcG9cXHBhY2thZ2VzXFxjb21tb25cXHNyY1xcZG9tYWluXFxlcnJvcnNcXHVzZWNhc2VzXFxqc29uLXdlYi10b2tlbi5lcnJvci50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBTdGFuZGFyZEVycm9yIH0gZnJvbSBcIi4uL3N0YW5kYXJkLmVycm9yXCI7XG5pbXBvcnQgeyBCYXNlVXNlQ2FzZUVycm9yIH0gZnJvbSBcIi4vYmFzZS11c2VjYXNlLmVycm9yXCI7XG5pbXBvcnQgeyBDb2RlRXJyb3IgfSBmcm9tIFwiLi9jb2RlLmVycm9yXCI7XG5cbmV4cG9ydCBjbGFzcyBKc29uV2ViVG9rZW5FcnJvciBleHRlbmRzIFN0YW5kYXJkRXJyb3IgaW1wbGVtZW50cyBCYXNlVXNlQ2FzZUVycm9yIHtcbiAgY29uc3RydWN0b3IocGFyYW1zOiB7IGZpZWxkTmFtZTogc3RyaW5nOyB2YWx1ZT86IHN0cmluZzsgbWVzc2FnZT86IHN0cmluZyB9KSB7XG4gICAgc3VwZXIoe1xuICAgICAgc3RhdHVzQ29kZTogNDAxLFxuICAgICAgY29kZTogXCJKV1RfRVJST1JcIixcbiAgICAgIGVycm9yOiBDb2RlRXJyb3IuSldUX0VSUk9SLFxuICAgICAgbWVzc2FnZTogcGFyYW1zLm1lc3NhZ2UgPz8gYCR7cGFyYW1zLmZpZWxkTmFtZX0gXCIke3BhcmFtcy52YWx1ZX1cIiDDqSBpbnbDoWxpZG9gLFxuICAgICAgZmllbGROYW1lOiBwYXJhbXMuZmllbGROYW1lLFxuICAgIH0pO1xuICB9XG59XG4iXSwidmVyc2lvbiI6M30=

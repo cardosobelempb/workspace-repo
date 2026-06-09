@@ -1,0 +1,74 @@
+198cff70b59c247e99e9467c1af5a08c
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Right = void 0;
+/**
+ * Representa o lado de sucesso do Either.
+ * Imutável e seguro. Utilizado quando uma operação é bem-sucedida.
+ *
+ * L -> Tipo do erro
+ * R -> Tipo de sucesso
+ */
+class Right {
+    value;
+    constructor(value) {
+        // Mantém imutabilidade e integridade
+        this.value = value;
+    }
+    /**
+     * Sempre true para Right — usado para narrowing.
+     */
+    isRight() {
+        return true;
+    }
+    /**
+     * Sempre false — mantém compatibilidade com a API funcional.
+     */
+    isLeft() {
+        return false;
+    }
+    /**
+     * Transforma o valor interno de sucesso.
+     * Mantém Left intacto (mas aqui é Right, então transforma normalmente).
+     *
+     * Segue semântica FP: map NÃO lida com erros.
+     */
+    map(fn) {
+        const newValue = fn(this.value);
+        return new Right(newValue);
+    }
+    /**
+     * fold()
+     * Desestrutura o Either chamando a função de sucesso (onRight).
+     * A função de erro é ignorada aqui.
+     *
+     * Útil para extrair o valor sem precisar checar Left/Right manualmente.
+     */
+    fold(_, onRight) {
+        return onRight(this.value);
+    }
+    /**
+     * Representação útil para logs e debugging.
+     */
+    toString() {
+        return `Right(${JSON.stringify(this.value)})`;
+    }
+}
+exports.Right = Right;
+/**
+function divide(a: number, b: number): Left<string, number> | Right<string, number> {
+  if (b === 0) return new Left("Divisão por zero")
+  return new Right(a / b)
+}
+
+const result = divide(10, 2)
+
+result
+  .map(n => n * 3)    // transforma (porque é Right)
+  .fold(
+    err => console.error("Erro:", err),
+    value => console.log("Sucesso:", value)
+  )
+
+ */
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXGRvbWFpblxcZXJyb3JzXFxoYW5kbGUtZXJyb3JzXFxyaWdodC50cyIsIm1hcHBpbmdzIjoiOzs7QUFFQTs7Ozs7O0dBTUc7QUFDSCxNQUFhLEtBQUs7SUFDUCxLQUFLLENBQUk7SUFFbEIsWUFBWSxLQUFRO1FBQ2xCLHFDQUFxQztRQUNyQyxJQUFJLENBQUMsS0FBSyxHQUFHLEtBQUssQ0FBQztJQUNyQixDQUFDO0lBRUQ7O09BRUc7SUFDSCxPQUFPO1FBQ0wsT0FBTyxJQUFJLENBQUM7SUFDZCxDQUFDO0lBRUQ7O09BRUc7SUFDSCxNQUFNO1FBQ0osT0FBTyxLQUFLLENBQUM7SUFDZixDQUFDO0lBRUQ7Ozs7O09BS0c7SUFDSCxHQUFHLENBQUksRUFBZTtRQUNwQixNQUFNLFFBQVEsR0FBRyxFQUFFLENBQUMsSUFBSSxDQUFDLEtBQUssQ0FBQyxDQUFDO1FBQ2hDLE9BQU8sSUFBSSxLQUFLLENBQUMsUUFBUSxDQUFDLENBQUM7SUFDN0IsQ0FBQztJQUVEOzs7Ozs7T0FNRztJQUNILElBQUksQ0FBSSxDQUFjLEVBQUUsT0FBb0I7UUFDMUMsT0FBTyxPQUFPLENBQUMsSUFBSSxDQUFDLEtBQUssQ0FBQyxDQUFDO0lBQzdCLENBQUM7SUFFRDs7T0FFRztJQUNILFFBQVE7UUFDTixPQUFPLFNBQVMsSUFBSSxDQUFDLFNBQVMsQ0FBQyxJQUFJLENBQUMsS0FBSyxDQUFDLEdBQUcsQ0FBQztJQUNoRCxDQUFDO0NBQ0Y7QUFsREQsc0JBa0RDO0FBRUQ7Ozs7Ozs7Ozs7Ozs7OztHQWVHIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIkU6XFx3b3Jrc3BhY2Utc2Fzc1xccmVwb1xccGFja2FnZXNcXGNvbW1vblxcc3JjXFxkb21haW5cXGVycm9yc1xcaGFuZGxlLWVycm9yc1xccmlnaHQudHMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgTGVmdCB9IGZyb20gXCIuL2xlZnRcIjtcblxuLyoqXG4gKiBSZXByZXNlbnRhIG8gbGFkbyBkZSBzdWNlc3NvIGRvIEVpdGhlci5cbiAqIEltdXTDoXZlbCBlIHNlZ3Vyby4gVXRpbGl6YWRvIHF1YW5kbyB1bWEgb3BlcmHDp8OjbyDDqSBiZW0tc3VjZWRpZGEuXG4gKlxuICogTCAtPiBUaXBvIGRvIGVycm9cbiAqIFIgLT4gVGlwbyBkZSBzdWNlc3NvXG4gKi9cbmV4cG9ydCBjbGFzcyBSaWdodDxMLCBSPiB7XG4gIHJlYWRvbmx5IHZhbHVlOiBSO1xuXG4gIGNvbnN0cnVjdG9yKHZhbHVlOiBSKSB7XG4gICAgLy8gTWFudMOpbSBpbXV0YWJpbGlkYWRlIGUgaW50ZWdyaWRhZGVcbiAgICB0aGlzLnZhbHVlID0gdmFsdWU7XG4gIH1cblxuICAvKipcbiAgICogU2VtcHJlIHRydWUgcGFyYSBSaWdodCDigJQgdXNhZG8gcGFyYSBuYXJyb3dpbmcuXG4gICAqL1xuICBpc1JpZ2h0KCk6IHRoaXMgaXMgUmlnaHQ8TCwgUj4ge1xuICAgIHJldHVybiB0cnVlO1xuICB9XG5cbiAgLyoqXG4gICAqIFNlbXByZSBmYWxzZSDigJQgbWFudMOpbSBjb21wYXRpYmlsaWRhZGUgY29tIGEgQVBJIGZ1bmNpb25hbC5cbiAgICovXG4gIGlzTGVmdCgpOiB0aGlzIGlzIExlZnQ8TCwgUj4ge1xuICAgIHJldHVybiBmYWxzZTtcbiAgfVxuXG4gIC8qKlxuICAgKiBUcmFuc2Zvcm1hIG8gdmFsb3IgaW50ZXJubyBkZSBzdWNlc3NvLlxuICAgKiBNYW50w6ltIExlZnQgaW50YWN0byAobWFzIGFxdWkgw6kgUmlnaHQsIGVudMOjbyB0cmFuc2Zvcm1hIG5vcm1hbG1lbnRlKS5cbiAgICpcbiAgICogU2VndWUgc2Vtw6JudGljYSBGUDogbWFwIE7Dg08gbGlkYSBjb20gZXJyb3MuXG4gICAqL1xuICBtYXA8VD4oZm46IChyOiBSKSA9PiBUKTogUmlnaHQ8TCwgVD4ge1xuICAgIGNvbnN0IG5ld1ZhbHVlID0gZm4odGhpcy52YWx1ZSk7XG4gICAgcmV0dXJuIG5ldyBSaWdodChuZXdWYWx1ZSk7XG4gIH1cblxuICAvKipcbiAgICogZm9sZCgpXG4gICAqIERlc2VzdHJ1dHVyYSBvIEVpdGhlciBjaGFtYW5kbyBhIGZ1bsOnw6NvIGRlIHN1Y2Vzc28gKG9uUmlnaHQpLlxuICAgKiBBIGZ1bsOnw6NvIGRlIGVycm8gw6kgaWdub3JhZGEgYXF1aS5cbiAgICpcbiAgICogw5p0aWwgcGFyYSBleHRyYWlyIG8gdmFsb3Igc2VtIHByZWNpc2FyIGNoZWNhciBMZWZ0L1JpZ2h0IG1hbnVhbG1lbnRlLlxuICAgKi9cbiAgZm9sZDxUPihfOiAobDogTCkgPT4gVCwgb25SaWdodDogKHI6IFIpID0+IFQpOiBUIHtcbiAgICByZXR1cm4gb25SaWdodCh0aGlzLnZhbHVlKTtcbiAgfVxuXG4gIC8qKlxuICAgKiBSZXByZXNlbnRhw6fDo28gw7p0aWwgcGFyYSBsb2dzIGUgZGVidWdnaW5nLlxuICAgKi9cbiAgdG9TdHJpbmcoKTogc3RyaW5nIHtcbiAgICByZXR1cm4gYFJpZ2h0KCR7SlNPTi5zdHJpbmdpZnkodGhpcy52YWx1ZSl9KWA7XG4gIH1cbn1cblxuLyoqXG5mdW5jdGlvbiBkaXZpZGUoYTogbnVtYmVyLCBiOiBudW1iZXIpOiBMZWZ0PHN0cmluZywgbnVtYmVyPiB8IFJpZ2h0PHN0cmluZywgbnVtYmVyPiB7XG4gIGlmIChiID09PSAwKSByZXR1cm4gbmV3IExlZnQoXCJEaXZpc8OjbyBwb3IgemVyb1wiKVxuICByZXR1cm4gbmV3IFJpZ2h0KGEgLyBiKVxufVxuXG5jb25zdCByZXN1bHQgPSBkaXZpZGUoMTAsIDIpXG5cbnJlc3VsdFxuICAubWFwKG4gPT4gbiAqIDMpICAgIC8vIHRyYW5zZm9ybWEgKHBvcnF1ZSDDqSBSaWdodClcbiAgLmZvbGQoXG4gICAgZXJyID0+IGNvbnNvbGUuZXJyb3IoXCJFcnJvOlwiLCBlcnIpLFxuICAgIHZhbHVlID0+IGNvbnNvbGUubG9nKFwiU3VjZXNzbzpcIiwgdmFsdWUpXG4gIClcblxuICovXG4iXSwidmVyc2lvbiI6M30=

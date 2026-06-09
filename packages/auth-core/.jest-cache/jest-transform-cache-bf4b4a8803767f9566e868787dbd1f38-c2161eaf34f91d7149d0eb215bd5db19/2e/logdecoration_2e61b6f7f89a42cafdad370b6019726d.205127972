@@ -1,0 +1,37 @@
+8a20b2ff7c08c9f6542380cf1e612779
+"use strict";
+/**
+ * Decorador para logar o nome do método decorado.
+ * @returns Uma função decoradora que loga o nome do método decorado.
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Log = Log;
+function Log() {
+    return function (target, propertyKey, descriptor) {
+        const originalMethod = descriptor.value;
+        descriptor.value = function (...args) {
+            console.log(`Chamando ${propertyKey} com`, args);
+            const result = originalMethod.apply(this, args);
+            console.log(`Resultado:`, result);
+            return result;
+        };
+        return descriptor;
+    };
+}
+/**
+ * Exemplo de uso do decorador Log:
+ *
+ * class Example {
+ *   @Log()
+ *   sum(a: number, b: number): number {
+ *     return a + b;
+ *   }
+ * }
+ *
+ * const example = new Example();
+ * example.sum(2, 3);
+ * // Saída no console:
+ * // Chamando sum com [2, 3]
+ * // Resultado: 5
+ */
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXHNoYXJlZFxcaHR0cFxcZGVjb3JhdG9yc1xcbG9nLmRlY29yYXRpb24udHMiLCJtYXBwaW5ncyI6IjtBQUFBOzs7R0FHRzs7QUFFSCxrQkFnQkM7QUFoQkQsU0FBZ0IsR0FBRztJQUNqQixPQUFPLFVBQVUsTUFBYyxFQUFFLFdBQW1CLEVBQUUsVUFBOEI7UUFDbEYsTUFBTSxjQUFjLEdBQUcsVUFBVSxDQUFDLEtBQUssQ0FBQztRQUV4QyxVQUFVLENBQUMsS0FBSyxHQUFHLFVBQVUsR0FBRyxJQUFlO1lBQzdDLE9BQU8sQ0FBQyxHQUFHLENBQUMsWUFBWSxXQUFXLE1BQU0sRUFBRSxJQUFJLENBQUMsQ0FBQztZQUVqRCxNQUFNLE1BQU0sR0FBRyxjQUFjLENBQUMsS0FBSyxDQUFDLElBQUksRUFBRSxJQUFJLENBQUMsQ0FBQztZQUVoRCxPQUFPLENBQUMsR0FBRyxDQUFDLFlBQVksRUFBRSxNQUFNLENBQUMsQ0FBQztZQUVsQyxPQUFPLE1BQU0sQ0FBQztRQUNoQixDQUFDLENBQUM7UUFFRixPQUFPLFVBQVUsQ0FBQztJQUNwQixDQUFDLENBQUM7QUFDSixDQUFDO0FBRUQ7Ozs7Ozs7Ozs7Ozs7OztHQWVHIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIkU6XFx3b3Jrc3BhY2Utc2Fzc1xccmVwb1xccGFja2FnZXNcXGNvbW1vblxcc3JjXFxzaGFyZWRcXGh0dHBcXGRlY29yYXRvcnNcXGxvZy5kZWNvcmF0aW9uLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogRGVjb3JhZG9yIHBhcmEgbG9nYXIgbyBub21lIGRvIG3DqXRvZG8gZGVjb3JhZG8uXG4gKiBAcmV0dXJucyBVbWEgZnVuw6fDo28gZGVjb3JhZG9yYSBxdWUgbG9nYSBvIG5vbWUgZG8gbcOpdG9kbyBkZWNvcmFkby5cbiAqL1xuXG5leHBvcnQgZnVuY3Rpb24gTG9nKCkge1xuICByZXR1cm4gZnVuY3Rpb24gKHRhcmdldDogb2JqZWN0LCBwcm9wZXJ0eUtleTogc3RyaW5nLCBkZXNjcmlwdG9yOiBQcm9wZXJ0eURlc2NyaXB0b3IpIHtcbiAgICBjb25zdCBvcmlnaW5hbE1ldGhvZCA9IGRlc2NyaXB0b3IudmFsdWU7XG5cbiAgICBkZXNjcmlwdG9yLnZhbHVlID0gZnVuY3Rpb24gKC4uLmFyZ3M6IHVua25vd25bXSkge1xuICAgICAgY29uc29sZS5sb2coYENoYW1hbmRvICR7cHJvcGVydHlLZXl9IGNvbWAsIGFyZ3MpO1xuXG4gICAgICBjb25zdCByZXN1bHQgPSBvcmlnaW5hbE1ldGhvZC5hcHBseSh0aGlzLCBhcmdzKTtcblxuICAgICAgY29uc29sZS5sb2coYFJlc3VsdGFkbzpgLCByZXN1bHQpO1xuXG4gICAgICByZXR1cm4gcmVzdWx0O1xuICAgIH07XG5cbiAgICByZXR1cm4gZGVzY3JpcHRvcjtcbiAgfTtcbn1cblxuLyoqXG4gKiBFeGVtcGxvIGRlIHVzbyBkbyBkZWNvcmFkb3IgTG9nOlxuICpcbiAqIGNsYXNzIEV4YW1wbGUge1xuICogICBATG9nKClcbiAqICAgc3VtKGE6IG51bWJlciwgYjogbnVtYmVyKTogbnVtYmVyIHtcbiAqICAgICByZXR1cm4gYSArIGI7XG4gKiAgIH1cbiAqIH1cbiAqXG4gKiBjb25zdCBleGFtcGxlID0gbmV3IEV4YW1wbGUoKTtcbiAqIGV4YW1wbGUuc3VtKDIsIDMpO1xuICogLy8gU2HDrWRhIG5vIGNvbnNvbGU6XG4gKiAvLyBDaGFtYW5kbyBzdW0gY29tIFsyLCAzXVxuICogLy8gUmVzdWx0YWRvOiA1XG4gKi9cbiJdLCJ2ZXJzaW9uIjozfQ==

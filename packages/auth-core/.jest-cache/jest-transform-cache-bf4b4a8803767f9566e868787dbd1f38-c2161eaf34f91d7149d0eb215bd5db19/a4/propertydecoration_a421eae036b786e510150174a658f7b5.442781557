@@ -1,0 +1,26 @@
+d84621b5a15a85212b1c22305028472a
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Required = Required;
+/*
+ * Decorator para marcar um campo como obrigatório.
+ * @param target O protótipo do objeto que contém o campo decorado.
+ * @param propertyKey O nome do campo decorado.
+ * @returns Uma função decoradora que loga o nome do campo obrigatório no console.
+ */
+function Required(target, propertyKey) {
+    console.log(`Campo obrigatório: ${propertyKey}`);
+}
+/*
+ * Exemplo de uso do decorador Required:
+ * class User {
+ *   @Required
+ *   name: string;
+ *  *   @Required
+ *  email: string;
+ * }
+ * // Saída no console:
+ * // Campo obrigatório: name
+ * // Campo obrigatório: email
+ */
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXHNoYXJlZFxcaHR0cFxcZGVjb3JhdG9yc1xccHJvcGVydHkuZGVjb3JhdGlvbi50cyIsIm1hcHBpbmdzIjoiOztBQU1BLDRCQUVDO0FBUkQ7Ozs7O0dBS0c7QUFDSCxTQUFnQixRQUFRLENBQUMsTUFBYyxFQUFFLFdBQW1CO0lBQzFELE9BQU8sQ0FBQyxHQUFHLENBQUMsc0JBQXNCLFdBQVcsRUFBRSxDQUFDLENBQUM7QUFDbkQsQ0FBQztBQUVEOzs7Ozs7Ozs7OztHQVdHIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIkU6XFx3b3Jrc3BhY2Utc2Fzc1xccmVwb1xccGFja2FnZXNcXGNvbW1vblxcc3JjXFxzaGFyZWRcXGh0dHBcXGRlY29yYXRvcnNcXHByb3BlcnR5LmRlY29yYXRpb24udHMiXSwic291cmNlc0NvbnRlbnQiOlsiLypcbiAqIERlY29yYXRvciBwYXJhIG1hcmNhciB1bSBjYW1wbyBjb21vIG9icmlnYXTDs3Jpby5cbiAqIEBwYXJhbSB0YXJnZXQgTyBwcm90w7N0aXBvIGRvIG9iamV0byBxdWUgY29udMOpbSBvIGNhbXBvIGRlY29yYWRvLlxuICogQHBhcmFtIHByb3BlcnR5S2V5IE8gbm9tZSBkbyBjYW1wbyBkZWNvcmFkby5cbiAqIEByZXR1cm5zIFVtYSBmdW7Dp8OjbyBkZWNvcmFkb3JhIHF1ZSBsb2dhIG8gbm9tZSBkbyBjYW1wbyBvYnJpZ2F0w7NyaW8gbm8gY29uc29sZS5cbiAqL1xuZXhwb3J0IGZ1bmN0aW9uIFJlcXVpcmVkKHRhcmdldDogb2JqZWN0LCBwcm9wZXJ0eUtleTogc3RyaW5nKSB7XG4gIGNvbnNvbGUubG9nKGBDYW1wbyBvYnJpZ2F0w7NyaW86ICR7cHJvcGVydHlLZXl9YCk7XG59XG5cbi8qXG4gKiBFeGVtcGxvIGRlIHVzbyBkbyBkZWNvcmFkb3IgUmVxdWlyZWQ6XG4gKiBjbGFzcyBVc2VyIHtcbiAqICAgQFJlcXVpcmVkXG4gKiAgIG5hbWU6IHN0cmluZztcbiAqICAqICAgQFJlcXVpcmVkXG4gKiAgZW1haWw6IHN0cmluZztcbiAqIH1cbiAqIC8vIFNhw61kYSBubyBjb25zb2xlOlxuICogLy8gQ2FtcG8gb2JyaWdhdMOzcmlvOiBuYW1lXG4gKiAvLyBDYW1wbyBvYnJpZ2F0w7NyaW86IGVtYWlsXG4gKi9cbiJdLCJ2ZXJzaW9uIjozfQ==

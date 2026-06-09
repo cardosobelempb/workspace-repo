@@ -1,0 +1,1 @@
+{"file":"E:\\workspace-sass\\repo\\packages\\common\\src\\domain\\errors\\controllers\\IControllerError.ts","mappings":"","names":[],"sources":["E:\\workspace-sass\\repo\\packages\\common\\src\\domain\\errors\\controllers\\IControllerError.ts"],"sourcesContent":["export interface IControllerError {\n  message: string;\n}\n"],"version":3}

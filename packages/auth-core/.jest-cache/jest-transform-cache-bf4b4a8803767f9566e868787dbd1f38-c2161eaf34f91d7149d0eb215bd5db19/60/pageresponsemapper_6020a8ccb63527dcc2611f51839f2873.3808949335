@@ -1,0 +1,50 @@
+94a8afabc789f03bc81252747d1df519
+"use strict";
+// ============================================================
+// page-response.mapper.ts
+// Mapper genérico: Page<TDomain> → PageResponseDto<TDto>
+// ============================================================
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PageResponseMapper = void 0;
+/**
+ * Mapper genérico para transformar qualquer `Page<TDomain>`
+ * em `PageResponseDto<TDto>`, substituindo apenas o content.
+ *
+ * @template TDomain - Tipo da entidade de domínio
+ * @template TDto    - Tipo do DTO de apresentação
+ *
+ * @example
+ * // No controller ou presenter:
+ * const response = PageResponseMapper.toDto(
+ *   page,
+ *   (organization) => OrganizationMapper.toPresent(organization),
+ * );
+ */
+class PageResponseMapper {
+    /**
+     * Converte Page<TDomain> → PageResponseDto<TDto>
+     * preservando todos os metadados Spring intactos.
+     *
+     * @param page      - Página retornada pelo use case
+     * @param mapFn     - Função de transformação item a item
+     */
+    static toDto(page, mapFn) {
+        return {
+            // ─── Metadados Spring preservados intactos ─────────────────────
+            pageable: page.pageable,
+            totalPages: page.totalPages,
+            totalElements: page.totalElements,
+            last: page.last,
+            size: page.size,
+            number: page.number,
+            sort: page.sort,
+            numberOfElements: page.numberOfElements,
+            first: page.first,
+            empty: page.empty,
+            // ─── Único campo transformado ──────────────────────────────────
+            content: page.content.map(mapFn),
+        };
+    }
+}
+exports.PageResponseMapper = PageResponseMapper;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXHNoYXJlZFxcbWFwcGVyc1xccGFnZS1yZXNwb25zZS5tYXBwZXIudHMiLCJtYXBwaW5ncyI6IjtBQUFBLCtEQUErRDtBQUMvRCwwQkFBMEI7QUFDMUIseURBQXlEO0FBQ3pELCtEQUErRDs7O0FBSy9EOzs7Ozs7Ozs7Ozs7O0dBYUc7QUFDSCxNQUFhLGtCQUFrQjtJQUM3Qjs7Ozs7O09BTUc7SUFDSCxNQUFNLENBQUMsS0FBSyxDQUNWLElBQW1CLEVBQ25CLEtBQThCO1FBRTlCLE9BQU87WUFDTCxrRUFBa0U7WUFDbEUsUUFBUSxFQUFFLElBQUksQ0FBQyxRQUFRO1lBQ3ZCLFVBQVUsRUFBRSxJQUFJLENBQUMsVUFBVTtZQUMzQixhQUFhLEVBQUUsSUFBSSxDQUFDLGFBQWE7WUFDakMsSUFBSSxFQUFFLElBQUksQ0FBQyxJQUFJO1lBQ2YsSUFBSSxFQUFFLElBQUksQ0FBQyxJQUFJO1lBQ2YsTUFBTSxFQUFFLElBQUksQ0FBQyxNQUFNO1lBQ25CLElBQUksRUFBRSxJQUFJLENBQUMsSUFBSTtZQUNmLGdCQUFnQixFQUFFLElBQUksQ0FBQyxnQkFBZ0I7WUFDdkMsS0FBSyxFQUFFLElBQUksQ0FBQyxLQUFLO1lBQ2pCLEtBQUssRUFBRSxJQUFJLENBQUMsS0FBSztZQUVqQixrRUFBa0U7WUFDbEUsT0FBTyxFQUFFLElBQUksQ0FBQyxPQUFPLENBQUMsR0FBRyxDQUFDLEtBQUssQ0FBQztTQUNqQyxDQUFDO0lBQ0osQ0FBQztDQUNGO0FBN0JELGdEQTZCQyIsIm5hbWVzIjpbXSwic291cmNlcyI6WyJFOlxcd29ya3NwYWNlLXNhc3NcXHJlcG9cXHBhY2thZ2VzXFxjb21tb25cXHNyY1xcc2hhcmVkXFxtYXBwZXJzXFxwYWdlLXJlc3BvbnNlLm1hcHBlci50cyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbi8vIHBhZ2UtcmVzcG9uc2UubWFwcGVyLnRzXG4vLyBNYXBwZXIgZ2Vuw6lyaWNvOiBQYWdlPFREb21haW4+IOKGkiBQYWdlUmVzcG9uc2VEdG88VER0bz5cbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuXG5pbXBvcnQgeyBQYWdlIH0gZnJvbSBcIi4uLy4uL2RvbWFpbi9yZXBvc2l0b3JpZXMvcGFnaW5hdGlvbi90eXBlcy9wYWdpbmF0aW9uLnR5cGVzXCI7XG5pbXBvcnQgeyBQYWdlRHRvIH0gZnJvbSBcIi4uL2R0by9wYWdlLmR0b1wiO1xuXG4vKipcbiAqIE1hcHBlciBnZW7DqXJpY28gcGFyYSB0cmFuc2Zvcm1hciBxdWFscXVlciBgUGFnZTxURG9tYWluPmBcbiAqIGVtIGBQYWdlUmVzcG9uc2VEdG88VER0bz5gLCBzdWJzdGl0dWluZG8gYXBlbmFzIG8gY29udGVudC5cbiAqXG4gKiBAdGVtcGxhdGUgVERvbWFpbiAtIFRpcG8gZGEgZW50aWRhZGUgZGUgZG9tw61uaW9cbiAqIEB0ZW1wbGF0ZSBURHRvICAgIC0gVGlwbyBkbyBEVE8gZGUgYXByZXNlbnRhw6fDo29cbiAqXG4gKiBAZXhhbXBsZVxuICogLy8gTm8gY29udHJvbGxlciBvdSBwcmVzZW50ZXI6XG4gKiBjb25zdCByZXNwb25zZSA9IFBhZ2VSZXNwb25zZU1hcHBlci50b0R0byhcbiAqICAgcGFnZSxcbiAqICAgKG9yZ2FuaXphdGlvbikgPT4gT3JnYW5pemF0aW9uTWFwcGVyLnRvUHJlc2VudChvcmdhbml6YXRpb24pLFxuICogKTtcbiAqL1xuZXhwb3J0IGNsYXNzIFBhZ2VSZXNwb25zZU1hcHBlciB7XG4gIC8qKlxuICAgKiBDb252ZXJ0ZSBQYWdlPFREb21haW4+IOKGkiBQYWdlUmVzcG9uc2VEdG88VER0bz5cbiAgICogcHJlc2VydmFuZG8gdG9kb3Mgb3MgbWV0YWRhZG9zIFNwcmluZyBpbnRhY3Rvcy5cbiAgICpcbiAgICogQHBhcmFtIHBhZ2UgICAgICAtIFDDoWdpbmEgcmV0b3JuYWRhIHBlbG8gdXNlIGNhc2VcbiAgICogQHBhcmFtIG1hcEZuICAgICAtIEZ1bsOnw6NvIGRlIHRyYW5zZm9ybWHDp8OjbyBpdGVtIGEgaXRlbVxuICAgKi9cbiAgc3RhdGljIHRvRHRvPFREb21haW4sIFREdG8+KFxuICAgIHBhZ2U6IFBhZ2U8VERvbWFpbj4sXG4gICAgbWFwRm46IChpdGVtOiBURG9tYWluKSA9PiBURHRvLFxuICApOiBQYWdlRHRvPFREdG8+IHtcbiAgICByZXR1cm4ge1xuICAgICAgLy8g4pSA4pSA4pSAIE1ldGFkYWRvcyBTcHJpbmcgcHJlc2VydmFkb3MgaW50YWN0b3Mg4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSAXG4gICAgICBwYWdlYWJsZTogcGFnZS5wYWdlYWJsZSxcbiAgICAgIHRvdGFsUGFnZXM6IHBhZ2UudG90YWxQYWdlcyxcbiAgICAgIHRvdGFsRWxlbWVudHM6IHBhZ2UudG90YWxFbGVtZW50cyxcbiAgICAgIGxhc3Q6IHBhZ2UubGFzdCxcbiAgICAgIHNpemU6IHBhZ2Uuc2l6ZSxcbiAgICAgIG51bWJlcjogcGFnZS5udW1iZXIsXG4gICAgICBzb3J0OiBwYWdlLnNvcnQsXG4gICAgICBudW1iZXJPZkVsZW1lbnRzOiBwYWdlLm51bWJlck9mRWxlbWVudHMsXG4gICAgICBmaXJzdDogcGFnZS5maXJzdCxcbiAgICAgIGVtcHR5OiBwYWdlLmVtcHR5LFxuXG4gICAgICAvLyDilIDilIDilIAgw5puaWNvIGNhbXBvIHRyYW5zZm9ybWFkbyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIBcbiAgICAgIGNvbnRlbnQ6IHBhZ2UuY29udGVudC5tYXAobWFwRm4pLFxuICAgIH07XG4gIH1cbn1cbiJdLCJ2ZXJzaW9uIjozfQ==

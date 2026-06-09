@@ -1,0 +1,15 @@
+62ed66797a01d2d1210f5b405735414c
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PaymentStatus = void 0;
+var PaymentStatus;
+(function (PaymentStatus) {
+    PaymentStatus["PENDING"] = "PENDING";
+    PaymentStatus["PAID"] = "PAID";
+    PaymentStatus["FAILED"] = "FAILED";
+    PaymentStatus["APPROVED"] = "APPROVED";
+    PaymentStatus["REJECTED"] = "REJECTED";
+    PaymentStatus["CANCELED"] = "CANCELED";
+    PaymentStatus["REFUNDED"] = "REFUNDED";
+})(PaymentStatus || (exports.PaymentStatus = PaymentStatus = {}));
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXHNoYXJlZFxcZW51bXNcXHBheW1lbnQtc3RhdHVzLmVudW0udHMiLCJtYXBwaW5ncyI6Ijs7O0FBQUEsSUFBWSxhQVFYO0FBUkQsV0FBWSxhQUFhO0lBQ3ZCLG9DQUFtQixDQUFBO0lBQ25CLDhCQUFhLENBQUE7SUFDYixrQ0FBaUIsQ0FBQTtJQUNqQixzQ0FBcUIsQ0FBQTtJQUNyQixzQ0FBcUIsQ0FBQTtJQUNyQixzQ0FBcUIsQ0FBQTtJQUNyQixzQ0FBcUIsQ0FBQTtBQUN2QixDQUFDLEVBUlcsYUFBYSw2QkFBYixhQUFhLFFBUXhCIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIkU6XFx3b3Jrc3BhY2Utc2Fzc1xccmVwb1xccGFja2FnZXNcXGNvbW1vblxcc3JjXFxzaGFyZWRcXGVudW1zXFxwYXltZW50LXN0YXR1cy5lbnVtLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCBlbnVtIFBheW1lbnRTdGF0dXMge1xuICBQRU5ESU5HID0gXCJQRU5ESU5HXCIsXG4gIFBBSUQgPSBcIlBBSURcIixcbiAgRkFJTEVEID0gXCJGQUlMRURcIixcbiAgQVBQUk9WRUQgPSBcIkFQUFJPVkVEXCIsXG4gIFJFSkVDVEVEID0gXCJSRUpFQ1RFRFwiLFxuICBDQU5DRUxFRCA9IFwiQ0FOQ0VMRURcIixcbiAgUkVGVU5ERUQgPSBcIlJFRlVOREVEXCIsXG59XG4iXSwidmVyc2lvbiI6M30=

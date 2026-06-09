@@ -1,8 +1,14 @@
 import { AUTH_TOKEN_CONSTANTS } from "@/common/constants";
 import { OtpCodeRepository } from "@/common/domain";
-import { Either, HashGenerator, right, TokenGenerator } from "@repo/common";
+import {
+  Either,
+  HashGenerator,
+  NotificationChannel,
+  right,
+  TokenGenerator,
+} from "@repo/common";
 import { NodemailerEmailAdapter } from "@repo/notification-email";
-import { NotificationChannel } from "../../../../notifications-core/dist";
+
 import { OtpCodeFactory } from "../factories";
 
 export type RequestOtpInput = {

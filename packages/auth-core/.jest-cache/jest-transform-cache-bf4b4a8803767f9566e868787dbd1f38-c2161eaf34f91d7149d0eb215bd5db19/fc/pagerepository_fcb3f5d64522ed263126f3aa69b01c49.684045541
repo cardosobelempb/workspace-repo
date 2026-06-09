@@ -1,0 +1,25 @@
+7ee6d766a22aebbb561fa39772515cce
+"use strict";
+// domain/repositories/page-repository.ts
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PageRepository = void 0;
+/**
+ * Estende BaseRepository com suporte à busca paginada,
+ * seguindo o contrato do Spring Data Page<T>.
+ *
+ * ✅ NÃO redeclara `prisma` — herdado via cadeia BaseRepository → PrismaRepository
+ * ✅ NÃO repete construtor
+ *
+ * @template TEntity - Entidade de domínio gerenciada
+ *
+ * @example
+ * const result = await userRepo.page({ page: 0, size: 10, sort: 'name,asc' });
+ * result.content        // UserEntity[]
+ * result.totalElements  // 48
+ * result.totalPages     // 5
+ * result.first          // true
+ */
+class PageRepository {
+}
+exports.PageRepository = PageRepository;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcY29tbW9uXFxzcmNcXGRvbWFpblxccmVwb3NpdG9yaWVzXFxwYWdlLXJlcG9zaXRvcnkudHMiLCJtYXBwaW5ncyI6IjtBQUFBLHlDQUF5Qzs7O0FBS3pDOzs7Ozs7Ozs7Ozs7Ozs7R0FlRztBQUNILE1BQXNCLGNBQWM7Q0FTbkM7QUFURCx3Q0FTQyIsIm5hbWVzIjpbXSwic291cmNlcyI6WyJFOlxcd29ya3NwYWNlLXNhc3NcXHJlcG9cXHBhY2thZ2VzXFxjb21tb25cXHNyY1xcZG9tYWluXFxyZXBvc2l0b3JpZXNcXHBhZ2UtcmVwb3NpdG9yeS50cyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBkb21haW4vcmVwb3NpdG9yaWVzL3BhZ2UtcmVwb3NpdG9yeS50c1xuXG5pbXBvcnQgeyBQYWdlSW5wdXQgfSBmcm9tIFwiLi9wYWdpbmF0aW9uXCI7XG5pbXBvcnQgeyBQYWdlIH0gZnJvbSBcIi4vcGFnaW5hdGlvbi90eXBlcy9wYWdpbmF0aW9uLnR5cGVzXCI7XG5cbi8qKlxuICogRXN0ZW5kZSBCYXNlUmVwb3NpdG9yeSBjb20gc3Vwb3J0ZSDDoCBidXNjYSBwYWdpbmFkYSxcbiAqIHNlZ3VpbmRvIG8gY29udHJhdG8gZG8gU3ByaW5nIERhdGEgUGFnZTxUPi5cbiAqXG4gKiDinIUgTsODTyByZWRlY2xhcmEgYHByaXNtYWAg4oCUIGhlcmRhZG8gdmlhIGNhZGVpYSBCYXNlUmVwb3NpdG9yeSDihpIgUHJpc21hUmVwb3NpdG9yeVxuICog4pyFIE7Dg08gcmVwZXRlIGNvbnN0cnV0b3JcbiAqXG4gKiBAdGVtcGxhdGUgVEVudGl0eSAtIEVudGlkYWRlIGRlIGRvbcOtbmlvIGdlcmVuY2lhZGFcbiAqXG4gKiBAZXhhbXBsZVxuICogY29uc3QgcmVzdWx0ID0gYXdhaXQgdXNlclJlcG8ucGFnZSh7IHBhZ2U6IDAsIHNpemU6IDEwLCBzb3J0OiAnbmFtZSxhc2MnIH0pO1xuICogcmVzdWx0LmNvbnRlbnQgICAgICAgIC8vIFVzZXJFbnRpdHlbXVxuICogcmVzdWx0LnRvdGFsRWxlbWVudHMgIC8vIDQ4XG4gKiByZXN1bHQudG90YWxQYWdlcyAgICAgLy8gNVxuICogcmVzdWx0LmZpcnN0ICAgICAgICAgIC8vIHRydWVcbiAqL1xuZXhwb3J0IGFic3RyYWN0IGNsYXNzIFBhZ2VSZXBvc2l0b3J5PFRFbnRpdHk+IHtcbiAgLy8g4pyFIFNlbSByZWRlY2xhcmHDp8OjbyBkZSBgcHJpc21hYFxuICAvLyDinIUgU2VtIGNvbnN0cnV0b3IgZHVwbGljYWRvXG5cbiAgLyoqXG4gICAqIEJ1c2NhIGVudGlkYWRlcyBkZSBmb3JtYSBwYWdpbmFkYS5cbiAgICogQHBhcmFtIHBhcmFtcyAtIENyaXTDqXJpb3MgZGUgcGFnaW5hw6fDo28gZSBvcmRlbmHDp8Ojb1xuICAgKi9cbiAgYWJzdHJhY3QgcGFnZShwYXJhbXM6IFBhZ2VJbnB1dCk6IFByb21pc2U8UGFnZTxURW50aXR5Pj47XG59XG4iXSwidmVyc2lvbiI6M30=

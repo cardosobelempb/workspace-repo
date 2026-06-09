@@ -1,0 +1,1 @@
+{"file":"E:\\workspace-sass\\repo\\packages\\common\\src\\domain\\errors\\usecases\\base-usecase.error.ts","mappings":"","names":[],"sources":["E:\\workspace-sass\\repo\\packages\\common\\src\\domain\\errors\\usecases\\base-usecase.error.ts"],"sourcesContent":["export interface BaseUseCaseError {\n  message: string;\n}\n"],"version":3}
