@@ -1,9 +1,10 @@
 import { PrismaUserRepository } from "@/modules/user/infrastructure/database/prisma-user.repository";
 import {
-  CRYPTOGRAPHY_TOKENS,
   Either,
+  HASH_DI_TOKENS,
   left,
   right,
+  TOKEN_DI_TOKENS,
   UnauthorizedError,
 } from "@repo/common";
 import { BcryptComparerService } from "../../domain/services/bcrypt-comparer.service";
@@ -19,9 +20,9 @@ export type CreateSessionUseCaseResponse = Either<UnauthorizedError, AuthProject
 
 export class CreateSessionUseCase {
   static inject = [
-    CRYPTOGRAPHY_TOKENS.BCRYPT_HASHER,
-    CRYPTOGRAPHY_TOKENS.BCRYPT_COMPARER,
-    CRYPTOGRAPHY_TOKENS.BCRYPT_GENERATOR,
+    HASH_DI_TOKENS.HASH_GENERATOR,
+    HASH_DI_TOKENS.HASH_GENERATOR,
+    TOKEN_DI_TOKENS.TOKEN_GENERATOR,
     REPOSITORY_CONSTANTS.PRISMA_USER_REPOSITORY,
     REPOSITORY_CONSTANTS.PRISMA_SESSION_REPOSITORY,
     REPOSITORY_CONSTANTS.REDIS_SESSION_CACHE_REPOSITORY,

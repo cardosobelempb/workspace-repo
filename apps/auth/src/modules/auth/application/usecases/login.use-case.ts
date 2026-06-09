@@ -2,8 +2,8 @@ import { envAuth } from "@/config/env-auth";
 import { PrismaUserRepository } from "@/modules/user/infrastructure/database/prisma-user.repository";
 import {
   BadRequestError,
-  CRYPTOGRAPHY_TOKENS,
   Either,
+  HASH_DI_TOKENS,
   left,
   right,
   TokenType,
@@ -22,7 +22,7 @@ export type CreateSessionUseCaseResponse = Either<BadRequestError, AuthProjectio
 
 export class LogoutUseCase {
   static inject = [
-    CRYPTOGRAPHY_TOKENS.BCRYPT_COMPARER,
+    HASH_DI_TOKENS.HASH_COMPARER,
     SERVICE_CONSTANTS.BCRYPT_COMPARER_SERVICE,
     SERVICE_CONSTANTS.JWT_ENCRYPTER_SERVICE,
     REPOSITORY_CONSTANTS.PRISMA_USER_REPOSITORY,
@@ -62,7 +62,7 @@ export class LogoutUseCase {
 
     const passwordMatches = await this.bcryptComparerService.compare(
       input.password,
-      user.passwordHash.getValue(),
+      user.password.getValue(),
     );
 
     if (!passwordMatches) {
@@ -104,7 +104,6 @@ export class LogoutUseCase {
       user: {
         id: user.id.getValue(),
         email: user.email.getValue().value,
-        emailVerified: user.emailVerified,
         createdAt: user.createdAt,
       },
       accessToken,

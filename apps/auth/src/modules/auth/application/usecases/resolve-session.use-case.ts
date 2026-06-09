@@ -1,4 +1,4 @@
-import { BadRequestError, CRYPTOGRAPHY_TOKENS, Either, left, right } from "@repo/common";
+import { BadRequestError, Either, HASH_DI_TOKENS, left, right } from "@repo/common";
 import { BcryptHasherService } from "../../domain/services/bcrypt-hasher.service";
 import { REPOSITORY_CONSTANTS } from "../../infrastructure/database/constant";
 import { PrismaSessionRepository } from "../../infrastructure/database/prisma-session.repository";
@@ -13,7 +13,7 @@ export type CreateSessionUseCaseResponse = Either<
 
 export class ResolveSessionUseCase {
   static inject = [
-    CRYPTOGRAPHY_TOKENS.BCRYPT_HASHER,
+    HASH_DI_TOKENS.HASH_GENERATOR,
     REPOSITORY_CONSTANTS.PRISMA_SESSION_REPOSITORY,
     REPOSITORY_CONSTANTS.REDIS_SESSION_CACHE_REPOSITORY,
   ];

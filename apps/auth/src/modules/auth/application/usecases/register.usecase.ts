@@ -3,8 +3,8 @@ import { PrismaUserRepository } from "@/modules/user/infrastructure/database/pri
 import {
   BadRequestError,
   ConflictError,
-  CRYPTOGRAPHY_TOKENS,
   Either,
+  HASH_DI_TOKENS,
   left,
   right,
 } from "@repo/common";
@@ -18,7 +18,7 @@ export type RegisterUseCaseResponse = Either<BadRequestError, RegisterProjection
 
 export class RegisterUseCase {
   static inject = [
-    CRYPTOGRAPHY_TOKENS.BCRYPT_HASHER,
+    HASH_DI_TOKENS.HASH_GENERATOR,
     REPOSITORY_CONSTANTS.PRISMA_USER_REPOSITORY,
     REPOSITORY_CONSTANTS.PRISMA_USER_PROFILE_REPOSITORY,
   ];

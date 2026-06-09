@@ -1,7 +1,7 @@
 // modules/auths/auth.module.ts
 
 import { REDIS_TOKENS } from "@repo/cache";
-import { CRYPTOGRAPHY_TOKENS, ModuleDefinition } from "@repo/common";
+import { HASH_DI_TOKENS, ModuleDefinition, TOKEN_DI_TOKENS } from "@repo/common";
 
 import { USECASE_CONSTANTS } from "./application/usecases/constant";
 import { CreateSessionUseCase } from "./application/usecases/create-session.usecase";
@@ -31,15 +31,15 @@ export const authModule: ModuleDefinition = {
       useValue: new RedisCacheService(),
     },
     {
-      token: CRYPTOGRAPHY_TOKENS.BCRYPT_HASHER,
+      token: HASH_DI_TOKENS.HASH_GENERATOR,
       useClass: BcryptHasherService,
     },
     {
-      token: CRYPTOGRAPHY_TOKENS.BCRYPT_COMPARER,
+      token: HASH_DI_TOKENS.HASH_COMPARER,
       useClass: BcryptComparerService,
     },
     {
-      token: CRYPTOGRAPHY_TOKENS.BCRYPT_GENERATOR,
+      token: TOKEN_DI_TOKENS.TOKEN_GENERATOR,
       useClass: BcryptGeneratorService,
     },
     {
@@ -77,8 +77,8 @@ export const authModule: ModuleDefinition = {
           redisSessionCacheRepository,
         ),
       inject: [
-        CRYPTOGRAPHY_TOKENS.BCRYPT_HASHER,
-        CRYPTOGRAPHY_TOKENS.BCRYPT_COMPARER,
+        HASH_DI_TOKENS.HASH_GENERATOR,
+        HASH_DI_TOKENS.HASH_COMPARER,
         REPOSITORY_CONSTANTS.PRISMA_USER_REPOSITORY,
         REPOSITORY_CONSTANTS.PRISMA_SESSION_REPOSITORY,
         REPOSITORY_CONSTANTS.REDIS_SESSION_CACHE_REPOSITORY,
@@ -97,7 +97,7 @@ export const authModule: ModuleDefinition = {
           prismaUserProfileRepository,
         ),
       inject: [
-        CRYPTOGRAPHY_TOKENS.BCRYPT_HASHER,
+        HASH_DI_TOKENS.HASH_GENERATOR,
         REPOSITORY_CONSTANTS.PRISMA_USER_REPOSITORY,
         REPOSITORY_CONSTANTS.PRISMA_USER_PROFILE_REPOSITORY,
       ],

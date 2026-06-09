@@ -1,10 +1,10 @@
 import { PrismaUserRepository } from "@/modules/user/infrastructure/database/prisma-user.repository";
 import {
-  CRYPTOGRAPHY_TOKENS,
   Either,
-  JWT_TOKENS,
+  HASH_DI_TOKENS,
   left,
   right,
+  TOKEN_DI_TOKENS,
   TokenType,
   UnauthorizedError,
 } from "@repo/common";
@@ -19,8 +19,8 @@ export type RefreshTokenUseCaseResponse = Either<UnauthorizedError, AuthProjecti
 
 export class RefreshTokenUseCase {
   static inject = [
-    CRYPTOGRAPHY_TOKENS.BCRYPT_HASHER,
-    JWT_TOKENS.JWT_ENCRYPTER,
+    HASH_DI_TOKENS.HASH_GENERATOR,
+    TOKEN_DI_TOKENS.TOKEN_GENERATOR,
     REPOSITORY_CONSTANTS.PRISMA_USER_REPOSITORY,
     REPOSITORY_CONSTANTS.PRISMA_TOKEN_REPOSITORY,
   ];
@@ -106,7 +106,6 @@ export class RefreshTokenUseCase {
       user: {
         id: user.id.getValue(),
         email: user.email.getValue().value,
-        emailVerified: user.emailVerified,
         createdAt: user.createdAt,
       },
       accessToken,
