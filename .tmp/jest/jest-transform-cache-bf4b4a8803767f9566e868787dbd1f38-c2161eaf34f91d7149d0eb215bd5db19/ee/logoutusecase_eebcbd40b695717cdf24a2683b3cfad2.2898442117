@@ -1,0 +1,264 @@
+d7dc49ed02a5ef1df6961ec3a23b804f
+"use strict";
+
+/* istanbul ignore next */
+function cov_1krmwosb1j() {
+  var path = "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\use-cases\\logout.use-case.ts";
+  var hash = "2f1a3df42a7dd45415f82d3622290da2071b2cf3";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\use-cases\\logout.use-case.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 31
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 20
+        },
+        end: {
+          line: 4,
+          column: 46
+        }
+      },
+      "3": {
+        start: {
+          line: 9,
+          column: 20
+        },
+        end: {
+          line: 13,
+          column: 5
+        }
+      },
+      "4": {
+        start: {
+          line: 15,
+          column: 8
+        },
+        end: {
+          line: 15,
+          column: 39
+        }
+      },
+      "5": {
+        start: {
+          line: 16,
+          column: 8
+        },
+        end: {
+          line: 16,
+          column: 33
+        }
+      },
+      "6": {
+        start: {
+          line: 17,
+          column: 8
+        },
+        end: {
+          line: 17,
+          column: 27
+        }
+      },
+      "7": {
+        start: {
+          line: 20,
+          column: 21
+        },
+        end: {
+          line: 20,
+          column: 69
+        }
+      },
+      "8": {
+        start: {
+          line: 21,
+          column: 8
+        },
+        end: {
+          line: 21,
+          column: 52
+        }
+      },
+      "9": {
+        start: {
+          line: 22,
+          column: 8
+        },
+        end: {
+          line: 22,
+          column: 38
+        }
+      },
+      "10": {
+        start: {
+          line: 25,
+          column: 0
+        },
+        end: {
+          line: 25,
+          column: 38
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 14,
+            column: 4
+          },
+          end: {
+            line: 14,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 14,
+            column: 46
+          },
+          end: {
+            line: 18,
+            column: 5
+          }
+        },
+        line: 14
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 19,
+            column: 4
+          },
+          end: {
+            line: 19,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 19,
+            column: 35
+          },
+          end: {
+            line: 23,
+            column: 5
+          }
+        },
+        line: 19
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0
+    },
+    b: {},
+    inputSourceMap: {
+      file: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\use-cases\\logout.use-case.ts",
+      mappings: ";;;AACA,+CAAiD;AAIjD,MAAa,aAAa;IAQL;IACA;IACA;IATnB,MAAM,CAAC,MAAM,GAAG;QACd,0BAAc,CAAC,qBAAqB;QACpC,0BAAc,CAAC,kBAAkB;QACjC,0BAAc,CAAC,wBAAwB;KACxC,CAAC;IAEF,YACmB,WAAyB,EACzB,QAA2B,EAC3B,KAA6B;QAF7B,gBAAW,GAAX,WAAW,CAAc;QACzB,aAAQ,GAAR,QAAQ,CAAmB;QAC3B,UAAK,GAAL,KAAK,CAAwB;IAC7C,CAAC;IACJ,KAAK,CAAC,OAAO,CAAC,eAAuB;QACnC,MAAM,IAAI,GAAG,MAAM,IAAI,CAAC,WAAW,CAAC,IAAI,CAAC,eAAe,EAAE,EAAE,CAAC,CAAC;QAC9D,MAAM,IAAI,CAAC,QAAQ,CAAC,iBAAiB,CAAC,IAAI,CAAC,CAAC;QAC5C,MAAM,IAAI,CAAC,KAAK,CAAC,MAAM,CAAC,IAAI,CAAC,CAAC;IAChC,CAAC;;AAhBH,sCAiBC",
+      names: [],
+      sources: ["E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\use-cases\\logout.use-case.ts"],
+      sourcesContent: ["import { BcryptHasher } from \"@repo/common\";\r\nimport { AUTH_DI_TOKENS } from \"../../constants\";\r\nimport { SessionCacheRepository } from \"../../domain/repositories/session-cache.repository\";\r\nimport { SessionRepository } from \"../../domain/repositories/session.repository\";\r\n\r\nexport class LogoutUseCase {\r\n  static inject = [\r\n    AUTH_DI_TOKENS.SESSION_TOKEN_SERVICE,\r\n    AUTH_DI_TOKENS.SESSION_REPOSITORY,\r\n    AUTH_DI_TOKENS.SESSION_CACHE_REPOSITORY,\r\n  ];\r\n\r\n  constructor(\r\n    private readonly tokenHasher: BcryptHasher,\r\n    private readonly sessions: SessionRepository,\r\n    private readonly cache: SessionCacheRepository,\r\n  ) {}\r\n  async execute(rawSessionToken: string): Promise<void> {\r\n    const hash = await this.tokenHasher.hash(rawSessionToken, 10);\r\n    await this.sessions.revokeByTokenHash(hash);\r\n    await this.cache.delete(hash);\r\n  }\r\n}\r\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "2f1a3df42a7dd45415f82d3622290da2071b2cf3"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_1krmwosb1j = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_1krmwosb1j();
+cov_1krmwosb1j().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_1krmwosb1j().s[1]++;
+exports.LogoutUseCase = void 0;
+const constants_1 =
+/* istanbul ignore next */
+(cov_1krmwosb1j().s[2]++, require("../../constants"));
+class LogoutUseCase {
+  tokenHasher;
+  sessions;
+  cache;
+  static inject =
+  /* istanbul ignore next */
+  (cov_1krmwosb1j().s[3]++, [constants_1.AUTH_DI_TOKENS.SESSION_TOKEN_SERVICE, constants_1.AUTH_DI_TOKENS.SESSION_REPOSITORY, constants_1.AUTH_DI_TOKENS.SESSION_CACHE_REPOSITORY]);
+  constructor(tokenHasher, sessions, cache) {
+    /* istanbul ignore next */
+    cov_1krmwosb1j().f[0]++;
+    cov_1krmwosb1j().s[4]++;
+    this.tokenHasher = tokenHasher;
+    /* istanbul ignore next */
+    cov_1krmwosb1j().s[5]++;
+    this.sessions = sessions;
+    /* istanbul ignore next */
+    cov_1krmwosb1j().s[6]++;
+    this.cache = cache;
+  }
+  async execute(rawSessionToken) {
+    /* istanbul ignore next */
+    cov_1krmwosb1j().f[1]++;
+    const hash =
+    /* istanbul ignore next */
+    (cov_1krmwosb1j().s[7]++, await this.tokenHasher.hash(rawSessionToken, 10));
+    /* istanbul ignore next */
+    cov_1krmwosb1j().s[8]++;
+    await this.sessions.revokeByTokenHash(hash);
+    /* istanbul ignore next */
+    cov_1krmwosb1j().s[9]++;
+    await this.cache.delete(hash);
+  }
+}
+/* istanbul ignore next */
+cov_1krmwosb1j().s[10]++;
+exports.LogoutUseCase = LogoutUseCase;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMWtybXdvc2IxaiIsImFjdHVhbENvdmVyYWdlIiwicyIsImNvbnN0YW50c18xIiwicmVxdWlyZSIsIkxvZ291dFVzZUNhc2UiLCJ0b2tlbkhhc2hlciIsInNlc3Npb25zIiwiY2FjaGUiLCJpbmplY3QiLCJBVVRIX0RJX1RPS0VOUyIsIlNFU1NJT05fVE9LRU5fU0VSVklDRSIsIlNFU1NJT05fUkVQT1NJVE9SWSIsIlNFU1NJT05fQ0FDSEVfUkVQT1NJVE9SWSIsImNvbnN0cnVjdG9yIiwiZiIsImV4ZWN1dGUiLCJyYXdTZXNzaW9uVG9rZW4iLCJoYXNoIiwicmV2b2tlQnlUb2tlbkhhc2giLCJkZWxldGUiLCJleHBvcnRzIl0sInNvdXJjZXMiOlsiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcYXV0aC1jb3JlXFxzcmNcXGFwcGxpY2F0aW9uXFx1c2UtY2FzZXNcXGxvZ291dC51c2UtY2FzZS50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBCY3J5cHRIYXNoZXIgfSBmcm9tIFwiQHJlcG8vY29tbW9uXCI7XHJcbmltcG9ydCB7IEFVVEhfRElfVE9LRU5TIH0gZnJvbSBcIi4uLy4uL2NvbnN0YW50c1wiO1xyXG5pbXBvcnQgeyBTZXNzaW9uQ2FjaGVSZXBvc2l0b3J5IH0gZnJvbSBcIi4uLy4uL2RvbWFpbi9yZXBvc2l0b3JpZXMvc2Vzc2lvbi1jYWNoZS5yZXBvc2l0b3J5XCI7XHJcbmltcG9ydCB7IFNlc3Npb25SZXBvc2l0b3J5IH0gZnJvbSBcIi4uLy4uL2RvbWFpbi9yZXBvc2l0b3JpZXMvc2Vzc2lvbi5yZXBvc2l0b3J5XCI7XHJcblxyXG5leHBvcnQgY2xhc3MgTG9nb3V0VXNlQ2FzZSB7XHJcbiAgc3RhdGljIGluamVjdCA9IFtcclxuICAgIEFVVEhfRElfVE9LRU5TLlNFU1NJT05fVE9LRU5fU0VSVklDRSxcclxuICAgIEFVVEhfRElfVE9LRU5TLlNFU1NJT05fUkVQT1NJVE9SWSxcclxuICAgIEFVVEhfRElfVE9LRU5TLlNFU1NJT05fQ0FDSEVfUkVQT1NJVE9SWSxcclxuICBdO1xyXG5cclxuICBjb25zdHJ1Y3RvcihcclxuICAgIHByaXZhdGUgcmVhZG9ubHkgdG9rZW5IYXNoZXI6IEJjcnlwdEhhc2hlcixcclxuICAgIHByaXZhdGUgcmVhZG9ubHkgc2Vzc2lvbnM6IFNlc3Npb25SZXBvc2l0b3J5LFxyXG4gICAgcHJpdmF0ZSByZWFkb25seSBjYWNoZTogU2Vzc2lvbkNhY2hlUmVwb3NpdG9yeSxcclxuICApIHt9XHJcbiAgYXN5bmMgZXhlY3V0ZShyYXdTZXNzaW9uVG9rZW46IHN0cmluZyk6IFByb21pc2U8dm9pZD4ge1xyXG4gICAgY29uc3QgaGFzaCA9IGF3YWl0IHRoaXMudG9rZW5IYXNoZXIuaGFzaChyYXdTZXNzaW9uVG9rZW4sIDEwKTtcclxuICAgIGF3YWl0IHRoaXMuc2Vzc2lvbnMucmV2b2tlQnlUb2tlbkhhc2goaGFzaCk7XHJcbiAgICBhd2FpdCB0aGlzLmNhY2hlLmRlbGV0ZShoYXNoKTtcclxuICB9XHJcbn1cclxuIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0lBY3FCO0lBQUFBLGNBQUEsWUFBQUEsQ0FBQTtNQUFBLE9BQUFDLGNBQUE7SUFBQTtFQUFBO0VBQUEsT0FBQUEsY0FBQTtBQUFBO0FBQUFELGNBQUE7QUFBQUEsY0FBQSxHQUFBRSxDQUFBOzs7Ozs7O0FBYnJCLE1BQUFDLFdBQUE7QUFBQTtBQUFBLENBQUFILGNBQUEsR0FBQUUsQ0FBQSxPQUFBRSxPQUFBO0FBSUEsTUFBYUMsYUFBYTtFQVFMQyxXQUFBO0VBQ0FDLFFBQUE7RUFDQUMsS0FBQTtFQVRuQixPQUFPQyxNQUFNO0VBQUE7RUFBQSxDQUFBVCxjQUFBLEdBQUFFLENBQUEsT0FBRyxDQUNkQyxXQUFBLENBQUFPLGNBQWMsQ0FBQ0MscUJBQXFCLEVBQ3BDUixXQUFBLENBQUFPLGNBQWMsQ0FBQ0Usa0JBQWtCLEVBQ2pDVCxXQUFBLENBQUFPLGNBQWMsQ0FBQ0csd0JBQXdCLENBQ3hDO0VBRURDLFlBQ21CUixXQUF5QixFQUN6QkMsUUFBMkIsRUFDM0JDLEtBQTZCO0lBQUE7SUFBQVIsY0FBQSxHQUFBZSxDQUFBO0lBQUFmLGNBQUEsR0FBQUUsQ0FBQTtJQUY3QixLQUFBSSxXQUFXLEdBQVhBLFdBQVc7SUFBYztJQUFBTixjQUFBLEdBQUFFLENBQUE7SUFDekIsS0FBQUssUUFBUSxHQUFSQSxRQUFRO0lBQW1CO0lBQUFQLGNBQUEsR0FBQUUsQ0FBQTtJQUMzQixLQUFBTSxLQUFLLEdBQUxBLEtBQUs7RUFDckI7RUFDSCxNQUFNUSxPQUFPQSxDQUFDQyxlQUF1QjtJQUFBO0lBQUFqQixjQUFBLEdBQUFlLENBQUE7SUFDbkMsTUFBTUcsSUFBSTtJQUFBO0lBQUEsQ0FBQWxCLGNBQUEsR0FBQUUsQ0FBQSxPQUFHLE1BQU0sSUFBSSxDQUFDSSxXQUFXLENBQUNZLElBQUksQ0FBQ0QsZUFBZSxFQUFFLEVBQUUsQ0FBQztJQUFDO0lBQUFqQixjQUFBLEdBQUFFLENBQUE7SUFDOUQsTUFBTSxJQUFJLENBQUNLLFFBQVEsQ0FBQ1ksaUJBQWlCLENBQUNELElBQUksQ0FBQztJQUFDO0lBQUFsQixjQUFBLEdBQUFFLENBQUE7SUFDNUMsTUFBTSxJQUFJLENBQUNNLEtBQUssQ0FBQ1ksTUFBTSxDQUFDRixJQUFJLENBQUM7RUFDL0I7Ozs7QUFoQkZHLE9BQUEsQ0FBQWhCLGFBQUEsR0FBQUEsYUFBQSIsImlnbm9yZUxpc3QiOltdfQ==

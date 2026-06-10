@@ -1,0 +1,105 @@
+cd3dd2dcad27711240b0aa031b08c52a
+"use strict";
+
+/* istanbul ignore next */
+function cov_21uju7udq() {
+  var path = "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\repositories\\session-cache.repository.ts";
+  var hash = "ab73ad74f253fa483b9e6939bea53b316d8f8f40";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\repositories\\session-cache.repository.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 40
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 17
+        },
+        end: {
+          line: 4,
+          column: 40
+        }
+      },
+      "3": {
+        start: {
+          line: 7,
+          column: 0
+        },
+        end: {
+          line: 7,
+          column: 56
+        }
+      }
+    },
+    fnMap: {},
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    f: {},
+    b: {},
+    inputSourceMap: {
+      file: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\repositories\\session-cache.repository.ts",
+      mappings: ";;;AAAA,yCAAoD;AAGpD,MAAsB,sBAAuB,SAAQ,6BAAmC;CAAG;AAA3F,wDAA2F",
+      names: [],
+      sources: ["E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\repositories\\session-cache.repository.ts"],
+      sourcesContent: ["import { RedisCacheRepository } from \"@repo/common\";\r\nimport { SessionEntity } from \"../entities\";\r\n\r\nexport abstract class SessionCacheRepository extends RedisCacheRepository<SessionEntity> {}\r\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "ab73ad74f253fa483b9e6939bea53b316d8f8f40"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_21uju7udq = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_21uju7udq();
+cov_21uju7udq().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_21uju7udq().s[1]++;
+exports.SessionCacheRepository = void 0;
+const common_1 =
+/* istanbul ignore next */
+(cov_21uju7udq().s[2]++, require("@repo/common"));
+class SessionCacheRepository extends
+/* istanbul ignore next */
+(common_1.RedisCacheRepository) {}
+/* istanbul ignore next */
+cov_21uju7udq().s[3]++;
+exports.SessionCacheRepository = SessionCacheRepository;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb21tb25fMSIsImNvdl8yMXVqdTd1ZHEiLCJzIiwicmVxdWlyZSIsIlNlc3Npb25DYWNoZVJlcG9zaXRvcnkiLCJSZWRpc0NhY2hlUmVwb3NpdG9yeSIsImV4cG9ydHMiXSwic291cmNlcyI6WyJFOlxcd29ya3NwYWNlLXNhc3NcXHJlcG9cXHBhY2thZ2VzXFxhdXRoLWNvcmVcXHNyY1xcZG9tYWluXFxyZXBvc2l0b3JpZXNcXHNlc3Npb24tY2FjaGUucmVwb3NpdG9yeS50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBSZWRpc0NhY2hlUmVwb3NpdG9yeSB9IGZyb20gXCJAcmVwby9jb21tb25cIjtcclxuaW1wb3J0IHsgU2Vzc2lvbkVudGl0eSB9IGZyb20gXCIuLi9lbnRpdGllc1wiO1xyXG5cclxuZXhwb3J0IGFic3RyYWN0IGNsYXNzIFNlc3Npb25DYWNoZVJlcG9zaXRvcnkgZXh0ZW5kcyBSZWRpc0NhY2hlUmVwb3NpdG9yeTxTZXNzaW9uRW50aXR5PiB7fVxyXG4iXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQSxNQUFBQSxRQUFBO0FBQUE7QUFBQSxDQUFBQyxhQUFBLEdBQUFDLENBQUEsT0FBQUMsT0FBQTtBQUdBLE1BQXNCQyxzQkFBdUI7QUFBQTtBQUFBLENBQVFKLFFBQUEsQ0FBQUssb0JBQW1DO0FBQUc7QUFBQUosYUFBQSxHQUFBQyxDQUFBO0FBQTNGSSxPQUFBLENBQUFGLHNCQUFBLEdBQUFBLHNCQUFBIiwiaWdub3JlTGlzdCI6W119

@@ -1,21 +1,32 @@
+import { UserRepository } from "@/common/domain";
 import { NotFoundError } from "@repo/common";
+import { createMock } from "@repo/jest-config/helpers";
 import { UserFactory } from "../../factories";
 import { UserMapper } from "../../mappers";
 import { MeUseCase } from "../me.use-case";
-import { UserInMemoryRepository } from "../../../domain/repositories/in-memory/user-in-memory.repository";
 
 describe("MeUseCase", () => {
-  let sut: MeUseCase;
-  let userInMemoryRepository: UserInMemoryRepository;
+  const makeSut = () => {
+    const userRepository = createMock<UserRepository>({
+      findById: jest.fn(),
+      create: jest.fn(),
+    });
+
+    const sut = new MeUseCase(userRepository);
+
+    return {
+      sut,
+      userRepository,
+    };
+  };
 
   beforeEach(() => {
     jest.clearAllMocks();
-    userInMemoryRepository = new UserInMemoryRepository();
-    sut = new MeUseCase(userInMemoryRepository);
   });
 
   describe("Success Cases", () => {
     it("should return user projection when user exists", async () => {
+      const { sut, userRepository } = makeSut();
       const user = UserFactory.build({
         email: "john@email.com",
         firstName: "John",
@@ -24,9 +35,9 @@ describe("MeUseCase", () => {
         emailVerified: null,
       });
 
-      await userInMemoryRepository.create(user);
+      userRepository.findById.mockResolvedValue(user);
 
-      const findByIdSpy = jest.spyOn(userInMemoryRepository, "findById");
+      const findByIdSpy = jest.spyOn(userRepository, "findById");
       const mapperSpy = jest.spyOn(UserMapper, "toProjection");
       const expectedProjection = {
         id: user.id.getValue(),
@@ -54,9 +65,11 @@ describe("MeUseCase", () => {
   });
 
   describe("Failure Cases", () => {
+    const { sut, userRepository } = makeSut();
+
     it("should return NotFoundError when user does not exist", async () => {
       const userId = "550e8400-e29b-41d4-a716-446655440000";
-      const findByIdSpy = jest.spyOn(userInMemoryRepository, "findById");
+      const findByIdSpy = jest.spyOn(userRepository, "findById");
       const mapperSpy = jest.spyOn(UserMapper, "toProjection");
 
       const result = await sut.execute(userId);
@@ -74,6 +87,8 @@ describe("MeUseCase", () => {
     });
 
     it("should return NotFoundError when user is soft deleted", async () => {
+      const { sut, userRepository } = makeSut();
+
       const user = UserFactory.build({
         email: "john@email.com",
         firstName: "John",
@@ -83,9 +98,9 @@ describe("MeUseCase", () => {
       });
 
       user.softDelete();
-      await userInMemoryRepository.create(user);
+      await userRepository.create(user);
 
-      const findByIdSpy = jest.spyOn(userInMemoryRepository, "findById");
+      const findByIdSpy = jest.spyOn(userRepository, "findById");
       const mapperSpy = jest.spyOn(UserMapper, "toProjection");
 
       const result = await sut.execute(user.id.getValue());
@@ -103,7 +118,9 @@ describe("MeUseCase", () => {
     });
 
     it("should return NotFoundError when userId is empty", async () => {
-      const findByIdSpy = jest.spyOn(userInMemoryRepository, "findById");
+      const { sut, userRepository } = makeSut();
+
+      const findByIdSpy = jest.spyOn(userRepository, "findById");
 
       const result = await sut.execute("");
 
@@ -121,8 +138,10 @@ describe("MeUseCase", () => {
 
   describe("Edge Cases", () => {
     it("should call repository with uuid format userId", async () => {
+      const { sut, userRepository } = makeSut();
+
       const userId = "550e8400-e29b-41d4-a716-446655440000";
-      const findByIdSpy = jest.spyOn(userInMemoryRepository, "findById");
+      const findByIdSpy = jest.spyOn(userRepository, "findById");
 
       await sut.execute(userId);
 

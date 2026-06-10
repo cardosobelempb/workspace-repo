@@ -1,0 +1,105 @@
+2fd2781cad0afc8530d1fcedbf07f6cc
+"use strict";
+
+/* istanbul ignore next */
+function cov_b80911jpd() {
+  var path = "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\repositories\\user.repository.ts";
+  var hash = "1c65479a9e83ff16ba61daf457ab95b906365a69";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\repositories\\user.repository.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 32
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 17
+        },
+        end: {
+          line: 4,
+          column: 40
+        }
+      },
+      "3": {
+        start: {
+          line: 7,
+          column: 0
+        },
+        end: {
+          line: 7,
+          column: 40
+        }
+      }
+    },
+    fnMap: {},
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    f: {},
+    b: {},
+    inputSourceMap: {
+      file: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\repositories\\user.repository.ts",
+      mappings: ";;;AAAA,yCAA8C;AAG9C,MAAsB,cAAe,SAAQ,uBAA0B;CAOtE;AAPD,wCAOC",
+      names: [],
+      sources: ["E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\repositories\\user.repository.ts"],
+      sourcesContent: ["import { BaseRepository } from \"@repo/common\";\r\nimport { UserEntity } from \"../entities\";\r\n\r\nexport abstract class UserRepository extends BaseRepository<UserEntity> {\r\n  abstract findActiveByEmail(email: string): Promise<UserEntity | null>;\r\n  abstract findActiveById(id: string): Promise<UserEntity | null>;\r\n  abstract existsByEmail(email: string): Promise<boolean>;\r\n  abstract findByEmail(email: string): Promise<UserEntity | null>;\r\n  abstract markEmailVerified(userId: string, verifiedAt: Date): Promise<void>;\r\n  abstract softDelete(userId: string): Promise<void>;\r\n}\r\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "1c65479a9e83ff16ba61daf457ab95b906365a69"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_b80911jpd = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_b80911jpd();
+cov_b80911jpd().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_b80911jpd().s[1]++;
+exports.UserRepository = void 0;
+const common_1 =
+/* istanbul ignore next */
+(cov_b80911jpd().s[2]++, require("@repo/common"));
+class UserRepository extends
+/* istanbul ignore next */
+(common_1.BaseRepository) {}
+/* istanbul ignore next */
+cov_b80911jpd().s[3]++;
+exports.UserRepository = UserRepository;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb21tb25fMSIsImNvdl9iODA5MTFqcGQiLCJzIiwicmVxdWlyZSIsIlVzZXJSZXBvc2l0b3J5IiwiQmFzZVJlcG9zaXRvcnkiLCJleHBvcnRzIl0sInNvdXJjZXMiOlsiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcYXV0aC1jb3JlXFxzcmNcXGRvbWFpblxccmVwb3NpdG9yaWVzXFx1c2VyLnJlcG9zaXRvcnkudHMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgQmFzZVJlcG9zaXRvcnkgfSBmcm9tIFwiQHJlcG8vY29tbW9uXCI7XHJcbmltcG9ydCB7IFVzZXJFbnRpdHkgfSBmcm9tIFwiLi4vZW50aXRpZXNcIjtcclxuXHJcbmV4cG9ydCBhYnN0cmFjdCBjbGFzcyBVc2VyUmVwb3NpdG9yeSBleHRlbmRzIEJhc2VSZXBvc2l0b3J5PFVzZXJFbnRpdHk+IHtcclxuICBhYnN0cmFjdCBmaW5kQWN0aXZlQnlFbWFpbChlbWFpbDogc3RyaW5nKTogUHJvbWlzZTxVc2VyRW50aXR5IHwgbnVsbD47XHJcbiAgYWJzdHJhY3QgZmluZEFjdGl2ZUJ5SWQoaWQ6IHN0cmluZyk6IFByb21pc2U8VXNlckVudGl0eSB8IG51bGw+O1xyXG4gIGFic3RyYWN0IGV4aXN0c0J5RW1haWwoZW1haWw6IHN0cmluZyk6IFByb21pc2U8Ym9vbGVhbj47XHJcbiAgYWJzdHJhY3QgZmluZEJ5RW1haWwoZW1haWw6IHN0cmluZyk6IFByb21pc2U8VXNlckVudGl0eSB8IG51bGw+O1xyXG4gIGFic3RyYWN0IG1hcmtFbWFpbFZlcmlmaWVkKHVzZXJJZDogc3RyaW5nLCB2ZXJpZmllZEF0OiBEYXRlKTogUHJvbWlzZTx2b2lkPjtcclxuICBhYnN0cmFjdCBzb2Z0RGVsZXRlKHVzZXJJZDogc3RyaW5nKTogUHJvbWlzZTx2b2lkPjtcclxufVxyXG4iXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQSxNQUFBQSxRQUFBO0FBQUE7QUFBQSxDQUFBQyxhQUFBLEdBQUFDLENBQUEsT0FBQUMsT0FBQTtBQUdBLE1BQXNCQyxjQUFlO0FBQUE7QUFBQSxDQUFRSixRQUFBLENBQUFLLGNBQTBCO0FBT3RFO0FBQUFKLGFBQUEsR0FBQUMsQ0FBQTtBQVBESSxPQUFBLENBQUFGLGNBQUEsR0FBQUEsY0FBQSIsImlnbm9yZUxpc3QiOltdfQ==

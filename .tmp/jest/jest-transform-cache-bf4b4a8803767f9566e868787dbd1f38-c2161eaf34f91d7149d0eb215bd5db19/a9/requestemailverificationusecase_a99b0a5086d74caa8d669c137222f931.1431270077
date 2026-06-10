@@ -1,0 +1,451 @@
+8434a42f878e248feba307c75e1404a9
+"use strict";
+
+/* istanbul ignore next */
+function cov_1ge7slckjm() {
+  var path = "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\use-cases\\request-email-verification.use-case.ts";
+  var hash = "622bb195a44032d8446d1b24e8452a015e9b8186";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\use-cases\\request-email-verification.use-case.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 49
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 20
+        },
+        end: {
+          line: 4,
+          column: 49
+        }
+      },
+      "3": {
+        start: {
+          line: 5,
+          column: 17
+        },
+        end: {
+          line: 5,
+          column: 40
+        }
+      },
+      "4": {
+        start: {
+          line: 6,
+          column: 20
+        },
+        end: {
+          line: 6,
+          column: 43
+        }
+      },
+      "5": {
+        start: {
+          line: 15,
+          column: 8
+        },
+        end: {
+          line: 15,
+          column: 71
+        }
+      },
+      "6": {
+        start: {
+          line: 16,
+          column: 8
+        },
+        end: {
+          line: 16,
+          column: 61
+        }
+      },
+      "7": {
+        start: {
+          line: 17,
+          column: 8
+        },
+        end: {
+          line: 17,
+          column: 43
+        }
+      },
+      "8": {
+        start: {
+          line: 18,
+          column: 8
+        },
+        end: {
+          line: 18,
+          column: 45
+        }
+      },
+      "9": {
+        start: {
+          line: 19,
+          column: 8
+        },
+        end: {
+          line: 19,
+          column: 39
+        }
+      },
+      "10": {
+        start: {
+          line: 20,
+          column: 8
+        },
+        end: {
+          line: 20,
+          column: 45
+        }
+      },
+      "11": {
+        start: {
+          line: 23,
+          column: 8
+        },
+        end: {
+          line: 23,
+          column: 83
+        }
+      },
+      "12": {
+        start: {
+          line: 24,
+          column: 25
+        },
+        end: {
+          line: 24,
+          column: 75
+        }
+      },
+      "13": {
+        start: {
+          line: 25,
+          column: 26
+        },
+        end: {
+          line: 25,
+          column: 125
+        }
+      },
+      "14": {
+        start: {
+          line: 26,
+          column: 26
+        },
+        end: {
+          line: 26,
+          column: 85
+        }
+      },
+      "15": {
+        start: {
+          line: 27,
+          column: 28
+        },
+        end: {
+          line: 32,
+          column: 10
+        }
+      },
+      "16": {
+        start: {
+          line: 33,
+          column: 8
+        },
+        end: {
+          line: 33,
+          column: 67
+        }
+      },
+      "17": {
+        start: {
+          line: 34,
+          column: 21
+        },
+        end: {
+          line: 34,
+          column: 78
+        }
+      },
+      "18": {
+        start: {
+          line: 35,
+          column: 8
+        },
+        end: {
+          line: 42,
+          column: 11
+        }
+      },
+      "19": {
+        start: {
+          line: 43,
+          column: 8
+        },
+        end: {
+          line: 43,
+          column: 46
+        }
+      },
+      "20": {
+        start: {
+          line: 46,
+          column: 0
+        },
+        end: {
+          line: 46,
+          column: 74
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 14,
+            column: 4
+          },
+          end: {
+            line: 14,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 14,
+            column: 134
+          },
+          end: {
+            line: 21,
+            column: 5
+          }
+        },
+        line: 14
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 22,
+            column: 4
+          },
+          end: {
+            line: 22,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 22,
+            column: 25
+          },
+          end: {
+            line: 44,
+            column: 5
+          }
+        },
+        line: 22
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 14,
+            column: 113
+          },
+          end: {
+            line: 14,
+            column: 132
+          }
+        },
+        type: "default-arg",
+        locations: [{
+          start: {
+            line: 14,
+            column: 130
+          },
+          end: {
+            line: 14,
+            column: 132
+          }
+        }],
+        line: 14
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0,
+      "15": 0,
+      "16": 0,
+      "17": 0,
+      "18": 0,
+      "19": 0,
+      "20": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0
+    },
+    b: {
+      "0": [0]
+    },
+    inputSourceMap: {
+      file: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\use-cases\\request-email-verification.use-case.ts",
+      mappings: ";;;AAAA,kDAA0D;AAC1D,yCAMsB;AAKtB,4CAA6D;AAO7D,MAAa,+BAA+B;IAEvB;IACA;IACA;IACA;IACA;IACA;IANnB,YACmB,2BAA6D,EAC7D,sBAA8C,EAC9C,aAA4B,EAC5B,cAAkD,EAClD,WAAmB,EACnB,iBAAyB,EAAE;QAL3B,gCAA2B,GAA3B,2BAA2B,CAAkC;QAC7D,2BAAsB,GAAtB,sBAAsB,CAAwB;QAC9C,kBAAa,GAAb,aAAa,CAAe;QAC5B,mBAAc,GAAd,cAAc,CAAoC;QAClD,gBAAW,GAAX,WAAW,CAAQ;QACnB,mBAAc,GAAd,cAAc,CAAa;IAC3C,CAAC;IAEJ,KAAK,CAAC,OAAO,CAAC,KAAoC;QAChD,MAAM,IAAI,CAAC,2BAA2B,CAAC,qBAAqB,CAAC,KAAK,CAAC,MAAM,CAAC,CAAC;QAE3E,MAAM,QAAQ,GAAG,MAAM,IAAI,CAAC,cAAc,CAAC,QAAQ,CAAC,EAAE,MAAM,EAAE,EAAE,EAAE,CAAC,CAAC;QACpE,MAAM,SAAS,GAAG,MAAM,IAAI,CAAC,aAAa,CAAC,IAAI,CAC7C,QAAQ,EACR,gCAAoB,CAAC,yBAAyB,CAC/C,CAAC;QACF,MAAM,SAAS,GAAG,IAAI,IAAI,CAAC,IAAI,CAAC,GAAG,EAAE,GAAG,IAAI,CAAC,cAAc,GAAG,EAAE,GAAG,EAAE,GAAG,IAAI,CAAC,CAAC;QAE9E,MAAM,WAAW,GAAG,yCAA6B,CAAC,KAAK,CAAC;YACtD,MAAM,EAAE,KAAK,CAAC,MAAM;YACpB,SAAS;YACT,SAAS,EAAE,SAAS,CAAC,WAAW,EAAE;YAClC,MAAM,EAAE,IAAI;SACb,CAAC,CAAC;QAEH,MAAM,IAAI,CAAC,2BAA2B,CAAC,MAAM,CAAC,WAAW,CAAC,CAAC;QAE3D,MAAM,IAAI,GAAG,GAAG,IAAI,CAAC,WAAW,4BAA4B,QAAQ,EAAE,CAAC;QAEvE,MAAM,IAAI,CAAC,sBAAsB,CAAC,IAAI,CAAC;YACrC,EAAE,EAAE,KAAK,CAAC,KAAK;YACf,OAAO,EAAE,qBAAqB;YAC9B,IAAI,EAAE,eAAe,IAAI,sEAAsE,IAAI,CAAC,cAAc,aAAa;YAC/H,OAAO,EAAE,wBAAwB,IAAI,EAAE;YACvC,OAAO,EAAE,4BAAmB,CAAC,KAAK;YAClC,QAAQ,EAAE,EAAE,MAAM,EAAE,KAAK,CAAC,MAAM,EAAE;SACnC,CAAC,CAAC;QAEH,OAAO,IAAA,cAAK,EAAC,SAAS,CAAC,CAAC;IAC1B,CAAC;CACF;AA1CD,0EA0CC",
+      names: [],
+      sources: ["E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\use-cases\\request-email-verification.use-case.ts"],
+      sourcesContent: ["import { AUTH_TOKEN_CONSTANTS } from \"@/common/constants\";\nimport {\n  Either,\n  HashGenerator,\n  NotificationChannel,\n  right,\n  TokenGenerator,\n} from \"@repo/common\";\nimport { EmailVerificationTokenRepository } from \"../../domain/repositories\";\n\nimport { NodemailerEmailAdapter } from \"@repo/notification-email\";\n\nimport { EmailVerificationTokenFactory } from \"../factories\";\n\nexport type RequestEmailVerificationInput = {\n  userId: string;\n  email: string;\n};\n\nexport class RequestEmailVerificationUseCase {\n  constructor(\n    private readonly emailVerificationRepository: EmailVerificationTokenRepository,\n    private readonly nodemailerEmailAdapter: NodemailerEmailAdapter,\n    private readonly hashGenerator: HashGenerator,\n    private readonly tokenGenerator: TokenGenerator<{ length: number }>,\n    private readonly frontendUrl: string,\n    private readonly expiresInHours: number = 24,\n  ) {}\n\n  async execute(input: RequestEmailVerificationInput): Promise<Either<never, void>> {\n    await this.emailVerificationRepository.invalidateAllByUserId(input.userId);\n\n    const rawToken = await this.tokenGenerator.generate({ length: 32 });\n    const tokenHash = await this.hashGenerator.hash(\n      rawToken,\n      AUTH_TOKEN_CONSTANTS.SESSION_TOKEN_SALT_ROUNDS,\n    );\n    const expiresAt = new Date(Date.now() + this.expiresInHours * 60 * 60 * 1000);\n\n    const userFactory = EmailVerificationTokenFactory.build({\n      userId: input.userId,\n      tokenHash,\n      expiresAt: expiresAt.toISOString(),\n      usedAt: null,\n    });\n\n    await this.emailVerificationRepository.create(userFactory);\n\n    const link = `${this.frontendUrl}/auth/verify-email?token=${rawToken}`;\n\n    await this.nodemailerEmailAdapter.send({\n      to: input.email,\n      subject: \"Confirme seu e-mail\",\n      html: `<p><a href=\"${link}\">Clique aqui para confirmar seu e-mail</a></p><p>O link expira em ${this.expiresInHours} horas.</p>`,\n      content: `Confirme seu e-mail: ${link}`,\n      channel: NotificationChannel.EMAIL,\n      metadata: { userId: input.userId },\n    });\n\n    return right(undefined);\n  }\n}\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "622bb195a44032d8446d1b24e8452a015e9b8186"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_1ge7slckjm = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_1ge7slckjm();
+cov_1ge7slckjm().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_1ge7slckjm().s[1]++;
+exports.RequestEmailVerificationUseCase = void 0;
+const constants_1 =
+/* istanbul ignore next */
+(cov_1ge7slckjm().s[2]++, require("@/common/constants"));
+const common_1 =
+/* istanbul ignore next */
+(cov_1ge7slckjm().s[3]++, require("@repo/common"));
+const factories_1 =
+/* istanbul ignore next */
+(cov_1ge7slckjm().s[4]++, require("../factories"));
+class RequestEmailVerificationUseCase {
+  emailVerificationRepository;
+  nodemailerEmailAdapter;
+  hashGenerator;
+  tokenGenerator;
+  frontendUrl;
+  expiresInHours;
+  constructor(emailVerificationRepository, nodemailerEmailAdapter, hashGenerator, tokenGenerator, frontendUrl, expiresInHours =
+  /* istanbul ignore next */
+  (cov_1ge7slckjm().b[0][0]++, 24)) {
+    /* istanbul ignore next */
+    cov_1ge7slckjm().f[0]++;
+    cov_1ge7slckjm().s[5]++;
+    this.emailVerificationRepository = emailVerificationRepository;
+    /* istanbul ignore next */
+    cov_1ge7slckjm().s[6]++;
+    this.nodemailerEmailAdapter = nodemailerEmailAdapter;
+    /* istanbul ignore next */
+    cov_1ge7slckjm().s[7]++;
+    this.hashGenerator = hashGenerator;
+    /* istanbul ignore next */
+    cov_1ge7slckjm().s[8]++;
+    this.tokenGenerator = tokenGenerator;
+    /* istanbul ignore next */
+    cov_1ge7slckjm().s[9]++;
+    this.frontendUrl = frontendUrl;
+    /* istanbul ignore next */
+    cov_1ge7slckjm().s[10]++;
+    this.expiresInHours = expiresInHours;
+  }
+  async execute(input) {
+    /* istanbul ignore next */
+    cov_1ge7slckjm().f[1]++;
+    cov_1ge7slckjm().s[11]++;
+    await this.emailVerificationRepository.invalidateAllByUserId(input.userId);
+    const rawToken =
+    /* istanbul ignore next */
+    (cov_1ge7slckjm().s[12]++, await this.tokenGenerator.generate({
+      length: 32
+    }));
+    const tokenHash =
+    /* istanbul ignore next */
+    (cov_1ge7slckjm().s[13]++, await this.hashGenerator.hash(rawToken, constants_1.AUTH_TOKEN_CONSTANTS.SESSION_TOKEN_SALT_ROUNDS));
+    const expiresAt =
+    /* istanbul ignore next */
+    (cov_1ge7slckjm().s[14]++, new Date(Date.now() + this.expiresInHours * 60 * 60 * 1000));
+    const userFactory =
+    /* istanbul ignore next */
+    (cov_1ge7slckjm().s[15]++, factories_1.EmailVerificationTokenFactory.build({
+      userId: input.userId,
+      tokenHash,
+      expiresAt: expiresAt.toISOString(),
+      usedAt: null
+    }));
+    /* istanbul ignore next */
+    cov_1ge7slckjm().s[16]++;
+    await this.emailVerificationRepository.create(userFactory);
+    const link =
+    /* istanbul ignore next */
+    (cov_1ge7slckjm().s[17]++, `${this.frontendUrl}/auth/verify-email?token=${rawToken}`);
+    /* istanbul ignore next */
+    cov_1ge7slckjm().s[18]++;
+    await this.nodemailerEmailAdapter.send({
+      to: input.email,
+      subject: "Confirme seu e-mail",
+      html: `<p><a href="${link}">Clique aqui para confirmar seu e-mail</a></p><p>O link expira em ${this.expiresInHours} horas.</p>`,
+      content: `Confirme seu e-mail: ${link}`,
+      channel: common_1.NotificationChannel.EMAIL,
+      metadata: {
+        userId: input.userId
+      }
+    });
+    /* istanbul ignore next */
+    cov_1ge7slckjm().s[19]++;
+    return (0, common_1.right)(undefined);
+  }
+}
+/* istanbul ignore next */
+cov_1ge7slckjm().s[20]++;
+exports.RequestEmailVerificationUseCase = RequestEmailVerificationUseCase;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMWdlN3NsY2tqbSIsImFjdHVhbENvdmVyYWdlIiwicyIsImNvbnN0YW50c18xIiwicmVxdWlyZSIsImNvbW1vbl8xIiwiZmFjdG9yaWVzXzEiLCJSZXF1ZXN0RW1haWxWZXJpZmljYXRpb25Vc2VDYXNlIiwiZW1haWxWZXJpZmljYXRpb25SZXBvc2l0b3J5Iiwibm9kZW1haWxlckVtYWlsQWRhcHRlciIsImhhc2hHZW5lcmF0b3IiLCJ0b2tlbkdlbmVyYXRvciIsImZyb250ZW5kVXJsIiwiZXhwaXJlc0luSG91cnMiLCJjb25zdHJ1Y3RvciIsImIiLCJmIiwiZXhlY3V0ZSIsImlucHV0IiwiaW52YWxpZGF0ZUFsbEJ5VXNlcklkIiwidXNlcklkIiwicmF3VG9rZW4iLCJnZW5lcmF0ZSIsImxlbmd0aCIsInRva2VuSGFzaCIsImhhc2giLCJBVVRIX1RPS0VOX0NPTlNUQU5UUyIsIlNFU1NJT05fVE9LRU5fU0FMVF9ST1VORFMiLCJleHBpcmVzQXQiLCJEYXRlIiwibm93IiwidXNlckZhY3RvcnkiLCJFbWFpbFZlcmlmaWNhdGlvblRva2VuRmFjdG9yeSIsImJ1aWxkIiwidG9JU09TdHJpbmciLCJ1c2VkQXQiLCJjcmVhdGUiLCJsaW5rIiwic2VuZCIsInRvIiwiZW1haWwiLCJzdWJqZWN0IiwiaHRtbCIsImNvbnRlbnQiLCJjaGFubmVsIiwiTm90aWZpY2F0aW9uQ2hhbm5lbCIsIkVNQUlMIiwibWV0YWRhdGEiLCJyaWdodCIsInVuZGVmaW5lZCIsImV4cG9ydHMiXSwic291cmNlcyI6WyJFOlxcd29ya3NwYWNlLXNhc3NcXHJlcG9cXHBhY2thZ2VzXFxhdXRoLWNvcmVcXHNyY1xcYXBwbGljYXRpb25cXHVzZS1jYXNlc1xccmVxdWVzdC1lbWFpbC12ZXJpZmljYXRpb24udXNlLWNhc2UudHMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgQVVUSF9UT0tFTl9DT05TVEFOVFMgfSBmcm9tIFwiQC9jb21tb24vY29uc3RhbnRzXCI7XG5pbXBvcnQge1xuICBFaXRoZXIsXG4gIEhhc2hHZW5lcmF0b3IsXG4gIE5vdGlmaWNhdGlvbkNoYW5uZWwsXG4gIHJpZ2h0LFxuICBUb2tlbkdlbmVyYXRvcixcbn0gZnJvbSBcIkByZXBvL2NvbW1vblwiO1xuaW1wb3J0IHsgRW1haWxWZXJpZmljYXRpb25Ub2tlblJlcG9zaXRvcnkgfSBmcm9tIFwiLi4vLi4vZG9tYWluL3JlcG9zaXRvcmllc1wiO1xuXG5pbXBvcnQgeyBOb2RlbWFpbGVyRW1haWxBZGFwdGVyIH0gZnJvbSBcIkByZXBvL25vdGlmaWNhdGlvbi1lbWFpbFwiO1xuXG5pbXBvcnQgeyBFbWFpbFZlcmlmaWNhdGlvblRva2VuRmFjdG9yeSB9IGZyb20gXCIuLi9mYWN0b3JpZXNcIjtcblxuZXhwb3J0IHR5cGUgUmVxdWVzdEVtYWlsVmVyaWZpY2F0aW9uSW5wdXQgPSB7XG4gIHVzZXJJZDogc3RyaW5nO1xuICBlbWFpbDogc3RyaW5nO1xufTtcblxuZXhwb3J0IGNsYXNzIFJlcXVlc3RFbWFpbFZlcmlmaWNhdGlvblVzZUNhc2Uge1xuICBjb25zdHJ1Y3RvcihcbiAgICBwcml2YXRlIHJlYWRvbmx5IGVtYWlsVmVyaWZpY2F0aW9uUmVwb3NpdG9yeTogRW1haWxWZXJpZmljYXRpb25Ub2tlblJlcG9zaXRvcnksXG4gICAgcHJpdmF0ZSByZWFkb25seSBub2RlbWFpbGVyRW1haWxBZGFwdGVyOiBOb2RlbWFpbGVyRW1haWxBZGFwdGVyLFxuICAgIHByaXZhdGUgcmVhZG9ubHkgaGFzaEdlbmVyYXRvcjogSGFzaEdlbmVyYXRvcixcbiAgICBwcml2YXRlIHJlYWRvbmx5IHRva2VuR2VuZXJhdG9yOiBUb2tlbkdlbmVyYXRvcjx7IGxlbmd0aDogbnVtYmVyIH0+LFxuICAgIHByaXZhdGUgcmVhZG9ubHkgZnJvbnRlbmRVcmw6IHN0cmluZyxcbiAgICBwcml2YXRlIHJlYWRvbmx5IGV4cGlyZXNJbkhvdXJzOiBudW1iZXIgPSAyNCxcbiAgKSB7fVxuXG4gIGFzeW5jIGV4ZWN1dGUoaW5wdXQ6IFJlcXVlc3RFbWFpbFZlcmlmaWNhdGlvbklucHV0KTogUHJvbWlzZTxFaXRoZXI8bmV2ZXIsIHZvaWQ+PiB7XG4gICAgYXdhaXQgdGhpcy5lbWFpbFZlcmlmaWNhdGlvblJlcG9zaXRvcnkuaW52YWxpZGF0ZUFsbEJ5VXNlcklkKGlucHV0LnVzZXJJZCk7XG5cbiAgICBjb25zdCByYXdUb2tlbiA9IGF3YWl0IHRoaXMudG9rZW5HZW5lcmF0b3IuZ2VuZXJhdGUoeyBsZW5ndGg6IDMyIH0pO1xuICAgIGNvbnN0IHRva2VuSGFzaCA9IGF3YWl0IHRoaXMuaGFzaEdlbmVyYXRvci5oYXNoKFxuICAgICAgcmF3VG9rZW4sXG4gICAgICBBVVRIX1RPS0VOX0NPTlNUQU5UUy5TRVNTSU9OX1RPS0VOX1NBTFRfUk9VTkRTLFxuICAgICk7XG4gICAgY29uc3QgZXhwaXJlc0F0ID0gbmV3IERhdGUoRGF0ZS5ub3coKSArIHRoaXMuZXhwaXJlc0luSG91cnMgKiA2MCAqIDYwICogMTAwMCk7XG5cbiAgICBjb25zdCB1c2VyRmFjdG9yeSA9IEVtYWlsVmVyaWZpY2F0aW9uVG9rZW5GYWN0b3J5LmJ1aWxkKHtcbiAgICAgIHVzZXJJZDogaW5wdXQudXNlcklkLFxuICAgICAgdG9rZW5IYXNoLFxuICAgICAgZXhwaXJlc0F0OiBleHBpcmVzQXQudG9JU09TdHJpbmcoKSxcbiAgICAgIHVzZWRBdDogbnVsbCxcbiAgICB9KTtcblxuICAgIGF3YWl0IHRoaXMuZW1haWxWZXJpZmljYXRpb25SZXBvc2l0b3J5LmNyZWF0ZSh1c2VyRmFjdG9yeSk7XG5cbiAgICBjb25zdCBsaW5rID0gYCR7dGhpcy5mcm9udGVuZFVybH0vYXV0aC92ZXJpZnktZW1haWw/dG9rZW49JHtyYXdUb2tlbn1gO1xuXG4gICAgYXdhaXQgdGhpcy5ub2RlbWFpbGVyRW1haWxBZGFwdGVyLnNlbmQoe1xuICAgICAgdG86IGlucHV0LmVtYWlsLFxuICAgICAgc3ViamVjdDogXCJDb25maXJtZSBzZXUgZS1tYWlsXCIsXG4gICAgICBodG1sOiBgPHA+PGEgaHJlZj1cIiR7bGlua31cIj5DbGlxdWUgYXF1aSBwYXJhIGNvbmZpcm1hciBzZXUgZS1tYWlsPC9hPjwvcD48cD5PIGxpbmsgZXhwaXJhIGVtICR7dGhpcy5leHBpcmVzSW5Ib3Vyc30gaG9yYXMuPC9wPmAsXG4gICAgICBjb250ZW50OiBgQ29uZmlybWUgc2V1IGUtbWFpbDogJHtsaW5rfWAsXG4gICAgICBjaGFubmVsOiBOb3RpZmljYXRpb25DaGFubmVsLkVNQUlMLFxuICAgICAgbWV0YWRhdGE6IHsgdXNlcklkOiBpbnB1dC51c2VySWQgfSxcbiAgICB9KTtcblxuICAgIHJldHVybiByaWdodCh1bmRlZmluZWQpO1xuICB9XG59XG4iXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztJQXNCcUI7SUFBQUEsY0FBQSxZQUFBQSxDQUFBO01BQUEsT0FBQUMsY0FBQTtJQUFBO0VBQUE7RUFBQSxPQUFBQSxjQUFBO0FBQUE7QUFBQUQsY0FBQTtBQUFBQSxjQUFBLEdBQUFFLENBQUE7Ozs7Ozs7QUF0QnJCLE1BQUFDLFdBQUE7QUFBQTtBQUFBLENBQUFILGNBQUEsR0FBQUUsQ0FBQSxPQUFBRSxPQUFBO0FBQ0EsTUFBQUMsUUFBQTtBQUFBO0FBQUEsQ0FBQUwsY0FBQSxHQUFBRSxDQUFBLE9BQUFFLE9BQUE7QUFXQSxN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

@@ -1,0 +1,178 @@
+5c6e0ebbb6885518c439d74c663c1b5b
+"use strict";
+
+// packages/auth-core/src/application/use-cases/create-audit-log.use-case.ts
+/* istanbul ignore next */
+function cov_2jv25xskav() {
+  var path = "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\use-cases\\create-audit-log.use-case.ts";
+  var hash = "5fbc6a100f4a785dbc75c3f738b387600ab7767a";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\use-cases\\create-audit-log.use-case.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 4,
+          column: 0
+        },
+        end: {
+          line: 4,
+          column: 39
+        }
+      },
+      "2": {
+        start: {
+          line: 8,
+          column: 8
+        },
+        end: {
+          line: 8,
+          column: 53
+        }
+      },
+      "3": {
+        start: {
+          line: 11,
+          column: 8
+        },
+        end: {
+          line: 11,
+          column: 53
+        }
+      },
+      "4": {
+        start: {
+          line: 14,
+          column: 0
+        },
+        end: {
+          line: 14,
+          column: 54
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 7,
+            column: 4
+          },
+          end: {
+            line: 7,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 7,
+            column: 36
+          },
+          end: {
+            line: 9,
+            column: 5
+          }
+        },
+        line: 7
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 10,
+            column: 4
+          },
+          end: {
+            line: 10,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 10,
+            column: 25
+          },
+          end: {
+            line: 12,
+            column: 5
+          }
+        },
+        line: 10
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0
+    },
+    b: {},
+    inputSourceMap: {
+      file: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\use-cases\\create-audit-log.use-case.ts",
+      mappings: ";AAAA,4EAA4E;;;AAK5E,MAAa,qBAAqB;IACH;IAA7B,YAA6B,kBAAsC;QAAtC,uBAAkB,GAAlB,kBAAkB,CAAoB;IAAG,CAAC;IAEvE,KAAK,CAAC,OAAO,CAAC,KAAqB;QACjC,OAAO,IAAI,CAAC,kBAAkB,CAAC,MAAM,CAAC,KAAK,CAAC,CAAC;IAC/C,CAAC;CACF;AAND,sDAMC",
+      names: [],
+      sources: ["E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\use-cases\\create-audit-log.use-case.ts"],
+      sourcesContent: ["// packages/auth-core/src/application/use-cases/create-audit-log.use-case.ts\r\n\r\nimport type { AuditLogEntity } from \"../../domain/entities/audit-log.entity\";\r\nimport type { AuditLogRepository } from \"../../domain/repositories/audit-log.repository\";\r\n\r\nexport class CreateAuditLogUseCase {\r\n  constructor(private readonly auditLogRepository: AuditLogRepository) {}\r\n\r\n  async execute(input: AuditLogEntity): Promise<AuditLogEntity> {\r\n    return this.auditLogRepository.create(input);\r\n  }\r\n}\r\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "5fbc6a100f4a785dbc75c3f738b387600ab7767a"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_2jv25xskav = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_2jv25xskav();
+cov_2jv25xskav().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_2jv25xskav().s[1]++;
+exports.CreateAuditLogUseCase = void 0;
+class CreateAuditLogUseCase {
+  auditLogRepository;
+  constructor(auditLogRepository) {
+    /* istanbul ignore next */
+    cov_2jv25xskav().f[0]++;
+    cov_2jv25xskav().s[2]++;
+    this.auditLogRepository = auditLogRepository;
+  }
+  async execute(input) {
+    /* istanbul ignore next */
+    cov_2jv25xskav().f[1]++;
+    cov_2jv25xskav().s[3]++;
+    return this.auditLogRepository.create(input);
+  }
+}
+/* istanbul ignore next */
+cov_2jv25xskav().s[4]++;
+exports.CreateAuditLogUseCase = CreateAuditLogUseCase;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMmp2MjV4c2thdiIsInBhdGgiLCJoYXNoIiwiZ2xvYmFsIiwiRnVuY3Rpb24iLCJnY3YiLCJjb3ZlcmFnZURhdGEiLCJzdGF0ZW1lbnRNYXAiLCJzdGFydCIsImxpbmUiLCJjb2x1bW4iLCJlbmQiLCJmbk1hcCIsIm5hbWUiLCJkZWNsIiwibG9jIiwiYnJhbmNoTWFwIiwicyIsImYiLCJiIiwiaW5wdXRTb3VyY2VNYXAiLCJmaWxlIiwibWFwcGluZ3MiLCJuYW1lcyIsInNvdXJjZXMiLCJzb3VyY2VzQ29udGVudCIsInZlcnNpb24iLCJfY292ZXJhZ2VTY2hlbWEiLCJjb3ZlcmFnZSIsImFjdHVhbENvdmVyYWdlIiwiQ3JlYXRlQXVkaXRMb2dVc2VDYXNlIiwiYXVkaXRMb2dSZXBvc2l0b3J5IiwiY29uc3RydWN0b3IiLCJleGVjdXRlIiwiaW5wdXQiLCJjcmVhdGUiLCJleHBvcnRzIl0sInNvdXJjZXMiOlsiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcYXV0aC1jb3JlXFxzcmNcXGFwcGxpY2F0aW9uXFx1c2UtY2FzZXNcXGNyZWF0ZS1hdWRpdC1sb2cudXNlLWNhc2UudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gcGFja2FnZXMvYXV0aC1jb3JlL3NyYy9hcHBsaWNhdGlvbi91c2UtY2FzZXMvY3JlYXRlLWF1ZGl0LWxvZy51c2UtY2FzZS50c1xyXG5cclxuaW1wb3J0IHR5cGUgeyBBdWRpdExvZ0VudGl0eSB9IGZyb20gXCIuLi8uLi9kb21haW4vZW50aXRpZXMvYXVkaXQtbG9nLmVudGl0eVwiO1xyXG5pbXBvcnQgdHlwZSB7IEF1ZGl0TG9nUmVwb3NpdG9yeSB9IGZyb20gXCIuLi8uLi9kb21haW4vcmVwb3NpdG9yaWVzL2F1ZGl0LWxvZy5yZXBvc2l0b3J5XCI7XHJcblxyXG5leHBvcnQgY2xhc3MgQ3JlYXRlQXVkaXRMb2dVc2VDYXNlIHtcclxuICBjb25zdHJ1Y3Rvcihwcml2YXRlIHJlYWRvbmx5IGF1ZGl0TG9nUmVwb3NpdG9yeTogQXVkaXRMb2dSZXBvc2l0b3J5KSB7fVxyXG5cclxuICBhc3luYyBleGVjdXRlKGlucHV0OiBBdWRpdExvZ0VudGl0eSk6IFByb21pc2U8QXVkaXRMb2dFbnRpdHk+IHtcclxuICAgIHJldHVybiB0aGlzLmF1ZGl0TG9nUmVwb3NpdG9yeS5jcmVhdGUoaW5wdXQpO1xyXG4gIH1cclxufVxyXG4iXSwibWFwcGluZ3MiOiI7O0FBQUE7QUFBQTtBQUFBLFNBQUFBLGVBQUE7RUFBQSxJQUFBQyxJQUFBO0VBQUEsSUFBQUMsSUFBQTtFQUFBLElBQUFDLE1BQUEsT0FBQUMsUUFBQTtFQUFBLElBQUFDLEdBQUE7RUFBQSxJQUFBQyxZQUFBO0lBQUFMLElBQUE7SUFBQU0sWUFBQTtNQUFBO1FBQUFDLEtBQUE7VUFBQUMsSUFBQTtVQUFBQyxNQUFBO1FBQUE7UUFBQUMsR0FBQTtVQUFBRixJQUFBO1VBQUFDLE1BQUE7UUFBQTtNQUFBO01BQUE7UUFBQUYsS0FBQTtVQUFBQyxJQUFBO1VBQUFDLE1BQUE7UUFBQTtRQUFBQyxHQUFBO1VBQUFGLElBQUE7VUFBQUMsTUFBQTtRQUFBO01BQUE7TUFBQTtRQUFBRixLQUFBO1VBQUFDLElBQUE7VUFBQUMsTUFBQTtRQUFBO1FBQUFDLEdBQUE7VUFBQUYsSUFBQTtVQUFBQyxNQUFBO1FBQUE7TUFBQTtNQUFBO1FBQUFGLEtBQUE7VUFBQUMsSUFBQTtVQUFBQyxNQUFBO1FBQUE7UUFBQUMsR0FBQTtVQUFBRixJQUFBO1VBQUFDLE1BQUE7UUFBQTtNQUFBO01BQUE7UUFBQUYsS0FBQTtVQUFBQyxJQUFBO1VBQUFDLE1BQUE7UUFBQTtRQUFBQyxHQUFBO1VBQUFGLElBQUE7VUFBQUMsTUFBQTtRQUFBO01BQUE7SUFBQTtJQUFBRSxLQUFBO01BQUE7UUFBQUMsSUFBQTtRQUFBQyxJQUFBO1VBQUFOLEtBQUE7WUFBQUMsSUFBQTtZQUFBQyxNQUFBO1VBQUE7VUFBQUMsR0FBQTtZQUFBRixJQUFBO1lBQUFDLE1BQUE7VUFBQTtRQUFBO1FBQUFLLEdBQUE7VUFBQVAsS0FBQTtZQUFBQyxJQUFBO1lBQUFDLE1BQUE7VUFBQTtVQUFBQyxHQUFBO1lBQUFGLElBQUE7WUFBQUMsTUFBQTtVQUFBO1FBQUE7UUFBQUQsSUFBQTtNQUFBO01BQUE7UUFBQUksSUFBQTtRQUFBQyxJQUFBO1VBQUFOLEtBQUE7WUFBQUMsSUFBQTtZQUFBQyxNQUFBO1VBQUE7VUFBQUMsR0FBQTtZQUFBRixJQUFBO1lBQUFDLE1BQUE7VUFBQTtRQUFBO1FBQUFLLEdBQUE7VUFBQVAsS0FBQTtZQUFBQyxJQUFBO1lBQUFDLE1BQUE7VUFBQTtVQUFBQyxHQUFBO1lBQUFGLElBQUE7WUFBQUMsTUFBQTtVQUFBO1FBQUE7UUFBQUQsSUFBQTtNQUFBO0lBQUE7SUFBQU8sU0FBQTtJQUFBQyxDQUFBO01BQUE7TUFBQTtNQUFBO01BQUE7TUFBQTtJQUFBO0lBQUFDLENBQUE7TUFBQTtNQUFBO0lBQUE7SUFBQUMsQ0FBQTtJQUFBQyxjQUFBO01BQUFDLElBQUE7TUFBQUMsUUFBQTtNQUFBQyxLQUFBO01BQUFDLE9BQUE7TUFBQUMsY0FBQTtNQUFBQyxPQUFBO0lBQUE7SUFBQUMsZUFBQTtJQUFBekIsSUFBQTtFQUFBO0VBQUEsSUFBQTBCLFFBQUEsR0FBQXpCLE1BQUEsQ0FBQUUsR0FBQSxNQUFBRixNQUFBLENBQUFFLEdBQUE7RUFBQSxLQUFBdUIsUUFBQSxDQUFBM0IsSUFBQSxLQUFBMkIsUUFBQSxDQUFBM0IsSUFBQSxFQUFBQyxJQUFBLEtBQUFBLElBQUE7SUFBQTBCLFFBQUEsQ0FBQTNCLElBQUEsSUFBQUssWUFBQTtFQUFBO0VBQUEsSUFBQXVCLGNBQUEsR0FBQUQsUUFBQSxDQUFBM0IsSUFBQTtFQUFBOzs7Ozs7Ozs7Ozs7Ozs7O0FBS0EsTUFBYTZCLHFCQUFxQjtFQUNIQyxrQkFBQTtFQUE3QkMsWUFBNkJELGtCQUFzQztJQUFBO0lBQUEvQixjQUFBLEdBQUFrQixDQUFBO0lBQUFsQixjQUFBLEdBQUFpQixDQUFBO0lBQXRDLEtBQUFjLGtCQUFrQixHQUFsQkEsa0JBQWtCO0VBQXVCO0VBRXRFLE1BQU1FLE9BQU9BLENBQUNDLEtBQXFCO0lBQUE7SUFBQWxDLGNBQUEsR0FBQWtCLENBQUE7SUFBQWxCLGNBQUEsR0FBQWlCLENBQUE7SUFDakMsT0FBTyxJQUFJLENBQUNjLGtCQUFrQixDQUFDSSxNQUFNLENBQUNELEtBQUssQ0FBQztFQUM5Qzs7QUFDRDtBQUFBbEMsY0FBQSxHQUFBaUIsQ0FBQTtBQU5EbUIsT0FBQSxDQUFBTixxQkFBQSxHQUFBQSxxQkFBQSIsImlnbm9yZUxpc3QiOltdfQ==

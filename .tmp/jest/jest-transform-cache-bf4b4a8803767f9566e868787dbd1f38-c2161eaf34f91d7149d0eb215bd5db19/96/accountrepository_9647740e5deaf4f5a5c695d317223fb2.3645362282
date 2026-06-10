@@ -1,0 +1,105 @@
+9c32a1d6c7643e833f0d24c296f7e269
+"use strict";
+
+/* istanbul ignore next */
+function cov_179dd7hu8z() {
+  var path = "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\repositories\\account.repository.ts";
+  var hash = "e8723abe89140570701a0bd3e737044b26da8b31";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\repositories\\account.repository.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 35
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 17
+        },
+        end: {
+          line: 4,
+          column: 40
+        }
+      },
+      "3": {
+        start: {
+          line: 7,
+          column: 0
+        },
+        end: {
+          line: 7,
+          column: 46
+        }
+      }
+    },
+    fnMap: {},
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    f: {},
+    b: {},
+    inputSourceMap: {
+      file: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\repositories\\account.repository.ts",
+      mappings: ";;;AAAA,yCAA8C;AAG9C,MAAsB,iBAAkB,SAAQ,uBAA6B;CAM5E;AAND,8CAMC",
+      names: [],
+      sources: ["E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\repositories\\account.repository.ts"],
+      sourcesContent: ["import { BaseRepository } from \"@repo/common\";\r\nimport { AccountEntity } from \"../entities\";\r\n\r\nexport abstract class AccountRepository extends BaseRepository<AccountEntity> {\r\n  abstract findByProvider(\r\n    provider: string,\r\n    providerAccountId: string,\r\n  ): Promise<AccountEntity | null>;\r\n  abstract findAllByUserId(userId: string): Promise<AccountEntity[]>;\r\n}\r\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "e8723abe89140570701a0bd3e737044b26da8b31"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_179dd7hu8z = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_179dd7hu8z();
+cov_179dd7hu8z().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_179dd7hu8z().s[1]++;
+exports.AccountRepository = void 0;
+const common_1 =
+/* istanbul ignore next */
+(cov_179dd7hu8z().s[2]++, require("@repo/common"));
+class AccountRepository extends
+/* istanbul ignore next */
+(common_1.BaseRepository) {}
+/* istanbul ignore next */
+cov_179dd7hu8z().s[3]++;
+exports.AccountRepository = AccountRepository;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb21tb25fMSIsImNvdl8xNzlkZDdodTh6IiwicyIsInJlcXVpcmUiLCJBY2NvdW50UmVwb3NpdG9yeSIsIkJhc2VSZXBvc2l0b3J5IiwiZXhwb3J0cyJdLCJzb3VyY2VzIjpbIkU6XFx3b3Jrc3BhY2Utc2Fzc1xccmVwb1xccGFja2FnZXNcXGF1dGgtY29yZVxcc3JjXFxkb21haW5cXHJlcG9zaXRvcmllc1xcYWNjb3VudC5yZXBvc2l0b3J5LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IEJhc2VSZXBvc2l0b3J5IH0gZnJvbSBcIkByZXBvL2NvbW1vblwiO1xyXG5pbXBvcnQgeyBBY2NvdW50RW50aXR5IH0gZnJvbSBcIi4uL2VudGl0aWVzXCI7XHJcblxyXG5leHBvcnQgYWJzdHJhY3QgY2xhc3MgQWNjb3VudFJlcG9zaXRvcnkgZXh0ZW5kcyBCYXNlUmVwb3NpdG9yeTxBY2NvdW50RW50aXR5PiB7XHJcbiAgYWJzdHJhY3QgZmluZEJ5UHJvdmlkZXIoXHJcbiAgICBwcm92aWRlcjogc3RyaW5nLFxyXG4gICAgcHJvdmlkZXJBY2NvdW50SWQ6IHN0cmluZyxcclxuICApOiBQcm9taXNlPEFjY291bnRFbnRpdHkgfCBudWxsPjtcclxuICBhYnN0cmFjdCBmaW5kQWxsQnlVc2VySWQodXNlcklkOiBzdHJpbmcpOiBQcm9taXNlPEFjY291bnRFbnRpdHlbXT47XHJcbn1cclxuIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUEsTUFBQUEsUUFBQTtBQUFBO0FBQUEsQ0FBQUMsY0FBQSxHQUFBQyxDQUFBLE9BQUFDLE9BQUE7QUFHQSxNQUFzQkMsaUJBQWtCO0FBQUE7QUFBQSxDQUFRSixRQUFBLENBQUFLLGNBQTZCO0FBTTVFO0FBQUFKLGNBQUEsR0FBQUMsQ0FBQTtBQU5ESSxPQUFBLENBQUFGLGlCQUFBLEdBQUFBLGlCQUFBIiwiaWdub3JlTGlzdCI6W119

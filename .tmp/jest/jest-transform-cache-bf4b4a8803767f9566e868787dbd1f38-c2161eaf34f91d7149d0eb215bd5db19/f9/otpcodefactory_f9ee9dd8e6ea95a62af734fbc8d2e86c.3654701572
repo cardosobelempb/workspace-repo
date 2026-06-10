@@ -1,0 +1,251 @@
+138c8f7a1d75774154a33ff1aa5643ef
+"use strict";
+
+/* istanbul ignore next */
+function cov_jd951ju7r() {
+  var path = "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\factories\\otp-code.factory.ts";
+  var hash = "7e9e1e473764e47ecb14ba7a136fe5422cb360ef";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\factories\\otp-code.factory.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 32
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 17
+        },
+        end: {
+          line: 4,
+          column: 40
+        }
+      },
+      "3": {
+        start: {
+          line: 5,
+          column: 26
+        },
+        end: {
+          line: 5,
+          column: 74
+        }
+      },
+      "4": {
+        start: {
+          line: 8,
+          column: 8
+        },
+        end: {
+          line: 17,
+          column: 11
+        }
+      },
+      "5": {
+        start: {
+          line: 20,
+          column: 0
+        },
+        end: {
+          line: 20,
+          column: 40
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 7,
+            column: 4
+          },
+          end: {
+            line: 7,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 7,
+            column: 24
+          },
+          end: {
+            line: 18,
+            column: 5
+          }
+        },
+        line: 7
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 15,
+            column: 23
+          },
+          end: {
+            line: 15,
+            column: 92
+          }
+        },
+        type: "cond-expr",
+        locations: [{
+          start: {
+            line: 15,
+            column: 41
+          },
+          end: {
+            line: 15,
+            column: 85
+          }
+        }, {
+          start: {
+            line: 15,
+            column: 88
+          },
+          end: {
+            line: 15,
+            column: 92
+          }
+        }],
+        line: 15
+      },
+      "1": {
+        loc: {
+          start: {
+            line: 16,
+            column: 23
+          },
+          end: {
+            line: 16,
+            column: 92
+          }
+        },
+        type: "cond-expr",
+        locations: [{
+          start: {
+            line: 16,
+            column: 41
+          },
+          end: {
+            line: 16,
+            column: 85
+          }
+        }, {
+          start: {
+            line: 16,
+            column: 88
+          },
+          end: {
+            line: 16,
+            column: 92
+          }
+        }],
+        line: 16
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    f: {
+      "0": 0
+    },
+    b: {
+      "0": [0, 0],
+      "1": [0, 0]
+    },
+    inputSourceMap: {
+      file: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\factories\\otp-code.factory.ts",
+      mappings: ";;;AAAA,yCAAiE;AACjE,2EAAsE;AAGtE,MAAa,cAAc;IACzB,MAAM,CAAC,KAAK,CAAC,KAAuB;QAClC,OAAO,+BAAa,CAAC,MAAM,CAAC;YAC1B,KAAK,EAAE,gBAAO,CAAC,MAAM,CAAC,KAAK,CAAC,KAAK,CAAC;YAClC,QAAQ,EAAE,KAAK,CAAC,QAAQ;YACxB,OAAO,EAAE,gBAAgB,EAAE,gCAAgC;YAC3D,QAAQ,EAAE,CAAC;YACX,WAAW,EAAE,CAAC,EAAE,gCAAgC;YAChD,SAAS,EAAE,IAAI,IAAI,CAAC,KAAK,CAAC,SAAS,CAAC;YACpC,SAAS,EAAE,KAAK,CAAC,SAAS,CAAC,CAAC,CAAC,oBAAW,CAAC,MAAM,CAAC,KAAK,CAAC,SAAS,CAAC,CAAC,CAAC,CAAC,IAAI;YACvE,SAAS,EAAE,KAAK,CAAC,SAAS,CAAC,CAAC,CAAC,oBAAW,CAAC,MAAM,CAAC,KAAK,CAAC,SAAS,CAAC,CAAC,CAAC,CAAC,IAAI;SACxE,CAAC,CAAC;IACL,CAAC;CACF;AAbD,wCAaC",
+      names: [],
+      sources: ["E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\factories\\otp-code.factory.ts"],
+      sourcesContent: ["import { EmailVO, IpAddressVO, UserAgentVO } from \"@repo/common\";\r\nimport { OtpCodeEntity } from \"../../domain/entities/otp-code.entity\";\r\nimport { OtpCodeCreateDto } from \"../dto\";\r\n\r\nexport class OtpCodeFactory {\r\n  static build(input: OtpCodeCreateDto): OtpCodeEntity {\r\n    return OtpCodeEntity.create({\r\n      email: EmailVO.create(input.email),\r\n      codeHash: input.codeHash,\r\n      purpose: \"authentication\", // You can adjust this as needed\r\n      attempts: 0,\r\n      maxAttempts: 5, // You can adjust this as needed\r\n      expiredAt: new Date(input.expiredAt),\r\n      ipAddress: input.ipAddress ? IpAddressVO.create(input.ipAddress) : null,\r\n      userAgent: input.userAgent ? UserAgentVO.create(input.userAgent) : null,\r\n    });\r\n  }\r\n}\r\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "7e9e1e473764e47ecb14ba7a136fe5422cb360ef"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_jd951ju7r = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_jd951ju7r();
+cov_jd951ju7r().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_jd951ju7r().s[1]++;
+exports.OtpCodeFactory = void 0;
+const common_1 =
+/* istanbul ignore next */
+(cov_jd951ju7r().s[2]++, require("@repo/common"));
+const otp_code_entity_1 =
+/* istanbul ignore next */
+(cov_jd951ju7r().s[3]++, require("../../domain/entities/otp-code.entity"));
+class OtpCodeFactory {
+  static build(input) {
+    /* istanbul ignore next */
+    cov_jd951ju7r().f[0]++;
+    cov_jd951ju7r().s[4]++;
+    return otp_code_entity_1.OtpCodeEntity.create({
+      email: common_1.EmailVO.create(input.email),
+      codeHash: input.codeHash,
+      purpose: "authentication",
+      // You can adjust this as needed
+      attempts: 0,
+      maxAttempts: 5,
+      // You can adjust this as needed
+      expiredAt: new Date(input.expiredAt),
+      ipAddress: input.ipAddress ?
+      /* istanbul ignore next */
+      (cov_jd951ju7r().b[0][0]++, common_1.IpAddressVO.create(input.ipAddress)) :
+      /* istanbul ignore next */
+      (cov_jd951ju7r().b[0][1]++, null),
+      userAgent: input.userAgent ?
+      /* istanbul ignore next */
+      (cov_jd951ju7r().b[1][0]++, common_1.UserAgentVO.create(input.userAgent)) :
+      /* istanbul ignore next */
+      (cov_jd951ju7r().b[1][1]++, null)
+    });
+  }
+}
+/* istanbul ignore next */
+cov_jd951ju7r().s[5]++;
+exports.OtpCodeFactory = OtpCodeFactory;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfamQ5NTFqdTdyIiwiYWN0dWFsQ292ZXJhZ2UiLCJzIiwiY29tbW9uXzEiLCJyZXF1aXJlIiwib3RwX2NvZGVfZW50aXR5XzEiLCJPdHBDb2RlRmFjdG9yeSIsImJ1aWxkIiwiaW5wdXQiLCJmIiwiT3RwQ29kZUVudGl0eSIsImNyZWF0ZSIsImVtYWlsIiwiRW1haWxWTyIsImNvZGVIYXNoIiwicHVycG9zZSIsImF0dGVtcHRzIiwibWF4QXR0ZW1wdHMiLCJleHBpcmVkQXQiLCJEYXRlIiwiaXBBZGRyZXNzIiwiYiIsIklwQWRkcmVzc1ZPIiwidXNlckFnZW50IiwiVXNlckFnZW50Vk8iLCJleHBvcnRzIl0sInNvdXJjZXMiOlsiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcYXV0aC1jb3JlXFxzcmNcXGFwcGxpY2F0aW9uXFxmYWN0b3JpZXNcXG90cC1jb2RlLmZhY3RvcnkudHMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgRW1haWxWTywgSXBBZGRyZXNzVk8sIFVzZXJBZ2VudFZPIH0gZnJvbSBcIkByZXBvL2NvbW1vblwiO1xyXG5pbXBvcnQgeyBPdHBDb2RlRW50aXR5IH0gZnJvbSBcIi4uLy4uL2RvbWFpbi9lbnRpdGllcy9vdHAtY29kZS5lbnRpdHlcIjtcclxuaW1wb3J0IHsgT3RwQ29kZUNyZWF0ZUR0byB9IGZyb20gXCIuLi9kdG9cIjtcclxuXHJcbmV4cG9ydCBjbGFzcyBPdHBDb2RlRmFjdG9yeSB7XHJcbiAgc3RhdGljIGJ1aWxkKGlucHV0OiBPdHBDb2RlQ3JlYXRlRHRvKTogT3RwQ29kZUVudGl0eSB7XHJcbiAgICByZXR1cm4gT3RwQ29kZUVudGl0eS5jcmVhdGUoe1xyXG4gICAgICBlbWFpbDogRW1haWxWTy5jcmVhdGUoaW5wdXQuZW1haWwpLFxyXG4gICAgICBjb2RlSGFzaDogaW5wdXQuY29kZUhhc2gsXHJcbiAgICAgIHB1cnBvc2U6IFwiYXV0aGVudGljYXRpb25cIiwgLy8gWW91IGNhbiBhZGp1c3QgdGhpcyBhcyBuZWVkZWRcclxuICAgICAgYXR0ZW1wdHM6IDAsXHJcbiAgICAgIG1heEF0dGVtcHRzOiA1LCAvLyBZb3UgY2FuIGFkanVzdCB0aGlzIGFzIG5lZWRlZFxyXG4gICAgICBleHBpcmVkQXQ6IG5ldyBEYXRlKGlucHV0LmV4cGlyZWRBdCksXHJcbiAgICAgIGlwQWRkcmVzczogaW5wdXQuaXBBZGRyZXNzID8gSXBBZGRyZXNzVk8uY3JlYXRlKGlucHV0LmlwQWRkcmVzcykgOiBudWxsLFxyXG4gICAgICB1c2VyQWdlbnQ6IGlucHV0LnVzZXJBZ2VudCA/IFVzZXJBZ2VudFZPLmNyZWF0ZShpbnB1dC51c2VyQWdlbnQpIDogbnVsbCxcclxuICAgIH0pO1xyXG4gIH1cclxufVxyXG4iXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztJQWNNO0lBQUFBLGFBQUEsWUFBQUEsQ0FBQTtNQUFBLE9BQUFDLGNBQUE7SUFBQTtFQUFBO0VBQUEsT0FBQUEsY0FBQTtBQUFBO0FBQUFELGFBQUE7QUFBQUEsYUFBQSxHQUFBRSxDQUFBOzs7Ozs7O0FBZE4sTUFBQUMsUUFBQTtBQUFBO0FBQUEsQ0FBQUgsYUFBQSxHQUFBRSxDQUFBLE9BQUFFLE9BQUE7QUFDQSxNQUFBQyxpQkFBQTtBQUFBO0FBQUEsQ0FBQUwsYUFBQSxHQUFBRSxDQUFBLE9BQUFFLE9BQUE7QUFHQSxNQUFhRSxjQUFjO0VBQ3pCLE9BQU9DLEtBQUtBLENBQUNDLEtBQXVCO0lBQUE7SUFBQVIsYUFBQSxHQUFBUyxDQUFBO0lBQUFULGFBQUEsR0FBQUUsQ0FBQTtJQUNsQyxPQUFPRyxpQkFBQSxDQUFBSyxhQUFhLENBQUNDLE1BQU0sQ0FBQztNQUMxQkMsS0FBSyxFQUFFVCxRQUFBLENBQUFVLE9BQU8sQ0FBQ0YsTUFBTSxDQUFDSCxLQUFLLENBQUNJLEtBQUssQ0FBQztNQUNsQ0UsUUFBUSxFQUFFTixLQUFLLENBQUNNLFFBQVE7TUFDeEJDLE9BQU8sRUFBRSxnQkFBZ0I7TUFBRTtNQUMzQkMsUUFBUSxFQUFFLENBQUM7TUFDWEMsV0FBVyxFQUFFLENBQUM7TUFBRTtNQUNoQkMsU0FBUyxFQUFFLElBQUlDLElBQUksQ0FBQ1gsS0FBSyxDQUFDVSxTQUFTLENBQUM7TUFDcENFLFNBQVMsRUFBRVosS0FBSyxDQUFDWSxTQUFTO01BQUE7TUFBQSxDQUFBcEIsYUFBQSxHQUFBcUIsQ0FBQSxVQUFHbEIsUUFBQSxDQUFBbUIsV0FBVyxDQUFDWCxNQUFNLENBQUNILEtBQUssQ0FBQ1ksU0FBUyxDQUFDO01BQUE7TUFBQSxDQUFBcEIsYUFBQSxHQUFBcUIsQ0FBQSxVQUFHLElBQUk7TUFDdkVFLFNBQVMsRUFBRWYsS0FBSyxDQUFDZSxTQUFTO01BQUE7TUFBQSxDQUFBdkIsYUFBQSxHQUFBcUIsQ0FBQSxVQUFHbEIsUUFBQSxDQUFBcUIsV0FBVyxDQUFDYixNQUFNLENBQUNILEtBQUssQ0FBQ2UsU0FBUyxDQUFDO01BQUE7TUFBQSxDQUFBdkIsYUFBQSxHQUFBcUIsQ0FBQSxVQUFHLElBQUk7S0FDeEUsQ0FBQztFQUNKOztBQUNEO0FBQUFyQixhQUFBLEdBQUFFLENBQUE7QUFiRHVCLE9BQUEsQ0FBQW5CLGNBQUEsR0FBQUEsY0FBQSIsImlnbm9yZUxpc3QiOltdfQ==

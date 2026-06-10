@@ -1,0 +1,208 @@
+24c19e44eca757ac8d117bdb078463e2
+"use strict";
+
+/* istanbul ignore next */
+function cov_1cvjjy07dr() {
+  var path = "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\factories\\user.factory.ts";
+  var hash = "516e56cd25c5c7c2002cb7f153e1218a6a3bd6c1";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\factories\\user.factory.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 29
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 17
+        },
+        end: {
+          line: 4,
+          column: 40
+        }
+      },
+      "3": {
+        start: {
+          line: 5,
+          column: 19
+        },
+        end: {
+          line: 5,
+          column: 51
+        }
+      },
+      "4": {
+        start: {
+          line: 8,
+          column: 8
+        },
+        end: {
+          line: 14,
+          column: 11
+        }
+      },
+      "5": {
+        start: {
+          line: 17,
+          column: 0
+        },
+        end: {
+          line: 17,
+          column: 34
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 7,
+            column: 4
+          },
+          end: {
+            line: 7,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 7,
+            column: 24
+          },
+          end: {
+            line: 15,
+            column: 5
+          }
+        },
+        line: 7
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 13,
+            column: 27
+          },
+          end: {
+            line: 13,
+            column: 85
+          }
+        },
+        type: "cond-expr",
+        locations: [{
+          start: {
+            line: 13,
+            column: 49
+          },
+          end: {
+            line: 13,
+            column: 78
+          }
+        }, {
+          start: {
+            line: 13,
+            column: 81
+          },
+          end: {
+            line: 13,
+            column: 85
+          }
+        }],
+        line: 13
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    f: {
+      "0": 0
+    },
+    b: {
+      "0": [0, 0]
+    },
+    inputSourceMap: {
+      file: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\factories\\user.factory.ts",
+      mappings: ";;;AAAA,yCAAuD;AACvD,oDAAmD;AAWnD,MAAa,WAAW;IACtB,MAAM,CAAC,KAAK,CAAC,KAAoB;QAC/B,OAAO,qBAAU,CAAC,MAAM,CAAC;YACvB,KAAK,EAAE,gBAAO,CAAC,MAAM,CAAC,KAAK,CAAC,KAAK,CAAC;YAClC,SAAS,EAAE,KAAK,CAAC,SAAS;YAC1B,QAAQ,EAAE,KAAK,CAAC,QAAQ;YACxB,YAAY,EAAE,uBAAc,CAAC,MAAM,CAAC,KAAK,CAAC,YAAY,CAAC;YACvD,aAAa,EAAE,KAAK,CAAC,aAAa,CAAC,CAAC,CAAC,IAAI,IAAI,CAAC,KAAK,CAAC,aAAa,CAAC,CAAC,CAAC,CAAC,IAAI;SAC1E,CAAC,CAAC;IACL,CAAC;CACF;AAVD,kCAUC",
+      names: [],
+      sources: ["E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\factories\\user.factory.ts"],
+      sourcesContent: ["import { EmailVO, PasswordHashVO } from \"@repo/common\";\r\nimport { UserEntity } from \"../../domain/entities\";\r\nimport { UserCreateDto } from \"../dto/user.dto\";\r\n\r\nexport type BuildUserInput = {\r\n  userId: string;\r\n  sessionToken: string;\r\n  expires: Date;\r\n  ipAddress?: string | null;\r\n  userAgent?: string | null;\r\n};\r\n\r\nexport class UserFactory {\r\n  static build(input: UserCreateDto): UserEntity {\r\n    return UserEntity.create({\r\n      email: EmailVO.create(input.email),\r\n      firstName: input.firstName,\r\n      lastName: input.lastName,\r\n      passwordHash: PasswordHashVO.create(input.passwordHash),\r\n      emailVerified: input.emailVerified ? new Date(input.emailVerified) : null,\r\n    });\r\n  }\r\n}\r\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "516e56cd25c5c7c2002cb7f153e1218a6a3bd6c1"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_1cvjjy07dr = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_1cvjjy07dr();
+cov_1cvjjy07dr().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_1cvjjy07dr().s[1]++;
+exports.UserFactory = void 0;
+const common_1 =
+/* istanbul ignore next */
+(cov_1cvjjy07dr().s[2]++, require("@repo/common"));
+const entities_1 =
+/* istanbul ignore next */
+(cov_1cvjjy07dr().s[3]++, require("../../domain/entities"));
+class UserFactory {
+  static build(input) {
+    /* istanbul ignore next */
+    cov_1cvjjy07dr().f[0]++;
+    cov_1cvjjy07dr().s[4]++;
+    return entities_1.UserEntity.create({
+      email: common_1.EmailVO.create(input.email),
+      firstName: input.firstName,
+      lastName: input.lastName,
+      passwordHash: common_1.PasswordHashVO.create(input.passwordHash),
+      emailVerified: input.emailVerified ?
+      /* istanbul ignore next */
+      (cov_1cvjjy07dr().b[0][0]++, new Date(input.emailVerified)) :
+      /* istanbul ignore next */
+      (cov_1cvjjy07dr().b[0][1]++, null)
+    });
+  }
+}
+/* istanbul ignore next */
+cov_1cvjjy07dr().s[5]++;
+exports.UserFactory = UserFactory;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMWN2amp5MDdkciIsImFjdHVhbENvdmVyYWdlIiwicyIsImNvbW1vbl8xIiwicmVxdWlyZSIsImVudGl0aWVzXzEiLCJVc2VyRmFjdG9yeSIsImJ1aWxkIiwiaW5wdXQiLCJmIiwiVXNlckVudGl0eSIsImNyZWF0ZSIsImVtYWlsIiwiRW1haWxWTyIsImZpcnN0TmFtZSIsImxhc3ROYW1lIiwicGFzc3dvcmRIYXNoIiwiUGFzc3dvcmRIYXNoVk8iLCJlbWFpbFZlcmlmaWVkIiwiYiIsIkRhdGUiLCJleHBvcnRzIl0sInNvdXJjZXMiOlsiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcYXV0aC1jb3JlXFxzcmNcXGFwcGxpY2F0aW9uXFxmYWN0b3JpZXNcXHVzZXIuZmFjdG9yeS50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBFbWFpbFZPLCBQYXNzd29yZEhhc2hWTyB9IGZyb20gXCJAcmVwby9jb21tb25cIjtcclxuaW1wb3J0IHsgVXNlckVudGl0eSB9IGZyb20gXCIuLi8uLi9kb21haW4vZW50aXRpZXNcIjtcclxuaW1wb3J0IHsgVXNlckNyZWF0ZUR0byB9IGZyb20gXCIuLi9kdG8vdXNlci5kdG9cIjtcclxuXHJcbmV4cG9ydCB0eXBlIEJ1aWxkVXNlcklucHV0ID0ge1xyXG4gIHVzZXJJZDogc3RyaW5nO1xyXG4gIHNlc3Npb25Ub2tlbjogc3RyaW5nO1xyXG4gIGV4cGlyZXM6IERhdGU7XHJcbiAgaXBBZGRyZXNzPzogc3RyaW5nIHwgbnVsbDtcclxuICB1c2VyQWdlbnQ/OiBzdHJpbmcgfCBudWxsO1xyXG59O1xyXG5cclxuZXhwb3J0IGNsYXNzIFVzZXJGYWN0b3J5IHtcclxuICBzdGF0aWMgYnVpbGQoaW5wdXQ6IFVzZXJDcmVhdGVEdG8pOiBVc2VyRW50aXR5IHtcclxuICAgIHJldHVybiBVc2VyRW50aXR5LmNyZWF0ZSh7XHJcbiAgICAgIGVtYWlsOiBFbWFpbFZPLmNyZWF0ZShpbnB1dC5lbWFpbCksXHJcbiAgICAgIGZpcnN0TmFtZTogaW5wdXQuZmlyc3ROYW1lLFxyXG4gICAgICBsYXN0TmFtZTogaW5wdXQubGFzdE5hbWUsXHJcbiAgICAgIHBhc3N3b3JkSGFzaDogUGFzc3dvcmRIYXNoVk8uY3JlYXRlKGlucHV0LnBhc3N3b3JkSGFzaCksXHJcbiAgICAgIGVtYWlsVmVyaWZpZWQ6IGlucHV0LmVtYWlsVmVyaWZpZWQgPyBuZXcgRGF0ZShpbnB1dC5lbWFpbFZlcmlmaWVkKSA6IG51bGwsXHJcbiAgICB9KTtcclxuICB9XHJcbn1cclxuIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztJQXNCQztJQUFBQSxjQUFBLFlBQUFBLENBQUE7TUFBQSxPQUFBQyxjQUFBO0lBQUE7RUFBQTtFQUFBLE9BQUFBLGNBQUE7QUFBQTtBQUFBRCxjQUFBO0FBQUFBLGNBQUEsR0FBQUUsQ0FBQTs7Ozs7OztBQXRCRCxNQUFBQyxRQUFBO0FBQUE7QUFBQSxDQUFBSCxjQUFBLEdBQUFFLENBQUEsT0FBQUUsT0FBQTtBQUNBLE1BQUFDLFVBQUE7QUFBQTtBQUFBLENBQUFMLGNBQUEsR0FBQUUsQ0FBQSxPQUFBRSxPQUFBO0FBV0EsTUFBYUUsV0FBVztFQUN0QixPQUFPQyxLQUFLQSxDQUFDQyxLQUFvQjtJQUFBO0lBQUFSLGNBQUEsR0FBQVMsQ0FBQTtJQUFBVCxjQUFBLEdBQUFFLENBQUE7SUFDL0IsT0FBT0csVUFBQSxDQUFBSyxVQUFVLENBQUNDLE1BQU0sQ0FBQztNQUN2QkMsS0FBSyxFQUFFVCxRQUFBLENBQUFVLE9BQU8sQ0FBQ0YsTUFBTSxDQUFDSCxLQUFLLENBQUNJLEtBQUssQ0FBQztNQUNsQ0UsU0FBUyxFQUFFTixLQUFLLENBQUNNLFNBQVM7TUFDMUJDLFFBQVEsRUFBRVAsS0FBSyxDQUFDTyxRQUFRO01BQ3hCQyxZQUFZLEVBQUViLFFBQUEsQ0FBQWMsY0FBYyxDQUFDTixNQUFNLENBQUNILEtBQUssQ0FBQ1EsWUFBWSxDQUFDO01BQ3ZERSxhQUFhLEVBQUVWLEtBQUssQ0FBQ1UsYUFBYTtNQUFBO01BQUEsQ0FBQWxCLGNBQUEsR0FBQW1CLENBQUEsVUFBRyxJQUFJQyxJQUFJLENBQUNaLEtBQUssQ0FBQ1UsYUFBYSxDQUFDO01BQUE7TUFBQSxDQUFBbEIsY0FBQSxHQUFBbUIsQ0FBQSxVQUFHLElBQUk7S0FDMUUsQ0FBQztFQUNKOztBQUNEO0FBQUFuQixjQUFBLEdBQUFFLENBQUE7QUFWRG1CLE9BQUEsQ0FBQWYsV0FBQSxHQUFBQSxXQUFBIiwiaWdub3JlTGlzdCI6W119

@@ -1,0 +1,436 @@
+cfea69b9272a3eafea420590f0829a70
+"use strict";
+
+/* istanbul ignore next */
+function cov_26s8vk4qhz() {
+  var path = "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\mappers\\user.mapper.ts";
+  var hash = "bcae764af06719e6e4fa4f2c3237884d1fbad6bf";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\mappers\\user.mapper.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 28
+        }
+      },
+      "2": {
+        start: {
+          line: 6,
+          column: 8
+        },
+        end: {
+          line: 12,
+          column: 10
+        }
+      },
+      "3": {
+        start: {
+          line: 15,
+          column: 8
+        },
+        end: {
+          line: 15,
+          column: 41
+        }
+      },
+      "4": {
+        start: {
+          line: 18,
+          column: 8
+        },
+        end: {
+          line: 18,
+          column: 41
+        }
+      },
+      "5": {
+        start: {
+          line: 21,
+          column: 8
+        },
+        end: {
+          line: 27,
+          column: 10
+        }
+      },
+      "6": {
+        start: {
+          line: 30,
+          column: 8
+        },
+        end: {
+          line: 36,
+          column: 10
+        }
+      },
+      "7": {
+        start: {
+          line: 39,
+          column: 0
+        },
+        end: {
+          line: 39,
+          column: 32
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 5,
+            column: 4
+          },
+          end: {
+            line: 5,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 5,
+            column: 32
+          },
+          end: {
+            line: 13,
+            column: 5
+          }
+        },
+        line: 5
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 14,
+            column: 4
+          },
+          end: {
+            line: 14,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 14,
+            column: 37
+          },
+          end: {
+            line: 16,
+            column: 5
+          }
+        },
+        line: 14
+      },
+      "2": {
+        name: "(anonymous_2)",
+        decl: {
+          start: {
+            line: 17,
+            column: 4
+          },
+          end: {
+            line: 17,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 17,
+            column: 37
+          },
+          end: {
+            line: 19,
+            column: 5
+          }
+        },
+        line: 17
+      },
+      "3": {
+        name: "(anonymous_3)",
+        decl: {
+          start: {
+            line: 20,
+            column: 4
+          },
+          end: {
+            line: 20,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 20,
+            column: 32
+          },
+          end: {
+            line: 28,
+            column: 5
+          }
+        },
+        line: 20
+      },
+      "4": {
+        name: "(anonymous_4)",
+        decl: {
+          start: {
+            line: 29,
+            column: 4
+          },
+          end: {
+            line: 29,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 29,
+            column: 26
+          },
+          end: {
+            line: 37,
+            column: 5
+          }
+        },
+        line: 29
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 11,
+            column: 27
+          },
+          end: {
+            line: 11,
+            column: 70
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 11,
+            column: 27
+          },
+          end: {
+            line: 11,
+            column: 62
+          }
+        }, {
+          start: {
+            line: 11,
+            column: 66
+          },
+          end: {
+            line: 11,
+            column: 70
+          }
+        }],
+        line: 11
+      },
+      "1": {
+        loc: {
+          start: {
+            line: 26,
+            column: 27
+          },
+          end: {
+            line: 26,
+            column: 70
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 26,
+            column: 27
+          },
+          end: {
+            line: 26,
+            column: 62
+          }
+        }, {
+          start: {
+            line: 26,
+            column: 66
+          },
+          end: {
+            line: 26,
+            column: 70
+          }
+        }],
+        line: 26
+      },
+      "2": {
+        loc: {
+          start: {
+            line: 35,
+            column: 27
+          },
+          end: {
+            line: 35,
+            column: 70
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 35,
+            column: 27
+          },
+          end: {
+            line: 35,
+            column: 62
+          }
+        }, {
+          start: {
+            line: 35,
+            column: 66
+          },
+          end: {
+            line: 35,
+            column: 70
+          }
+        }],
+        line: 35
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    b: {
+      "0": [0, 0],
+      "1": [0, 0],
+      "2": [0, 0]
+    },
+    inputSourceMap: {
+      file: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\mappers\\user.mapper.ts",
+      mappings: ";;;AAGA,MAAa,UAAU;IACb,MAAM,CAAC,YAAY,CAAC,MAAkB;QAC5C,OAAO;YACL,KAAK,EAAE,MAAM,CAAC,KAAK,CAAC,QAAQ,EAAE,CAAC,KAAK;YACpC,SAAS,EAAE,MAAM,CAAC,SAAS;YAC3B,QAAQ,EAAE,MAAM,CAAC,QAAQ;YACzB,YAAY,EAAE,MAAM,CAAC,YAAY,CAAC,QAAQ,EAAE;YAC5C,aAAa,EAAE,MAAM,CAAC,aAAa,EAAE,WAAW,EAAE,IAAI,IAAI;SAC3D,CAAC;IACJ,CAAC;IAED,MAAM,CAAC,iBAAiB,CAAC,MAAkB;QACzC,OAAO,IAAI,CAAC,YAAY,CAAC,MAAM,CAAC,CAAC;IACnC,CAAC;IAED,MAAM,CAAC,iBAAiB,CAAC,MAAkB;QACzC,OAAO,IAAI,CAAC,YAAY,CAAC,MAAM,CAAC,CAAC;IACnC,CAAC;IAED,MAAM,CAAC,YAAY,CAAC,MAAkB;QACpC,OAAO;YACL,EAAE,EAAE,MAAM,CAAC,EAAE,CAAC,QAAQ,EAAE;YACxB,KAAK,EAAE,MAAM,CAAC,KAAK,CAAC,QAAQ,EAAE,CAAC,KAAK;YACpC,SAAS,EAAE,MAAM,CAAC,SAAS;YAC3B,QAAQ,EAAE,MAAM,CAAC,QAAQ;YACzB,aAAa,EAAE,MAAM,CAAC,aAAa,EAAE,WAAW,EAAE,IAAI,IAAI;SAC3D,CAAC;IACJ,CAAC;IAED,MAAM,CAAC,MAAM,CAAC,MAAkB;QAC9B,OAAO;YACL,EAAE,EAAE,MAAM,CAAC,EAAE,CAAC,QAAQ,EAAE;YACxB,KAAK,EAAE,MAAM,CAAC,KAAK,CAAC,QAAQ,EAAE,CAAC,KAAK;YACpC,SAAS,EAAE,MAAM,CAAC,SAAS;YAC3B,QAAQ,EAAE,MAAM,CAAC,QAAQ;YACzB,aAAa,EAAE,MAAM,CAAC,aAAa,EAAE,WAAW,EAAE,IAAI,IAAI;SAC3D,CAAC;IACJ,CAAC;CACF;AAtCD,gCAsCC",
+      names: [],
+      sources: ["E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\mappers\\user.mapper.ts"],
+      sourcesContent: ["import { UserEntity } from \"@/common/domain\";\r\nimport { UserCreateDto, UserProjectionDto, UserUpdateDto } from \"../dto/user.dto\";\r\n\r\nexport class UserMapper {\r\n  private static toCoreFields(entity: UserEntity): UserCreateDto {\r\n    return {\r\n      email: entity.email.getValue().value,\r\n      firstName: entity.firstName,\r\n      lastName: entity.lastName,\r\n      passwordHash: entity.passwordHash.getValue(),\r\n      emailVerified: entity.emailVerified?.toISOString() ?? null,\r\n    };\r\n  }\r\n\r\n  static toCreatedResponse(entity: UserEntity): UserCreateDto {\r\n    return this.toCoreFields(entity);\r\n  }\r\n\r\n  static toUpdatedResponse(entity: UserEntity): UserUpdateDto {\r\n    return this.toCoreFields(entity);\r\n  }\r\n\r\n  static toProjection(entity: UserEntity): UserProjectionDto {\r\n    return {\r\n      id: entity.id.getValue(),\r\n      email: entity.email.getValue().value,\r\n      firstName: entity.firstName,\r\n      lastName: entity.lastName,\r\n      emailVerified: entity.emailVerified?.toISOString() ?? null,\r\n    };\r\n  }\r\n\r\n  static toHttp(entity: UserEntity): UserProjectionDto {\r\n    return {\r\n      id: entity.id.getValue(),\r\n      email: entity.email.getValue().value,\r\n      firstName: entity.firstName,\r\n      lastName: entity.lastName,\r\n      emailVerified: entity.emailVerified?.toISOString() ?? null,\r\n    };\r\n  }\r\n}\r\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "bcae764af06719e6e4fa4f2c3237884d1fbad6bf"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_26s8vk4qhz = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_26s8vk4qhz();
+cov_26s8vk4qhz().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_26s8vk4qhz().s[1]++;
+exports.UserMapper = void 0;
+class UserMapper {
+  static toCoreFields(entity) {
+    /* istanbul ignore next */
+    cov_26s8vk4qhz().f[0]++;
+    cov_26s8vk4qhz().s[2]++;
+    return {
+      email: entity.email.getValue().value,
+      firstName: entity.firstName,
+      lastName: entity.lastName,
+      passwordHash: entity.passwordHash.getValue(),
+      emailVerified: 
+      /* istanbul ignore next */
+      (cov_26s8vk4qhz().b[0][0]++, entity.emailVerified?.toISOString()) ??
+      /* istanbul ignore next */
+      (cov_26s8vk4qhz().b[0][1]++, null)
+    };
+  }
+  static toCreatedResponse(entity) {
+    /* istanbul ignore next */
+    cov_26s8vk4qhz().f[1]++;
+    cov_26s8vk4qhz().s[3]++;
+    return this.toCoreFields(entity);
+  }
+  static toUpdatedResponse(entity) {
+    /* istanbul ignore next */
+    cov_26s8vk4qhz().f[2]++;
+    cov_26s8vk4qhz().s[4]++;
+    return this.toCoreFields(entity);
+  }
+  static toProjection(entity) {
+    /* istanbul ignore next */
+    cov_26s8vk4qhz().f[3]++;
+    cov_26s8vk4qhz().s[5]++;
+    return {
+      id: entity.id.getValue(),
+      email: entity.email.getValue().value,
+      firstName: entity.firstName,
+      lastName: entity.lastName,
+      emailVerified: 
+      /* istanbul ignore next */
+      (cov_26s8vk4qhz().b[1][0]++, entity.emailVerified?.toISOString()) ??
+      /* istanbul ignore next */
+      (cov_26s8vk4qhz().b[1][1]++, null)
+    };
+  }
+  static toHttp(entity) {
+    /* istanbul ignore next */
+    cov_26s8vk4qhz().f[4]++;
+    cov_26s8vk4qhz().s[6]++;
+    return {
+      id: entity.id.getValue(),
+      email: entity.email.getValue().value,
+      firstName: entity.firstName,
+      lastName: entity.lastName,
+      emailVerified: 
+      /* istanbul ignore next */
+      (cov_26s8vk4qhz().b[2][0]++, entity.emailVerified?.toISOString()) ??
+      /* istanbul ignore next */
+      (cov_26s8vk4qhz().b[2][1]++, null)
+    };
+  }
+}
+/* istanbul ignore next */
+cov_26s8vk4qhz().s[7]++;
+exports.UserMapper = UserMapper;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMjZzOHZrNHFoeiIsImFjdHVhbENvdmVyYWdlIiwicyIsIlVzZXJNYXBwZXIiLCJ0b0NvcmVGaWVsZHMiLCJlbnRpdHkiLCJmIiwiZW1haWwiLCJnZXRWYWx1ZSIsInZhbHVlIiwiZmlyc3ROYW1lIiwibGFzdE5hbWUiLCJwYXNzd29yZEhhc2giLCJlbWFpbFZlcmlmaWVkIiwiYiIsInRvSVNPU3RyaW5nIiwidG9DcmVhdGVkUmVzcG9uc2UiLCJ0b1VwZGF0ZWRSZXNwb25zZSIsInRvUHJvamVjdGlvbiIsImlkIiwidG9IdHRwIiwiZXhwb3J0cyJdLCJzb3VyY2VzIjpbIkU6XFx3b3Jrc3BhY2Utc2Fzc1xccmVwb1xccGFja2FnZXNcXGF1dGgtY29yZVxcc3JjXFxhcHBsaWNhdGlvblxcbWFwcGVyc1xcdXNlci5tYXBwZXIudHMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgVXNlckVudGl0eSB9IGZyb20gXCJAL2NvbW1vbi9kb21haW5cIjtcclxuaW1wb3J0IHsgVXNlckNyZWF0ZUR0bywgVXNlclByb2plY3Rpb25EdG8sIFVzZXJVcGRhdGVEdG8gfSBmcm9tIFwiLi4vZHRvL3VzZXIuZHRvXCI7XHJcblxyXG5leHBvcnQgY2xhc3MgVXNlck1hcHBlciB7XHJcbiAgcHJpdmF0ZSBzdGF0aWMgdG9Db3JlRmllbGRzKGVudGl0eTogVXNlckVudGl0eSk6IFVzZXJDcmVhdGVEdG8ge1xyXG4gICAgcmV0dXJuIHtcclxuICAgICAgZW1haWw6IGVudGl0eS5lbWFpbC5nZXRWYWx1ZSgpLnZhbHVlLFxyXG4gICAgICBmaXJzdE5hbWU6IGVudGl0eS5maXJzdE5hbWUsXHJcbiAgICAgIGxhc3ROYW1lOiBlbnRpdHkubGFzdE5hbWUsXHJcbiAgICAgIHBhc3N3b3JkSGFzaDogZW50aXR5LnBhc3N3b3JkSGFzaC5nZXRWYWx1ZSgpLFxyXG4gICAgICBlbWFpbFZlcmlmaWVkOiBlbnRpdHkuZW1haWxWZXJpZmllZD8udG9JU09TdHJpbmcoKSA/PyBudWxsLFxyXG4gICAgfTtcclxuICB9XHJcblxyXG4gIHN0YXRpYyB0b0NyZWF0ZWRSZXNwb25zZShlbnRpdHk6IFVzZXJFbnRpdHkpOiBVc2VyQ3JlYXRlRHRvIHtcclxuICAgIHJldHVybiB0aGlzLnRvQ29yZUZpZWxkcyhlbnRpdHkpO1xyXG4gIH1cclxuXHJcbiAgc3RhdGljIHRvVXBkYXRlZFJlc3BvbnNlKGVudGl0eTogVXNlckVudGl0eSk6IFVzZXJVcGRhdGVEdG8ge1xyXG4gICAgcmV0dXJuIHRoaXMudG9Db3JlRmllbGRzKGVudGl0eSk7XHJcbiAgfVxyXG5cclxuICBzdGF0aWMgdG9Qcm9qZWN0aW9uKGVudGl0eTogVXNlckVudGl0eSk6IFVzZXJQcm9qZWN0aW9uRHRvIHtcclxuICAgIHJldHVybiB7XHJcbiAgICAgIGlkOiBlbnRpdHkuaWQuZ2V0VmFsdWUoKSxcclxuICAgICAgZW1haWw6IGVudGl0eS5lbWFpbC5nZXRWYWx1ZSgpLnZhbHVlLFxyXG4gICAgICBmaXJzdE5hbWU6IGVudGl0eS5maXJzdE5hbWUsXHJcbiAgICAgIGxhc3ROYW1lOiBlbnRpdHkubGFzdE5hbWUsXHJcbiAgICAgIGVtYWlsVmVyaWZpZWQ6IGVudGl0eS5lbWFpbFZlcmlmaWVkPy50b0lTT1N0cmluZygpID8/IG51bGwsXHJcbiAgICB9O1xyXG4gIH1cclxuXHJcbiAgc3RhdGljIHRvSHR0cChlbnRpdHk6IFVzZXJFbnRpdHkpOiBVc2VyUHJvamVjdGlvbkR0byB7XHJcbiAgICByZXR1cm4ge1xyXG4gICAgICBpZDogZW50aXR5LmlkLmdldFZhbHVlKCksXHJcbiAgICAgIGVtYWlsOiBlbnRpdHkuZW1haWwuZ2V0VmFsdWUoKS52YWx1ZSxcclxuICAgICAgZmlyc3ROYW1lOiBlbnRpdHkuZmlyc3ROYW1lLFxyXG4gICAgICBsYXN0TmFtZTogZW50aXR5Lmxhc3ROYW1lLFxyXG4gICAgICBlbWFpbFZlcmlmaWVkOiBlbnRpdHkuZW1haWxWZXJpZmllZD8udG9JU09TdHJpbmcoKSA/PyBudWxsLFxyXG4gICAgfTtc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

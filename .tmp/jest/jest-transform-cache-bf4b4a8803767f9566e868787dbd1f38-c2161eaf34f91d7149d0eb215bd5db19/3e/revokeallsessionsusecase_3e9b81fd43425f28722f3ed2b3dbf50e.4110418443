@@ -1,0 +1,205 @@
+10f200b00f45905cac2bbf364a1b3735
+"use strict";
+
+/* istanbul ignore next */
+function cov_79bbvxhed() {
+  var path = "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\use-cases\\revoke-all-sessions.usecase.ts";
+  var hash = "58499d0c03f41c374b94b7336aba5eeaf2826e03";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\use-cases\\revoke-all-sessions.usecase.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 42
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 20
+        },
+        end: {
+          line: 4,
+          column: 46
+        }
+      },
+      "3": {
+        start: {
+          line: 7,
+          column: 20
+        },
+        end: {
+          line: 7,
+          column: 67
+        }
+      },
+      "4": {
+        start: {
+          line: 9,
+          column: 8
+        },
+        end: {
+          line: 9,
+          column: 33
+        }
+      },
+      "5": {
+        start: {
+          line: 12,
+          column: 8
+        },
+        end: {
+          line: 12,
+          column: 54
+        }
+      },
+      "6": {
+        start: {
+          line: 15,
+          column: 0
+        },
+        end: {
+          line: 15,
+          column: 60
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 8,
+            column: 4
+          },
+          end: {
+            line: 8,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 8,
+            column: 26
+          },
+          end: {
+            line: 10,
+            column: 5
+          }
+        },
+        line: 8
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 11,
+            column: 4
+          },
+          end: {
+            line: 11,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 11,
+            column: 26
+          },
+          end: {
+            line: 13,
+            column: 5
+          }
+        },
+        line: 11
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0
+    },
+    b: {},
+    inputSourceMap: {
+      file: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\use-cases\\revoke-all-sessions.usecase.ts",
+      mappings: ";;;AAAA,+CAAiD;AAGjD,MAAa,wBAAwB;IAGN;IAF7B,MAAM,CAAC,MAAM,GAAG,CAAC,0BAAc,CAAC,kBAAkB,CAAC,CAAC;IAEpD,YAA6B,QAA2B;QAA3B,aAAQ,GAAR,QAAQ,CAAmB;IAAG,CAAC;IAE5D,KAAK,CAAC,OAAO,CAAC,MAAc;QAC1B,MAAM,IAAI,CAAC,QAAQ,CAAC,iBAAiB,CAAC,MAAM,CAAC,CAAC;IAChD,CAAC;;AAPH,4DAQC",
+      names: [],
+      sources: ["E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\use-cases\\revoke-all-sessions.usecase.ts"],
+      sourcesContent: ["import { AUTH_DI_TOKENS } from \"../../constants\";\r\nimport { SessionRepository } from \"../../domain/repositories/session.repository\";\r\n\r\nexport class RevokeAllSessionsUseCase {\r\n  static inject = [AUTH_DI_TOKENS.SESSION_REPOSITORY];\r\n\r\n  constructor(private readonly sessions: SessionRepository) {}\r\n\r\n  async execute(userId: string): Promise<void> {\r\n    await this.sessions.revokeAllByUserId(userId);\r\n  }\r\n}\r\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "58499d0c03f41c374b94b7336aba5eeaf2826e03"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_79bbvxhed = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_79bbvxhed();
+cov_79bbvxhed().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_79bbvxhed().s[1]++;
+exports.RevokeAllSessionsUseCase = void 0;
+const constants_1 =
+/* istanbul ignore next */
+(cov_79bbvxhed().s[2]++, require("../../constants"));
+class RevokeAllSessionsUseCase {
+  sessions;
+  static inject =
+  /* istanbul ignore next */
+  (cov_79bbvxhed().s[3]++, [constants_1.AUTH_DI_TOKENS.SESSION_REPOSITORY]);
+  constructor(sessions) {
+    /* istanbul ignore next */
+    cov_79bbvxhed().f[0]++;
+    cov_79bbvxhed().s[4]++;
+    this.sessions = sessions;
+  }
+  async execute(userId) {
+    /* istanbul ignore next */
+    cov_79bbvxhed().f[1]++;
+    cov_79bbvxhed().s[5]++;
+    await this.sessions.revokeAllByUserId(userId);
+  }
+}
+/* istanbul ignore next */
+cov_79bbvxhed().s[6]++;
+exports.RevokeAllSessionsUseCase = RevokeAllSessionsUseCase;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb25zdGFudHNfMSIsImNvdl83OWJidnhoZWQiLCJzIiwicmVxdWlyZSIsIlJldm9rZUFsbFNlc3Npb25zVXNlQ2FzZSIsInNlc3Npb25zIiwiaW5qZWN0IiwiQVVUSF9ESV9UT0tFTlMiLCJTRVNTSU9OX1JFUE9TSVRPUlkiLCJjb25zdHJ1Y3RvciIsImYiLCJleGVjdXRlIiwidXNlcklkIiwicmV2b2tlQWxsQnlVc2VySWQiLCJleHBvcnRzIl0sInNvdXJjZXMiOlsiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcYXV0aC1jb3JlXFxzcmNcXGFwcGxpY2F0aW9uXFx1c2UtY2FzZXNcXHJldm9rZS1hbGwtc2Vzc2lvbnMudXNlY2FzZS50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBBVVRIX0RJX1RPS0VOUyB9IGZyb20gXCIuLi8uLi9jb25zdGFudHNcIjtcclxuaW1wb3J0IHsgU2Vzc2lvblJlcG9zaXRvcnkgfSBmcm9tIFwiLi4vLi4vZG9tYWluL3JlcG9zaXRvcmllcy9zZXNzaW9uLnJlcG9zaXRvcnlcIjtcclxuXHJcbmV4cG9ydCBjbGFzcyBSZXZva2VBbGxTZXNzaW9uc1VzZUNhc2Uge1xyXG4gIHN0YXRpYyBpbmplY3QgPSBbQVVUSF9ESV9UT0tFTlMuU0VTU0lPTl9SRVBPU0lUT1JZXTtcclxuXHJcbiAgY29uc3RydWN0b3IocHJpdmF0ZSByZWFkb25seSBzZXNzaW9uczogU2Vzc2lvblJlcG9zaXRvcnkpIHt9XHJcblxyXG4gIGFzeW5jIGV4ZWN1dGUodXNlcklkOiBzdHJpbmcpOiBQcm9taXNlPHZvaWQ+IHtcclxuICAgIGF3YWl0IHRoaXMuc2Vzc2lvbnMucmV2b2tlQWxsQnlVc2VySWQodXNlcklkKTtcclxuICB9XHJcbn1cclxuIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBLE1BQUFBLFdBQUE7QUFBQTtBQUFBLENBQUFDLGFBQUEsR0FBQUMsQ0FBQSxPQUFBQyxPQUFBO0FBR0EsTUFBYUMsd0JBQXdCO0VBR05DLFFBQUE7RUFGN0IsT0FBT0MsTUFBTTtFQUFBO0VBQUEsQ0FBQUwsYUFBQSxHQUFBQyxDQUFBLE9BQUcsQ0FBQ0YsV0FBQSxDQUFBTyxjQUFjLENBQUNDLGtCQUFrQixDQUFDO0VBRW5EQyxZQUE2QkosUUFBMkI7SUFBQTtJQUFBSixhQUFBLEdBQUFTLENBQUE7SUFBQVQsYUFBQSxHQUFBQyxDQUFBO0lBQTNCLEtBQUFHLFFBQVEsR0FBUkEsUUFBUTtFQUFzQjtFQUUzRCxNQUFNTSxPQUFPQSxDQUFDQyxNQUFjO0lBQUE7SUFBQVgsYUFBQSxHQUFBUyxDQUFBO0lBQUFULGFBQUEsR0FBQUMsQ0FBQTtJQUMxQixNQUFNLElBQUksQ0FBQ0csUUFBUSxDQUFDUSxpQkFBaUIsQ0FBQ0QsTUFBTSxDQUFDO0VBQy9DOzs7O0FBUEZFLE9BQUEsQ0FBQVYsd0JBQUEsR0FBQUEsd0JBQUEiLCJpZ25vcmVMaXN0IjpbXX0=

@@ -1,0 +1,402 @@
+ccbb5b14b919086da8ac149049b42a10
+"use strict";
+
+/* istanbul ignore next */
+function cov_1buh8w61y9() {
+  var path = "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\use-cases\\register.use-case.ts";
+  var hash = "44899fb10b3f2ce0bac074ab9da5219745b50818";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\use-cases\\register.use-case.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 33
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 17
+        },
+        end: {
+          line: 4,
+          column: 40
+        }
+      },
+      "3": {
+        start: {
+          line: 5,
+          column: 20
+        },
+        end: {
+          line: 5,
+          column: 46
+        }
+      },
+      "4": {
+        start: {
+          line: 6,
+          column: 20
+        },
+        end: {
+          line: 6,
+          column: 43
+        }
+      },
+      "5": {
+        start: {
+          line: 10,
+          column: 20
+        },
+        end: {
+          line: 10,
+          column: 108
+        }
+      },
+      "6": {
+        start: {
+          line: 12,
+          column: 8
+        },
+        end: {
+          line: 12,
+          column: 45
+        }
+      },
+      "7": {
+        start: {
+          line: 13,
+          column: 8
+        },
+        end: {
+          line: 13,
+          column: 45
+        }
+      },
+      "8": {
+        start: {
+          line: 16,
+          column: 22
+        },
+        end: {
+          line: 16,
+          column: 54
+        }
+      },
+      "9": {
+        start: {
+          line: 17,
+          column: 30
+        },
+        end: {
+          line: 17,
+          column: 76
+        }
+      },
+      "10": {
+        start: {
+          line: 18,
+          column: 8
+        },
+        end: {
+          line: 20,
+          column: 9
+        }
+      },
+      "11": {
+        start: {
+          line: 19,
+          column: 12
+        },
+        end: {
+          line: 19,
+          column: 124
+        }
+      },
+      "12": {
+        start: {
+          line: 21,
+          column: 29
+        },
+        end: {
+          line: 21,
+          column: 139
+        }
+      },
+      "13": {
+        start: {
+          line: 22,
+          column: 28
+        },
+        end: {
+          line: 28,
+          column: 10
+        }
+      },
+      "14": {
+        start: {
+          line: 29,
+          column: 21
+        },
+        end: {
+          line: 29,
+          column: 66
+        }
+      },
+      "15": {
+        start: {
+          line: 30,
+          column: 8
+        },
+        end: {
+          line: 34,
+          column: 11
+        }
+      },
+      "16": {
+        start: {
+          line: 37,
+          column: 0
+        },
+        end: {
+          line: 37,
+          column: 42
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 11,
+            column: 4
+          },
+          end: {
+            line: 11,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 11,
+            column: 48
+          },
+          end: {
+            line: 14,
+            column: 5
+          }
+        },
+        line: 11
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 15,
+            column: 4
+          },
+          end: {
+            line: 15,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 15,
+            column: 25
+          },
+          end: {
+            line: 35,
+            column: 5
+          }
+        },
+        line: 15
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 18,
+            column: 8
+          },
+          end: {
+            line: 20,
+            column: 9
+          }
+        },
+        type: "if",
+        locations: [{
+          start: {
+            line: 18,
+            column: 8
+          },
+          end: {
+            line: 20,
+            column: 9
+          }
+        }, {
+          start: {
+            line: undefined,
+            column: undefined
+          },
+          end: {
+            line: undefined,
+            column: undefined
+          }
+        }],
+        line: 18
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0,
+      "15": 0,
+      "16": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0
+    },
+    b: {
+      "0": [0, 0]
+    },
+    inputSourceMap: {
+      file: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\use-cases\\register.use-case.ts",
+      mappings: ";;;AAAA,yCAAgF;AAIhF,+CAAuE;AACvE,4CAA2C;AAI3C,MAAa,eAAe;IAIP;IACA;IAJnB,MAAM,CAAC,MAAM,GAAG,CAAC,0BAAc,CAAC,eAAe,EAAE,0BAAc,CAAC,eAAe,CAAC,CAAC;IAEjF,YACmB,cAA8B,EAC9B,cAA4B;QAD5B,mBAAc,GAAd,cAAc,CAAgB;QAC9B,mBAAc,GAAd,cAAc,CAAc;IAC5C,CAAC;IAEJ,KAAK,CAAC,OAAO,CAAC,KAAkB;QAC9B,MAAM,KAAK,GAAG,KAAK,CAAC,KAAK,CAAC,WAAW,EAAE,CAAC,IAAI,EAAE,CAAC;QAC/C,MAAM,aAAa,GAAG,MAAM,IAAI,CAAC,cAAc,CAAC,aAAa,CAAC,KAAK,CAAC,CAAC;QAErE,IAAI,aAAa,EAAE,CAAC;YAClB,OAAO,IAAA,aAAI,EACT,IAAI,sBAAa,CAAC,EAAE,SAAS,EAAE,OAAO,EAAE,OAAO,EAAE,uBAAuB,EAAE,CAAC,CAC5E,CAAC;QACJ,CAAC;QAED,MAAM,YAAY,GAAG,MAAM,IAAI,CAAC,cAAc,CAAC,IAAI,CACjD,KAAK,CAAC,YAAY,EAClB,gCAAoB,CAAC,yBAAyB,CAC/C,CAAC;QAEF,MAAM,WAAW,GAAG,uBAAW,CAAC,KAAK,CAAC;YACpC,KAAK,EAAE,KAAK,CAAC,KAAK;YAClB,YAAY,EAAE,YAAY;YAC1B,aAAa,EAAE,IAAI;YACnB,SAAS,EAAE,KAAK,CAAC,SAAS;YAC1B,QAAQ,EAAE,KAAK,CAAC,QAAQ;SACzB,CAAC,CAAC;QAEH,MAAM,IAAI,GAAG,MAAM,IAAI,CAAC,cAAc,CAAC,MAAM,CAAC,WAAW,CAAC,CAAC;QAE3D,OAAO,IAAA,cAAK,EAAC;YACX,EAAE,EAAE,IAAI,CAAC,EAAE,CAAC,QAAQ,EAAE;YACtB,KAAK,EAAE,IAAI,CAAC,KAAK,CAAC,QAAQ,EAAE,CAAC,KAAK;YAClC,aAAa,EAAE,IAAI,CAAC,aAAa;SAClC,CAAC,CAAC;IACL,CAAC;;AAtCH,0CAuCC",
+      names: [],
+      sources: ["E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\use-cases\\register.use-case.ts"],
+      sourcesContent: ["import { BcryptHasher, ConflictError, Either, left, right } from \"@repo/common\";\r\nimport { UserRepository } from \"../../domain/repositories/user.repository\";\r\nimport { AuthUserProjectionDto, RegisterDto } from \"../dto/auth.dto\";\r\n\r\nimport { AUTH_DI_TOKENS, AUTH_TOKEN_CONSTANTS } from \"../../constants\";\r\nimport { UserFactory } from \"../factories\";\r\n\r\nexport type RegisterUseCaseResponse = Either<ConflictError, AuthUserProjectionDto>;\r\n\r\nexport class RegisterUseCase {\r\n  static inject = [AUTH_DI_TOKENS.USER_REPOSITORY, AUTH_DI_TOKENS.PASSWORD_HASHER];\r\n\r\n  constructor(\r\n    private readonly userRepository: UserRepository,\r\n    private readonly passwordHasher: BcryptHasher,\r\n  ) {}\r\n\r\n  async execute(input: RegisterDto): Promise<RegisterUseCaseResponse> {\r\n    const email = input.email.toLowerCase().trim();\r\n    const alreadyExists = await this.userRepository.existsByEmail(email);\r\n\r\n    if (alreadyExists) {\r\n      return left(\r\n        new ConflictError({ fieldName: \"email\", message: \"E-mail j\xE1 cadastrado.\" }),\r\n      );\r\n    }\r\n\r\n    const passwordHash = await this.passwordHasher.hash(\r\n      input.passwordHash,\r\n      AUTH_TOKEN_CONSTANTS.SESSION_TOKEN_SALT_ROUNDS,\r\n    );\r\n\r\n    const userFactory = UserFactory.build({\r\n      email: input.email,\r\n      passwordHash: passwordHash,\r\n      emailVerified: null,\r\n      firstName: input.firstName,\r\n      lastName: input.lastName,\r\n    });\r\n\r\n    const user = await this.userRepository.create(userFactory);\r\n\r\n    return right({\r\n      id: user.id.getValue(),\r\n      email: user.email.getValue().value,\r\n      emailVerified: user.emailVerified,\r\n    });\r\n  }\r\n}\r\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "44899fb10b3f2ce0bac074ab9da5219745b50818"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_1buh8w61y9 = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_1buh8w61y9();
+cov_1buh8w61y9().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_1buh8w61y9().s[1]++;
+exports.RegisterUseCase = void 0;
+const common_1 =
+/* istanbul ignore next */
+(cov_1buh8w61y9().s[2]++, require("@repo/common"));
+const constants_1 =
+/* istanbul ignore next */
+(cov_1buh8w61y9().s[3]++, require("../../constants"));
+const factories_1 =
+/* istanbul ignore next */
+(cov_1buh8w61y9().s[4]++, require("../factories"));
+class RegisterUseCase {
+  userRepository;
+  passwordHasher;
+  static inject =
+  /* istanbul ignore next */
+  (cov_1buh8w61y9().s[5]++, [constants_1.AUTH_DI_TOKENS.USER_REPOSITORY, constants_1.AUTH_DI_TOKENS.PASSWORD_HASHER]);
+  constructor(userRepository, passwordHasher) {
+    /* istanbul ignore next */
+    cov_1buh8w61y9().f[0]++;
+    cov_1buh8w61y9().s[6]++;
+    this.userRepository = userRepository;
+    /* istanbul ignore next */
+    cov_1buh8w61y9().s[7]++;
+    this.passwordHasher = passwordHasher;
+  }
+  async execute(input) {
+    /* istanbul ignore next */
+    cov_1buh8w61y9().f[1]++;
+    const email =
+    /* istanbul ignore next */
+    (cov_1buh8w61y9().s[8]++, input.email.toLowerCase().trim());
+    const alreadyExists =
+    /* istanbul ignore next */
+    (cov_1buh8w61y9().s[9]++, await this.userRepository.existsByEmail(email));
+    /* istanbul ignore next */
+    cov_1buh8w61y9().s[10]++;
+    if (alreadyExists) {
+      /* istanbul ignore next */
+      cov_1buh8w61y9().b[0][0]++;
+      cov_1buh8w61y9().s[11]++;
+      return (0, common_1.left)(new common_1.ConflictError({
+        fieldName: "email",
+        message: "E-mail já cadastrado."
+      }));
+    } else
+    /* istanbul ignore next */
+    {
+      cov_1buh8w61y9().b[0][1]++;
+    }
+    const passwordHash =
+    /* istanbul ignore next */
+    (cov_1buh8w61y9().s[12]++, await this.passwordHasher.hash(input.passwordHash, constants_1.AUTH_TOKEN_CONSTANTS.SESSION_TOKEN_SALT_ROUNDS));
+    const userFactory =
+    /* istanbul ignore next */
+    (cov_1buh8w61y9().s[13]++, factories_1.UserFactory.build({
+      email: input.email,
+      passwordHash: passwordHash,
+      emailVerified: null,
+      firstName: input.firstName,
+      lastName: input.lastName
+    }));
+    const user =
+    /* istanbul ignore next */
+    (cov_1buh8w61y9().s[14]++, await this.userRepository.create(userFactory));
+    /* istanbul ignore next */
+    cov_1buh8w61y9().s[15]++;
+    return (0, common_1.right)({
+      id: user.id.getValue(),
+      email: user.email.getValue().value,
+      emailVerified: user.emailVerified
+    });
+  }
+}
+/* istanbul ignore next */
+cov_1buh8w61y9().s[16]++;
+exports.RegisterUseCase = RegisterUseCase;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMWJ1aDh3NjF5OSIsImFjdHVhbENvdmVyYWdlIiwicyIsImNvbW1vbl8xIiwicmVxdWlyZSIsImNvbnN0YW50c18xIiwiZmFjdG9yaWVzXzEiLCJSZWdpc3RlclVzZUNhc2UiLCJ1c2VyUmVwb3NpdG9yeSIsInBhc3N3b3JkSGFzaGVyIiwiaW5qZWN0IiwiQVVUSF9ESV9UT0tFTlMiLCJVU0VSX1JFUE9TSVRPUlkiLCJQQVNTV09SRF9IQVNIRVIiLCJjb25zdHJ1Y3RvciIsImYiLCJleGVjdXRlIiwiaW5wdXQiLCJlbWFpbCIsInRvTG93ZXJDYXNlIiwidHJpbSIsImFscmVhZHlFeGlzdHMiLCJleGlzdHNCeUVtYWlsIiwiYiIsImxlZnQiLCJDb25mbGljdEVycm9yIiwiZmllbGROYW1lIiwibWVzc2FnZSIsInBhc3N3b3JkSGFzaCIsImhhc2giLCJBVVRIX1RPS0VOX0NPTlNUQU5UUyIsIlNFU1NJT05fVE9LRU5fU0FMVF9ST1VORFMiLCJ1c2VyRmFjdG9yeSIsIlVzZXJGYWN0b3J5IiwiYnVpbGQiLCJlbWFpbFZlcmlmaWVkIiwiZmlyc3ROYW1lIiwibGFzdE5hbWUiLCJ1c2VyIiwiY3JlYXRlIiwicmlnaHQiLCJpZCIsImdldFZhbHVlIiwidmFsdWUiLCJleHBvcnRzIl0sInNvdXJjZXMiOlsiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcYXV0aC1jb3JlXFxzcmNcXGFwcGxpY2F0aW9uXFx1c2UtY2FzZXNcXHJlZ2lzdGVyLnVzZS1jYXNlLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IEJjcnlwdEhhc2hlciwgQ29uZmxpY3RFcnJvciwgRWl0aGVyLCBsZWZ0LCByaWdodCB9IGZyb20gXCJAcmVwby9jb21tb25cIjtcclxuaW1wb3J0IHsgVXNlclJlcG9zaXRvcnkgfSBmcm9tIFwiLi4vLi4vZG9tYWluL3JlcG9zaXRvcmllcy91c2VyLnJlcG9zaXRvcnlcIjtcclxuaW1wb3J0IHsgQXV0aFVzZXJQcm9qZWN0aW9uRHRvLCBSZWdpc3RlckR0byB9IGZyb20gXCIuLi9kdG8vYXV0aC5kdG9cIjtcclxuXHJcbmltcG9ydCB7IEFVVEhfRElfVE9LRU5TLCBBVVRIX1RPS0VOX0NPTlNUQU5UUyB9IGZyb20gXCIuLi8uLi9jb25zdGFudHNcIjtcclxuaW1wb3J0IHsgVXNlckZhY3RvcnkgfSBmcm9tIFwiLi4vZmFjdG9yaWVzXCI7XHJcblxyXG5leHBvcnQgdHlwZSBSZWdpc3RlclVzZUNhc2VSZXNwb25zZSA9IEVpdGhlcjxDb25mbGljdEVycm9yLCBBdXRoVXNlclByb2plY3Rpb25EdG8+O1xyXG5cclxuZXhwb3J0IGNsYXNzIFJlZ2lzdGVyVXNlQ2FzZSB7XHJcbiAgc3RhdGljIGluamVjdCA9IFtBVVRIX0RJX1RPS0VOUy5VU0VSX1JFUE9TSVRPUlksIEFVVEhfRElfVE9LRU5TLlBBU1NXT1JEX0hBU0hFUl07XHJcblxyXG4gIGNvbnN0cnVjdG9yKFxyXG4gICAgcHJpdmF0ZSByZWFkb25seSB1c2VyUmVwb3NpdG9yeTogVXNlclJlcG9zaXRvcnksXHJcbiAgICBwcml2YXRlIHJlYWRvbmx5IHBhc3N3b3JkSGFzaGVyOiBCY3J5cHRIYXNoZXIsXHJcbiAgKSB7fVxyXG5cclxuICBhc3luYyBleGVjdXRlKGlucHV0OiBSZWdpc3RlckR0byk6IFByb21pc2U8UmVnaXN0ZXJVc2VDYXNlUmVzcG9uc2U+IHtcclxuICAgIGNvbnN0IGVtYWlsID0gaW5wdXQuZW1haWwudG9Mb3dlckNhc2UoKS50cmltKCk7XHJcbiAgICBjb25zdCBhbHJlYWR5RXhpc3RzID0gYXdhaXQgdGhpcy51c2VyUmVwb3NpdG9yeS5leGlzdHNCeUVtYWlsKGVtYWlsKTtcclxuXHJcbiAgICBpZiAoYWxyZWFkeUV4aXN0cykge1xyXG4gICAgICByZXR1cm4gbGVmdChcclxuICAgICAgICBuZXcgQ29uZmxpY3RFcnJvcih7IGZpZWxkTmFtZTogXCJlbWFpbFwiLCBtZXNzYWdlOiBcIkUtbWFpbCBqw6EgY2FkYXN0cmFkby5cIiB9KSxcclxuICAgICAgKTtcclxuICAgIH1cclxuXHJcbiAgICBjb25zdCBwYXNzd29yZEhhc2ggPSBhd2FpdCB0aGlzLnBhc3N3b3JkSGFzaGVyLmhhc2goXHJcbiAgICAgIGlucHV0LnBhc3N3b3JkSGFzaCxcclxuICAgICAgQVVUSF9UT0tFTl9DT05TVEFOVFMuU0VTU0lPTl9UT0tFTl9TQUxUX1JPVU5EUyxcclxuICAgICk7XHJcblxyXG4gICAgY29uc3QgdXNlckZhY3RvcnkgPSBVc2VyRmFjdG9yeS5idWlsZCh7XHJcbiAgICAgIGVtYWlsOiBpbnB1dC5lbWFpbCxcclxuICAgICAgcGFzc3dvcmRIYXNoOiBwYXNzd29yZEhhc2gsXHJcbiAgICAgIGVtYWlsVmVyaWZpZWQ6IG51bGwsXHJcbiAgICAgIGZpcnN0TmFtZTogaW5wdXQuZmlyc3ROYW1lLFxyXG4gICAgICBsYXN0TmFtZTogaW5wdXQubGFzdE5hbWUsXHJcbiAgICB9KTtcclxuXHJcbiAgICBjb25zdCB1c2VyID0gYXdhaXQgdGhpcy51c2VyUmVwb3NpdG9yeS5jcmVhdGUodXNlckZhY3RvcnkpO1xyXG5cclxuICAgIHJldHVybiByaWdodCh7XHJcbiAgICAgIGlkOiB1c2VyLmlkLmdldFZhbHVlKCksXHJcbiAgICAgIGVtYWlsOiB1c2VyLmVtYWlsLmdldFZhbHVlKCkudmFsdWUsXHJcbiAgICAgIGVtYWlsVmVyaWZpZWQ6IHVzZXIuZW1haWxWZXJpZmllZCxcclxuICAgIH0pO1xyXG4gIH1cclxufVxyXG4iXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7SUFrQkk7SUFBQUEsY0FBQSxZQUFBQSxDQUFBO01BQUEsT0FBQUMsY0FBQTtJQUFBO0VBQUE7RUFBQSxPQUFBQSxjQUFBO0FBQUE7QUFBQUQsY0FBQTtBQUFBQSxjQUFBLEdBQUFFLENBQUE7Ozs7Ozs7QUFsQkosTUFBQUMsUUFBQTtBQUFBO0FBQUEsQ0FBQUgsY0FBQSxHQUFBRSxDQUFBLE9BQUFFLE9BQUE7QUFJQSxNQUFBQyxXQUFBO0FBQUE7QUFBQSxDQUFBTCxjQUFBLEdBQUFFLENBQUEsT0FBQUUsT0FBQTtBQUNBLE1BQUFFLFdBQUE7QUFBQTtBQUFBLENBQUFOLGNBQUEsR0FBQUUsQ0FBQSxPQUFBRSxPQUFBO0FBSUEsTUFBYUcsZUFBZTtFQUlQQyxjQUFBO0VBQ0FDLGNBQUE7RUFKbkIsT0FBT0MsTUFBTTtFQUFBO0VBQUEsQ0FBQVYsY0FBQSxHQUFBRSxDQUFBLE9BQUcsQ0FBQ0csV0FBQSxDQUFBTSxjQUFjLENBQUNDLGVBQWUsRUFBRVAsV0FBQSxDQUFBTSxjQUFjLENBQUNFLGVBQWUsQ0FBQztFQUVoRkMsWUFDbUJOLGNBQThCLEVBQzlCQyxjQUE0QjtJQUFBO0lBQUFULGNBQUEsR0FBQWUsQ0FBQTtJQUFBZixjQUFBLEdBQUFFLENBQUE7SUFENUIsS0FBQU0sY0FBYyxHQUFkQSxjQUFjO0lBQWdCO0lBQUFSLGNBQUEsR0FBQUUsQ0FBQTtJQUM5QixLQUFBTyxjQUFjLEdBQWRBLGNBQWM7RUFDOUI7RUFFSCxNQUFNTyxPQUFPQSxDQUFDQyxLQUFrQjtJQUFBO0lBQUFqQixjQUFBLEdBQUFlLENBQUE7SUFDOUIsTUFBTUcsS0FBSztJQUFBO0lBQUEsQ0FBQWxCLGNBQUEsR0FBQUUsQ0FBQSxPQUFHZSxLQUFLLENBQUNDLEtBQUssQ0FBQ0MsV0FBVyxFQUFFLENBQUNDLElBQUksRUFBRTtJQUM5QyxNQUFNQyxhQUFhO0lBQUE7SUFBQSxDQUFBckIsY0FBQSxHQUFBRSxDQUFBLE9BQUcsTUFBTSxJQUFJLENBQUNNLGNBQWMsQ0FBQ2MsYUFBYSxDQUFDSixLQUFLLENBQUM7SUFBQztJQUFBbEIsY0FBQSxHQUFBRSxDQUFBO0lBRXJFLElBQUltQixhQUFhLEVBQUU7TUFBQTtNQUFBckIsY0FBQSxHQUFBdUIsQ0FBQTtNQUFBdkIsY0FBQSxHQUFBRSxDQUFBO01BQ2pCLE9BQU8sSUFBQUMsUUFBQSxDQUFBcUIsSUFBSSxFQUNULElBQUlyQixRQUFBLENBQUFzQixhQUFhLENBQUM7UUFBRUMsU0FBUyxFQUFFLE9BQU87UUFBRUMsT0FBTyxFQUFFO01BQXVCLENBQUUsQ0FBQyxDQUM1RTtJQUNILENBQUM7SUFBQTtJQUFBO01BQUEzQixjQUFBLEdBQUF1QixDQUFBO0lBQUE7SUFFRCxNQUFNSyxZQUFZO0lBQUE7SUFBQSxDQUFBNUIsY0FBQSxHQUFBRSxDQUFBLFFBQUcsTUFBTSxJQUFJLENBQUNPLGNBQWMsQ0FBQ29CLElBQUksQ0FDakRaLEtBQUssQ0FBQ1csWUFBWSxFQUNsQnZCLFdBQUEsQ0FBQXlCLG9CQUFvQixDQUFDQyx5QkFBeUIsQ0FDL0M7SUFFRCxNQUFNQyxXQUFXO0lBQUE7SUFBQSxDQUFBaEMsY0FBQSxHQUFBRSxDQUFBLFFBQUdJLFdBQUEsQ0FBQTJCLFdBQVcsQ0FBQ0MsS0FBSyxDQUFDO01BQ3BDaEIsS0FBSyxFQUFFRCxLQUFLLENBQUNDLEtBQUs7TUFDbEJVLFlBQVksRUFBRUEsWUFBWTtNQUMxQk8sYUFBYSxFQUFFLElBQUk7TUFDbkJDLFNBQVMsRUFBRW5CLEtBQUssQ0FBQ21CLFNBQVM7TUFDMUJDLFFBQVEsRUFBRXBCLEtBQUssQ0FBQ29CO0tBQ2pCLENBQUM7SUFFRixNQUFNQyxJQUFJO0lBQUE7SUFBQSxDQUFBdEMsY0FBQSxHQUFBRSxDQUFBLFFBQUcsTUFBTSxJQUFJLENBQUNNLGNBQWMsQ0FBQytCLE1BQU0sQ0FBQ1AsV0FBVyxDQUFDO0lBQUM7SUFBQWhDLGNBQUEsR0FBQUUsQ0FBQTtJQUUzRCxPQUFPLElBQUFDLFFBQUEsQ0FBQXFDLEtBQUssRUFBQztNQUNYQyxFQUFFLEVBQUVILElBQUksQ0FBQ0csRUFBRSxDQUFDQyxRQUFRLEVBQUU7TUFDdEJ4QixLQUFLLEVBQUVvQixJQUFJLENBQUNwQixLQUFLLENBQUN3QixRQUFRLEVBQUUsQ0FBQ0MsS0FBSztNQUNsQ1IsYUFBYSxFQUFFRyxJQUFJLENBQUNIO0tBQ3JCLENBQUM7RUFDSjs7OztBQXRDRlMsT0FBQSxDQUFBckMsZUFBQSxHQUFBQSxlQUFBIiwiaWdub3JlTGlzdCI6W119

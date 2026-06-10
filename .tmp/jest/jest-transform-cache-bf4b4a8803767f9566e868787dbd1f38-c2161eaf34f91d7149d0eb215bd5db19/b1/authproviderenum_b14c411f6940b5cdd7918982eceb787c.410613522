@@ -1,0 +1,228 @@
+3e85acdc94748946158933ad8b62c0dc
+"use strict";
+
+/* istanbul ignore next */
+function cov_27b0fi0zna() {
+  var path = "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\enums\\auth-provider.enum.ts";
+  var hash = "8580a24322acc5dfc458a0da4d3dd9b2ff625663";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\enums\\auth-provider.enum.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 30
+        }
+      },
+      "2": {
+        start: {
+          line: 5,
+          column: 0
+        },
+        end: {
+          line: 11,
+          column: 63
+        }
+      },
+      "3": {
+        start: {
+          line: 6,
+          column: 4
+        },
+        end: {
+          line: 6,
+          column: 42
+        }
+      },
+      "4": {
+        start: {
+          line: 7,
+          column: 4
+        },
+        end: {
+          line: 7,
+          column: 44
+        }
+      },
+      "5": {
+        start: {
+          line: 8,
+          column: 4
+        },
+        end: {
+          line: 8,
+          column: 46
+        }
+      },
+      "6": {
+        start: {
+          line: 9,
+          column: 4
+        },
+        end: {
+          line: 9,
+          column: 38
+        }
+      },
+      "7": {
+        start: {
+          line: 10,
+          column: 4
+        },
+        end: {
+          line: 10,
+          column: 42
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 5,
+            column: 1
+          },
+          end: {
+            line: 5,
+            column: 2
+          }
+        },
+        loc: {
+          start: {
+            line: 5,
+            column: 25
+          },
+          end: {
+            line: 11,
+            column: 1
+          }
+        },
+        line: 5
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 11,
+            column: 3
+          },
+          end: {
+            line: 11,
+            column: 61
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 11,
+            column: 3
+          },
+          end: {
+            line: 11,
+            column: 15
+          }
+        }, {
+          start: {
+            line: 11,
+            column: 20
+          },
+          end: {
+            line: 11,
+            column: 60
+          }
+        }],
+        line: 11
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0
+    },
+    f: {
+      "0": 0
+    },
+    b: {
+      "0": [0, 0]
+    },
+    inputSourceMap: {
+      file: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\enums\\auth-provider.enum.ts",
+      mappings: ";;;AAAA,IAAY,YAMX;AAND,WAAY,YAAY;IACtB,qCAAqB,CAAA;IACrB,uCAAuB,CAAA;IACvB,yCAAyB,CAAA;IACzB,iCAAiB,CAAA;IACjB,qCAAqB,CAAA;AACvB,CAAC,EANW,YAAY,4BAAZ,YAAY,QAMvB",
+      names: [],
+      sources: ["E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\enums\\auth-provider.enum.ts"],
+      sourcesContent: ["export enum AuthProvider {\r\n  PASSWORD = \"PASSWORD\",\r\n  OTP_EMAIL = \"OTP_EMAIL\",\r\n  MAGIC_LINK = \"MAGIC_LINK\",\r\n  GOOGLE = \"GOOGLE\",\r\n  FACEBOOK = \"FACEBOOK\",\r\n}\r\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "8580a24322acc5dfc458a0da4d3dd9b2ff625663"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_27b0fi0zna = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_27b0fi0zna();
+cov_27b0fi0zna().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_27b0fi0zna().s[1]++;
+exports.AuthProvider = void 0;
+var AuthProvider;
+/* istanbul ignore next */
+cov_27b0fi0zna().s[2]++;
+(function (AuthProvider) {
+  /* istanbul ignore next */
+  cov_27b0fi0zna().f[0]++;
+  cov_27b0fi0zna().s[3]++;
+  AuthProvider["PASSWORD"] = "PASSWORD";
+  /* istanbul ignore next */
+  cov_27b0fi0zna().s[4]++;
+  AuthProvider["OTP_EMAIL"] = "OTP_EMAIL";
+  /* istanbul ignore next */
+  cov_27b0fi0zna().s[5]++;
+  AuthProvider["MAGIC_LINK"] = "MAGIC_LINK";
+  /* istanbul ignore next */
+  cov_27b0fi0zna().s[6]++;
+  AuthProvider["GOOGLE"] = "GOOGLE";
+  /* istanbul ignore next */
+  cov_27b0fi0zna().s[7]++;
+  AuthProvider["FACEBOOK"] = "FACEBOOK";
+})(
+/* istanbul ignore next */
+(cov_27b0fi0zna().b[0][0]++, AuthProvider) ||
+/* istanbul ignore next */
+(cov_27b0fi0zna().b[0][1]++, exports.AuthProvider = AuthProvider = {}));
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJBdXRoUHJvdmlkZXIiLCJjb3ZfMjdiMGZpMHpuYSIsInMiLCJmIiwiYiIsImV4cG9ydHMiXSwic291cmNlcyI6WyJFOlxcd29ya3NwYWNlLXNhc3NcXHJlcG9cXHBhY2thZ2VzXFxhdXRoLWNvcmVcXHNyY1xcZG9tYWluXFxlbnVtc1xcYXV0aC1wcm92aWRlci5lbnVtLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCBlbnVtIEF1dGhQcm92aWRlciB7XHJcbiAgUEFTU1dPUkQgPSBcIlBBU1NXT1JEXCIsXHJcbiAgT1RQX0VNQUlMID0gXCJPVFBfRU1BSUxcIixcclxuICBNQUdJQ19MSU5LID0gXCJNQUdJQ19MSU5LXCIsXHJcbiAgR09PR0xFID0gXCJHT09HTEVcIixcclxuICBGQUNFQk9PSyA9IFwiRkFDRUJPT0tcIixcclxufVxyXG4iXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBLElBQVlBLFlBTVg7QUFBQTtBQUFBQyxjQUFBLEdBQUFDLENBQUE7QUFORCxXQUFZRixZQUFZO0VBQUE7RUFBQUMsY0FBQSxHQUFBRSxDQUFBO0VBQUFGLGNBQUEsR0FBQUMsQ0FBQTtFQUN0QkYsWUFBQSx5QkFBcUI7RUFBQTtFQUFBQyxjQUFBLEdBQUFDLENBQUE7RUFDckJGLFlBQUEsMkJBQXVCO0VBQUE7RUFBQUMsY0FBQSxHQUFBQyxDQUFBO0VBQ3ZCRixZQUFBLDZCQUF5QjtFQUFBO0VBQUFDLGNBQUEsR0FBQUMsQ0FBQTtFQUN6QkYsWUFBQSxxQkFBaUI7RUFBQTtFQUFBQyxjQUFBLEdBQUFDLENBQUE7RUFDakJGLFlBQUEseUJBQXFCO0FBQ3ZCLENBQUM7QUFOVztBQUFBLENBQUFDLGNBQUEsR0FBQUcsQ0FBQSxVQUFBSixZQUFZO0FBQUE7QUFBQSxDQUFBQyxjQUFBLEdBQUFHLENBQUEsVUFBQUMsT0FBQSxDQUFBTCxZQUFBLEdBQVpBLFlBQVkiLCJpZ25vcmVMaXN0IjpbXX0=

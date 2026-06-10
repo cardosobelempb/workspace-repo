@@ -1,0 +1,333 @@
+f1a58fec79572bb494637f020a16b39d
+"use strict";
+
+/* istanbul ignore next */
+function cov_166z08rnz6() {
+  var path = "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\use-cases\\me.use-case.ts";
+  var hash = "a3bfd98218a70d9613d0bc8471c39c2276ea2361";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\use-cases\\me.use-case.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 27
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 17
+        },
+        end: {
+          line: 4,
+          column: 40
+        }
+      },
+      "3": {
+        start: {
+          line: 5,
+          column: 22
+        },
+        end: {
+          line: 5,
+          column: 55
+        }
+      },
+      "4": {
+        start: {
+          line: 9,
+          column: 8
+        },
+        end: {
+          line: 9,
+          column: 45
+        }
+      },
+      "5": {
+        start: {
+          line: 12,
+          column: 21
+        },
+        end: {
+          line: 12,
+          column: 63
+        }
+      },
+      "6": {
+        start: {
+          line: 13,
+          column: 8
+        },
+        end: {
+          line: 19,
+          column: 9
+        }
+      },
+      "7": {
+        start: {
+          line: 14,
+          column: 12
+        },
+        end: {
+          line: 18,
+          column: 16
+        }
+      },
+      "8": {
+        start: {
+          line: 20,
+          column: 8
+        },
+        end: {
+          line: 20,
+          column: 90
+        }
+      },
+      "9": {
+        start: {
+          line: 23,
+          column: 0
+        },
+        end: {
+          line: 23,
+          column: 30
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 8,
+            column: 4
+          },
+          end: {
+            line: 8,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 8,
+            column: 32
+          },
+          end: {
+            line: 10,
+            column: 5
+          }
+        },
+        line: 8
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 11,
+            column: 4
+          },
+          end: {
+            line: 11,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 11,
+            column: 26
+          },
+          end: {
+            line: 21,
+            column: 5
+          }
+        },
+        line: 11
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 13,
+            column: 8
+          },
+          end: {
+            line: 19,
+            column: 9
+          }
+        },
+        type: "if",
+        locations: [{
+          start: {
+            line: 13,
+            column: 8
+          },
+          end: {
+            line: 19,
+            column: 9
+          }
+        }, {
+          start: {
+            line: undefined,
+            column: undefined
+          },
+          end: {
+            line: undefined,
+            column: undefined
+          }
+        }],
+        line: 13
+      },
+      "1": {
+        loc: {
+          start: {
+            line: 13,
+            column: 12
+          },
+          end: {
+            line: 13,
+            column: 35
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 13,
+            column: 12
+          },
+          end: {
+            line: 13,
+            column: 17
+          }
+        }, {
+          start: {
+            line: 13,
+            column: 21
+          },
+          end: {
+            line: 13,
+            column: 35
+          }
+        }],
+        line: 13
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0
+    },
+    b: {
+      "0": [0, 0],
+      "1": [0, 0]
+    },
+    inputSourceMap: {
+      file: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\use-cases\\me.use-case.ts",
+      mappings: ";;;AAAA,yCAAkE;AAGlE,wDAAoD;AAEpD,MAAa,SAAS;IACS;IAA7B,YAA6B,cAA8B;QAA9B,mBAAc,GAAd,cAAc,CAAgB;IAAG,CAAC;IAE/D,KAAK,CAAC,OAAO,CACX,MAAc;QAEd,MAAM,IAAI,GAAG,MAAM,IAAI,CAAC,cAAc,CAAC,QAAQ,CAAC,MAAM,CAAC,CAAC;QAExD,IAAI,CAAC,IAAI,IAAI,IAAI,CAAC,SAAS,EAAE,CAAC;YAC5B,OAAO,IAAA,aAAI,EACT,IAAI,sBAAa,CAAC;gBAChB,SAAS,EAAE,QAAQ;gBACnB,KAAK,EAAE,MAAM;gBACb,OAAO,EAAE,gBAAgB;aAC1B,CAAC,CACH,CAAC;QACJ,CAAC;QAED,OAAO,IAAA,cAAK,EAAC,EAAE,IAAI,EAAE,wBAAU,CAAC,YAAY,CAAC,IAAI,CAAC,EAAE,CAAC,CAAC;IACxD,CAAC;CACF;AApBD,8BAoBC",
+      names: [],
+      sources: ["E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\use-cases\\me.use-case.ts"],
+      sourcesContent: ["import { Either, left, NotFoundError, right } from \"@repo/common\";\nimport { UserRepository } from \"../../domain/repositories/user.repository\";\nimport { UserProjectionDto } from \"../dto/user.dto\";\nimport { UserMapper } from \"../mappers/user.mapper\";\n\nexport class MeUseCase {\n  constructor(private readonly userRepository: UserRepository) {}\n\n  async execute(\n    userId: string,\n  ): Promise<Either<NotFoundError, { user: UserProjectionDto }>> {\n    const user = await this.userRepository.findById(userId);\n\n    if (!user || user.deletedAt) {\n      return left(\n        new NotFoundError({\n          fieldName: \"userId\",\n          value: userId,\n          message: \"User not found\",\n        }),\n      );\n    }\n\n    return right({ user: UserMapper.toProjection(user) });\n  }\n}\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "a3bfd98218a70d9613d0bc8471c39c2276ea2361"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_166z08rnz6 = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_166z08rnz6();
+cov_166z08rnz6().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_166z08rnz6().s[1]++;
+exports.MeUseCase = void 0;
+const common_1 =
+/* istanbul ignore next */
+(cov_166z08rnz6().s[2]++, require("@repo/common"));
+const user_mapper_1 =
+/* istanbul ignore next */
+(cov_166z08rnz6().s[3]++, require("../mappers/user.mapper"));
+class MeUseCase {
+  userRepository;
+  constructor(userRepository) {
+    /* istanbul ignore next */
+    cov_166z08rnz6().f[0]++;
+    cov_166z08rnz6().s[4]++;
+    this.userRepository = userRepository;
+  }
+  async execute(userId) {
+    /* istanbul ignore next */
+    cov_166z08rnz6().f[1]++;
+    const user =
+    /* istanbul ignore next */
+    (cov_166z08rnz6().s[5]++, await this.userRepository.findById(userId));
+    /* istanbul ignore next */
+    cov_166z08rnz6().s[6]++;
+    if (
+    /* istanbul ignore next */
+    (cov_166z08rnz6().b[1][0]++, !user) ||
+    /* istanbul ignore next */
+    (cov_166z08rnz6().b[1][1]++, user.deletedAt)) {
+      /* istanbul ignore next */
+      cov_166z08rnz6().b[0][0]++;
+      cov_166z08rnz6().s[7]++;
+      return (0, common_1.left)(new common_1.NotFoundError({
+        fieldName: "userId",
+        value: userId,
+        message: "User not found"
+      }));
+    } else
+    /* istanbul ignore next */
+    {
+      cov_166z08rnz6().b[0][1]++;
+    }
+    cov_166z08rnz6().s[8]++;
+    return (0, common_1.right)({
+      user: user_mapper_1.UserMapper.toProjection(user)
+    });
+  }
+}
+/* istanbul ignore next */
+cov_166z08rnz6().s[9]++;
+exports.MeUseCase = MeUseCase;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb21tb25fMSIsImNvdl8xNjZ6MDhybno2IiwicyIsInJlcXVpcmUiLCJ1c2VyX21hcHBlcl8xIiwiTWVVc2VDYXNlIiwidXNlclJlcG9zaXRvcnkiLCJjb25zdHJ1Y3RvciIsImYiLCJleGVjdXRlIiwidXNlcklkIiwidXNlciIsImZpbmRCeUlkIiwiYiIsImRlbGV0ZWRBdCIsImxlZnQiLCJOb3RGb3VuZEVycm9yIiwiZmllbGROYW1lIiwidmFsdWUiLCJtZXNzYWdlIiwicmlnaHQiLCJVc2VyTWFwcGVyIiwidG9Qcm9qZWN0aW9uIiwiZXhwb3J0cyJdLCJzb3VyY2VzIjpbIkU6XFx3b3Jrc3BhY2Utc2Fzc1xccmVwb1xccGFja2FnZXNcXGF1dGgtY29yZVxcc3JjXFxhcHBsaWNhdGlvblxcdXNlLWNhc2VzXFxtZS51c2UtY2FzZS50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBFaXRoZXIsIGxlZnQsIE5vdEZvdW5kRXJyb3IsIHJpZ2h0IH0gZnJvbSBcIkByZXBvL2NvbW1vblwiO1xuaW1wb3J0IHsgVXNlclJlcG9zaXRvcnkgfSBmcm9tIFwiLi4vLi4vZG9tYWluL3JlcG9zaXRvcmllcy91c2VyLnJlcG9zaXRvcnlcIjtcbmltcG9ydCB7IFVzZXJQcm9qZWN0aW9uRHRvIH0gZnJvbSBcIi4uL2R0by91c2VyLmR0b1wiO1xuaW1wb3J0IHsgVXNlck1hcHBlciB9IGZyb20gXCIuLi9tYXBwZXJzL3VzZXIubWFwcGVyXCI7XG5cbmV4cG9ydCBjbGFzcyBNZVVzZUNhc2Uge1xuICBjb25zdHJ1Y3Rvcihwcml2YXRlIHJlYWRvbmx5IHVzZXJSZXBvc2l0b3J5OiBVc2VyUmVwb3NpdG9yeSkge31cblxuICBhc3luYyBleGVjdXRlKFxuICAgIHVzZXJJZDogc3RyaW5nLFxuICApOiBQcm9taXNlPEVpdGhlcjxOb3RGb3VuZEVycm9yLCB7IHVzZXI6IFVzZXJQcm9qZWN0aW9uRHRvIH0+PiB7XG4gICAgY29uc3QgdXNlciA9IGF3YWl0IHRoaXMudXNlclJlcG9zaXRvcnkuZmluZEJ5SWQodXNlcklkKTtcblxuICAgIGlmICghdXNlciB8fCB1c2VyLmRlbGV0ZWRBdCkge1xuICAgICAgcmV0dXJuIGxlZnQoXG4gICAgICAgIG5ldyBOb3RGb3VuZEVycm9yKHtcbiAgICAgICAgICBmaWVsZE5hbWU6IFwidXNlcklkXCIsXG4gICAgICAgICAgdmFsdWU6IHVzZXJJZCxcbiAgICAgICAgICBtZXNzYWdlOiBcIlVzZXIgbm90IGZvdW5kXCIsXG4gICAgICAgIH0pLFxuICAgICAgKTtcbiAgICB9XG5cbiAgICByZXR1cm4gcmlnaHQoeyB1c2VyOiBVc2VyTWFwcGVyLnRvUHJvamVjdGlvbih1c2VyKSB9KTtcbiAgfVxufVxuIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQSxNQUFBQSxRQUFBO0FBQUE7QUFBQSxDQUFBQyxjQUFBLEdBQUFDLENBQUEsT0FBQUMsT0FBQTtBQUdBLE1BQUFDLGFBQUE7QUFBQTtBQUFBLENBQUFILGNBQUEsR0FBQUMsQ0FBQSxPQUFBQyxPQUFBO0FBRUEsTUFBYUUsU0FBUztFQUNTQyxjQUFBO0VBQTdCQyxZQUE2QkQsY0FBOEI7SUFBQTtJQUFBTCxjQUFBLEdBQUFPLENBQUE7SUFBQVAsY0FBQSxHQUFBQyxDQUFBO0lBQTlCLEtBQUFJLGNBQWMsR0FBZEEsY0FBYztFQUFtQjtFQUU5RCxNQUFNRyxPQUFPQSxDQUNYQyxNQUFjO0lBQUE7SUFBQVQsY0FBQSxHQUFBTyxDQUFBO0lBRWQsTUFBTUcsSUFBSTtJQUFBO0lBQUEsQ0FBQVYsY0FBQSxHQUFBQyxDQUFBLE9BQUcsTUFBTSxJQUFJLENBQUNJLGNBQWMsQ0FBQ00sUUFBUSxDQUFDRixNQUFNLENBQUM7SUFBQztJQUFBVCxjQUFBLEdBQUFDLENBQUE7SUFFeEQ7SUFBSTtJQUFBLENBQUFELGNBQUEsR0FBQVksQ0FBQSxXQUFDRixJQUFJO0lBQUE7SUFBQSxDQUFBVixjQUFBLEdBQUFZLENBQUEsVUFBSUYsSUFBSSxDQUFDRyxTQUFTLEdBQUU7TUFBQTtNQUFBYixjQUFBLEdBQUFZLENBQUE7TUFBQVosY0FBQSxHQUFBQyxDQUFBO01BQzNCLE9BQU8sSUFBQUYsUUFBQSxDQUFBZSxJQUFJLEVBQ1QsSUFBSWYsUUFBQSxDQUFBZ0IsYUFBYSxDQUFDO1FBQ2hCQyxTQUFTLEVBQUUsUUFBUTtRQUNuQkMsS0FBSyxFQUFFUixNQUFNO1FBQ2JTLE9BQU8sRUFBRTtPQUNWLENBQUMsQ0FDSDtJQUNILENBQUM7SUFBQTtJQUFBO01BQUFsQixjQUFBLEdBQUFZLENBQUE7SUFBQTtJQUFBWixjQUFBLEdBQUFDLENBQUE7SUFFRCxPQUFPLElBQUFGLFFBQUEsQ0FBQW9CLEtBQUssRUFBQztNQUFFVCxJQUFJLEVBQUVQLGFBQUEsQ0FBQWlCLFVBQVUsQ0FBQ0MsWUFBWSxDQUFDWCxJQUFJO0lBQUMsQ0FBRSxDQUFDO0VBQ3ZEOztBQUNEO0FBQUFWLGNBQUEsR0FBQUMsQ0FBQTtBQXBCRHFCLE9BQUEsQ0FBQWxCLFNBQUEsR0FBQUEsU0FBQSIsImlnbm9yZUxpc3QiOltdfQ==

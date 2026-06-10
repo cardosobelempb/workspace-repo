@@ -1,0 +1,43 @@
+f4c593e0539c68cc5598203abcdbd826
+"use strict";
+
+/* istanbul ignore next */
+function cov_1ch9gr9mtb() {
+  var path = "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\services\\session-token.service.ts";
+  var hash = "dc97634b1b55c4b525bab64c786465753ca689b5";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\services\\session-token.service.ts",
+    statementMap: {},
+    fnMap: {},
+    branchMap: {},
+    s: {},
+    f: {},
+    b: {},
+    inputSourceMap: {
+      file: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\services\\session-token.service.ts",
+      mappings: "",
+      names: [],
+      sources: ["E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\services\\session-token.service.ts"],
+      sourcesContent: [""],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "dc97634b1b55c4b525bab64c786465753ca689b5"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_1ch9gr9mtb = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_1ch9gr9mtb();
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcYXV0aC1jb3JlXFxzcmNcXGRvbWFpblxcc2VydmljZXNcXHNlc3Npb24tdG9rZW4uc2VydmljZS50cyJdLCJzb3VyY2VzQ29udGVudCI6WyIiXSwibWFwcGluZ3MiOiIiLCJpZ25vcmVMaXN0IjpbXX0=

@@ -1,0 +1,105 @@
+b72a427600b233ccfe948d42e168e71f
+"use strict";
+
+/* istanbul ignore next */
+function cov_r0y9t7fbn() {
+  var path = "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\repositories\\magic-link.repository.ts";
+  var hash = "dfbf35def82f9447f89a137897a008f65a8b0c73";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\repositories\\magic-link.repository.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 37
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 17
+        },
+        end: {
+          line: 4,
+          column: 40
+        }
+      },
+      "3": {
+        start: {
+          line: 7,
+          column: 0
+        },
+        end: {
+          line: 7,
+          column: 50
+        }
+      }
+    },
+    fnMap: {},
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    f: {},
+    b: {},
+    inputSourceMap: {
+      file: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\repositories\\magic-link.repository.ts",
+      mappings: ";;;AAAA,yCAA8C;AAG9C,MAAsB,mBAAoB,SAAQ,uBAAoC;CAIrF;AAJD,kDAIC",
+      names: [],
+      sources: ["E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\repositories\\magic-link.repository.ts"],
+      sourcesContent: ["import { BaseRepository } from \"@repo/common\";\r\nimport { MagicLinkTokenEntity } from \"../entities\";\r\n\r\nexport abstract class MagicLinkRepository extends BaseRepository<MagicLinkTokenEntity> {\r\n  abstract findValidByTokenHash(tokenHash: string): Promise<MagicLinkTokenEntity | null>;\r\n  abstract markUsed(id: string, usedAt: Date): Promise<void>;\r\n  abstract invalidateAllByEmail(email: string): Promise<void>;\r\n}\r\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "dfbf35def82f9447f89a137897a008f65a8b0c73"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_r0y9t7fbn = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_r0y9t7fbn();
+cov_r0y9t7fbn().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_r0y9t7fbn().s[1]++;
+exports.MagicLinkRepository = void 0;
+const common_1 =
+/* istanbul ignore next */
+(cov_r0y9t7fbn().s[2]++, require("@repo/common"));
+class MagicLinkRepository extends
+/* istanbul ignore next */
+(common_1.BaseRepository) {}
+/* istanbul ignore next */
+cov_r0y9t7fbn().s[3]++;
+exports.MagicLinkRepository = MagicLinkRepository;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb21tb25fMSIsImNvdl9yMHk5dDdmYm4iLCJzIiwicmVxdWlyZSIsIk1hZ2ljTGlua1JlcG9zaXRvcnkiLCJCYXNlUmVwb3NpdG9yeSIsImV4cG9ydHMiXSwic291cmNlcyI6WyJFOlxcd29ya3NwYWNlLXNhc3NcXHJlcG9cXHBhY2thZ2VzXFxhdXRoLWNvcmVcXHNyY1xcZG9tYWluXFxyZXBvc2l0b3JpZXNcXG1hZ2ljLWxpbmsucmVwb3NpdG9yeS50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBCYXNlUmVwb3NpdG9yeSB9IGZyb20gXCJAcmVwby9jb21tb25cIjtcclxuaW1wb3J0IHsgTWFnaWNMaW5rVG9rZW5FbnRpdHkgfSBmcm9tIFwiLi4vZW50aXRpZXNcIjtcclxuXHJcbmV4cG9ydCBhYnN0cmFjdCBjbGFzcyBNYWdpY0xpbmtSZXBvc2l0b3J5IGV4dGVuZHMgQmFzZVJlcG9zaXRvcnk8TWFnaWNMaW5rVG9rZW5FbnRpdHk+IHtcclxuICBhYnN0cmFjdCBmaW5kVmFsaWRCeVRva2VuSGFzaCh0b2tlbkhhc2g6IHN0cmluZyk6IFByb21pc2U8TWFnaWNMaW5rVG9rZW5FbnRpdHkgfCBudWxsPjtcclxuICBhYnN0cmFjdCBtYXJrVXNlZChpZDogc3RyaW5nLCB1c2VkQXQ6IERhdGUpOiBQcm9taXNlPHZvaWQ+O1xyXG4gIGFic3RyYWN0IGludmFsaWRhdGVBbGxCeUVtYWlsKGVtYWlsOiBzdHJpbmcpOiBQcm9taXNlPHZvaWQ+O1xyXG59XHJcbiJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBLE1BQUFBLFFBQUE7QUFBQTtBQUFBLENBQUFDLGFBQUEsR0FBQUMsQ0FBQSxPQUFBQyxPQUFBO0FBR0EsTUFBc0JDLG1CQUFvQjtBQUFBO0FBQUEsQ0FBUUosUUFBQSxDQUFBSyxjQUFvQztBQUlyRjtBQUFBSixhQUFBLEdBQUFDLENBQUE7QUFKREksT0FBQSxDQUFBRixtQkFBQSxHQUFBQSxtQkFBQSIsImlnbm9yZUxpc3QiOltdfQ==

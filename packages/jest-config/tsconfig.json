@@ -1,0 +1,19 @@
+{
+  "extends": "../typescript-config/base.json",
+  "compilerOptions": {
+    "ignoreDeprecations": "6.0",
+    "types": [
+      "node",
+      "jest"
+    ]
+  },
+  "include": [
+    "index.ts",
+    "configs/**/*.ts",
+    "helpers/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

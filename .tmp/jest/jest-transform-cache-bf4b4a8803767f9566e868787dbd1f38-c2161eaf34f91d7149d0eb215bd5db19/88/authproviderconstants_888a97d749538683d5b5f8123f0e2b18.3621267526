@@ -1,0 +1,94 @@
+6d9658463748f7323c7dc8ac4c152dc1
+"use strict";
+
+/* istanbul ignore next */
+function cov_1g15ou386d() {
+  var path = "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\constants\\auth-provider.constants.ts";
+  var hash = "db6c11f1122c8501ed12fa25ba67410ae056245c";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\constants\\auth-provider.constants.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 41
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 0
+        },
+        end: {
+          line: 10,
+          column: 2
+        }
+      }
+    },
+    fnMap: {},
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    f: {},
+    b: {},
+    inputSourceMap: {
+      file: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\constants\\auth-provider.constants.ts",
+      mappings: ";;;AAAa,QAAA,uBAAuB,GAAG;IACrC,QAAQ,EAAE,UAAU;IACpB,SAAS,EAAE,WAAW;IACtB,UAAU,EAAE,YAAY;IACxB,MAAM,EAAE,QAAQ;IAChB,QAAQ,EAAE,UAAU;CACZ,CAAC",
+      names: [],
+      sources: ["E:\\workspace-sass\\repo\\packages\\auth-core\\src\\constants\\auth-provider.constants.ts"],
+      sourcesContent: ["export const AUTH_PROVIDER_CONSTANTS = {\r\n  PASSWORD: \"PASSWORD\",\r\n  OTP_EMAIL: \"OTP_EMAIL\",\r\n  MAGIC_LINK: \"MAGIC_LINK\",\r\n  GOOGLE: \"GOOGLE\",\r\n  FACEBOOK: \"FACEBOOK\",\r\n} as const;\r\n\r\nexport type AuthProviderConstant =\r\n  (typeof AUTH_PROVIDER_CONSTANTS)[keyof typeof AUTH_PROVIDER_CONSTANTS];\r\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "db6c11f1122c8501ed12fa25ba67410ae056245c"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_1g15ou386d = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_1g15ou386d();
+cov_1g15ou386d().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_1g15ou386d().s[1]++;
+exports.AUTH_PROVIDER_CONSTANTS = void 0;
+/* istanbul ignore next */
+cov_1g15ou386d().s[2]++;
+exports.AUTH_PROVIDER_CONSTANTS = {
+  PASSWORD: "PASSWORD",
+  OTP_EMAIL: "OTP_EMAIL",
+  MAGIC_LINK: "MAGIC_LINK",
+  GOOGLE: "GOOGLE",
+  FACEBOOK: "FACEBOOK"
+};
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJleHBvcnRzIiwiQVVUSF9QUk9WSURFUl9DT05TVEFOVFMiLCJQQVNTV09SRCIsIk9UUF9FTUFJTCIsIk1BR0lDX0xJTksiLCJHT09HTEUiLCJGQUNFQk9PSyJdLCJzb3VyY2VzIjpbIkU6XFx3b3Jrc3BhY2Utc2Fzc1xccmVwb1xccGFja2FnZXNcXGF1dGgtY29yZVxcc3JjXFxjb25zdGFudHNcXGF1dGgtcHJvdmlkZXIuY29uc3RhbnRzLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCBjb25zdCBBVVRIX1BST1ZJREVSX0NPTlNUQU5UUyA9IHtcclxuICBQQVNTV09SRDogXCJQQVNTV09SRFwiLFxyXG4gIE9UUF9FTUFJTDogXCJPVFBfRU1BSUxcIixcclxuICBNQUdJQ19MSU5LOiBcIk1BR0lDX0xJTktcIixcclxuICBHT09HTEU6IFwiR09PR0xFXCIsXHJcbiAgRkFDRUJPT0s6IFwiRkFDRUJPT0tcIixcclxufSBhcyBjb25zdDtcclxuXHJcbmV4cG9ydCB0eXBlIEF1dGhQcm92aWRlckNvbnN0YW50ID1cclxuICAodHlwZW9mIEFVVEhfUFJPVklERVJfQ09OU1RBTlRTKVtrZXlvZiB0eXBlb2YgQVVUSF9QUk9WSURFUl9DT05TVEFOVFNdO1xyXG4iXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBYUEsT0FBQSxDQUFBQyx1QkFBdUIsR0FBRztFQUNyQ0MsUUFBUSxFQUFFLFVBQVU7RUFDcEJDLFNBQVMsRUFBRSxXQUFXO0VBQ3RCQyxVQUFVLEVBQUUsWUFBWTtFQUN4QkMsTUFBTSxFQUFFLFFBQVE7RUFDaEJDLFFBQVEsRUFBRTtDQUNGIiwiaWdub3JlTGlzdCI6W119

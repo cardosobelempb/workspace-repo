@@ -1,0 +1,167 @@
+8580670080148c28fa16be75187ee734
+"use strict";
+
+/* istanbul ignore next */
+function cov_2iuoat72ny() {
+  var path = "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\factories\\email-verification-token.factory.ts";
+  var hash = "82735eae8adc7d4cc553a1dd4176a715e53a11e4";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\factories\\email-verification-token.factory.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 47
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 17
+        },
+        end: {
+          line: 4,
+          column: 40
+        }
+      },
+      "3": {
+        start: {
+          line: 5,
+          column: 19
+        },
+        end: {
+          line: 5,
+          column: 51
+        }
+      },
+      "4": {
+        start: {
+          line: 8,
+          column: 8
+        },
+        end: {
+          line: 13,
+          column: 11
+        }
+      },
+      "5": {
+        start: {
+          line: 16,
+          column: 0
+        },
+        end: {
+          line: 16,
+          column: 70
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 7,
+            column: 4
+          },
+          end: {
+            line: 7,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 7,
+            column: 24
+          },
+          end: {
+            line: 14,
+            column: 5
+          }
+        },
+        line: 7
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    f: {
+      "0": 0
+    },
+    b: {},
+    inputSourceMap: {
+      file: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\factories\\email-verification-token.factory.ts",
+      mappings: ";;;AAAA,yCAAsC;AACtC,oDAAqE;AAGrE,MAAa,6BAA6B;IACxC,MAAM,CAAC,KAAK,CAAC,KAAsC;QACjD,OAAO,uCAA4B,CAAC,MAAM,CAAC;YACzC,MAAM,EAAE,eAAM,CAAC,MAAM,CAAC,KAAK,CAAC,MAAM,CAAC;YACnC,SAAS,EAAE,KAAK,CAAC,SAAS;YAC1B,SAAS,EAAE,IAAI,IAAI,CAAC,KAAK,CAAC,SAAS,CAAC;YACpC,MAAM,EAAE,IAAI;SACb,CAAC,CAAC;IACL,CAAC;CACF;AATD,sEASC",
+      names: [],
+      sources: ["E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\factories\\email-verification-token.factory.ts"],
+      sourcesContent: ["import { UUIDVO } from \"@repo/common\";\r\nimport { EmailVerificationTokenEntity } from \"../../domain/entities\";\r\nimport { EmailVerificationTokenCreateDto } from \"../dto\";\r\n\r\nexport class EmailVerificationTokenFactory {\r\n  static build(input: EmailVerificationTokenCreateDto): EmailVerificationTokenEntity {\r\n    return EmailVerificationTokenEntity.create({\r\n      userId: UUIDVO.create(input.userId),\r\n      tokenHash: input.tokenHash,\r\n      expiresAt: new Date(input.expiresAt),\r\n      usedAt: null,\r\n    });\r\n  }\r\n}\r\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "82735eae8adc7d4cc553a1dd4176a715e53a11e4"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_2iuoat72ny = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_2iuoat72ny();
+cov_2iuoat72ny().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_2iuoat72ny().s[1]++;
+exports.EmailVerificationTokenFactory = void 0;
+const common_1 =
+/* istanbul ignore next */
+(cov_2iuoat72ny().s[2]++, require("@repo/common"));
+const entities_1 =
+/* istanbul ignore next */
+(cov_2iuoat72ny().s[3]++, require("../../domain/entities"));
+class EmailVerificationTokenFactory {
+  static build(input) {
+    /* istanbul ignore next */
+    cov_2iuoat72ny().f[0]++;
+    cov_2iuoat72ny().s[4]++;
+    return entities_1.EmailVerificationTokenEntity.create({
+      userId: common_1.UUIDVO.create(input.userId),
+      tokenHash: input.tokenHash,
+      expiresAt: new Date(input.expiresAt),
+      usedAt: null
+    });
+  }
+}
+/* istanbul ignore next */
+cov_2iuoat72ny().s[5]++;
+exports.EmailVerificationTokenFactory = EmailVerificationTokenFactory;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMml1b2F0NzJueSIsImFjdHVhbENvdmVyYWdlIiwicyIsImNvbW1vbl8xIiwicmVxdWlyZSIsImVudGl0aWVzXzEiLCJFbWFpbFZlcmlmaWNhdGlvblRva2VuRmFjdG9yeSIsImJ1aWxkIiwiaW5wdXQiLCJmIiwiRW1haWxWZXJpZmljYXRpb25Ub2tlbkVudGl0eSIsImNyZWF0ZSIsInVzZXJJZCIsIlVVSURWTyIsInRva2VuSGFzaCIsImV4cGlyZXNBdCIsIkRhdGUiLCJ1c2VkQXQiLCJleHBvcnRzIl0sInNvdXJjZXMiOlsiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcYXV0aC1jb3JlXFxzcmNcXGFwcGxpY2F0aW9uXFxmYWN0b3JpZXNcXGVtYWlsLXZlcmlmaWNhdGlvbi10b2tlbi5mYWN0b3J5LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IFVVSURWTyB9IGZyb20gXCJAcmVwby9jb21tb25cIjtcclxuaW1wb3J0IHsgRW1haWxWZXJpZmljYXRpb25Ub2tlbkVudGl0eSB9IGZyb20gXCIuLi8uLi9kb21haW4vZW50aXRpZXNcIjtcclxuaW1wb3J0IHsgRW1haWxWZXJpZmljYXRpb25Ub2tlbkNyZWF0ZUR0byB9IGZyb20gXCIuLi9kdG9cIjtcclxuXHJcbmV4cG9ydCBjbGFzcyBFbWFpbFZlcmlmaWNhdGlvblRva2VuRmFjdG9yeSB7XHJcbiAgc3RhdGljIGJ1aWxkKGlucHV0OiBFbWFpbFZlcmlmaWNhdGlvblRva2VuQ3JlYXRlRHRvKTogRW1haWxWZXJpZmljYXRpb25Ub2tlbkVudGl0eSB7XHJcbiAgICByZXR1cm4gRW1haWxWZXJpZmljYXRpb25Ub2tlbkVudGl0eS5jcmVhdGUoe1xyXG4gICAgICB1c2VySWQ6IFVVSURWTy5jcmVhdGUoaW5wdXQudXNlcklkKSxcclxuICAgICAgdG9rZW5IYXNoOiBpbnB1dC50b2tlbkhhc2gsXHJcbiAgICAgIGV4cGlyZXNBdDogbmV3IERhdGUoaW5wdXQuZXhwaXJlc0F0KSxcclxuICAgICAgdXNlZEF0OiBudWxsLFxyXG4gICAgfSk7XHJcbiAgfVxyXG59XHJcbiJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7SUFJQTtJQUFBQSxjQUFBLFlBQUFBLENBQUE7TUFBQSxPQUFBQyxjQUFBO0lBQUE7RUFBQTtFQUFBLE9BQUFBLGNBQUE7QUFBQTtBQUFBRCxjQUFBO0FBQUFBLGNBQUEsR0FBQUUsQ0FBQTs7Ozs7OztBQUpBLE1BQUFDLFFBQUE7QUFBQTtBQUFBLENBQUFILGNBQUEsR0FBQUUsQ0FBQSxPQUFBRSxPQUFBO0FBQ0EsTUFBQUMsVUFBQTtBQUFBO0FBQUEsQ0FBQUwsY0FBQSxHQUFBRSxDQUFBLE9BQUFFLE9BQUE7QUFHQSxNQUFhRSw2QkFBNkI7RUFDeEMsT0FBT0MsS0FBS0EsQ0FBQ0MsS0FBc0M7SUFBQTtJQUFBUixjQUFBLEdBQUFTLENBQUE7SUFBQVQsY0FBQSxHQUFBRSxDQUFBO0lBQ2pELE9BQU9HLFVBQUEsQ0FBQUssNEJBQTRCLENBQUNDLE1BQU0sQ0FBQztNQUN6Q0MsTUFBTSxFQUFFVCxRQUFBLENBQUFVLE1BQU0sQ0FBQ0YsTUFBTSxDQUFDSCxLQUFLLENBQUNJLE1BQU0sQ0FBQztNQUNuQ0UsU0FBUyxFQUFFTixLQUFLLENBQUNNLFNBQVM7TUFDMUJDLFNBQVMsRUFBRSxJQUFJQyxJQUFJLENBQUNSLEtBQUssQ0FBQ08sU0FBUyxDQUFDO01BQ3BDRSxNQUFNLEVBQUU7S0FDVCxDQUFDO0VBQ0o7O0FBQ0Q7QUFBQWpCLGNBQUEsR0FBQUUsQ0FBQTtBQVREZ0IsT0FBQSxDQUFBWiw2QkFBQSxHQUFBQSw2QkFBQSIsImlnbm9yZUxpc3QiOltdfQ==

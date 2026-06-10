@@ -1,0 +1,105 @@
+229b19236856314cd6f93276b3109cf1
+"use strict";
+
+/* istanbul ignore next */
+function cov_183i5bbrr3() {
+  var path = "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\repositories\\audit-log.repository.ts";
+  var hash = "808fbf23d9fa4afc7d093d36cc8352ce4f3f362a";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\repositories\\audit-log.repository.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 36
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 17
+        },
+        end: {
+          line: 4,
+          column: 40
+        }
+      },
+      "3": {
+        start: {
+          line: 7,
+          column: 0
+        },
+        end: {
+          line: 7,
+          column: 48
+        }
+      }
+    },
+    fnMap: {},
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    f: {},
+    b: {},
+    inputSourceMap: {
+      file: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\repositories\\audit-log.repository.ts",
+      mappings: ";;;AAAA,yCAA8C;AAG9C,MAAsB,kBAAmB,SAAQ,uBAA8B;CAAG;AAAlF,gDAAkF",
+      names: [],
+      sources: ["E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\repositories\\audit-log.repository.ts"],
+      sourcesContent: ["import { BaseRepository } from \"@repo/common\";\r\nimport { AuditLogEntity } from \"../entities\";\r\n\r\nexport abstract class AuditLogRepository extends BaseRepository<AuditLogEntity> {}\r\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "808fbf23d9fa4afc7d093d36cc8352ce4f3f362a"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_183i5bbrr3 = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_183i5bbrr3();
+cov_183i5bbrr3().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_183i5bbrr3().s[1]++;
+exports.AuditLogRepository = void 0;
+const common_1 =
+/* istanbul ignore next */
+(cov_183i5bbrr3().s[2]++, require("@repo/common"));
+class AuditLogRepository extends
+/* istanbul ignore next */
+(common_1.BaseRepository) {}
+/* istanbul ignore next */
+cov_183i5bbrr3().s[3]++;
+exports.AuditLogRepository = AuditLogRepository;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb21tb25fMSIsImNvdl8xODNpNWJicnIzIiwicyIsInJlcXVpcmUiLCJBdWRpdExvZ1JlcG9zaXRvcnkiLCJCYXNlUmVwb3NpdG9yeSIsImV4cG9ydHMiXSwic291cmNlcyI6WyJFOlxcd29ya3NwYWNlLXNhc3NcXHJlcG9cXHBhY2thZ2VzXFxhdXRoLWNvcmVcXHNyY1xcZG9tYWluXFxyZXBvc2l0b3JpZXNcXGF1ZGl0LWxvZy5yZXBvc2l0b3J5LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IEJhc2VSZXBvc2l0b3J5IH0gZnJvbSBcIkByZXBvL2NvbW1vblwiO1xyXG5pbXBvcnQgeyBBdWRpdExvZ0VudGl0eSB9IGZyb20gXCIuLi9lbnRpdGllc1wiO1xyXG5cclxuZXhwb3J0IGFic3RyYWN0IGNsYXNzIEF1ZGl0TG9nUmVwb3NpdG9yeSBleHRlbmRzIEJhc2VSZXBvc2l0b3J5PEF1ZGl0TG9nRW50aXR5PiB7fVxyXG4iXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQSxNQUFBQSxRQUFBO0FBQUE7QUFBQSxDQUFBQyxjQUFBLEdBQUFDLENBQUEsT0FBQUMsT0FBQTtBQUdBLE1BQXNCQyxrQkFBbUI7QUFBQTtBQUFBLENBQVFKLFFBQUEsQ0FBQUssY0FBOEI7QUFBRztBQUFBSixjQUFBLEdBQUFDLENBQUE7QUFBbEZJLE9BQUEsQ0FBQUYsa0JBQUEsR0FBQUEsa0JBQUEiLCJpZ25vcmVMaXN0IjpbXX0=

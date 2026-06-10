@@ -1,0 +1,105 @@
+3244c4522bd6b8b761eecbff8b1bef5e
+"use strict";
+
+/* istanbul ignore next */
+function cov_xroec92js() {
+  var path = "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\repositories\\session.repository.ts";
+  var hash = "a661311cf7aaa8e6c64b2f548a87a1b4e24c1f74";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\repositories\\session.repository.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 35
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 17
+        },
+        end: {
+          line: 4,
+          column: 40
+        }
+      },
+      "3": {
+        start: {
+          line: 7,
+          column: 0
+        },
+        end: {
+          line: 7,
+          column: 46
+        }
+      }
+    },
+    fnMap: {},
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    f: {},
+    b: {},
+    inputSourceMap: {
+      file: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\repositories\\session.repository.ts",
+      mappings: ";;;AAAA,yCAA8C;AAG9C,MAAsB,iBAAkB,SAAQ,uBAA6B;CAI5E;AAJD,8CAIC",
+      names: [],
+      sources: ["E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\repositories\\session.repository.ts"],
+      sourcesContent: ["import { BaseRepository } from \"@repo/common\";\r\nimport { SessionEntity } from \"../entities\";\r\n\r\nexport abstract class SessionRepository extends BaseRepository<SessionEntity> {\r\n  abstract findValidByTokenHash(sessionTokenHash: string): Promise<SessionEntity | null>;\r\n  abstract revokeByTokenHash(sessionTokenHash: string): Promise<void>;\r\n  abstract revokeAllByUserId(userId: string): Promise<void>;\r\n}\r\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "a661311cf7aaa8e6c64b2f548a87a1b4e24c1f74"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_xroec92js = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_xroec92js();
+cov_xroec92js().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_xroec92js().s[1]++;
+exports.SessionRepository = void 0;
+const common_1 =
+/* istanbul ignore next */
+(cov_xroec92js().s[2]++, require("@repo/common"));
+class SessionRepository extends
+/* istanbul ignore next */
+(common_1.BaseRepository) {}
+/* istanbul ignore next */
+cov_xroec92js().s[3]++;
+exports.SessionRepository = SessionRepository;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb21tb25fMSIsImNvdl94cm9lYzkyanMiLCJzIiwicmVxdWlyZSIsIlNlc3Npb25SZXBvc2l0b3J5IiwiQmFzZVJlcG9zaXRvcnkiLCJleHBvcnRzIl0sInNvdXJjZXMiOlsiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcYXV0aC1jb3JlXFxzcmNcXGRvbWFpblxccmVwb3NpdG9yaWVzXFxzZXNzaW9uLnJlcG9zaXRvcnkudHMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgQmFzZVJlcG9zaXRvcnkgfSBmcm9tIFwiQHJlcG8vY29tbW9uXCI7XHJcbmltcG9ydCB7IFNlc3Npb25FbnRpdHkgfSBmcm9tIFwiLi4vZW50aXRpZXNcIjtcclxuXHJcbmV4cG9ydCBhYnN0cmFjdCBjbGFzcyBTZXNzaW9uUmVwb3NpdG9yeSBleHRlbmRzIEJhc2VSZXBvc2l0b3J5PFNlc3Npb25FbnRpdHk+IHtcclxuICBhYnN0cmFjdCBmaW5kVmFsaWRCeVRva2VuSGFzaChzZXNzaW9uVG9rZW5IYXNoOiBzdHJpbmcpOiBQcm9taXNlPFNlc3Npb25FbnRpdHkgfCBudWxsPjtcclxuICBhYnN0cmFjdCByZXZva2VCeVRva2VuSGFzaChzZXNzaW9uVG9rZW5IYXNoOiBzdHJpbmcpOiBQcm9taXNlPHZvaWQ+O1xyXG4gIGFic3RyYWN0IHJldm9rZUFsbEJ5VXNlcklkKHVzZXJJZDogc3RyaW5nKTogUHJvbWlzZTx2b2lkPjtcclxufVxyXG4iXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQSxNQUFBQSxRQUFBO0FBQUE7QUFBQSxDQUFBQyxhQUFBLEdBQUFDLENBQUEsT0FBQUMsT0FBQTtBQUdBLE1BQXNCQyxpQkFBa0I7QUFBQTtBQUFBLENBQVFKLFFBQUEsQ0FBQUssY0FBNkI7QUFJNUU7QUFBQUosYUFBQSxHQUFBQyxDQUFBO0FBSkRJLE9BQUEsQ0FBQUYsaUJBQUEsR0FBQUEsaUJBQUEiLCJpZ25vcmVMaXN0IjpbXX0=

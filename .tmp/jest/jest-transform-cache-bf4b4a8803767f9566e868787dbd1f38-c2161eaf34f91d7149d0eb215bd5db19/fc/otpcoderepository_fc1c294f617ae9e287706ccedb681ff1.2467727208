@@ -1,0 +1,105 @@
+c74c91852053e370541970d3f1887102
+"use strict";
+
+/* istanbul ignore next */
+function cov_1fg6i82eho() {
+  var path = "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\repositories\\otp-code.repository.ts";
+  var hash = "4e48d244fa847523d3ef389e626c024d8b5f87bf";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\repositories\\otp-code.repository.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 35
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 17
+        },
+        end: {
+          line: 4,
+          column: 40
+        }
+      },
+      "3": {
+        start: {
+          line: 7,
+          column: 0
+        },
+        end: {
+          line: 7,
+          column: 46
+        }
+      }
+    },
+    fnMap: {},
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    f: {},
+    b: {},
+    inputSourceMap: {
+      file: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\repositories\\otp-code.repository.ts",
+      mappings: ";;;AAAA,yCAA8C;AAG9C,MAAsB,iBAAkB,SAAQ,uBAA6B;CAQ5E;AARD,8CAQC",
+      names: [],
+      sources: ["E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\repositories\\otp-code.repository.ts"],
+      sourcesContent: ["import { BaseRepository } from \"@repo/common\";\r\nimport { OtpCodeEntity } from \"../entities\";\r\n\r\nexport abstract class OtpCodeRepository extends BaseRepository<OtpCodeEntity> {\r\n  abstract findValidByEmailAndPurpose(\r\n    email: string,\r\n    purpose: string,\r\n  ): Promise<OtpCodeEntity | null>;\r\n  abstract incrementAttempts(id: string): Promise<void>;\r\n  abstract markUsed(id: string, usedAt: Date): Promise<void>;\r\n  abstract invalidateAllByEmailAndPurpose(email: string, purpose: string): Promise<void>;\r\n}\r\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "4e48d244fa847523d3ef389e626c024d8b5f87bf"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_1fg6i82eho = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_1fg6i82eho();
+cov_1fg6i82eho().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_1fg6i82eho().s[1]++;
+exports.OtpCodeRepository = void 0;
+const common_1 =
+/* istanbul ignore next */
+(cov_1fg6i82eho().s[2]++, require("@repo/common"));
+class OtpCodeRepository extends
+/* istanbul ignore next */
+(common_1.BaseRepository) {}
+/* istanbul ignore next */
+cov_1fg6i82eho().s[3]++;
+exports.OtpCodeRepository = OtpCodeRepository;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb21tb25fMSIsImNvdl8xZmc2aTgyZWhvIiwicyIsInJlcXVpcmUiLCJPdHBDb2RlUmVwb3NpdG9yeSIsIkJhc2VSZXBvc2l0b3J5IiwiZXhwb3J0cyJdLCJzb3VyY2VzIjpbIkU6XFx3b3Jrc3BhY2Utc2Fzc1xccmVwb1xccGFja2FnZXNcXGF1dGgtY29yZVxcc3JjXFxkb21haW5cXHJlcG9zaXRvcmllc1xcb3RwLWNvZGUucmVwb3NpdG9yeS50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBCYXNlUmVwb3NpdG9yeSB9IGZyb20gXCJAcmVwby9jb21tb25cIjtcclxuaW1wb3J0IHsgT3RwQ29kZUVudGl0eSB9IGZyb20gXCIuLi9lbnRpdGllc1wiO1xyXG5cclxuZXhwb3J0IGFic3RyYWN0IGNsYXNzIE90cENvZGVSZXBvc2l0b3J5IGV4dGVuZHMgQmFzZVJlcG9zaXRvcnk8T3RwQ29kZUVudGl0eT4ge1xyXG4gIGFic3RyYWN0IGZpbmRWYWxpZEJ5RW1haWxBbmRQdXJwb3NlKFxyXG4gICAgZW1haWw6IHN0cmluZyxcclxuICAgIHB1cnBvc2U6IHN0cmluZyxcclxuICApOiBQcm9taXNlPE90cENvZGVFbnRpdHkgfCBudWxsPjtcclxuICBhYnN0cmFjdCBpbmNyZW1lbnRBdHRlbXB0cyhpZDogc3RyaW5nKTogUHJvbWlzZTx2b2lkPjtcclxuICBhYnN0cmFjdCBtYXJrVXNlZChpZDogc3RyaW5nLCB1c2VkQXQ6IERhdGUpOiBQcm9taXNlPHZvaWQ+O1xyXG4gIGFic3RyYWN0IGludmFsaWRhdGVBbGxCeUVtYWlsQW5kUHVycG9zZShlbWFpbDogc3RyaW5nLCBwdXJwb3NlOiBzdHJpbmcpOiBQcm9taXNlPHZvaWQ+O1xyXG59XHJcbiJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBLE1BQUFBLFFBQUE7QUFBQTtBQUFBLENBQUFDLGNBQUEsR0FBQUMsQ0FBQSxPQUFBQyxPQUFBO0FBR0EsTUFBc0JDLGlCQUFrQjtBQUFBO0FBQUEsQ0FBUUosUUFBQSxDQUFBSyxjQUE2QjtBQVE1RTtBQUFBSixjQUFBLEdBQUFDLENBQUE7QUFSREksT0FBQSxDQUFBRixpQkFBQSxHQUFBQSxpQkFBQSIsImlnbm9yZUxpc3QiOltdfQ==

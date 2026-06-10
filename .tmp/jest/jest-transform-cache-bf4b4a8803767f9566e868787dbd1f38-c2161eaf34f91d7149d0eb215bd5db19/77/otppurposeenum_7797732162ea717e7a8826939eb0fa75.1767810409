@@ -1,0 +1,200 @@
+318c42d2ce4a6b2ad2c81adf439b213f
+"use strict";
+
+/* istanbul ignore next */
+function cov_1xtbxvcpbt() {
+  var path = "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\enums\\otp-purpose.enum.ts";
+  var hash = "129b3249cc0a70fd7013429fa7d98bc0ea349896";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\enums\\otp-purpose.enum.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 28
+        }
+      },
+      "2": {
+        start: {
+          line: 5,
+          column: 0
+        },
+        end: {
+          line: 9,
+          column: 57
+        }
+      },
+      "3": {
+        start: {
+          line: 6,
+          column: 4
+        },
+        end: {
+          line: 6,
+          column: 34
+        }
+      },
+      "4": {
+        start: {
+          line: 7,
+          column: 4
+        },
+        end: {
+          line: 7,
+          column: 60
+        }
+      },
+      "5": {
+        start: {
+          line: 8,
+          column: 4
+        },
+        end: {
+          line: 8,
+          column: 52
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 5,
+            column: 1
+          },
+          end: {
+            line: 5,
+            column: 2
+          }
+        },
+        loc: {
+          start: {
+            line: 5,
+            column: 23
+          },
+          end: {
+            line: 9,
+            column: 1
+          }
+        },
+        line: 5
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 9,
+            column: 3
+          },
+          end: {
+            line: 9,
+            column: 55
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 9,
+            column: 3
+          },
+          end: {
+            line: 9,
+            column: 13
+          }
+        }, {
+          start: {
+            line: 9,
+            column: 18
+          },
+          end: {
+            line: 9,
+            column: 54
+          }
+        }],
+        line: 9
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    f: {
+      "0": 0
+    },
+    b: {
+      "0": [0, 0]
+    },
+    inputSourceMap: {
+      file: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\enums\\otp-purpose.enum.ts",
+      mappings: ";;;AAAA,IAAY,UAIX;AAJD,WAAY,UAAU;IACpB,6BAAe,CAAA;IACf,uDAAyC,CAAA;IACzC,+CAAiC,CAAA;AACnC,CAAC,EAJW,UAAU,0BAAV,UAAU,QAIrB",
+      names: [],
+      sources: ["E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\enums\\otp-purpose.enum.ts"],
+      sourcesContent: ["export enum OtpPurpose {\r\n  LOGIN = \"LOGIN\",\r\n  EMAIL_VERIFICATION = \"EMAIL_VERIFICATION\",\r\n  PASSWORD_RESET = \"PASSWORD_RESET\",\r\n}\r\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "129b3249cc0a70fd7013429fa7d98bc0ea349896"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_1xtbxvcpbt = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_1xtbxvcpbt();
+cov_1xtbxvcpbt().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_1xtbxvcpbt().s[1]++;
+exports.OtpPurpose = void 0;
+var OtpPurpose;
+/* istanbul ignore next */
+cov_1xtbxvcpbt().s[2]++;
+(function (OtpPurpose) {
+  /* istanbul ignore next */
+  cov_1xtbxvcpbt().f[0]++;
+  cov_1xtbxvcpbt().s[3]++;
+  OtpPurpose["LOGIN"] = "LOGIN";
+  /* istanbul ignore next */
+  cov_1xtbxvcpbt().s[4]++;
+  OtpPurpose["EMAIL_VERIFICATION"] = "EMAIL_VERIFICATION";
+  /* istanbul ignore next */
+  cov_1xtbxvcpbt().s[5]++;
+  OtpPurpose["PASSWORD_RESET"] = "PASSWORD_RESET";
+})(
+/* istanbul ignore next */
+(cov_1xtbxvcpbt().b[0][0]++, OtpPurpose) ||
+/* istanbul ignore next */
+(cov_1xtbxvcpbt().b[0][1]++, exports.OtpPurpose = OtpPurpose = {}));
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJPdHBQdXJwb3NlIiwiY292XzF4dGJ4dmNwYnQiLCJzIiwiZiIsImIiLCJleHBvcnRzIl0sInNvdXJjZXMiOlsiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcYXV0aC1jb3JlXFxzcmNcXGRvbWFpblxcZW51bXNcXG90cC1wdXJwb3NlLmVudW0udHMiXSwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGVudW0gT3RwUHVycG9zZSB7XHJcbiAgTE9HSU4gPSBcIkxPR0lOXCIsXHJcbiAgRU1BSUxfVkVSSUZJQ0FUSU9OID0gXCJFTUFJTF9WRVJJRklDQVRJT05cIixcclxuICBQQVNTV09SRF9SRVNFVCA9IFwiUEFTU1dPUkRfUkVTRVRcIixcclxufVxyXG4iXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUEsSUFBWUEsVUFJWDtBQUFBO0FBQUFDLGNBQUEsR0FBQUMsQ0FBQTtBQUpELFdBQVlGLFVBQVU7RUFBQTtFQUFBQyxjQUFBLEdBQUFFLENBQUE7RUFBQUYsY0FBQSxHQUFBQyxDQUFBO0VBQ3BCRixVQUFBLG1CQUFlO0VBQUE7RUFBQUMsY0FBQSxHQUFBQyxDQUFBO0VBQ2ZGLFVBQUEsNkNBQXlDO0VBQUE7RUFBQUMsY0FBQSxHQUFBQyxDQUFBO0VBQ3pDRixVQUFBLHFDQUFpQztBQUNuQyxDQUFDO0FBSlc7QUFBQSxDQUFBQyxjQUFBLEdBQUFHLENBQUEsVUFBQUosVUFBVTtBQUFBO0FBQUEsQ0FBQUMsY0FBQSxHQUFBRyxDQUFBLFVBQUFDLE9BQUEsQ0FBQUwsVUFBQSxHQUFWQSxVQUFVIiwiaWdub3JlTGlzdCI6W119

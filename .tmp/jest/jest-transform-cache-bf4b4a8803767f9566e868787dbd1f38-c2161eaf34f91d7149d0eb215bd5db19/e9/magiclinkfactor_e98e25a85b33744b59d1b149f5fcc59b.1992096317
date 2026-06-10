@@ -1,0 +1,285 @@
+a3b0053d51fca6444393abadb7e08625
+"use strict";
+
+/* istanbul ignore next */
+function cov_ud3t2yamt() {
+  var path = "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\factories\\magic-link.factor.ts";
+  var hash = "d91dadccbb0db35343a932f0c715ca1bd1702c7d";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\factories\\magic-link.factor.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 39
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 17
+        },
+        end: {
+          line: 4,
+          column: 40
+        }
+      },
+      "3": {
+        start: {
+          line: 5,
+          column: 19
+        },
+        end: {
+          line: 5,
+          column: 51
+        }
+      },
+      "4": {
+        start: {
+          line: 8,
+          column: 8
+        },
+        end: {
+          line: 15,
+          column: 11
+        }
+      },
+      "5": {
+        start: {
+          line: 18,
+          column: 0
+        },
+        end: {
+          line: 18,
+          column: 54
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 7,
+            column: 4
+          },
+          end: {
+            line: 7,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 7,
+            column: 24
+          },
+          end: {
+            line: 16,
+            column: 5
+          }
+        },
+        line: 7
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 11,
+            column: 23
+          },
+          end: {
+            line: 11,
+            column: 75
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 11,
+            column: 23
+          },
+          end: {
+            line: 11,
+            column: 67
+          }
+        }, {
+          start: {
+            line: 11,
+            column: 71
+          },
+          end: {
+            line: 11,
+            column: 75
+          }
+        }],
+        line: 11
+      },
+      "1": {
+        loc: {
+          start: {
+            line: 12,
+            column: 23
+          },
+          end: {
+            line: 12,
+            column: 75
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 12,
+            column: 23
+          },
+          end: {
+            line: 12,
+            column: 67
+          }
+        }, {
+          start: {
+            line: 12,
+            column: 71
+          },
+          end: {
+            line: 12,
+            column: 75
+          }
+        }],
+        line: 12
+      },
+      "2": {
+        loc: {
+          start: {
+            line: 14,
+            column: 20
+          },
+          end: {
+            line: 14,
+            column: 64
+          }
+        },
+        type: "cond-expr",
+        locations: [{
+          start: {
+            line: 14,
+            column: 35
+          },
+          end: {
+            line: 14,
+            column: 57
+          }
+        }, {
+          start: {
+            line: 14,
+            column: 60
+          },
+          end: {
+            line: 14,
+            column: 64
+          }
+        }],
+        line: 14
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    f: {
+      "0": 0
+    },
+    b: {
+      "0": [0, 0],
+      "1": [0, 0],
+      "2": [0, 0]
+    },
+    inputSourceMap: {
+      file: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\factories\\magic-link.factor.ts",
+      mappings: ";;;AAAA,yCAAiE;AACjE,oDAA6D;AAG7D,MAAa,qBAAqB;IAChC,MAAM,CAAC,KAAK,CAAC,KAA8B;QACzC,OAAO,+BAAoB,CAAC,MAAM,CAAC;YACjC,KAAK,EAAE,gBAAO,CAAC,MAAM,CAAC,KAAK,CAAC,KAAK,CAAC;YAClC,SAAS,EAAE,KAAK,CAAC,SAAS;YAC1B,SAAS,EAAE,oBAAW,CAAC,MAAM,CAAC,KAAK,CAAC,SAAS,CAAC,IAAI,IAAI;YACtD,SAAS,EAAE,oBAAW,CAAC,MAAM,CAAC,KAAK,CAAC,SAAS,CAAC,IAAI,IAAI;YACtD,SAAS,EAAE,IAAI,IAAI,CAAC,KAAK,CAAC,SAAS,CAAC;YACpC,MAAM,EAAE,KAAK,CAAC,MAAM,CAAC,CAAC,CAAC,IAAI,IAAI,CAAC,KAAK,CAAC,MAAM,CAAC,CAAC,CAAC,CAAC,IAAI;SACrD,CAAC,CAAC;IACL,CAAC;CACF;AAXD,sDAWC",
+      names: [],
+      sources: ["E:\\workspace-sass\\repo\\packages\\auth-core\\src\\application\\factories\\magic-link.factor.ts"],
+      sourcesContent: ["import { EmailVO, IpAddressVO, UserAgentVO } from \"@repo/common\";\r\nimport { MagicLinkTokenEntity } from \"../../domain/entities\";\r\nimport { MagicLinkTokenCreateDto } from \"../dto\";\r\n\r\nexport class MagicLinkTokenFactory {\r\n  static build(input: MagicLinkTokenCreateDto): MagicLinkTokenEntity {\r\n    return MagicLinkTokenEntity.create({\r\n      email: EmailVO.create(input.email),\r\n      tokenHash: input.tokenHash,\r\n      ipAddress: IpAddressVO.create(input.ipAddress) ?? null,\r\n      userAgent: UserAgentVO.create(input.userAgent) ?? null,\r\n      expiresAt: new Date(input.expiresAt),\r\n      usedAt: input.usedAt ? new Date(input.usedAt) : null,\r\n    });\r\n  }\r\n}\r\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "d91dadccbb0db35343a932f0c715ca1bd1702c7d"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_ud3t2yamt = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_ud3t2yamt();
+cov_ud3t2yamt().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_ud3t2yamt().s[1]++;
+exports.MagicLinkTokenFactory = void 0;
+const common_1 =
+/* istanbul ignore next */
+(cov_ud3t2yamt().s[2]++, require("@repo/common"));
+const entities_1 =
+/* istanbul ignore next */
+(cov_ud3t2yamt().s[3]++, require("../../domain/entities"));
+class MagicLinkTokenFactory {
+  static build(input) {
+    /* istanbul ignore next */
+    cov_ud3t2yamt().f[0]++;
+    cov_ud3t2yamt().s[4]++;
+    return entities_1.MagicLinkTokenEntity.create({
+      email: common_1.EmailVO.create(input.email),
+      tokenHash: input.tokenHash,
+      ipAddress: 
+      /* istanbul ignore next */
+      (cov_ud3t2yamt().b[0][0]++, common_1.IpAddressVO.create(input.ipAddress)) ??
+      /* istanbul ignore next */
+      (cov_ud3t2yamt().b[0][1]++, null),
+      userAgent: 
+      /* istanbul ignore next */
+      (cov_ud3t2yamt().b[1][0]++, common_1.UserAgentVO.create(input.userAgent)) ??
+      /* istanbul ignore next */
+      (cov_ud3t2yamt().b[1][1]++, null),
+      expiresAt: new Date(input.expiresAt),
+      usedAt: input.usedAt ?
+      /* istanbul ignore next */
+      (cov_ud3t2yamt().b[2][0]++, new Date(input.usedAt)) :
+      /* istanbul ignore next */
+      (cov_ud3t2yamt().b[2][1]++, null)
+    });
+  }
+}
+/* istanbul ignore next */
+cov_ud3t2yamt().s[5]++;
+exports.MagicLinkTokenFactory = MagicLinkTokenFactory;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfdWQzdDJ5YW10IiwiYWN0dWFsQ292ZXJhZ2UiLCJzIiwiY29tbW9uXzEiLCJyZXF1aXJlIiwiZW50aXRpZXNfMSIsIk1hZ2ljTGlua1Rva2VuRmFjdG9yeSIsImJ1aWxkIiwiaW5wdXQiLCJmIiwiTWFnaWNMaW5rVG9rZW5FbnRpdHkiLCJjcmVhdGUiLCJlbWFpbCIsIkVtYWlsVk8iLCJ0b2tlbkhhc2giLCJpcEFkZHJlc3MiLCJiIiwiSXBBZGRyZXNzVk8iLCJ1c2VyQWdlbnQiLCJVc2VyQWdlbnRWTyIsImV4cGlyZXNBdCIsIkRhdGUiLCJ1c2VkQXQiLCJleHBvcnRzIl0sInNvdXJjZXMiOlsiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcYXV0aC1jb3JlXFxzcmNcXGFwcGxpY2F0aW9uXFxmYWN0b3JpZXNcXG1hZ2ljLWxpbmsuZmFjdG9yLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IEVtYWlsVk8sIElwQWRkcmVzc1ZPLCBVc2VyQWdlbnRWTyB9IGZyb20gXCJAcmVwby9jb21tb25cIjtcclxuaW1wb3J0IHsgTWFnaWNMaW5rVG9rZW5FbnRpdHkgfSBmcm9tIFwiLi4vLi4vZG9tYWluL2VudGl0aWVzXCI7XHJcbmltcG9ydCB7IE1hZ2ljTGlua1Rva2VuQ3JlYXRlRHRvIH0gZnJvbSBcIi4uL2R0b1wiO1xyXG5cclxuZXhwb3J0IGNsYXNzIE1hZ2ljTGlua1Rva2VuRmFjdG9yeSB7XHJcbiAgc3RhdGljIGJ1aWxkKGlucHV0OiBNYWdpY0xpbmtUb2tlbkNyZWF0ZUR0byk6IE1hZ2ljTGlua1Rva2VuRW50aXR5IHtcclxuICAgIHJldHVybiBNYWdpY0xpbmtUb2tlbkVudGl0eS5jcmVhdGUoe1xyXG4gICAgICBlbWFpbDogRW1haWxWTy5jcmVhdGUoaW5wdXQuZW1haWwpLFxyXG4gICAgICB0b2tlbkhhc2g6IGlucHV0LnRva2VuSGFzaCxcclxuICAgICAgaXBBZGRyZXNzOiBJcEFkZHJlc3NWTy5jcmVhdGUoaW5wdXQuaXBBZGRyZXNzKSA/PyBudWxsLFxyXG4gICAgICB1c2VyQWdlbnQ6IFVzZXJBZ2VudFZPLmNyZWF0ZShpbnB1dC51c2VyQWdlbnQpID8/IG51bGwsXHJcbiAgICAgIGV4cGlyZXNBdDogbmV3IERhdGUoaW5wdXQuZXhwaXJlc0F0KSxcclxuICAgICAgdXNlZEF0OiBpbnB1dC51c2VkQXQgPyBuZXcgRGF0ZShpbnB1dC51c2VkQXQpIDogbnVsbCxcclxuICAgIH0pO1xyXG4gIH1cclxufVxyXG4iXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7SUFjRztJQUFBQSxhQUFBLFlBQUFBLENBQUE7TUFBQSxPQUFBQyxjQUFBO0lBQUE7RUFBQTtFQUFBLE9BQUFBLGNBQUE7QUFBQTtBQUFBRCxhQUFBO0FBQUFBLGFBQUEsR0FBQUUsQ0FBQTs7Ozs7OztBQWRILE1BQUFDLFFBQUE7QUFBQTtBQUFBLENBQUFILGFBQUEsR0FBQUUsQ0FBQSxPQUFBRSxPQUFBO0FBQ0EsTUFBQUMsVUFBQTtBQUFBO0FBQUEsQ0FBQUwsYUFBQSxHQUFBRSxDQUFBLE9BQUFFLE9BQUE7QUFHQSxNQUFhRSxxQkFBcUI7RUFDaEMsT0FBT0MsS0FBS0EsQ0FBQ0MsS0FBOEI7SUFBQTtJQUFBUixhQUFBLEdBQUFTLENBQUE7SUFBQVQsYUFBQSxHQUFBRSxDQUFBO0lBQ3pDLE9BQU9HLFVBQUEsQ0FBQUssb0JBQW9CLENBQUNDLE1BQU0sQ0FBQztNQUNqQ0MsS0FBSyxFQUFFVCxRQUFBLENBQUFVLE9BQU8sQ0FBQ0YsTUFBTSxDQUFDSCxLQUFLLENBQUNJLEtBQUssQ0FBQztNQUNsQ0UsU0FBUyxFQUFFTixLQUFLLENBQUNNLFNBQVM7TUFDMUJDLFNBQVM7TUFBRTtNQUFBLENBQUFmLGFBQUEsR0FBQWdCLENBQUEsVUFBQWIsUUFBQSxDQUFBYyxXQUFXLENBQUNOLE1BQU0sQ0FBQ0gsS0FBSyxDQUFDTyxTQUFTLENBQUM7TUFBQTtNQUFBLENBQUFmLGFBQUEsR0FBQWdCLENBQUEsVUFBSSxJQUFJO01BQ3RERSxTQUFTO01BQUU7TUFBQSxDQUFBbEIsYUFBQSxHQUFBZ0IsQ0FBQSxVQUFBYixRQUFBLENBQUFnQixXQUFXLENBQUNSLE1BQU0sQ0FBQ0gsS0FBSyxDQUFDVSxTQUFTLENBQUM7TUFBQTtNQUFBLENBQUFsQixhQUFBLEdBQUFnQixDQUFBLFVBQUksSUFBSTtNQUN0REksU0FBUyxFQUFFLElBQUlDLElBQUksQ0FBQ2IsS0FBSyxDQUFDWSxTQUFTLENBQUM7TUFDcENFLE1BQU0sRUFBRWQsS0FBSyxDQUFDYyxNQUFNO01BQUE7TUFBQSxDQUFBdEIsYUFBQSxHQUFBZ0IsQ0FBQSxVQUFHLElBQUlLLElBQUksQ0FBQ2IsS0FBSyxDQUFDYyxNQUFNLENBQUM7TUFBQTtNQUFBLENBQUF0QixhQUFBLEdBQUFnQixDQUFBLFVBQUcsSUFBSTtLQUNyRCxDQUFDO0VBQ0o7O0FBQ0Q7QUFBQWhCLGFBQUEsR0FBQUUsQ0FBQTtBQVhEcUIsT0FBQSxDQUFBakIscUJBQUEsR0FBQUEscUJBQUEiLCJpZ25vcmVMaXN0IjpbXX0=

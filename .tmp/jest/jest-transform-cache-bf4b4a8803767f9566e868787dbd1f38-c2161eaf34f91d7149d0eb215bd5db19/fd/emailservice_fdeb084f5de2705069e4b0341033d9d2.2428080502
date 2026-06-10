@@ -1,0 +1,89 @@
+b491caba234110cc155e7e10876987db
+"use strict";
+
+/* istanbul ignore next */
+function cov_2j6sc75npo() {
+  var path = "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\providers\\email.service.ts";
+  var hash = "294970e5fff889139ad90c2b7476c7d56b06c358";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\providers\\email.service.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 30
+        }
+      },
+      "2": {
+        start: {
+          line: 6,
+          column: 0
+        },
+        end: {
+          line: 6,
+          column: 36
+        }
+      }
+    },
+    fnMap: {},
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    f: {},
+    b: {},
+    inputSourceMap: {
+      file: "E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\providers\\email.service.ts",
+      mappings: ";;;AAOA,MAAsB,YAAY;CAEjC;AAFD,oCAEC",
+      names: [],
+      sources: ["E:\\workspace-sass\\repo\\packages\\auth-core\\src\\domain\\providers\\email.service.ts"],
+      sourcesContent: ["export type SendEmailInput = {\r\n  to: string;\r\n  subject: string;\r\n  html: string;\r\n  text?: string;\r\n};\r\n\r\nexport abstract class EmailService {\r\n  abstract send(input: SendEmailInput): Promise<void>;\r\n}\r\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "294970e5fff889139ad90c2b7476c7d56b06c358"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_2j6sc75npo = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_2j6sc75npo();
+cov_2j6sc75npo().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_2j6sc75npo().s[1]++;
+exports.EmailService = void 0;
+class EmailService {}
+/* istanbul ignore next */
+cov_2j6sc75npo().s[2]++;
+exports.EmailService = EmailService;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJFbWFpbFNlcnZpY2UiLCJjb3ZfMmo2c2M3NW5wbyIsInMiLCJleHBvcnRzIl0sInNvdXJjZXMiOlsiRTpcXHdvcmtzcGFjZS1zYXNzXFxyZXBvXFxwYWNrYWdlc1xcYXV0aC1jb3JlXFxzcmNcXGRvbWFpblxccHJvdmlkZXJzXFxlbWFpbC5zZXJ2aWNlLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB0eXBlIFNlbmRFbWFpbElucHV0ID0ge1xyXG4gIHRvOiBzdHJpbmc7XHJcbiAgc3ViamVjdDogc3RyaW5nO1xyXG4gIGh0bWw6IHN0cmluZztcclxuICB0ZXh0Pzogc3RyaW5nO1xyXG59O1xyXG5cclxuZXhwb3J0IGFic3RyYWN0IGNsYXNzIEVtYWlsU2VydmljZSB7XHJcbiAgYWJzdHJhY3Qgc2VuZChpbnB1dDogU2VuZEVtYWlsSW5wdXQpOiBQcm9taXNlPHZvaWQ+O1xyXG59XHJcbiJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFPQSxNQUFzQkEsWUFBWTtBQUVqQztBQUFBQyxjQUFBLEdBQUFDLENBQUE7QUFGREMsT0FBQSxDQUFBSCxZQUFBLEdBQUFBLFlBQUEiLCJpZ25vcmVMaXN0IjpbXX0=
