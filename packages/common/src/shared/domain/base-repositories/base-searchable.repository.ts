@@ -1,10 +1,10 @@
-import { BaseRepository } from "./base.repository";
+import { RootRepository } from "./root.repository";
 import { SearchInput, SearchOutput } from "./search.repository";
 
 /**
  * Extensão opcional para repositórios que suportam busca paginada.
  */
-export abstract class BaseSearchableRepository<TEntity> extends BaseRepository<TEntity> {
+export abstract class BaseSearchableRepository<TEntity> extends RootRepository<TEntity> {
   /**
    * Busca entidades de forma paginada.
    *

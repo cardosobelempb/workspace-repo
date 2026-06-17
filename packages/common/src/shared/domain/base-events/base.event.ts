@@ -1,4 +1,4 @@
-import { UUIDVO } from "../values-objects/uuid/uuid.vo";
+import { UUIDVO } from "@/common/domain";
 
 /**
  * DomainEventAbstract

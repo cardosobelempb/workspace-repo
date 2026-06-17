@@ -1,7 +1,6 @@
-import { NotFoundError } from "../../errors/usecases/not-found.error";
-import { UUIDVO } from "../../values-objects/uuid/uuid.vo";
-import { SearchInput } from "../search.repository";
+import { NotFoundError, UUIDVO } from "@/common/domain";
 import { Page } from "../pagination/types/pagination.types";
+import { SearchInput } from "../search.repository";
 
 export type ModelProps = {
   id?: UUIDVO;

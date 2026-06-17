@@ -1,0 +1,50 @@
+import { BuildEvent, RootEvent } from "../base-events";
+import { RootEntity } from "./root.entity";
+
+/**
+ * EntityAggregate
+ *
+ * - Representa a raiz de um Agregado no DDD.
+ * - É responsável por controlar eventos de domínio disparados
+ *   durante mudanças no estado interno.
+ * - Mantém encapsulação dos eventos e registra automaticamente
+ *   o agregado no sistema de despacho de eventos.
+ */
+export abstract class AggregateEntity<Props> extends RootEntity<Props> {
+  /**
+   * Lista interna de eventos de domínio pendentes.
+   * Mantida privada para evitar mutações externas.
+   */
+  private domainEventsQueue: RootEvent[] = [];
+
+  /**
+   * Retorna uma cópia dos eventos pendentes.
+   * Boa prática: não retornar a referência interna
+   * para evitar mutações externas inesperadas.
+   */
+  get domainEvents(): RootEvent[] {
+    return [...this.domainEventsQueue];
+  }
+
+  /**
+   * Registra um evento de domínio e notifica o dispatcher global.
+   *
+   * Justificativa:
+   * - Nome "register" expressa a intenção de "registrar no sistema".
+   * - Evita confusões com métodos que apenas adicionariam ao array.
+   */
+  protected registerEvent(event: RootEvent): void {
+    this.domainEventsQueue.push(event);
+
+    // Notifica o mecanismo de Domain Events
+    BuildEvent.markAggregateForDispatch(this);
+  }
+
+  /**
+   * Limpa todos os eventos pendentes.
+   * Utilizado após a publicação dos eventos.
+   */
+  clearEvents(): void {
+    this.domainEventsQueue = [];
+  }
+}

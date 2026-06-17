@@ -1,4 +1,4 @@
-import { UUIDVO } from "../values-objects/uuid/uuid.vo";
+import { UUIDVO } from "@/common/domain";
 
 /**
  * Entidade base para o modelo de domínio.
@@ -9,7 +9,7 @@ import { UUIDVO } from "../values-objects/uuid/uuid.vo";
  *
  * @template Props Tipo das propriedades internas da entidade.
  */
-export abstract class BaseEntity<Props> {
+export abstract class RootEntity<Props> {
   /** Identidade única da entidade representada como Value Object */
   private readonly _id: UUIDVO;
 
@@ -40,9 +40,9 @@ export abstract class BaseEntity<Props> {
    *
    * @returns true se ambas possuem o mesmo ID
    */
-  public equals(entity?: BaseEntity<unknown>): boolean {
+  public equals(entity?: RootEntity<unknown>): boolean {
     // Caso especial: null, undefined ou outro tipo
-    if (!entity || !(entity instanceof BaseEntity)) {
+    if (!entity || !(entity instanceof RootEntity)) {
       return false;
     }
 

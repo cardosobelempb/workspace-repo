@@ -6,7 +6,7 @@
  *
  * @template TEntity - Entidade de domínio gerenciada
  */
-export abstract class BaseRepository<TEntity> {
+export abstract class RootRepository<TEntity> {
   // ✅ Sem redeclaração de `prisma` — vive apenas em PrismaRepository
   // ✅ Sem construtor duplicado — herdado automaticamente
 

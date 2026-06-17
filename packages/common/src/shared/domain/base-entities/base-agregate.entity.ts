@@ -1,5 +1,5 @@
-import { BaseBuildEvent } from "../events/base-build.event";
-import { BaseEvent } from "../events/base.event";
+import { BaseBuildEvent } from "../base-events/base-build.event";
+import { BaseEvent } from "../base-events/base.event";
 import { BaseEntity } from "./base.entity";
 
 /**

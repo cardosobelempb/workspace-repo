@@ -1,5 +1,6 @@
 export * from "./container";
 export * from "./cryptography";
+export * from "./domain/base-entities";
 export * from "./email";
 export * from "./enums";
 export * from "./env-config";

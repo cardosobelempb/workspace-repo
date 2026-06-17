@@ -1,12 +1,12 @@
-import { BaseRepository } from "./base.repository";
-import { SoftDeletable } from "./soft-deletable.repository";
+import { BaseSoftDeletableRepository } from "./base-soft-deletable.repository";
+import { RootRepository } from "./root.repository";
 
 /**
  * Repositório com suporte a soft delete.
  */
-export abstract class SoftDeleteRepository<
-  TEntity extends SoftDeletable,
-> extends BaseRepository<TEntity> {
+export abstract class BaseSoftDeleteRepository<
+  TEntity extends BaseSoftDeletableRepository,
+> extends RootRepository<TEntity> {
   /**
    * Realiza exclusão lógica da entidade.
    */

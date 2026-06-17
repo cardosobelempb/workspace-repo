@@ -1,5 +1,5 @@
-import { BaseAggregate } from "../entities/base-agregate.entity";
-import { UUIDVO } from "../values-objects/uuid/uuid.vo";
+import { UUIDVO } from "@/common/domain";
+import { BaseAggregate } from "../base-entities/base-agregate.entity";
 
 import { BaseEvent } from "./base.event";
 
