@@ -18,8 +18,11 @@ export class PrismaUserMapper {
   static toDTO(entity: UserEntity): UserDto {
     return {
       id: entity.id.toString(),
+      firstName: entity.firstName,
+      lastName: entity.lastName,
       email: entity.email.getValue().value,
-      password: entity.passwordHash?.getValue(),
+      passwordHash: entity.passwordHash?.getValue(),
+      emailVerified: entity.emailVerified,
       createdAt: entity.createdAt,
       updatedAt: entity.updatedAt,
       deletedAt: entity.deletedAt,

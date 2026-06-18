@@ -978,6 +978,9 @@ importers:
 
   packages/cache:
     dependencies:
+      '@repo/common':
+        specifier: workspace:*
+        version: link:../common
       '@repo/env-config':
         specifier: workspace:*
         version: link:../env-config

@@ -2,12 +2,7 @@ import { UserEntity } from "@/modules/user/domain/entities/user.entity";
 import { UserPageRepository } from "@/modules/user/domain/repositoties/user-page.repository";
 import { PrismaUserMapper } from "@/modules/user/infrastructure/mappers/prisma-user.mapper";
 import { Page, PageInput } from "@repo/common";
-import {
-  Prisma,
-  PRISMA_TOKENS,
-  PrismaDatabase,
-  PrismaPageRepository,
-} from "@repo/database";
+import { DI_PRISMA, Prisma, PrismaDatabase, PrismaPageRepository } from "@repo/database";
 
 type PrismaUserModel = Prisma.UserGetPayload<object>;
 
@@ -15,7 +10,7 @@ export class PrismaUserPageRepository
   extends PrismaPageRepository
   implements UserPageRepository
 {
-  static inject = [PRISMA_TOKENS.PRISMA_CLIENT];
+  static inject = [DI_PRISMA.PRISMA_CLIENT];
 
   constructor(prisma: PrismaDatabase) {
     super(prisma);

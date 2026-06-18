@@ -1,13 +1,13 @@
 import { UserProfileEntity } from "@/modules/user/domain/entities/user-profile.entity";
 import { UserProfileRepository } from "@/modules/user/domain/repositoties/user-profile.repository";
 import { PrismaUserProfileMapper } from "@/modules/user/infrastructure/mappers/prisma-user-profile.mapper";
-import { PRISMA_TOKENS, PrismaDatabase, PrismaRepository } from "@repo/database";
+import { DI_PRISMA, PrismaDatabase, PrismaRepository } from "@repo/database";
 
 export class PrismaUserProfileRepository
   extends PrismaRepository<UserProfileEntity>
   implements UserProfileRepository
 {
-  static inject = [PRISMA_TOKENS.PRISMA_CLIENT];
+  static inject = [DI_PRISMA.PRISMA_CLIENT];
 
   constructor(prisma: PrismaDatabase) {
     super(prisma);

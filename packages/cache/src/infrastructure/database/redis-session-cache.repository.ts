@@ -1,8 +1,7 @@
-import { DI_REDIS } from "@repo/cache";
-import { RedisCacheRepository } from "@repo/common";
+import { RedisCacheRepository, SessionEntity } from "@repo/common";
 
-import { SessionEntity } from "../../domain/entities/session.entity";
-import { RedisCacheService } from "../../domain/services/redis-cache.service";
+import { DI_REDIS } from "../../di-redis";
+import { RedisCacheService } from "../../redis-cache.service";
 
 const SESSION_CACHE_TTL_SECONDS = 60 * 15; // 15 minutos
 

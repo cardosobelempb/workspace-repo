@@ -1,31 +1,31 @@
 import { PrismaUserRepository } from "@/modules/user/infrastructure/database/prisma-user.repository";
 import {
+  DI_HASH,
+  DI_TOKEN,
   Either,
-  HASH_DI_TOKENS,
   left,
   right,
-  TOKEN_DI_TOKENS,
+  SessionFactory,
   UnauthorizedError,
 } from "@repo/common";
+import { DI_PRISMA_REPOSITORY, PrismaSessionRepository } from "@repo/database";
 import { BcryptComparerService } from "../../domain/services/bcrypt-comparer.service";
 import { BcryptGeneratorService } from "../../domain/services/bcrypt-generator.service";
 import { BcryptHasherService } from "../../domain/services/bcrypt-hasher.service";
-import { REPOSITORY_CONSTANTS } from "../../infrastructure/database/constant";
-import { PrismaSessionRepository } from "../../infrastructure/database/prisma-session.repository";
-import { RedisSessionCacheRepository } from "../../infrastructure/database/redis-session-cache.repository";
+
+import { DI_REDIS_REPOSITORY, RedisSessionCacheRepository } from "@repo/cache";
 import { AuthProjectionDto, LoginDto } from "../dto/auth.dto";
-import { SessionFactory } from "../factories/session.factory";
 
 export type CreateSessionUseCaseResponse = Either<UnauthorizedError, AuthProjectionDto>;
 
 export class CreateSessionUseCase {
   static inject = [
-    HASH_DI_TOKENS.HASH_GENERATOR,
-    HASH_DI_TOKENS.HASH_GENERATOR,
-    TOKEN_DI_TOKENS.TOKEN_GENERATOR,
-    REPOSITORY_CONSTANTS.PRISMA_USER_REPOSITORY,
-    REPOSITORY_CONSTANTS.PRISMA_SESSION_REPOSITORY,
-    REPOSITORY_CONSTANTS.REDIS_SESSION_CACHE_REPOSITORY,
+    DI_HASH.HASH_GENERATOR,
+    DI_HASH.HASH_GENERATOR,
+    DI_TOKEN.TOKEN_GENERATOR,
+    DI_PRISMA_REPOSITORY.PRISMA_USER_REPOSITORY,
+    DI_PRISMA_REPOSITORY.PRISMA_SESSION_REPOSITORY,
+    DI_REDIS_REPOSITORY.REDIS_SESSION_CACHE_REPOSITORY,
   ];
 
   constructor(

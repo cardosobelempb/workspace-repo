@@ -2,16 +2,17 @@ import { envAuth } from "@/config/env-auth";
 import { PrismaUserRepository } from "@/modules/user/infrastructure/database/prisma-user.repository";
 import {
   BadRequestError,
+  DI_HASH,
+  DI_TOKEN,
   Either,
-  HASH_DI_TOKENS,
   left,
   right,
   TokenType,
   UnauthorizedError,
 } from "@repo/common";
+import { DI_PRISMA_REPOSITORY } from "@repo/database";
 import { BcryptComparerService } from "../../domain/services/bcrypt-comparer.service";
 import { BcryptHasherService } from "../../domain/services/bcrypt-hasher.service";
-import { SERVICE_CONSTANTS } from "../../domain/services/constant";
 import { JwtEncrypterService } from "../../domain/services/jwt-encrypter.service";
 import { REPOSITORY_CONSTANTS } from "../../infrastructure/database/constant";
 import { PrismaTokenRepository } from "../../infrastructure/database/prisma-token.repository";
@@ -22,10 +23,10 @@ export type CreateSessionUseCaseResponse = Either<BadRequestError, AuthProjectio
 
 export class LogoutUseCase {
   static inject = [
-    HASH_DI_TOKENS.HASH_COMPARER,
-    SERVICE_CONSTANTS.BCRYPT_COMPARER_SERVICE,
-    SERVICE_CONSTANTS.JWT_ENCRYPTER_SERVICE,
-    REPOSITORY_CONSTANTS.PRISMA_USER_REPOSITORY,
+    DI_HASH.HASH_COMPARER,
+    DI_HASH.HASH_COMPARER,
+    DI_TOKEN.TOKEN_GENERATOR,
+    DI_PRISMA_REPOSITORY.PRISMA_USER_REPOSITORY,
     REPOSITORY_CONSTANTS.PRISMA_TOKEN_REPOSITORY,
   ];
 

@@ -1,5 +1,6 @@
 export * from "@prisma/client";
 export * from "./config";
+export * from "./infrastructure";
 export * from "./observability";
 export * from "./prisma-client";
 export * from "./repositories";

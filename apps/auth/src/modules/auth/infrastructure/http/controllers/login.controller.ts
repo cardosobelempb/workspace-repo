@@ -1,8 +1,6 @@
-import { LoginDto } from "@/modules/auth/application/dto/login.dto";
-
 import { envAuth } from "@/config/env-auth";
 import { CreateSessionUseCase } from "@/modules/auth/application/usecases/create-session.usecase";
-import { Controller, Post, right, Validate } from "@repo/common";
+import { Controller, LoginDto, Post, right, Validate } from "@repo/common";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { LoginSchema } from "../schemas/login.schema";
 

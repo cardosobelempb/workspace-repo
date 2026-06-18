@@ -1,2 +1,2 @@
-export * from "./token-di-tokens.constant";
+export * from "./di-token";
 export * from "./token-generator";

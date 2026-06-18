@@ -1,4 +1,4 @@
-import { PRISMA_TOKENS, PrismaDatabase, PrismaRepository } from "@repo/database";
+import { DI_PRISMA, PrismaDatabase, PrismaRepository } from "@repo/database";
 import { OtpEntity } from "../../domain/entities/otp.entity";
 import { OtpRepository } from "../../domain/repositoties/otp.repository";
 import { PrismaOtpMapper } from "../mappers/opt.mapper";
@@ -7,13 +7,13 @@ export class PrismaSessionRepository
   extends PrismaRepository<OtpEntity>
   implements OtpRepository
 {
-  static inject = [PRISMA_TOKENS.PRISMA_CLIENT];
+  static inject = [DI_PRISMA.PRISMA_CLIENT];
 
   constructor(prisma: PrismaDatabase) {
     super(prisma);
   }
   async findById(id: string): Promise<OtpEntity | null> {
-    const otp = await this.prisma.otp.findUnique({
+    const otp = await this.prisma.otpCode.findUnique({
       where: {
         id,
       },
@@ -26,7 +26,7 @@ export class PrismaSessionRepository
     return PrismaOtpMapper.toDomain(otp);
   }
   async findManyByIds(ids: string[]): Promise<OtpEntity[]> {
-    const otps = await this.prisma.otp.findMany({
+    const otps = await this.prisma.otpCode.findMany({
       where: {
         id: {
           in: ids,
@@ -37,14 +37,14 @@ export class PrismaSessionRepository
     return otps.map(PrismaOtpMapper.toDomain);
   }
   async create(entity: OtpEntity): Promise<OtpEntity> {
-    const otp = await this.prisma.otp.create({
+    const otp = await this.prisma.otpCode.create({
       data: PrismaOtpMapper.toPrisma(entity),
     });
 
     return PrismaOtpMapper.toDomain(otp);
   }
   async exists(id: string): Promise<boolean> {
-    const count = await this.prisma.otp.count({
+    const count = await this.prisma.otpCode.count({
       where: {
         id,
       },
@@ -53,7 +53,7 @@ export class PrismaSessionRepository
     return count > 0;
   }
   async save(entity: OtpEntity): Promise<OtpEntity> {
-    const otp = await this.prisma.otp.update({
+    const otp = await this.prisma.otpCode.update({
       where: {
         id: entity.id.getValue(),
       },
@@ -63,7 +63,7 @@ export class PrismaSessionRepository
     return PrismaOtpMapper.toDomain(otp);
   }
   async delete(entity: OtpEntity): Promise<void> {
-    await this.prisma.otp.delete({
+    await this.prisma.otpCode.delete({
       where: {
         id: entity.id.getValue(),
       },

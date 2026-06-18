@@ -1,6 +1,5 @@
-import { RegisterDto } from "@/modules/auth/application/dto/register.dto";
 import { RegisterUseCase } from "@/modules/auth/application/usecases/register.usecase";
-import { Controller, Post, Validate } from "@repo/common";
+import { Controller, Post, RegisterDto, Validate } from "@repo/common";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { RegisterBodySchema, RegisterProjectionSchema } from "../schemas/register.schema";
 

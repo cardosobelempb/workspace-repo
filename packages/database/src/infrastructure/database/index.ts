@@ -1,4 +1,4 @@
-export * from "./di-repository";
+export * from "./di-prismarepository";
 export * from "./prisma-account.repository";
 export * from "./prisma-audit-log.repository";
 export * from "./prisma-email-verification.repository";

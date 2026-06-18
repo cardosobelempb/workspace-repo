@@ -1,3 +1,3 @@
-export const TOKEN_DI_TOKENS = {
+export const DI_TOKEN = {
   TOKEN_GENERATOR: "TOKEN.TOKEN_GENERATOR",
 };

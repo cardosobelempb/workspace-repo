@@ -1,10 +1,10 @@
 import { SessionCacheRepository, SessionEntity } from "@repo/auth-core";
-import { REDIS_TOKENS, RedisCacheService } from "@repo/cache";
+import { DI_REDIS, RedisCacheService } from "@repo/cache";
 
 const SESSION_CACHE_TTL_SECONDS = 60 * 15; // 15 minutos
 
 export class RedisSessionCacheRepository implements SessionCacheRepository {
-  static inject = [REDIS_TOKENS.REDIS_CLIENT];
+  static inject = [DI_REDIS.REDIS_CLIENT];
   private key(sessionTokenHash: string) {
     return `session:${sessionTokenHash}`;
   }

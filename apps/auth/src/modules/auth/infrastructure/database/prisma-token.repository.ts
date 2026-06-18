@@ -1,5 +1,5 @@
 import { TokenType } from "@repo/common";
-import { PRISMA_TOKENS, PrismaDatabase, PrismaRepository } from "@repo/database";
+import { DI_PRISMA, PrismaDatabase, PrismaRepository } from "@repo/database";
 import { TokenEntity } from "../../domain/entities/token.entity";
 import { TokenRepository } from "../../domain/repositoties/token.repository";
 import { PrismaTokenMapper } from "../mappers/token.mapper";
@@ -9,7 +9,7 @@ export class PrismaTokenRepository
   extends PrismaRepository<TokenEntity>
   implements TokenRepository
 {
-  static inject = [PRISMA_TOKENS.PRISMA_CLIENT];
+  static inject = [DI_PRISMA.PRISMA_CLIENT];
 
   constructor(prisma: PrismaDatabase) {
     super(prisma);

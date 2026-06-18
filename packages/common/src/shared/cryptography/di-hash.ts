@@ -1,4 +1,4 @@
-export const HASH_DI_TOKENS = {
+export const DI_HASH = {
   HASH_COMPARER: "HASH.HASH_COMPARER",
   HASH_GENERATOR: "HASH.HASH_GENERATOR",
 };

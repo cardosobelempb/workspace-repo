@@ -1,13 +1,14 @@
 import { PrismaUserRepository } from "@/modules/user/infrastructure/database/prisma-user.repository";
 import {
+  DI_HASH,
+  DI_TOKEN,
   Either,
-  HASH_DI_TOKENS,
   left,
   right,
-  TOKEN_DI_TOKENS,
   TokenType,
   UnauthorizedError,
 } from "@repo/common";
+import { DI_PRISMA_REPOSITORY } from "@repo/database";
 import { BcryptHasherService } from "../../domain/services/bcrypt-hasher.service";
 import { JwtEncrypterService } from "../../domain/services/jwt-encrypter.service";
 import { REPOSITORY_CONSTANTS } from "../../infrastructure/database/constant";
@@ -19,9 +20,9 @@ export type RefreshTokenUseCaseResponse = Either<UnauthorizedError, AuthProjecti
 
 export class RefreshTokenUseCase {
   static inject = [
-    HASH_DI_TOKENS.HASH_GENERATOR,
-    TOKEN_DI_TOKENS.TOKEN_GENERATOR,
-    REPOSITORY_CONSTANTS.PRISMA_USER_REPOSITORY,
+    DI_HASH.HASH_GENERATOR,
+    DI_TOKEN.TOKEN_GENERATOR,
+    DI_PRISMA_REPOSITORY.PRISMA_USER_REPOSITORY,
     REPOSITORY_CONSTANTS.PRISMA_TOKEN_REPOSITORY,
   ];
 

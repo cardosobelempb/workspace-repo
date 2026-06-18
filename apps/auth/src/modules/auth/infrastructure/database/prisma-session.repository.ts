@@ -1,4 +1,4 @@
-import { PRISMA_TOKENS, PrismaDatabase, PrismaRepository } from "@repo/database";
+import { DI_PRISMA, PrismaDatabase, PrismaRepository } from "@repo/database";
 import { SessionEntity } from "../../domain/entities/session.entity";
 import { SessionRepository } from "../../domain/repositoties/session.repository";
 import { PrismaSessionMapper } from "../mappers/session.mapper";
@@ -7,7 +7,7 @@ export class PrismaSessionRepository
   extends PrismaRepository<SessionEntity>
   implements SessionRepository
 {
-  static inject = [PRISMA_TOKENS.PRISMA_CLIENT];
+  static inject = [DI_PRISMA.PRISMA_CLIENT];
 
   constructor(prisma: PrismaDatabase) {
     super(prisma);

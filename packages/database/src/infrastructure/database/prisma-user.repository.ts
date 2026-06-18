@@ -1,5 +1,5 @@
 import { NotFoundError, UserEntity, UserRepository } from "@repo/common";
-import { PRISMA_TOKENS } from "../../config";
+import { DI_PRISMA } from "../../config";
 import { PrismaDatabase } from "../../prisma-client";
 import { PrismaRepository, PrismaTransaction } from "../../repositories";
 import { PrismaUserMapper } from "../mappers/prisma-user.mapper";
@@ -8,7 +8,7 @@ export class PrismaUserRepository
   extends PrismaRepository<UserEntity>
   implements UserRepository
 {
-  static inject = [PRISMA_TOKENS.PRISMA_CLIENT];
+  static inject = [DI_PRISMA.PRISMA_CLIENT];
 
   constructor(prisma: PrismaDatabase) {
     super(prisma);

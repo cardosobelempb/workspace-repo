@@ -3,7 +3,7 @@ import { UserRepository } from "@/modules/user/domain/repositoties/user.reposito
 import { PrismaUserMapper } from "@/modules/user/infrastructure/mappers/prisma-user.mapper";
 import { NotFoundError } from "@repo/common";
 import {
-  PRISMA_TOKENS,
+  DI_PRISMA,
   PrismaDatabase,
   PrismaRepository,
   PrismaTransaction,
@@ -13,7 +13,7 @@ export class PrismaUserRepository
   extends PrismaRepository<UserEntity>
   implements UserRepository
 {
-  static inject = [PRISMA_TOKENS.PRISMA_CLIENT];
+  static inject = [DI_PRISMA.PRISMA_CLIENT];
 
   constructor(prisma: PrismaDatabase) {
     super(prisma);
