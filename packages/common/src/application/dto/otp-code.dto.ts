@@ -17,13 +17,15 @@ import {
   UpdateOtpCodeSchema,
 } from "../../infrastructure/http/schemas/otp-code.schema";
 
-export type OtpDto = z.infer<typeof OtpCodeSchema>;
-export type CreateOtpDto = z.infer<typeof CreateOtpCodeSchema>;
-export type UpdateOtpDto = z.infer<typeof UpdateOtpCodeSchema>;
-export type OtpProjectionDto = z.infer<typeof OtpCodeProjectionSchema>;
-export type OtpResponseDto = z.infer<typeof OtpCodeResponseSchema>;
-export type OtpCreateResponseDto = z.infer<typeof OtpCodeCreateResponseSchema>;
-export type OtpFindByIdResponseDto = z.infer<typeof OtpCodeFindByIdResponseSchema>;
-export type OtpUpdateResponseDto = z.infer<typeof OtpCodeUpdateResponseSchema>;
-export type OtpActivateResponseDto = z.infer<typeof OtpCodeActivateResponseSchema>;
-export type OtpDeactivateResponseDto = z.infer<typeof OtpCodeDeactivateResponseSchema>;
+export type OtpCodeDto = z.infer<typeof OtpCodeSchema>;
+export type CreateOtpCodeDto = z.infer<typeof CreateOtpCodeSchema>;
+export type UpdateOtpCodeDto = z.infer<typeof UpdateOtpCodeSchema>;
+export type OtpCodeProjectionDto = z.infer<typeof OtpCodeProjectionSchema>;
+export type OtpCodeResponseDto = z.infer<typeof OtpCodeResponseSchema>;
+export type OtpCodeCreateResponseDto = z.infer<typeof OtpCodeCreateResponseSchema>;
+export type OtpCodeFindByIdResponseDto = z.infer<typeof OtpCodeFindByIdResponseSchema>;
+export type OtpCodeUpdateResponseDto = z.infer<typeof OtpCodeUpdateResponseSchema>;
+export type OtpCodeActivateResponseDto = z.infer<typeof OtpCodeActivateResponseSchema>;
+export type OtpCodeDeactivateResponseDto = z.infer<
+  typeof OtpCodeDeactivateResponseSchema
+>;

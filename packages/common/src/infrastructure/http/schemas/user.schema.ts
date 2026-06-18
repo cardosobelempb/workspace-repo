@@ -34,8 +34,11 @@ export type UserParams = z.infer<typeof UserParamsSchema>;
 export const UserSchema = z
   .object({
     id: UuidSchema,
+    firstName: s.string.nullable(),
+    lastName: s.string.nullable(),
     email: s.email,
-    password: s.password,
+    passwordHash: s.password,
+    emailVerified: s.nullableDate,
     createdAt: s.date,
     updatedAt: s.nullableDate,
     deletedAt: s.nullableDate,
@@ -60,7 +63,7 @@ export const UpdateUserSchema = UserSchema.partial();
 
 // Resposta completa: expõe tudo exceto campos de soft-delete
 export const UserResponseSchema = UserSchema.omit({
-  password: true,
+  passwordHash: true,
   updatedAt: true,
   deletedAt: true,
 });
@@ -68,6 +71,8 @@ export const UserResponseSchema = UserSchema.omit({
 // Resumo para listagem: versão compacta — evita over-fetching
 export const UserProjectionSchema = UserSchema.pick({
   id: true,
+  firstName: true,
+  lastName: true,
   email: true,
   createdAt: true,
 });
