@@ -1,7 +1,6 @@
-import { Session as PrismaSession } from "@repo/database";
+import { Session as PrismaSession } from "@prisma/client";
 
-import { SessionDto, SessionEntity } from "@repo/auth-core";
-import { UUIDVO } from "@repo/common";
+import { SessionDto, SessionEntity, UUIDVO } from "@repo/common";
 
 export class PrismaSessionMapper {
   static toDomain(raw: PrismaSession): SessionEntity {
@@ -20,12 +19,12 @@ export class PrismaSessionMapper {
       id: entity.id.getValue(),
       userId: entity.userId.getValue(),
       sessionToken: entity.sessionToken,
-      expires: entity.expires.toISOString(),
+      expires: entity.expires,
       ipAddress: entity.ipAddress,
       userAgent: entity.userAgent,
-      createdAt: entity.createdAt.toISOString(),
-      updatedAt: entity.updatedAt ? entity.updatedAt.toISOString() : null,
-      deletedAt: entity.deletedAt ? entity.deletedAt.toISOString() : null,
+      createdAt: entity.createdAt,
+      updatedAt: entity.updatedAt,
+      deletedAt: entity.deletedAt,
     };
   }
 

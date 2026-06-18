@@ -1,2 +1,2 @@
-export * from "./constant";
+export * from "./di-prisma";
 export * from "./env-database";
