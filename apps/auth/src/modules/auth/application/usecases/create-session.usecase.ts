@@ -96,7 +96,11 @@ export class CreateSessionUseCase {
 
     const session = await this.prismaSessionRepository.create(sessionEntity);
 
-    await this.redisSessionCacheRepository.set(session);
+    await this.redisSessionCacheRepository.set(
+      session.id.getValue(),
+      session.userId,
+      session.expires.getTime(),
+    );
 
     return right({
       user: {

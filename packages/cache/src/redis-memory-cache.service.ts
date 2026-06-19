@@ -1,11 +1,12 @@
-import { RedisCacheService } from "./redis-cache.service";
+import { SessionEntity } from "@repo/common";
+import { RedisCacheRepository } from "./redis-cache.repository";
 
 type CacheItem = {
   value: unknown;
   expiresAt: number;
 };
 
-export class RedisMemoryCacheService implements RedisCacheService {
+export class RedisMemoryCacheService implements RedisCacheRepository<SessionEntity> {
   private readonly store = new Map<string, CacheItem>();
 
   async get<T>(key: string): Promise<T | null> {
