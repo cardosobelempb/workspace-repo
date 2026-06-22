@@ -1,36 +1,43 @@
 import { BaseLogger } from "../base-logger";
-import { LoggerMetadata } from "../logger.types";
+import type { ILogger } from "../types/i-logger";
+import type { LogContext } from "../types/log-context";
 
+/**
+ * Logger leve baseado em console — ideal para desenvolvimento e testes.
+ *
+ * Não requer Pino nem pino-pretty. Os bindings fixos (ex: `{ context }`)
+ * são mesclados em cada chamada para manter o mesmo padrão de child loggers.
+ */
 export class ConsoleLogger extends BaseLogger {
-  info(message: string, meta?: LoggerMetadata): void {
-    console.log("[INFO]", this.context, message, meta ?? "");
+  trace(message: string, context?: LogContext): void {
+    console.trace("[TRACE]", message, this.merged(context));
   }
 
-  warn(message: string, meta?: LoggerMetadata): void {
-    console.warn("[WARN]", this.context, message, meta ?? "");
+  debug(message: string, context?: LogContext): void {
+    console.debug("[DEBUG]", message, this.merged(context));
   }
 
-  error(message: string, error?: unknown, meta?: LoggerMetadata): void {
-    console.error("[ERROR]", this.context, message, {
-      error,
-      ...meta,
-    });
+  info(message: string, context?: LogContext): void {
+    console.log("[INFO]", message, this.merged(context));
   }
 
-  debug(message: string, meta?: LoggerMetadata): void {
-    console.debug("[DEBUG]", this.context, message, meta ?? "");
+  warn(message: string, context?: LogContext): void {
+    console.warn("[WARN]", message, this.merged(context));
   }
 
-  fatal(message: string, error?: unknown, meta?: LoggerMetadata): void {
-    console.error("[FATAL]", this.context, message, {
-      error,
-      ...meta,
-    });
+  error(message: string, context?: LogContext | Error): void {
+    console.error("[ERROR]", message, this.merged(this.normalizeError(context)));
   }
 
-  child(context: string): BaseLogger {
-    return new ConsoleLogger({
-      context,
-    });
+  fatal(message: string, context?: LogContext | Error): void {
+    console.error("[FATAL]", message, this.merged(this.normalizeError(context)));
+  }
+
+  child(bindings: LogContext): ILogger {
+    return new ConsoleLogger({ ...this.bindings, ...bindings });
+  }
+
+  private merged(context?: LogContext): LogContext {
+    return { ...this.bindings, ...context };
   }
 }

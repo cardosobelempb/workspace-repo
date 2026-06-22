@@ -24,12 +24,16 @@ export class OtpCodeMapper {
 
   private static toCoreFields(entity: OtpCodeEntity): CreateOtpCodeDto {
     return {
-      userId: entity.userId.getValue(),
-      phone: entity.phone.getValue(),
+      email: entity.email.getValue().value,
       codeHash: entity.codeHash,
-      attempts: entity.attempts,
+
+      ipAddress: entity.ipAddress?.getValue() ?? null,
+      userAgent: entity.userAgent?.getValue() ?? null,
+      maxAttempts: entity.maxAttempts,
+      purpose: entity.purpose,
+
       expiredAt: entity.expiredAt,
-      usedAt: entity.usedAt,
+      attempts: entity.attempts,
     };
   }
 
@@ -69,10 +73,10 @@ export class OtpCodeMapper {
   static toProjection(entity: OtpCodeEntity): OtpCodeProjectionDto {
     return {
       id: entity.id.getValue(),
-      userId: entity.userId.getValue(),
-      phone: entity.phone.getValue(),
-      expiredAt: entity.expiredAt,
+      email: entity.email.getValue().value,
+      purpose: entity.purpose,
       attempts: entity.attempts,
+      expiredAt: entity.expiredAt,
       usedAt: entity.usedAt,
       createdAt: entity.createdAt,
     };
@@ -86,11 +90,11 @@ export class OtpCodeMapper {
   static toHttp(entity: OtpCodeEntity): OtpCodeProjectionDto {
     return {
       id: entity.id.getValue(),
-      userId: entity.userId.getValue(),
-      phone: entity.phone.getValue(),
+      email: entity.email.getValue().value,
+      purpose: entity.purpose,
+      attempts: entity.attempts,
       expiredAt: entity.expiredAt,
       usedAt: entity.usedAt,
-      attempts: entity.attempts,
       createdAt: entity.createdAt,
     };
   }

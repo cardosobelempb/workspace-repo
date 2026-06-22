@@ -1,6 +1,5 @@
 import { SessionEntity } from "@repo/common";
 
-import Redis from "ioredis";
 import { DI_REDIS } from "../../di-redis";
 import { RedisCacheRepository } from "../../redis-cache.repository";
 
@@ -8,7 +7,9 @@ const SESSION_CACHE_TTL_SECONDS = 60 * 15; // 15 minutos
 
 export class RedisSessionCacheRepository implements RedisCacheRepository<SessionEntity> {
   static inject = [DI_REDIS.REDIS_CLIENT];
-  constructor(private readonly redis: Redis) {}
+  // `redis` pode ser um client ioredis direto OU um RedisCacheService wrapper
+  // (apps/auth). Mantemos o tipo permissivo para suportar os dois.
+  constructor(private readonly redis: any) {}
 
   async get<T>(key: string): Promise<T | null> {
     const value = await this.redis.get(key);
@@ -27,8 +28,10 @@ export class RedisSessionCacheRepository implements RedisCacheRepository<Session
     value: T,
     ttlSeconds = SESSION_CACHE_TTL_SECONDS,
   ): Promise<void> {
-    const stringValue = JSON.stringify(value);
-    await this.redis.set(key, stringValue, "EX", ttlSeconds);
+    // Não serializar aqui nem forçar "EX": o `redis` injetado pode ser um
+    // RedisCacheService (apps/auth) com assinatura (key, value, ttlSeconds)
+    // ou um client ioredis direto. A versão abaixo é compatível com os dois.
+    await this.redis.set(key, value, ttlSeconds);
   }
   async delete(key: string): Promise<void> {
     await this.redis.del(key);
@@ -41,7 +44,7 @@ export class RedisSessionCacheRepository implements RedisCacheRepository<Session
 
     stream.on("data", (keys: string[]) => {
       if (keys.length) {
-        this.redis.del(...keys).catch((error) => {
+        this.redis.del(...keys).catch((error: unknown) => {
           // Log de erro, mas não interrompe o processo
           console.error("Erro ao deletar chaves por prefixo:", error);
         });

@@ -67,7 +67,16 @@ export class UserEntity extends AggregateEntity<UserProps> {
     this.props.passwordHash = hash;
     this.touch();
   }
-
+  fullName(): string {
+    const first = this.firstName ?? "";
+    const last = this.lastName ?? "";
+    return `${first} ${last}`.trim();
+  }
+  shotName(): string {
+    const firstInitial = this.firstName ? this.firstName.charAt(0) : "";
+    const lastInitial = this.lastName ? this.lastName.charAt(0) : "";
+    return `${firstInitial}${lastInitial}`.toUpperCase();
+  }
   private touch(): void {
     this.props.updatedAt = new Date();
   }

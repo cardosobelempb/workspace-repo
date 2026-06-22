@@ -15,11 +15,14 @@ import {
   UserRegisterSchema,
   UserResponseSchema,
   UserSchema,
+  UserSessionProjectionSchema,
+  UserSessionSchema,
   UserUpdateResponseSchema,
 } from "@/common/infrastructure/http/schemas/user.schema";
 import z from "zod";
 
 export type UserDto = z.infer<typeof UserSchema>;
+export type UserRegisterDto = z.infer<typeof UserRegisterSchema>;
 export type CreateUserDto = z.infer<typeof CreateUserSchema>;
 export type UpdateUserDto = z.infer<typeof UpdateUserSchema>;
 export type UserProjectionDto = z.infer<typeof UserProjectionSchema>;
@@ -29,6 +32,6 @@ export type UserFindByIdResponseDto = z.infer<typeof UserFindByIdResponseSchema>
 export type UserUpdateResponseDto = z.infer<typeof UserUpdateResponseSchema>;
 export type UserActivateResponseDto = z.infer<typeof UserActivateResponseSchema>;
 export type UserDeactivateResponseDto = z.infer<typeof UserDeactivateResponseSchema>;
-
-export type UserRegisterDto = z.infer<typeof UserRegisterSchema>;
+export type UserSessionDto = z.infer<typeof UserSessionSchema>;
+export type UserSessionProjectionDto = z.infer<typeof UserSessionProjectionSchema>;
 export type UserRegisterProjectionDto = z.infer<typeof UserRegisterProjectionSchema>;

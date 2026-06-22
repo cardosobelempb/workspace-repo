@@ -1,4 +1,4 @@
-import { LoggerFactory } from "@repo/common";
+import { LoggerFactory } from "@repo/logger";
 import { buildApp } from "./app.js";
 import { envAuth } from "./config/env-auth";
 
@@ -37,7 +37,8 @@ function logServerStarted(): void {
 }
 
 function logServerError(error: unknown): void {
-  logger.error("Failed to start server", error, {
+  logger.error("Failed to start server", {
+    error,
     event: "SERVER_START_ERROR",
   });
 }

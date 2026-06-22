@@ -3,7 +3,8 @@ import fastifyCors from "@fastify/cors";
 import Fastify, { type FastifyInstance } from "fastify";
 import { serializerCompiler, validatorCompiler } from "fastify-type-provider-zod";
 
-import { BadRequestError, LoggerFactory } from "@repo/common";
+import { BadRequestError } from "@repo/common";
+import { LoggerFactory } from "@repo/logger";
 import { getPrismaClient, PrismaLoggerAdapter } from "@repo/database";
 
 import { envBackend } from "./config/env-backend.js";
@@ -97,7 +98,7 @@ export async function buildApp(options: BuildAppOptions = {}): Promise<FastifyIn
   const cookieSecret = envBackend.COOKIE_SECRET;
 
   if (!cookieSecret) {
-    logger.error("Missing required environment variable: COOKIE_SECRET", undefined, {
+    logger.error("Missing required environment variable: COOKIE_SECRET", {
       event: "MISSING_ENV",
       variable: "COOKIE_SECRET",
     });
@@ -143,7 +144,8 @@ export async function buildApp(options: BuildAppOptions = {}): Promise<FastifyIn
   });
 
   app.addHook("onError", async (request, _reply, error) => {
-    requestLogger.error("Request failed", error, {
+    requestLogger.error("Request failed", {
+      error,
       event: "REQUEST_ERROR",
       method: request.method,
       url: request.url,

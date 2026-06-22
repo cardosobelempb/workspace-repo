@@ -3,6 +3,6 @@ export * from "./config";
 export * from "./infrastructure";
 export * from "./observability";
 export * from "./prisma-client";
-export * from "./repositories";
+export * from "./shared";
 export * from "./transaction";
 export * from "./types";

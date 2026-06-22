@@ -1,89 +1,61 @@
-import { BaseLogger, LoggerMetadata } from "@repo/logger";
-import { FastifyBaseLogger, FastifyRequest } from "fastify";
+import { BaseLogger } from "@repo/logger";
+import type { LogContext } from "@repo/logger";
+import type { FastifyBaseLogger, FastifyRequest } from "fastify";
 
-// ============================================================
-// Adapter Fastify -> Logger
-//
-// Responsabilidade:
-// - adaptar logger do Fastify
-// - manter padrão da aplicação
-// - reutilizar requestId automático
-// ============================================================
-
+/**
+ * Adapter que envolve o `FastifyBaseLogger` (pino interno do Fastify) e o expõe
+ * como `BaseLogger`, permitindo reutilizar a mesma interface em toda a aplicação.
+ *
+ * Por que adaptar em vez de usar o logger do Fastify diretamente?
+ * O Fastify expõe `request.log` como `FastifyBaseLogger` — tipo acoplado ao framework.
+ * Este adapter isola esse detalhe: o restante da aplicação depende apenas de `ILogger`.
+ */
 export class FastifyLoggerAdapter extends BaseLogger {
   constructor(
     private readonly loggerInstance: FastifyBaseLogger,
-    context?: string,
+    bindings: LogContext = {},
   ) {
-    super({ context });
+    super(bindings);
   }
 
-  info(message: string, meta?: LoggerMetadata): void {
-    this.loggerInstance.info(
-      {
-        context: this.context,
-        ...meta,
-      },
-      message,
-    );
+  trace(message: string, context?: LogContext): void {
+    this.loggerInstance.trace({ ...this.bindings, ...context }, message);
   }
 
-  warn(message: string, meta?: LoggerMetadata): void {
-    this.loggerInstance.warn(
-      {
-        context: this.context,
-        ...meta,
-      },
-      message,
-    );
+  debug(message: string, context?: LogContext): void {
+    this.loggerInstance.debug({ ...this.bindings, ...context }, message);
   }
 
-  error(message: string, error?: unknown, meta?: LoggerMetadata): void {
+  info(message: string, context?: LogContext): void {
+    this.loggerInstance.info({ ...this.bindings, ...context }, message);
+  }
+
+  warn(message: string, context?: LogContext): void {
+    this.loggerInstance.warn({ ...this.bindings, ...context }, message);
+  }
+
+  error(message: string, context?: LogContext | Error): void {
     this.loggerInstance.error(
-      {
-        context: this.context,
-        error,
-        ...meta,
-      },
+      { ...this.bindings, ...this.normalizeError(context) },
       message,
     );
   }
 
-  debug(message: string, meta?: LoggerMetadata): void {
-    this.loggerInstance.debug(
-      {
-        context: this.context,
-        ...meta,
-      },
-      message,
-    );
-  }
-
-  fatal(message: string, error?: unknown, meta?: LoggerMetadata): void {
+  fatal(message: string, context?: LogContext | Error): void {
     this.loggerInstance.fatal(
-      {
-        context: this.context,
-        error,
-        ...meta,
-      },
+      { ...this.bindings, ...this.normalizeError(context) },
       message,
     );
   }
 
-  child(context: string): BaseLogger {
+  child(bindings: LogContext): FastifyLoggerAdapter {
     return new FastifyLoggerAdapter(
-      this.loggerInstance.child({
-        context,
-      }),
-      context,
+      this.loggerInstance.child(bindings),
+      { ...this.bindings, ...bindings },
     );
   }
 
-  // ============================================================
-  // Helper útil para requests
-  // ============================================================
-
-  static fromRequest(request: FastifyRequest, context?: string): BaseLogger {
-    return new FastifyLoggerAdapter(request.log, context);
+  static fromRequest(request: FastifyRequest, bindings: LogContext = {}): FastifyLoggerAdapter {
+    return new FastifyLoggerAdapter(request.log, bindings);
   }
 }

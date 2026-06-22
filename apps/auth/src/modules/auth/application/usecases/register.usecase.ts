@@ -1,4 +1,3 @@
-import { PrismaUserRepository } from "@/modules/user/infrastructure/database/prisma-user.repository";
 import {
   BadRequestError,
   ConflictError,
@@ -6,24 +5,25 @@ import {
   Either,
   left,
   right,
+  UserFactory,
+  UserRegisterDto,
+  UserRegisterProjectionDto,
 } from "@repo/common";
-import { BcryptHasherService } from "../../domain/services/bcrypt-hasher.service";
-import { RegisterBodyDto, RegisterProjectionDto } from "../dto/register.dto";
+import { HasherService } from "../../domain/services/hasher.service";
 
-import { DI_PRISMA_REPOSITORY } from "@repo/database";
-import { UserFactory } from "../factories/user.factory";
+import { DI_PRISMA_REPOSITORY, PrismaUserRepository } from "@repo/database";
 
-export type RegisterUseCaseResponse = Either<BadRequestError, RegisterProjectionDto>;
+export type RegisterUseCaseResponse = Either<BadRequestError, UserRegisterProjectionDto>;
 
 export class RegisterUseCase {
   static inject = [DI_HASH.HASH_GENERATOR, DI_PRISMA_REPOSITORY.PRISMA_USER_REPOSITORY];
 
   constructor(
-    private readonly bcryptHasherService: BcryptHasherService,
+    private readonly hasherService: HasherService,
     private readonly prismaUserRepository: PrismaUserRepository,
   ) {}
 
-  async execute(input: RegisterBodyDto): Promise<RegisterUseCaseResponse> {
+  async execute(input: UserRegisterDto): Promise<RegisterUseCaseResponse> {
     const existingUser = await this.prismaUserRepository.findActiveByEmail(input.email);
 
     if (existingUser) {
@@ -35,16 +35,22 @@ export class RegisterUseCase {
       );
     }
 
-    const passwordHash = await this.bcryptHasherService.hash(input.password);
+    const passwordHash = await this.hasherService.hash(input.passwordHash);
 
-    const userEntity = UserFactory.build({
+    const userEntity = UserFactory.buildUserRegister({
+      firstName: input.firstName,
+      lastName: input.lastName,
       email: input.email,
-      password: passwordHash,
+      passwordHash: passwordHash,
     });
     const createdUser = await this.prismaUserRepository.create(userEntity);
 
     return right({
+      firstName: createdUser.firstName,
+      lastName: createdUser.lastName,
       email: createdUser.email.toString(),
+      id: createdUser.id.toString(),
+      createdAt: createdUser.createdAt,
     });
   }
 }

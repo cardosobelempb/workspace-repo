@@ -1082,6 +1082,9 @@ importers:
       '@repo/env-config':
         specifier: workspace:*
         version: link:../env-config
+      '@repo/logger':
+        specifier: workspace:*
+        version: link:../logger
       pg:
         specifier: ^8.16.3
         version: 8.21.0

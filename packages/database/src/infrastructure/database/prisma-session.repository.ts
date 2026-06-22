@@ -1,7 +1,7 @@
 import { SessionEntity, SessionRepository } from "@repo/common";
 import { DI_PRISMA } from "../../config";
 import { PrismaDatabase } from "../../prisma-client";
-import { PrismaRepository } from "../../repositories";
+import { PrismaRepository } from "../../shared/repositories";
 import { PrismaSessionMapper } from "../mappers/prisma-session.mapper";
 
 export class PrismaSessionRepository

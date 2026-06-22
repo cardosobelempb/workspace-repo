@@ -1,41 +1,38 @@
-import { LoggerMetadata, LoggerOptions } from "./logger.types";
+import type { ILogger } from "./types/i-logger";
+import type { LogContext } from "./types/log-context";
 
-// ============================================================
-// Logger Abstrato
-//
-// Responsabilidade:
-// - padronizar logging da aplicação
-// - desacoplar provider (Pino, Winston, Console)
-// - permitir adapters reutilizáveis
-//
-// Benefícios:
-// ✅ SOLID
-// ✅ DIP (Dependency Inversion)
-// ✅ Reutilizável
-// ✅ Testável
-// ============================================================
+/**
+ * Classe base abstrata para todas as implementações de logger.
+ *
+ * Extend esta classe para criar adapters de framework (Fastify, NestJS, etc.)
+ * ou implementações alternativas (Console, mock para testes).
+ *
+ * Garante que todos os loggers do projeto compartilhem o contrato de `ILogger`
+ * e o utilitário `normalizeError` — sem duplicação de código.
+ */
+export abstract class BaseLogger implements ILogger {
+  constructor(protected readonly bindings: LogContext = {}) {}
 
-export abstract class BaseLogger {
-  protected context?: string;
+  abstract trace(message: string, context?: LogContext): void;
+  abstract debug(message: string, context?: LogContext): void;
+  abstract info(message: string, context?: LogContext): void;
+  abstract warn(message: string, context?: LogContext): void;
+  abstract error(message: string, context?: LogContext | Error): void;
+  abstract fatal(message: string, context?: LogContext | Error): void;
+  abstract child(bindings: LogContext): ILogger;
 
-  constructor(options?: LoggerOptions) {
-    this.context = options?.context;
+  async flush(): Promise<void> {}
+
+  protected normalizeError(context?: LogContext | Error): LogContext {
+    if (context instanceof Error) {
+      return {
+        error: {
+          name: context.name,
+          message: context.message,
+          stack: context.stack,
+        },
+      };
+    }
+    return context ?? {};
   }
-
-  abstract info(message: string, meta?: LoggerMetadata): void;
-
-  abstract warn(message: string, meta?: LoggerMetadata): void;
-
-  abstract error(message: string, error?: unknown, meta?: LoggerMetadata): void;
-
-  abstract debug(message: string, meta?: LoggerMetadata): void;
-
-  abstract fatal(message: string, error?: unknown, meta?: LoggerMetadata): void;
-
-  // ============================================================
-  // Cria child logger
-  // Muito útil para contexto por módulo
-  // ============================================================
-
-  abstract child(context: string): BaseLogger;
 }

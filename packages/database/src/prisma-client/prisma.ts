@@ -1,43 +1,22 @@
-// ============================================================
-// shared/database/prisma.ts
-// Prisma singleton.
-// ============================================================
-
 import { PrismaPg } from "@prisma/adapter-pg";
 import { Prisma, PrismaClient } from "@prisma/client";
+import type { ILogger } from "@repo/logger";
 
-import { BaseLogger } from "@repo/common";
 import { envDatabase } from "../config/env-database.js";
-import { PrismaLoggerAdapter } from "../observability/prisma.logger";
-
-// ============================================================
-// Tipos
-// ============================================================
+import { attachPrismaLogger } from "../observability/prisma.logger";
 
 export type PrismaDatabase = PrismaClient<
   Prisma.PrismaClientOptions,
   "query" | "info" | "warn" | "error"
 >;
 
-// ============================================================
-// Global
-// ============================================================
-
 declare global {
   var __prisma: PrismaDatabase | undefined;
 }
 
-// ============================================================
-// Options
-// ============================================================
-
-type PrismaFactoryOptions = {
-  logger?: BaseLogger;
+export type PrismaFactoryOptions = {
+  logger?: ILogger;
 };
-
-// ============================================================
-// Factory
-// ============================================================
 
 function buildPrismaClient(options: PrismaFactoryOptions = {}): PrismaDatabase {
   const connectionString = envDatabase.DATABASE_URL;
@@ -46,49 +25,22 @@ function buildPrismaClient(options: PrismaFactoryOptions = {}): PrismaDatabase {
     connectionString,
   });
 
-  // ==========================================================
-  // Prisma Client
-  // ==========================================================
-
   const prisma = new PrismaClient({
     adapter,
-
     log: [
-      {
-        level: "query",
-        emit: "event",
-      },
-      {
-        level: "info",
-        emit: "event",
-      },
-      {
-        level: "warn",
-        emit: "event",
-      },
-      {
-        level: "error",
-        emit: "event",
-      },
+      { level: "query", emit: "event" },
+      { level: "info",  emit: "event" },
+      { level: "warn",  emit: "event" },
+      { level: "error", emit: "event" },
     ],
   }) as PrismaDatabase;
 
-  // ==========================================================
-  // Prisma Logger Adapter
-  // ==========================================================
-
   if (options.logger) {
-    const prismaLogger = new PrismaLoggerAdapter(prisma, options.logger);
-
-    prismaLogger.register();
+    attachPrismaLogger(prisma, { logger: options.logger });
   }
 
   return prisma;
 }
-
-// ============================================================
-// Singleton
-// ============================================================
 
 export function getPrismaClient(options: PrismaFactoryOptions = {}): PrismaDatabase {
   if (envDatabase.NODE_ENV !== "production") {

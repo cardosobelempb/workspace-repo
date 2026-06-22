@@ -1,34 +1,39 @@
-import { PrismaUserRepository } from "@/modules/user/infrastructure/database/prisma-user.repository";
 import {
   DI_HASH,
   DI_TOKEN,
   Either,
   left,
   right,
+  TokenFactory,
   TokenType,
   UnauthorizedError,
+  UserSessionDto,
+  UserSessionProjectionDto,
 } from "@repo/common";
-import { DI_PRISMA_REPOSITORY } from "@repo/database";
-import { BcryptHasherService } from "../../domain/services/bcrypt-hasher.service";
-import { JwtEncrypterService } from "../../domain/services/jwt-encrypter.service";
-import { REPOSITORY_CONSTANTS } from "../../infrastructure/database/constant";
-import { PrismaTokenRepository } from "../../infrastructure/database/prisma-token.repository";
-import { AuthProjectionDto, RefreshTokenDto } from "../dto/auth.dto";
-import { TokenFactory } from "../factories/token.factory";
+import {
+  DI_PRISMA_REPOSITORY,
+  PrismaTokenRepository,
+  PrismaUserRepository,
+} from "@repo/database";
+import { HasherService } from "../../domain/services/hasher.service";
+import { JwtService } from "../../domain/services/jwt.service";
 
-export type RefreshTokenUseCaseResponse = Either<UnauthorizedError, AuthProjectionDto>;
+export type RefreshTokenUseCaseResponse = Either<
+  UnauthorizedError,
+  UserSessionProjectionDto
+>;
 
 export class RefreshTokenUseCase {
   static inject = [
     DI_HASH.HASH_GENERATOR,
     DI_TOKEN.TOKEN_GENERATOR,
     DI_PRISMA_REPOSITORY.PRISMA_USER_REPOSITORY,
-    REPOSITORY_CONSTANTS.PRISMA_TOKEN_REPOSITORY,
+    DI_PRISMA_REPOSITORY.PRISMA_TOKEN_REPOSITORY,
   ];
 
   constructor(
-    private readonly bcryptHasherService: BcryptHasherService,
-    private readonly jwtEncrypterService: JwtEncrypterService,
+    private readonly hasherService: HasherService,
+    private readonly jwtService: JwtService,
     private readonly prismaUserRepository: PrismaUserRepository,
     private readonly prismaTokenRepository: PrismaTokenRepository,
   ) {}
@@ -42,13 +47,13 @@ export class RefreshTokenUseCase {
    * - Gera um novo access token.
    */
   async execute(
-    input: RefreshTokenDto,
+    input: UserSessionDto,
     metadata: {
       ipAddress: string;
       userAgent: string;
     },
   ): Promise<RefreshTokenUseCaseResponse> {
-    const refreshTokenHash = await this.bcryptHasherService.hash(input.type);
+    const refreshTokenHash = await this.hasherService.hash(input.password);
 
     const storedToken =
       await this.prismaTokenRepository.findValidRefreshToken(refreshTokenHash);
@@ -77,16 +82,16 @@ export class RefreshTokenUseCase {
 
     await this.prismaTokenRepository.revokeRefreshToken(storedToken.id.getValue());
 
-    const accessToken = await this.jwtEncrypterService.createAsyncAccessToken({
+    const accessToken = await this.jwtService.generate({
       sub: user.id.getValue(),
       email: user.email.getValue().value,
     });
 
-    const newRefreshToken = await this.jwtEncrypterService.createAsyncRefreshToken({
+    const newRefreshToken = await this.jwtService.generate({
       sub: user.id.getValue(),
       email: user.email.getValue().value,
     });
-    const newRefreshTokenHash = await this.bcryptHasherService.hash(newRefreshToken);
+    const newRefreshTokenHash = await this.hasherService.hash(newRefreshToken);
 
     const expiredAt = new Date();
     expiredAt.setDate(expiredAt.getDate() + 7);
@@ -107,6 +112,8 @@ export class RefreshTokenUseCase {
       user: {
         id: user.id.getValue(),
         email: user.email.getValue().value,
+        firstName: user.firstName,
+        lastName: user.lastName,
         createdAt: user.createdAt,
       },
       accessToken,

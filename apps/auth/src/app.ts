@@ -3,7 +3,8 @@ import fastifyCors from "@fastify/cors";
 import Fastify, { type FastifyInstance } from "fastify";
 import { serializerCompiler, validatorCompiler } from "fastify-type-provider-zod";
 
-import { BadRequestError, LoggerFactory } from "@repo/common";
+import { ValidationError } from "@repo/common";
+import { LoggerFactory } from "@repo/logger";
 import { getPrismaClient, PrismaLoggerAdapter } from "@repo/database";
 
 import { envAuth } from "./config/env-auth";
@@ -46,22 +47,23 @@ export async function buildApp(options: BuildAppOptions = {}): Promise<FastifyIn
     disableRequestLogging: true,
 
     schemaErrorFormatter(errors, dataVar) {
-      const validationError = new BadRequestError({
-        fieldName: dataVar,
-        message: `${dataVar} validation failed`,
-      });
+      const error = new ValidationError(dataVar);
 
-      Object.assign(validationError, {
-        statusCode: 400,
-        code: "VALIDATION_ERROR",
-        error: "Validation Error",
-        validation: errors,
-      });
+      for (const err of errors) {
+        const field =
+          typeof err?.params?.missingProperty === "string"
+            ? err.params.missingProperty
+            : typeof err?.instancePath === "string" && err.instancePath.length > 0
+              ? err.instancePath.replace(/^\//, "").replace(/\//g, ".")
+              : dataVar || "body";
 
-      return validationError;
+        error.addFieldError(field, err?.message ?? "Validation error");
+      }
+
+      return error;
     },
 
-    logger: options.logger !== false,
+    logger: false,
   });
 
   // ========================================================
@@ -97,7 +99,7 @@ export async function buildApp(options: BuildAppOptions = {}): Promise<FastifyIn
   const cookieSecret = envAuth.COOKIE_SECRET;
 
   if (!cookieSecret) {
-    logger.error("Missing required environment variable: COOKIE_SECRET", undefined, {
+    logger.error("Missing required environment variable: COOKIE_SECRET", {
       event: "MISSING_ENV",
       variable: "COOKIE_SECRET",
     });
@@ -142,13 +144,31 @@ export async function buildApp(options: BuildAppOptions = {}): Promise<FastifyIn
     });
   });
 
-  app.addHook("onError", async (request, _reply, error) => {
-    requestLogger.error("Request failed", error, {
+  app.addHook("onError", async (request, _reply, error: any) => {
+    const statusCode = error?.statusCode ?? 500;
+
+    const logPayload = {
       event: "REQUEST_ERROR",
       method: request.method,
       url: request.url,
       requestId: request.id,
-    });
+
+      error: {
+        name: error?.name,
+        message: error?.message,
+        code: error?.code,
+        statusCode: error?.statusCode,
+        fieldName: error?.fieldName,
+        validation: error?.validation,
+        validationContext: error?.validationContext,
+      },
+    };
+
+    if (statusCode >= 500) {
+      requestLogger.error("Request failed", logPayload);
+    } else {
+      requestLogger.warn("Request failed", logPayload);
+    }
   });
 
   // ========================================================

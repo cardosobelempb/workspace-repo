@@ -5,4 +5,5 @@ export * from "./prisma-email-verification.repository";
 export * from "./prisma-magic-link.repository";
 export * from "./prisma-otp-code.repository";
 export * from "./prisma-session.repository";
+export * from "./prisma-token.repository";
 export * from "./prisma-user.repository";

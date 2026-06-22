@@ -7,7 +7,9 @@
 import {
   actionResponseSchema,
   createResponseSchema,
+  EmailSchema,
   findResponseSchema,
+  IpAddressSchema,
   pageResponseSchema,
   s,
   updateResponseSchema,
@@ -34,14 +36,16 @@ export type OtpCodeParams = z.infer<typeof OtpCodeParamsSchema>;
 export const OtpCodeSchema = z
   .object({
     id: UuidSchema,
-    userId: UuidSchema,
-    phone: s.phone,
+    email: EmailSchema,
     codeHash: s.string,
+    purpose: s.string,
     expiredAt: s.date,
-    attempts: s.number,
     usedAt: s.nullableDate,
+    attempts: s.number,
+    maxAttempts: s.number,
+    ipAddress: IpAddressSchema._zod,
+    userAgent: s.string.nullable(),
     createdAt: s.date,
-    updatedAt: s.nullableDate,
     deletedAt: s.nullableDate,
   })
   .strict();
@@ -51,8 +55,8 @@ export const OtpCodeSchema = z
 // Payload de criação: sem campos gerados pelo servidor
 export const CreateOtpCodeSchema = OtpCodeSchema.omit({
   id: true,
+  usedAt: true,
   createdAt: true,
-  updatedAt: true,
   deletedAt: true,
 });
 
@@ -70,8 +74,8 @@ export const OtpCodeResponseSchema = OtpCodeSchema.omit({
 // Resumo para listagem: versão compacta — evita over-fetching
 export const OtpCodeProjectionSchema = OtpCodeSchema.pick({
   id: true,
-  userId: true,
-  phone: true,
+  email: true,
+  purpose: true,
   expiredAt: true,
   attempts: true,
   usedAt: true,

@@ -1,7 +1,7 @@
 import { NotFoundError, UserEntity, UserRepository } from "@repo/common";
 import { DI_PRISMA } from "../../config";
 import { PrismaDatabase } from "../../prisma-client";
-import { PrismaRepository, PrismaTransaction } from "../../repositories";
+import { PrismaRepository, PrismaTransaction } from "../../shared/repositories";
 import { PrismaUserMapper } from "../mappers/prisma-user.mapper";
 
 export class PrismaUserRepository

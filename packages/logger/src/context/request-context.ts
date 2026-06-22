@@ -15,11 +15,17 @@ export class RequestContext {
     return this.storage.run(data, callback);
   }
 
-  static get(): RequestContextData | undefined {
-    return this.storage.getStore();
+  static get(): RequestContextData {
+    const store = this.storage.getStore();
+
+    if (!store) {
+      throw new Error("RequestContext not initialized");
+    }
+
+    return store;
   }
 
-  static getRequestId(): string | undefined {
+  static getRequestId(): string {
     return this.get()?.requestId;
   }
 

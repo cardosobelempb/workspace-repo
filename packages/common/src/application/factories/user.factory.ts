@@ -17,6 +17,8 @@ export class UserFactory {
    */
   static build(input: CreateUserDto): UserEntity {
     return UserEntity.create({
+      firstName: input.firstName,
+      lastName: input.lastName,
       email: EmailVO.create(input.email),
       passwordHash: PasswordHashVO.create(input.passwordHash),
     });
@@ -31,6 +33,8 @@ export class UserFactory {
 
   static buildUserRegister(input: UserRegisterDto): UserEntity {
     return UserEntity.create({
+      firstName: input.firstName,
+      lastName: input.lastName,
       email: EmailVO.create(input.email),
       passwordHash: PasswordHashVO.create(input.passwordHash),
     });

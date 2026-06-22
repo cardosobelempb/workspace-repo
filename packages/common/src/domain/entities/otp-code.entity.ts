@@ -1,12 +1,15 @@
 import { RootEntity } from "@/common/shared";
 import { Optional } from "../types";
-import { PhoneVO, UUIDVO } from "../values-objects";
+import { EmailVO, IpAddressVO, UserAgentVO, UUIDVO } from "../values-objects";
 
 export interface OtpCodeProps {
-  userId: UUIDVO;
-  phone: PhoneVO;
+  email: EmailVO;
+  ipAddress: IpAddressVO | null;
+  userAgent: UserAgentVO | null;
   codeHash: string;
   attempts: number;
+  maxAttempts: number;
+  purpose: string;
   createdAt: Date;
   expiredAt: Date;
   usedAt: Date | null;
@@ -15,11 +18,20 @@ export interface OtpCodeProps {
 }
 
 export class OtpCodeEntity extends RootEntity<OtpCodeProps> {
-  get userId() {
-    return this.props.userId;
+  get email() {
+    return this.props.email;
   }
-  get phone() {
-    return this.props.phone;
+  get ipAddress() {
+    return this.props.ipAddress;
+  }
+  get userAgent() {
+    return this.props.userAgent;
+  }
+  get purpose() {
+    return this.props.purpose;
+  }
+  get maxAttempts() {
+    return this.props.maxAttempts;
   }
   get codeHash() {
     return this.props.codeHash;
@@ -62,12 +74,17 @@ export class OtpCodeEntity extends RootEntity<OtpCodeProps> {
   }
 
   static create(
-    props: Optional<OtpCodeProps, "createdAt" | "updatedAt" | "deletedAt">,
+    props: Optional<
+      OtpCodeProps,
+      "attempts" | "maxAttempts" | "createdAt" | "updatedAt" | "deletedAt"
+    >,
     id?: UUIDVO,
   ) {
     return new OtpCodeEntity(
       {
         ...props,
+        attempts: props.attempts ?? 0,
+        maxAttempts: props.maxAttempts ?? 5,
         createdAt: props.createdAt ?? new Date(),
         updatedAt: props.updatedAt ?? null,
         deletedAt: props.deletedAt ?? null,

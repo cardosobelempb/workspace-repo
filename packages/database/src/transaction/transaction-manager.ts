@@ -1,6 +1,6 @@
 // src/common/domain/transaction/transaction-manager.ts
 
-import { PrismaTransaction } from "../repositories/prisma-repository";
+import { PrismaTransaction } from "../shared/repositories/prisma-repository";
 
 /**
  * Abstração de unidade de trabalho transacional.

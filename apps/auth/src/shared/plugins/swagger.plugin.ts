@@ -28,8 +28,40 @@ export async function swaggerPlugin(
         version: options.swagger?.version ?? envAuth.VERSION,
         description: options.swagger?.description ?? envAuth.DESCRIPTION,
       },
+      servers: [
+        {
+          url: `http://${envAuth.PUBLIC_HOST}:${envAuth.PORT}`,
+          description: "Servidor de desenvolvimento",
+        },
+      ],
+      components: {
+        securitySchemes: {
+          cookieAuth: {
+            type: "apiKey",
+            in: "cookie",
+            name: envAuth.SESSION_COOKIE_NAME,
+          },
+        },
+      },
     },
-    transform: jsonSchemaTransform,
+    // @fastify/swagger lê schema.body para gerar requestBody no spec OpenAPI.
+    // O register-routes.ts armazena o JSON Schema em schema.requestBody (para
+    // não disparar o validatorCompiler). Aqui copiamos para schema.body no
+    // resultado do transform, que é lido apenas para geração da documentação.
+    transform: (input) => {
+      const result = jsonSchemaTransform(input);
+
+      const rb = (result.schema as Record<string, unknown>).requestBody as
+        | { content?: { "application/json"?: { schema?: unknown } } }
+        | undefined;
+
+      const bodySchema = rb?.content?.["application/json"]?.schema;
+      if (bodySchema) {
+        (result.schema as Record<string, unknown>).body = bodySchema;
+      }
+
+      return result;
+    },
   });
 
   // ── 2. Serve a UI via Scalar ───────────────────────────────────────────────

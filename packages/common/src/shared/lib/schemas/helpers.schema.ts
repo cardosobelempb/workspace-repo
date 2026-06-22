@@ -43,25 +43,29 @@ export const parseEnvArray = (value: string): string[] => {
 };
 
 // ── Password confirmation helper ──────────────────────────────────────────────
-// ✅ Adiciona validação de confirmação de senha a um schema existente
+// ✅ Adiciona validação de confirmação de senha a um schema existente.
+// ⚠️ Usa .refine() (não superRefine) pra manter o retorno como ZodObject,
+//    já que fastify-type-provider-zod não consegue serializar ZodEffects.
 export const withPasswordConfirmation = <T extends z.ZodRawShape>(
   schema: z.ZodObject<T>,
-  fields: { passwordHash: string; passwordConfirmation: string } = {
+  fields: {
+    passwordHash: string;
+    confirmPassword: string;
+  } = {
     passwordHash: "passwordHash",
-    passwordConfirmation: "passwordConfirmation",
+    confirmPassword: "confirmPassword",
   },
 ) => {
-  return schema.superRefine((data, ctx) => {
-    const record = data as Record<string, unknown>;
-
-    if (record[fields.passwordHash] !== record[fields.passwordConfirmation]) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: "Passwords do not match",
-        path: [fields.passwordConfirmation],
-      });
-    }
-  });
+  return schema.refine(
+    (data) => {
+      const record = data as Record<string, unknown>;
+      return record[fields.passwordHash] === record[fields.confirmPassword];
+    },
+    {
+      message: "Passwords do not match",
+      path: [fields.confirmPassword],
+    },
+  );
 };
 
 // ── Environment variable schemas ─────────────────────────────────────────────

@@ -7,11 +7,14 @@
 import {
   actionResponseSchema,
   createResponseSchema,
+  EmailSchema,
   findResponseSchema,
   pageResponseSchema,
+  PasswordSchema,
   s,
   updateResponseSchema,
   UuidSchema,
+  withPasswordConfirmation,
 } from "@/common/shared";
 import z from "zod";
 
@@ -36,8 +39,8 @@ export const UserSchema = z
     id: UuidSchema,
     firstName: s.string.nullable(),
     lastName: s.string.nullable(),
-    email: s.email,
-    passwordHash: s.password,
+    email: EmailSchema,
+    passwordHash: PasswordSchema,
     emailVerified: s.nullableDate,
     createdAt: s.date,
     updatedAt: s.nullableDate,
@@ -54,6 +57,29 @@ export const CreateUserSchema = UserSchema.omit({
   updatedAt: true,
   deletedAt: true,
 });
+
+// Payload de criação: sem campos gerados pelo servidor
+export const UserSessionSchema = z
+  .object({
+    email: EmailSchema,
+    password: PasswordSchema,
+  })
+  .strict();
+
+// Payload de criação: sem campos gerados pelo servidor
+// ⚠️ .strict() fica dentro do z.object() porque withPasswordConfirmation
+//    retorna ZodEffects (que não aceita .strict() no final).
+export const UserRegisterSchema = withPasswordConfirmation(
+  z
+    .object({
+      firstName: z.string().nullable(),
+      lastName: z.string().nullable(),
+      email: EmailSchema,
+      passwordHash: PasswordSchema,
+      confirmPassword: PasswordSchema.optional(),
+    })
+    .strict(),
+);
 
 // Payload de atualização: todos os campos opcionais
 // Não precisa de .strict() extra — já herdado do UserSchema base
@@ -83,19 +109,23 @@ export const UserProjectionSchema = UserSchema.pick({
 // não o schema de input — a resposta de create/update devolve a entidade
 // persistida, não o payload que o cliente enviou.
 
-export const UserRegisterSchema = UserSchema.omit({
-  id: true,
-  createdAt: true,
-  updatedAt: true,
-  deletedAt: true,
-});
-
 // Payload de criação: sem campos gerados pelo servidor
 export const UserRegisterProjectionSchema = UserSchema.pick({
   id: true,
+  firstName: true,
+  lastName: true,
   email: true,
   createdAt: true,
 });
+
+export const UserSessionProjectionSchema = z
+  .object({
+    user: UserProjectionSchema,
+    accessToken: s.token,
+    refreshToken: s.token,
+    expiresAt: s.date,
+  })
+  .strict();
 
 export const UserCreateResponseSchema = createResponseSchema(UserResponseSchema);
 export const UserFindByIdResponseSchema = findResponseSchema(UserResponseSchema);

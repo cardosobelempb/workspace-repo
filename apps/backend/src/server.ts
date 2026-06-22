@@ -37,7 +37,8 @@ function logServerStarted(): void {
 }
 
 function logServerError(error: unknown): void {
-  logger.error("Failed to start server", error, {
+  logger.error("Failed to start server", {
+    error,
     event: "SERVER_START_ERROR",
   });
 }

@@ -3,24 +3,25 @@
 import { DI_REDIS, DI_REDIS_REPOSITORY, RedisSessionCacheRepository } from "@repo/cache";
 import { DI_HASH, DI_TOKEN, ModuleDefinition } from "@repo/common";
 
-import { CreateSessionUseCase } from "./application/usecases/create-session.usecase";
 import { DI_USECASE } from "./application/usecases/di-usecase";
+import { SessionUseCase } from "./application/usecases/session.usecase";
 
 import {
   DI_PRISMA,
   DI_PRISMA_REPOSITORY,
   getPrismaClient,
   PrismaSessionRepository,
+  PrismaUserRepository,
 } from "@repo/database";
-import { PrismaUserRepository } from "../user/infrastructure/database/prisma-user.repository";
+
 import { RegisterUseCase } from "./application/usecases/register.usecase";
-import { BcryptComparerService } from "./domain/services/bcrypt-comparer.service";
-import { BcryptGeneratorService } from "./domain/services/bcrypt-generator.service";
-import { BcryptHasherService } from "./domain/services/bcrypt-hasher.service";
+import { ComparerService } from "./domain/services/comparer.service";
+import { HasherService } from "./domain/services/hasher.service";
 import { RedisCacheService } from "./domain/services/redis-cache.service";
 import { REPOSITORY_CONSTANTS } from "./infrastructure/database/constant";
 
-import { LoginController } from "./infrastructure/http/controllers/login.controller";
+import { JwtService } from "./domain/services/jwt.service";
+import { LoginWithPasswordController } from "./infrastructure/http/controllers/login-with-password.controller";
 import { RegisterController } from "./infrastructure/http/controllers/register.controller";
 
 export const authModule: ModuleDefinition = {
@@ -35,15 +36,15 @@ export const authModule: ModuleDefinition = {
     },
     {
       token: DI_HASH.HASH_GENERATOR,
-      useClass: BcryptHasherService,
+      useClass: HasherService,
     },
     {
       token: DI_HASH.HASH_COMPARER,
-      useClass: BcryptComparerService,
+      useClass: ComparerService,
     },
     {
       token: DI_TOKEN.TOKEN_GENERATOR,
-      useClass: BcryptGeneratorService,
+      useClass: JwtService,
     },
     {
       token: DI_PRISMA_REPOSITORY.PRISMA_USER_REPOSITORY,
@@ -58,19 +59,19 @@ export const authModule: ModuleDefinition = {
       useClass: RedisSessionCacheRepository,
     },
     {
-      token: DI_USECASE.CREATE_SESSION_USECASE,
+      token: DI_USECASE.SESSION_USECASE,
       useFactory: (
-        bcryptHasherService: BcryptHasherService,
-        bcryptComparerService: BcryptComparerService,
-        bcryptGeneratorService: BcryptGeneratorService,
+        hasherService: HasherService,
+        comparerService: ComparerService,
+        jwtService: JwtService,
         prismaUserRepository: PrismaUserRepository,
         prismaSessionRepository: PrismaSessionRepository,
         redisSessionCacheRepository: RedisSessionCacheRepository,
       ) =>
-        new CreateSessionUseCase(
-          bcryptHasherService,
-          bcryptComparerService,
-          bcryptGeneratorService,
+        new SessionUseCase(
+          hasherService,
+          comparerService,
+          jwtService,
           prismaUserRepository,
           prismaSessionRepository,
           redisSessionCacheRepository,
@@ -86,7 +87,7 @@ export const authModule: ModuleDefinition = {
     {
       token: DI_USECASE.REGISTER_USECASE,
       useFactory: (
-        bcryptHasherService: BcryptHasherService,
+        bcryptHasherService: HasherService,
         prismaUserRepository: PrismaUserRepository,
       ) => new RegisterUseCase(bcryptHasherService, prismaUserRepository),
       inject: [
@@ -97,5 +98,5 @@ export const authModule: ModuleDefinition = {
     },
   ],
 
-  controllers: [RegisterController, LoginController],
+  controllers: [RegisterController, LoginWithPasswordController],
 };

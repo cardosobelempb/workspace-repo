@@ -7,6 +7,7 @@ import {
   RouteDefinition,
 } from "@repo/common";
 import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
+import { toJSONSchema } from "zod";
 
 // ─── Cache e Rate Limit em memória ───────────────────────────────────────────
 
@@ -40,24 +41,43 @@ function normalizePagination(request: FastifyRequest): void {
 // ─── Schema Fastify/Swagger ───────────────────────────────────────────────────
 
 function buildFastifySchema(route: RouteDefinition): Record<string, unknown> {
-  const { docs, schema } = route;
+  const { docs } = route;
 
-  if (!docs && !schema) return {};
+  if (!docs) return {};
 
   const fastifySchema: Record<string, unknown> = {};
 
-  if (docs?.tags) fastifySchema.tags = docs.tags;
-  if (docs?.summary) fastifySchema.summary = docs.summary;
-  if (docs?.description) fastifySchema.description = docs.description;
+  if (docs.tags) fastifySchema.tags = docs.tags;
+  if (docs.summary) fastifySchema.summary = docs.summary;
+  if (docs.description) fastifySchema.description = docs.description;
 
-  const bodySchema =
-    docs?.requestBody?.content?.["application/json"]?.schema ?? schema?.body;
+  // requestBody e parameters ficam em posições não-padrão do Fastify, então
+  // o jsonSchemaTransform NÃO converte os ZodTypes dentro deles. Precisamos
+  // converter manualmente para JSON Schema antes de passar ao @fastify/swagger.
+  // A validação real continua sendo feita via safeParse no handler.
+  if (docs.requestBody) {
+    const zodSchema = docs.requestBody.content["application/json"].schema;
+    fastifySchema.requestBody = {
+      required: docs.requestBody.required,
+      content: {
+        "application/json": {
+          schema: toJSONSchema(zodSchema),
+        },
+      },
+    };
+  }
 
-  if (bodySchema) fastifySchema.body = bodySchema;
-  if (schema?.params) fastifySchema.params = schema.params;
-  if (schema?.query) fastifySchema.querystring = schema.query;
+  if (docs.parameters?.length) {
+    fastifySchema.parameters = docs.parameters.map((p) => ({
+      name: p.name,
+      in: p.in,
+      required: p.required ?? false,
+      ...(p.description ? { description: p.description } : {}),
+      schema: toJSONSchema(p.schema),
+    }));
+  }
 
-  const responses = buildResponseSchema(docs?.responses);
+  const responses = buildResponseSchema(docs.responses);
   if (responses) fastifySchema.response = responses;
 
   return fastifySchema;
@@ -69,16 +89,15 @@ function buildResponseSchema(
   if (!responses) return null;
 
   const result: Record<number, unknown> = {};
-  let hasSchema = false;
 
   for (const [status, response] of Object.entries(responses)) {
-    if (response.schema) {
-      result[Number(status)] = response.schema;
-      hasSchema = true;
-    }
+    if (!response.schema) continue;
+    result[Number(status)] = response.description
+      ? response.schema.describe(response.description)
+      : response.schema;
   }
 
-  return hasSchema ? result : null;
+  return Object.keys(result).length ? result : null;
 }
 
 // ─── Registro interno (sem prefix) ───────────────────────────────────────────
@@ -103,6 +122,77 @@ async function registerInRouter(
         ...(Object.keys(fastifySchema).length ? { schema: fastifySchema } : {}),
 
         handler: async (request: FastifyRequest, reply: FastifyReply) => {
+          // ── Validação Zod manual (body, params, query) ──────────────────
+          // Por que manual? Porque o validatorCompiler do fastify-type-provider-zod
+          // joga o ZodError cru sem popular `err.validation` no formato esperado
+          // pelo errorHandler, e o schemaErrorFormatter recebe array vazio.
+          // Validando aqui a gente controla o erro e devolve detalhes ricos.
+          if (route.schema?.body) {
+            const result = route.schema.body.safeParse(request.body);
+            if (!result.success) {
+              const issues = result.error.issues.map((issue) => ({
+                field: issue.path.join(".") || "body",
+                message: issue.message,
+                code: issue.code,
+              }));
+              return reply.status(400).send({
+                statusCode: 400,
+                error: "Validation Error",
+                message: "body validation failed",
+                path: request.url,
+                timestamp: new Date().toISOString(),
+                code: "VALIDATION_ERROR",
+                fieldName: issues[0]?.field || "body",
+                issues,
+              });
+            }
+            request.body = result.data;
+          }
+
+          if (route.schema?.params) {
+            const result = route.schema.params.safeParse(request.params);
+            if (!result.success) {
+              const issues = result.error.issues.map((issue) => ({
+                field: issue.path.join(".") || "params",
+                message: issue.message,
+                code: issue.code,
+              }));
+              return reply.status(400).send({
+                statusCode: 400,
+                error: "Validation Error",
+                message: "params validation failed",
+                path: request.url,
+                timestamp: new Date().toISOString(),
+                code: "VALIDATION_ERROR",
+                fieldName: issues[0]?.field || "params",
+                issues,
+              });
+            }
+            request.params = result.data;
+          }
+
+          if (route.schema?.query) {
+            const result = route.schema.query.safeParse(request.query);
+            if (!result.success) {
+              const issues = result.error.issues.map((issue) => ({
+                field: issue.path.join(".") || "query",
+                message: issue.message,
+                code: issue.code,
+              }));
+              return reply.status(400).send({
+                statusCode: 400,
+                error: "Validation Error",
+                message: "query validation failed",
+                path: request.url,
+                timestamp: new Date().toISOString(),
+                code: "VALIDATION_ERROR",
+                fieldName: issues[0]?.field || "query",
+                issues,
+              });
+            }
+            request.query = result.data;
+          }
+
           // ── Rate Limit ──────────────────────────────────────────────────
           if (route.rateLimit) {
             const key = createRateLimitKey(request);

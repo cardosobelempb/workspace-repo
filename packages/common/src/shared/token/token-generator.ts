@@ -1,12 +1,4 @@
 /**
- * Estrutura padrão dos tokens JWT gerados pela aplicação.
- */
-export interface Tokens {
-  accessToken: string;
-  refreshToken: string;
-}
-
-/**
  * Contrato abstrato para provedores de autenticação via JWT.
  *
  * Define métodos essenciais para criação, verificação e decodificação
@@ -24,13 +16,6 @@ export abstract class TokenGenerator<T extends object> {
   // abstract generate(): Promise<string>;
   // abstract generate(payload: T): string;
   abstract generate(payload: T): Promise<string>;
-
-  /**
-   * Gera accessToken e refreshToken simultaneamente.
-   * @param payload - Informações a serem assinadas nos tokens.
-   * @returns Objeto com accessToken e refreshToken.
-   */
-  abstract all(payload: T): Tokens;
 
   /**
    * Valida um accessToken e retorna o payload se for válido.

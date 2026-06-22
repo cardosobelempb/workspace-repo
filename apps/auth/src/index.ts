@@ -6,7 +6,7 @@
 
 import "dotenv/config";
 
-import { LoggerFactory } from "@repo/common";
+import { LoggerFactory } from "@repo/logger";
 import { startServer } from "./server.js";
 
 /**
@@ -26,7 +26,8 @@ async function bootstrap(): Promise<void> {
     // Inicia servidor HTTP
     await startServer();
   } catch (error) {
-    logger.error("Error while initializing application", error, {
+    logger.error("Error while initializing application", {
+      error,
       event: "APP_INIT_ERROR",
       context: "bootstrap",
     });
